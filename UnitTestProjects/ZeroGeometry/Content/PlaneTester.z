@@ -1,0 +1,31 @@
+class PlaneTester : ZilchComponent
+{
+  [Dependency] var BaseRecorder : BaseCogResultRecorder;
+  
+  function Initialize(init : CogInitializer)
+  {
+    Zero.Connect(this.Owner, Events.RecordInitialization, this.OnRecordInitialization);
+  }
+
+  function OnRecordInitialization(event : CogFrameRecordEvent)
+  {
+    event.Stream.WriteLine("Plane tests:");
+    event.Stream.BeginScope();
+    
+    var plane = Plane();
+    event.Stream.WriteLine(plane);
+    plane.Data = Real4(1);
+    event.Stream.WriteLine(plane);
+    plane.Data.X = 2;
+    plane.Data.Y = 3;
+    plane.Data.Z = 4;
+    plane.Data.W = 5;
+    event.Stream.WriteLine(plane);
+    
+    event.Stream.WriteLine(@plane.Data);
+    event.Stream.WriteLine(@plane.Distance);
+    event.Stream.WriteLine(@plane.Normal);
+    
+    event.Stream.EndScope();
+  }
+}

@@ -1,0 +1,9 @@
+[Version:1]
+TextContent 
+{
+	ZilchScriptBuilder 
+	{
+		var Name = "SegmentTester"
+		var ResourceId = 0x589af31a3e469bb6
+	}
+}

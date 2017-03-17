@@ -1,0 +1,29 @@
+class SphereTester : ZilchComponent
+{
+  [Dependency] var BaseRecorder : BaseCogResultRecorder;
+  
+  function Initialize(init : CogInitializer)
+  {
+    Zero.Connect(this.Owner, Events.RecordInitialization, this.OnRecordInitialization);
+  }
+
+  function OnRecordInitialization(event : CogFrameRecordEvent)
+  {
+    event.Stream.WriteLine("Sphere tests:");
+    event.Stream.BeginScope();
+    
+    var sphere = Sphere();
+    event.Stream.WriteLine(sphere);
+    sphere.Center = Real3(1);
+    sphere.Radius = 2;
+    event.Stream.WriteLine(sphere);
+    sphere.Center.X = 1;
+    sphere.Center.Y = 2;
+    sphere.Center.Z = 3;
+    event.Stream.WriteLine(sphere);
+    event.Stream.WriteLine(@sphere.SurfaceArea);
+    event.Stream.WriteLine(@sphere.Volume);
+    
+    event.Stream.EndScope();
+  }
+}

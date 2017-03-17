@@ -1,0 +1,30 @@
+class RayTester : ZilchComponent
+{
+  [Dependency] var BaseRecorder : BaseCogResultRecorder;
+  
+  function Initialize(init : CogInitializer)
+  {
+    Zero.Connect(this.Owner, Events.RecordInitialization, this.OnRecordInitialization);
+  }
+
+  function OnRecordInitialization(event : CogFrameRecordEvent)
+  {
+    event.Stream.WriteLine("Ray tests:");
+    event.Stream.BeginScope();
+    
+    var ray = Ray();
+    event.Stream.WriteLine(ray);
+    ray.Start = Real3(1, 2, 3);
+    ray.Direction = Math.Normalize(Real3(2, 4, 1));
+    event.Stream.WriteLine(ray);
+    ray.Start.X = 4;
+    ray.Start.Y = -2;
+    ray.Start.Z = 9;
+    ray.Direction.X = -1;
+    ray.Direction.Y = 0.1;
+    ray.Direction.Z = 1.3;
+    event.Stream.WriteLine(ray);
+    
+    event.Stream.EndScope();
+  }
+}

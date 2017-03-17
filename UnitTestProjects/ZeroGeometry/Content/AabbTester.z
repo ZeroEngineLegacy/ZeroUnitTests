@@ -1,0 +1,34 @@
+class AabbTester : ZilchComponent
+{
+  [Dependency] var BaseRecorder : BaseCogResultRecorder;
+  
+  function Initialize(init : CogInitializer)
+  {
+    Zero.Connect(this.Owner, Events.RecordInitialization, this.OnRecordInitialization);
+  }
+
+  function OnRecordInitialization(event : CogFrameRecordEvent)
+  {
+    event.Stream.WriteLine("Aabb tests:");
+    event.Stream.BeginScope();
+    
+    var aabb = Aabb();
+    event.Stream.WriteLine(aabb);
+    aabb.Min = Real3(1, 2, 3);
+    aabb.Max = Real3(4, 5, 6);
+    event.Stream.WriteLine(aabb);
+    aabb.Min.X = 4;
+    aabb.Min.Y = 5;
+    aabb.Min.Z = 6;
+    aabb.Max.X = 6;
+    aabb.Max.Y = 9;
+    aabb.Max.Z = 12;
+    event.Stream.WriteLine(aabb);
+    event.Stream.WriteLine(@aabb.HalfExtents);
+    event.Stream.WriteLine(@aabb.Extents);
+    event.Stream.WriteLine(@aabb.SurfaceArea);
+    event.Stream.WriteLine(@aabb.Volume);
+    
+    event.Stream.EndScope();
+  }
+}

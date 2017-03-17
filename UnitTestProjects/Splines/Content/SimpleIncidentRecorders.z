@@ -1,0 +1,70 @@
+// Sends out incident events when collision events start/persist/end
+class CollisionEventIncidentRecorder : ZilchComponent
+{
+  [Dependency] var BaseRecorder : BaseCogResultRecorder;
+  
+  [Property] var RecordCollisionStarted : Boolean = true;
+  [Property] var RecordCollisionPersisted : Boolean = false;
+  [Property] var RecordCollisionEnded : Boolean = true;
+  
+  [Property] var RecordGhostCollisions : Boolean = false;
+  [Property] var RecordDynamicCollisions : Boolean = false;
+  [Property] var RecordStaticCollisions : Boolean = false;
+  [Property] var RecordKinematicCollisions : Boolean = false;
+  
+  function Initialize(init : CogInitializer)
+  {
+    // Listen for collision the various collision events
+    if(this.RecordCollisionStarted)
+      Zero.Connect(this.Owner, Events.CollisionStarted, this.OnCollisionEvent);
+    if(this.RecordCollisionPersisted)
+      Zero.Connect(this.Owner, Events.CollisionPersisted, this.OnCollisionEvent);
+    if(this.RecordCollisionEnded)
+      Zero.Connect(this.Owner, Events.CollisionEnded, this.OnCollisionEvent);
+  }
+  
+  function SendCogIncidentEvent(incidentName : String, message : String)
+  {
+    var toSend = CogIncidentEvent(this.Owner, incidentName);
+    toSend.AddMessage(message);
+    this.Space.DispatchEvent(Events.RecordCogIncident, toSend);
+  }
+  
+  function ValidateCog(cog : Cog) : Boolean
+  {
+    // Check for ghost colliders
+    var collider = cog.Collider;
+    if(collider != null && collider.Ghost && this.RecordGhostCollisions)
+      return true;
+      
+    var body = cog.RigidBody;
+    // If we have no rigid body and we record static then return true
+    if(body == null)
+    {
+      if(this.RecordStaticCollisions)
+        return true;
+      return false;
+    }
+    
+    // Otherwise, check the rigid body's state
+    var state = body.DynamicState;
+    if(state == RigidBodyDynamicState.Dynamic && this.RecordDynamicCollisions)
+      return true;
+    if(state == RigidBodyDynamicState.Static && this.RecordStaticCollisions)
+      return true;
+    if(state == RigidBodyDynamicState.Kinematic && this.RecordKinematicCollisions)
+      return true;
+    return false;
+  }
+  
+  function OnCollisionEvent(event : CollisionEvent)
+  {
+    var otherCog = event.OtherObject;
+    if(!this.ValidateCog(otherCog))
+      return;
+    
+    var incidentName = event.EventId;
+    var msg = "`incidentName` with '`otherCog.Name`'";
+    this.SendCogIncidentEvent(incidentName, msg);
+  }
+}

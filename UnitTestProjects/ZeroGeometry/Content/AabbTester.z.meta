@@ -1,0 +1,9 @@
+[Version:1]
+TextContent 
+{
+	ZilchScriptBuilder 
+	{
+		var Name = "AabbTester"
+		var ResourceId = 0x589af6c33d25d863
+	}
+}

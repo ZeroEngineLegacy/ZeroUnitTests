@@ -1,0 +1,9 @@
+[Version:1]
+TextContent 
+{
+	ZilchScriptBuilder 
+	{
+		var Name = "SimpleIncidentRecorders"
+		var ResourceId = 0x589ad9bdaff3e3f6
+	}
+}

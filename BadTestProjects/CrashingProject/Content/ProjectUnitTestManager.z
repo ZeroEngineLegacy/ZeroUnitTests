@@ -1,0 +1,79 @@
+// GameSession component. Runs all of the levels in the given resource table.
+class ProjectUnitTestManager : ZilchComponent
+{
+  // Do we run unit tests when the game is played or run the default play-game logic?
+  [Property] var RunTestsOnPlayGame : Boolean = true;
+  // Table of levels to run
+  [Property] var UnitTestLevels : ResourceTable = ResourceTable.UnitTestLevels;
+  // What space to create our levels in
+  [Property] var SpaceArchetype : Archetype = Archetype.DefaultSpace;
+  
+  // Current unit-test level from the table we are running
+  var CurrentLevelIndex : Integer = 0;
+  // Space of the unit test we're running
+  var CurrentLevelSpace : Space;
+  
+  function Initialize(initializer : CogInitializer)
+  {
+    Zero.Connect(this.Owner, Events.GameStarted, this.OnGameStarted);
+  }
+
+  function OnGameStarted(event : GameEvent)
+  {
+    event.Handled = true;
+    
+    if(this.RunTestsOnPlayGame)
+    {
+      //Start running unit tests
+      this.StartTests();
+    }
+    else
+    {
+      // We aren't running tests, so just create the current editing level
+      this.CreateSpaceWithLevel(Zero.Editor.EditLevel);
+    }
+  }
+  
+  function CreateSpaceWithLevel(level : Level)
+  {
+    // Create the space archetype and load the target level into it
+    this.CurrentLevelSpace = this.GameSession.CreateSpace(this.SpaceArchetype);
+    this.CurrentLevelSpace.LoadLevel(level);
+  }
+  
+  function StartTests()
+  {
+    // Just create the current test. If there are none then this will quite the game
+    this.CreateCurrentTest();
+  }
+  
+  function CreateCurrentTest() : Boolean
+  {
+    // If there's no level to create then quit the game
+    if(this.CurrentLevelIndex >= this.UnitTestLevels.Count)
+    {
+      this.GameSession.Quit();
+      return false;
+    }
+    
+    // Get the level to run from the table and create a new space with this level
+    var level = this.UnitTestLevels[this.CurrentLevelIndex].Resource as Level;
+    Console.WriteLine("----Running Test: '`level.Name`'----");
+    this.CreateSpaceWithLevel(level);
+    return true;
+  }
+  
+  function StopCurrentTest()
+  {
+    // We're not running unit tests so don't do anything
+    if(!this.RunTestsOnPlayGame)
+      return;
+    
+    // Stop the old running space
+    this.CurrentLevelSpace.Destroy();
+    
+    // Advance to the next level and try to run it (stops the game if it doesn't exist)
+    ++this.CurrentLevelIndex;
+    this.CreateCurrentTest();
+  }
+}

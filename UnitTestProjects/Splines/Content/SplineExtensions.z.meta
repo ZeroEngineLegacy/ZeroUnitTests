@@ -1,0 +1,9 @@
+[Version:1]
+TextContent 
+{
+	ZilchScriptBuilder 
+	{
+		var Name = "SplineExtensions"
+		var ResourceId = 0x589a9d248a4430ff
+	}
+}

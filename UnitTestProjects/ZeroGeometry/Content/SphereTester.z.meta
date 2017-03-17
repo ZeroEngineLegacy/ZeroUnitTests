@@ -1,0 +1,9 @@
+[Version:1]
+TextContent 
+{
+	ZilchScriptBuilder 
+	{
+		var Name = "SphereTester"
+		var ResourceId = 0x589af2627eec15fb
+	}
+}

@@ -1,0 +1,9 @@
+[Version:1]
+TextContent 
+{
+	ZilchScriptBuilder 
+	{
+		var Name = "RayTester"
+		var ResourceId = 0x589af2f959b70102
+	}
+}

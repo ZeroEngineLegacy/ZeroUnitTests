@@ -1,0 +1,30 @@
+class SegmentTester : ZilchComponent
+{
+  [Dependency] var BaseRecorder : BaseCogResultRecorder;
+  
+  function Initialize(init : CogInitializer)
+  {
+    Zero.Connect(this.Owner, Events.RecordInitialization, this.OnRecordInitialization);
+  }
+
+  function OnRecordInitialization(event : CogFrameRecordEvent)
+  {
+    event.Stream.WriteLine("Segment tests:");
+    event.Stream.BeginScope();
+    
+    var segment = Segment();
+    event.Stream.WriteLine(segment);
+    segment.Start = Real3(1, 2, 3);
+    segment.End = Real3(2, 4, 1);
+    event.Stream.WriteLine(segment);
+    segment.Start.X = 4;
+    segment.Start.Y = -2;
+    segment.Start.Z = 9;
+    segment.End.X = -1;
+    segment.End.Y = 0.1;
+    segment.End.Z = 1.3;
+    event.Stream.WriteLine(segment);
+    
+    event.Stream.EndScope();
+  }
+}

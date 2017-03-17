@@ -1,0 +1,9 @@
+[Version:1]
+TextContent 
+{
+	ZilchScriptBuilder 
+	{
+		var Name = "CompilationError"
+		var ResourceId = 0x589ae96c088f755d
+	}
+}

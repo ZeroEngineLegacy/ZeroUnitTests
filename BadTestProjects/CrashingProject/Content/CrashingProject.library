@@ -1,0 +1,8 @@
+[Version:1]
+ContentLibrary 
+{
+	var Name = "CrashingProject"
+	var LibraryId = 0x589ae19a320fe935
+	var SourceControlType = ""
+	var ReadOnly = false
+}

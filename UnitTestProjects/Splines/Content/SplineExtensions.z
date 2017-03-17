@@ -1,0 +1,74 @@
+class SplineExtensions
+{
+  [Extension(typeid(SplineControlPoint))]
+  function WriteToStream(stream : UnitTestStreamWriter)
+  {
+    stream.WriteLine(@this.WorldPosition);
+  }
+  
+  [Extension(typeid(SplineControlPoints))]
+  function WriteToStream(stream : UnitTestStreamWriter)
+  {
+    stream.WriteLine("SplineControlPoints:");
+    stream.BeginScope();
+    for(var i = 0; i < this.Count; ++i)
+    {
+      var point = this[i];
+      point.WriteToStream(stream);
+    }
+    stream.EndScope();
+  }
+  
+  [Extension(typeid(SplineBakedPoint))]
+  function WriteToStream(stream : UnitTestStreamWriter)
+  {
+    stream.WriteLine(@this.WorldPosition);
+  }
+  
+  [Extension(typeid(SplineBakedPoints))]
+  function WriteToStream(stream : UnitTestStreamWriter)
+  {
+    stream.WriteLine("SplineBakedPoints:");
+    stream.BeginScope();
+    for(var i = 0; i < this.Count; ++i)
+    {
+      var point = this[i];
+      point.WriteToStream(stream);
+    }
+    stream.EndScope();
+  }
+  
+  [Extension(typeid(SplineSampleData))]
+  function WriteToStream(stream : UnitTestStreamWriter)
+  {
+    stream.WriteLine("SplineSampleData");
+    stream.BeginScope();
+    stream.WriteLine(@this.WorldPoint);
+    stream.WriteLine(@this.WorldTangent);
+    stream.EndScope();
+  }
+  
+  [Extension(typeid(Spline))]
+  function WriteToStream(stream : UnitTestStreamWriter)
+  {
+    this.ForceRebuild();
+    stream.WriteLine("Spline:");
+    stream.BeginScope();
+    
+    this.ControlPoints.WriteToStream(stream);
+    this.BakedPoints.WriteToStream(stream);
+    
+    stream.WriteLine(@this.TotalDistance);
+    stream.WriteLine("SplineType: `this.SplineType`");
+    
+    var sampleData0 = this.SampleDistance(0);
+    sampleData0.WriteToStream(stream);
+    
+    var sampleData1 = this.SampleDistance(this.TotalDistance - 1);
+    sampleData1.WriteToStream(stream);
+    sampleData1.WorldPoint = Real3();
+    sampleData1.WorldPoint.X = 1.0;
+    
+    stream.EndScope();
+  }
+}

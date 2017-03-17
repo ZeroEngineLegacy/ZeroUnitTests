@@ -1,0 +1,116 @@
+// Exception in destructor. Figure out later
+//class StreamScope
+//{
+//  var Stream : UnitTestStreamWriter = null;
+//  var Test : Real;
+//  
+//  constructor(stream : UnitTestStreamWriter)
+//  {
+//    this.Stream = stream;
+//    this.Stream.BeginScope();
+//  }
+//  
+//  destructor()
+//  {
+//    
+//    if(this != null && this.Stream != null)
+//      this.Stream.EndScope();
+//  }
+//}
+
+class UnitTestStreamWriter
+{
+  var Indentation : Integer = 0;
+  var IndentationString : String = "";
+  
+  [Virtual] function WriteVirtual(message : String)
+  {
+  }
+  
+  [Virtual] function WriteLineVirtual(message : String)
+  {
+  }
+  
+  function Write(data : any)                      { this.WriteVirtual("`data`"); }
+  function Write(prop : Property[Boolean])        { this.WriteVirtual("`prop.Property.Name`: `prop.Get()`"); }
+  function Write(prop : Property[Integer])        { this.WriteVirtual("`prop.Property.Name`: `prop.Get()`"); }
+  function Write(prop : Property[Integer2])       { this.WriteVirtual("`prop.Property.Name`: `prop.Get()`"); }
+  function Write(prop : Property[Integer3])       { this.WriteVirtual("`prop.Property.Name`: `prop.Get()`"); }
+  function Write(prop : Property[Integer4])       { this.WriteVirtual("`prop.Property.Name`: `prop.Get()`"); }
+  function Write(prop : Property[Real])           { this.WriteVirtual("`prop.Property.Name`: `prop.Get()`"); }
+  function Write(prop : Property[Real2])          { this.WriteVirtual("`prop.Property.Name`: `prop.Get()`"); }
+  function Write(prop : Property[Real3])          { this.WriteVirtual("`prop.Property.Name`: `prop.Get()`"); }
+  function Write(prop : Property[Real4])          { this.WriteVirtual("`prop.Property.Name`: `prop.Get()`"); }
+  function Write(prop : Property[Quaternion])     { this.WriteVirtual("`prop.Property.Name`: `prop.Get()`"); }
+  function Write(prop : Property[Enum])           { this.WriteVirtual("`prop.Property.Name`: `prop.Get()`"); }
+  function WriteLine(data : any)                  { this.WriteLineVirtual("`data`"); }
+  function WriteLine(prop : Property[Boolean])    { this.WriteLineVirtual("`prop.Property.Name`: `prop.Get()`"); }
+  function WriteLine(prop : Property[Integer])    { this.WriteLineVirtual("`prop.Property.Name`: `prop.Get()`"); }
+  function WriteLine(prop : Property[Integer2])   { this.WriteLineVirtual("`prop.Property.Name`: `prop.Get()`"); }
+  function WriteLine(prop : Property[Integer3])   { this.WriteLineVirtual("`prop.Property.Name`: `prop.Get()`"); }
+  function WriteLine(prop : Property[Integer4])   { this.WriteLineVirtual("`prop.Property.Name`: `prop.Get()`"); }
+  function WriteLine(prop : Property[Real])       { this.WriteLineVirtual("`prop.Property.Name`: `prop.Get()`"); }
+  function WriteLine(prop : Property[Real2])      { this.WriteLineVirtual("`prop.Property.Name`: `prop.Get()`"); }
+  function WriteLine(prop : Property[Real3])      { this.WriteLineVirtual("`prop.Property.Name`: `prop.Get()`"); }
+  function WriteLine(prop : Property[Real4])      { this.WriteLineVirtual("`prop.Property.Name`: `prop.Get()`"); }
+  function WriteLine(prop : Property[Quaternion]) { this.WriteLineVirtual("`prop.Property.Name`: `prop.Get()`"); }
+  function WriteLine(prop : Property[Enum])       { this.WriteLineVirtual("`prop.Property.Name`: `prop.Get()`"); }
+  
+  function BeginScope()
+  {
+    ++this.Indentation;
+    this.UpdateIndentationString();
+  }
+  
+  function EndScope()
+  {
+    --this.Indentation;
+    this.UpdateIndentationString();
+  }
+  
+  function UpdateIndentationString()
+  {
+    var builder = StringBuilder();
+    
+    for(var i = 0; i < this.Indentation; ++i)
+      builder.Write("  ");
+    this.IndentationString = builder.ToString();
+  }
+}
+
+class ConsoleUnitTestStreamWriter : UnitTestStreamWriter
+{
+  [Override]
+  function WriteVirtual(message : String)
+  {
+    Console.Write("`this.IndentationString``message`");
+  }
+  
+  [Override]
+  function WriteLineVirtual(message : String)
+  {
+    Console.WriteLine("`this.IndentationString``message`");
+  }
+}
+
+class StringUnitTestStreamWriter : UnitTestStreamWriter
+{
+  var Builder : StringBuilder = StringBuilder();
+  
+  [Override]
+  function WriteVirtual(message : String)
+  {
+    this.Builder.Write("`this.IndentationString``message`");
+  }
+  
+  [Override]
+  function WriteLineVirtual(message : String)
+  {
+    this.Builder.WriteLine("`this.IndentationString``message`");
+  }
+  
+  function ToString() : String
+  {
+    return this.Builder.ToString();
+  }
+}

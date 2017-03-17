@@ -1,0 +1,94 @@
+class HierarchySplineTest : ZilchComponent
+{
+  [Dependency] var HierarchySpline : HierarchySpline;
+  
+  function Initialize(init : CogInitializer)
+  {
+    Zero.Connect(this.Owner, Events.RecordInitialization, this.OnRecordInitialization);
+    Zero.Connect(this.Owner, Events.RecordFrame, this.OnRecordFrame);
+  }
+
+  function OnRecordFrame(event : CogFrameRecordEvent)
+  {
+    var stream = event.Stream;
+    stream.WriteLine("HierarchySpline:");
+    stream.BeginScope();
+    
+    var spline = this.HierarchySpline.Spline;
+    spline.WriteToStream(stream);
+    
+    stream.EndScope();
+  }
+  
+  function ValidateSplineSampleData(stream : UnitTestStreamWriter)
+  {
+    stream.WriteLine("SplineSampleData:");
+    stream.BeginScope();
+    
+    var sampleData = SplineSampleData();
+    sampleData.WriteToStream(stream);
+    sampleData.WorldPoint = Real3(1, 2, 3);
+    sampleData.WorldTangent = Real3(-1, -2, -3);
+    sampleData.WriteToStream(stream);
+    sampleData.WorldPoint.X = 4;
+    sampleData.WorldPoint.Y = 5;
+    sampleData.WorldPoint.Z = 6;
+    sampleData.WorldTangent.X = -4;
+    sampleData.WorldTangent.Y = -5;
+    sampleData.WorldTangent.Z = -6;
+    sampleData.WriteToStream(stream);
+    
+    stream.EndScope();
+  }
+  
+  function ValidateSplineControlPoint(stream : UnitTestStreamWriter)
+  {
+    stream.WriteLine("SplineControlPoint:");
+    stream.BeginScope();
+    
+    var controlPoint = SplineControlPoint();
+    controlPoint.WorldPosition = Real3(1, 2, 3);
+    controlPoint.WriteToStream(stream);
+    controlPoint.WorldPosition.X = 4;
+    controlPoint.WorldPosition.Y = 5;
+    controlPoint.WorldPosition.Z = 6;
+    controlPoint.WriteToStream(stream);
+    
+    stream.EndScope();
+  }
+  
+  function ValidateSplineBakedPoint(stream : UnitTestStreamWriter)
+  {
+    stream.WriteLine("SplineBakedPoint:");
+    stream.BeginScope();
+    
+    var bakedPoint = SplineBakedPoint();
+    bakedPoint.WorldPosition = Real3(1, 2, 3);
+    bakedPoint.WriteToStream(stream);
+    bakedPoint.WorldPosition.X = 4;
+    bakedPoint.WorldPosition.Y = 5;
+    bakedPoint.WorldPosition.Z = 6;
+    bakedPoint.WriteToStream(stream);
+    
+    stream.EndScope();
+  }
+
+  function OnRecordInitialization(event : CogFrameRecordEvent)
+  {
+    var stream = event.Stream;
+    stream.WriteLine("HierarchySpline:");
+    stream.BeginScope();
+    
+    stream.WriteLine(@this.HierarchySpline.Closed);
+    stream.WriteLine(@this.HierarchySpline.Error);
+    stream.WriteLine(@this.HierarchySpline.SplineColor);
+    stream.WriteLine("SplineType: `this.HierarchySpline.SplineType`");
+    stream.WriteLine(@this.HierarchySpline.DebugDrawSpline);
+    
+    this.ValidateSplineSampleData(stream);
+    this.ValidateSplineControlPoint(stream);
+    this.ValidateSplineBakedPoint(stream);
+    
+    stream.EndScope();
+  }
+}

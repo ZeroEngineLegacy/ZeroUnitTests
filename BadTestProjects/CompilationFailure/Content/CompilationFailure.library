@@ -1,0 +1,8 @@
+[Version:1]
+ContentLibrary 
+{
+	var Name = "CompilationFailure"
+	var LibraryId = 0x589ae8bd036275c6
+	var SourceControlType = ""
+	var ReadOnly = false
+}

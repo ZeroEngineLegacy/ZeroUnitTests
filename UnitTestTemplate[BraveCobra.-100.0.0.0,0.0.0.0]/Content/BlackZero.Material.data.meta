@@ -1,0 +1,12 @@
+[Version:1]
+DataContent 
+{
+	DataBuilder 
+	{
+		var Name = "BlackZero"
+		var ResourceId = 0x589c68a742f4fd21
+		var LoaderType = "Material"
+		var Version = 0
+		var ShowInEditor = true
+	}
+}

@@ -1,0 +1,35 @@
+class FrustumTester : ZilchComponent
+{
+  [Dependency] var BaseRecorder : BaseCogResultRecorder;
+  
+  function Initialize(init : CogInitializer)
+  {
+    Zero.Connect(this.Owner, Events.RecordInitialization, this.OnRecordInitialization);
+  }
+  
+  [Extension(typeid(Frustum))]
+  function DebugToString() : String
+  {
+    return "`this[0]` `this[1]` `this[2]` `this[3]` `this[4]` `this[5]`";
+  }
+
+  function OnRecordInitialization(event : CogFrameRecordEvent)
+  {
+    event.Stream.WriteLine("Frustum tests:");
+    event.Stream.BeginScope();
+    
+    // Plane order are: Front, Back, Right, Left, Bottom, Top
+    var frustum = Frustum();
+    event.Stream.WriteLine(frustum.DebugToString());
+    frustum[0] = Plane(Real3(0, 0, 1), Real3(0));
+    frustum[1] = Plane(Real3(0, 0, -1), Real3(3));
+    frustum[2] = Plane(Real3(-1, 0, 0), Real3(-1, 0, 0));
+    frustum[3] = Plane(Real3(1, 0, 0), Real3(1, 0, 0));
+    frustum[4] = Plane(Real3(0, -1, 0), Real3(0, -1, 0));
+    frustum[5] = Plane(Real3(0, 1, 0), Real3(0, 1, 0));
+    event.Stream.WriteLine(frustum.DebugToString());
+    event.Stream.WriteLine("Aabb: `frustum.GetAabb()`");
+    
+    event.Stream.EndScope();
+  }
+}
