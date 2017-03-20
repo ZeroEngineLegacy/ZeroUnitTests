@@ -1,0 +1,8 @@
+[Version:1]
+ContentLibrary 
+{
+	var Name = "PhysicsEffects"
+	var LibraryId = 0x589a83b846eb37f4
+	var SourceControlType = ""
+	var ReadOnly = false
+}

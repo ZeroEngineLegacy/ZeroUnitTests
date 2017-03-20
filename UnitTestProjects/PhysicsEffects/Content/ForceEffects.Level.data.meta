@@ -1,0 +1,12 @@
+[Version:1]
+DataContent 
+{
+	DataBuilder 
+	{
+		var Name = "ForceEffects"
+		var ResourceId = 0x58869c3f1473ad97
+		var LoaderType = "Level"
+		var Version = 0
+		var ShowInEditor = true
+	}
+}

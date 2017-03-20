@@ -1,0 +1,12 @@
+[Version:1]
+DataContent 
+{
+	DataBuilder 
+	{
+		var Name = "GravityEffects"
+		var ResourceId = 0x58869cac0ff5a9ae
+		var LoaderType = "Level"
+		var Version = 0
+		var ShowInEditor = true
+	}
+}

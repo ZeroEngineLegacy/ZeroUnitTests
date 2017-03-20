@@ -1,0 +1,19 @@
+[Version:1]
+GameSession 
+{
+	var Name = ""
+	var LinkId = 1
+	UnitTestRunner 
+	{
+	}
+	ProjectUnitTestManager 
+	{
+		var RunTestsOnPlayGame = true
+		var UnitTestLevels = "589c2766f20d3615:UnitTestLevels"
+		var SpaceArchetype = "4e39ae0ad564493d:DefaultSpace"
+	}
+	UnitTestWriter 
+	{
+		var VisualDiffs = true
+	}
+}

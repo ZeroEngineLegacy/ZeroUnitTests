@@ -1,0 +1,231 @@
+----Sphere1----
+FrameRecord (30)
+  Velocity: (0, -0.0390812, 4.18648)
+  AngularVelocity: (0, 0, 0)
+CollisionStarted (34)
+  CollisionStarted with 'Sphere2'
+CollisionEnded (35)
+  CollisionEnded with 'Sphere2'
+FrameRecord (60)
+  Velocity: (-0.99341, 1.50367, -0.295082)
+  AngularVelocity: (-0.673944, 0.738156, 2.2378)
+CollisionStarted (74)
+  CollisionStarted with 'Sphere2'
+CollisionEnded (75)
+  CollisionEnded with 'Sphere2'
+FrameRecord (90)
+  Velocity: (1.06315, 4.53162, 0.170039)
+  AngularVelocity: (0.91712, 0.542413, -0.856113)
+CollisionStarted (110)
+  CollisionStarted with 'Sphere2'
+CollisionEnded (119)
+  CollisionEnded with 'Sphere2'
+FrameRecord (120)
+  Velocity: (2.74154, 4.43277, 1.40696)
+  AngularVelocity: (0.922095, 0.561648, -0.919949)
+CollisionStarted (120)
+  CollisionStarted with 'Sphere2'
+CollisionEnded (124)
+  CollisionEnded with 'Sphere2'
+CollisionStarted (125)
+  CollisionStarted with 'Sphere2'
+CollisionEnded (128)
+  CollisionEnded with 'Sphere2'
+CollisionStarted (129)
+  CollisionStarted with 'Sphere2'
+CollisionEnded (133)
+  CollisionEnded with 'Sphere2'
+CollisionStarted (134)
+  CollisionStarted with 'Sphere2'
+CollisionEnded (138)
+  CollisionEnded with 'Sphere2'
+CollisionStarted (139)
+  CollisionStarted with 'Sphere2'
+CollisionEnded (143)
+  CollisionEnded with 'Sphere2'
+CollisionStarted (144)
+  CollisionStarted with 'Sphere2'
+CollisionEnded (147)
+  CollisionEnded with 'Sphere2'
+CollisionStarted (148)
+  CollisionStarted with 'Sphere2'
+FrameRecord (150)
+  Velocity: (-0.607725, -2.73446, 0.237113)
+  AngularVelocity: (0.810451, 0.538149, -0.411381)
+CollisionEnded (153)
+  CollisionEnded with 'Sphere2'
+CollisionStarted (154)
+  CollisionStarted with 'Sphere2'
+CollisionEnded (159)
+  CollisionEnded with 'Sphere2'
+CollisionStarted (160)
+  CollisionStarted with 'Sphere2'
+CollisionEnded (168)
+  CollisionEnded with 'Sphere2'
+CollisionStarted (169)
+  CollisionStarted with 'Sphere2'
+CollisionEnded (174)
+  CollisionEnded with 'Sphere2'
+CollisionStarted (175)
+  CollisionStarted with 'Sphere2'
+FrameRecord (180)
+  Velocity: (-1.33909, -3.42206, -1.14388)
+  AngularVelocity: (0.00425003, 0.515323, 0.169804)
+CollisionEnded (181)
+  CollisionEnded with 'Sphere2'
+CollisionStarted (182)
+  CollisionStarted with 'Sphere2'
+CollisionEnded (190)
+  CollisionEnded with 'Sphere2'
+CollisionStarted (191)
+  CollisionStarted with 'Sphere2'
+CollisionEnded (200)
+  CollisionEnded with 'Sphere2'
+CollisionStarted (201)
+  CollisionStarted with 'Sphere2'
+FrameRecord (210)
+  Velocity: (1.09524, -0.0649589, -0.134158)
+  AngularVelocity: (-0.142233, 0.492839, 0.509939)
+CollisionEnded (215)
+  CollisionEnded with 'Sphere2'
+CollisionStarted (216)
+  CollisionStarted with 'Sphere2'
+FrameRecord (240)
+  Velocity: (2.04735, 2.90198, 0.72216)
+  AngularVelocity: (-0.140578, 0.435738, 0.784253)
+CollisionEnded (244)
+  CollisionEnded with 'Sphere2'
+CollisionStarted (245)
+  CollisionStarted with 'Sphere2'
+FrameRecord (270)
+  Velocity: (-0.322621, 1.60409, -0.0648078)
+  AngularVelocity: (-0.216271, 0.0132361, 0.282355)
+CollisionEnded (279)
+  CollisionEnded with 'Sphere2'
+CollisionStarted (280)
+  CollisionStarted with 'Sphere2'
+CollisionEnded (291)
+  CollisionEnded with 'Sphere2'
+CollisionStarted (292)
+  CollisionStarted with 'Sphere2'
+
+----Sphere2----
+FrameRecord (30)
+  Velocity: (-4.33749, -12.4698, -4.62624)
+  AngularVelocity: (0, 0, 0)
+  WorldTranslation: (0.647569, 0.273427, 0.690678)
+CollisionStarted (34)
+  CollisionStarted with 'Sphere1'
+CollisionEnded (35)
+  CollisionEnded with 'Sphere1'
+FrameRecord (60)
+  Velocity: (-1.24711, -3.03136, -0.870643)
+  AngularVelocity: (-0.871828, 0.738152, -0.580446)
+  WorldTranslation: (-0.237432, -2.29191, 0.194409)
+CollisionStarted (74)
+  CollisionStarted with 'Sphere1'
+CollisionEnded (75)
+  CollisionEnded with 'Sphere1'
+FrameRecord (90)
+  Velocity: (1.76946, 2.99844, 0.0171607)
+  AngularVelocity: (0.728897, 0.542407, -3.53681)
+  WorldTranslation: (-0.0163578, -2.19579, -0.0326171)
+CollisionStarted (110)
+  CollisionStarted with 'Sphere1'
+CollisionEnded (119)
+  CollisionEnded with 'Sphere1'
+FrameRecord (120)
+  Velocity: (1.34521, 2.73913, 0.38203)
+  AngularVelocity: (0.74306, 0.561643, -3.4698)
+  WorldTranslation: (0.755641, -0.477086, 0.0432512)
+CollisionStarted (120)
+  CollisionStarted with 'Sphere1'
+CollisionEnded (124)
+  CollisionEnded with 'Sphere1'
+CollisionStarted (125)
+  CollisionStarted with 'Sphere1'
+CollisionEnded (128)
+  CollisionEnded with 'Sphere1'
+CollisionStarted (129)
+  CollisionStarted with 'Sphere1'
+CollisionEnded (133)
+  CollisionEnded with 'Sphere1'
+CollisionStarted (134)
+  CollisionStarted with 'Sphere1'
+CollisionEnded (138)
+  CollisionEnded with 'Sphere1'
+CollisionStarted (139)
+  CollisionStarted with 'Sphere1'
+CollisionEnded (143)
+  CollisionEnded with 'Sphere1'
+CollisionStarted (144)
+  CollisionStarted with 'Sphere1'
+CollisionEnded (147)
+  CollisionEnded with 'Sphere1'
+CollisionStarted (148)
+  CollisionStarted with 'Sphere1'
+FrameRecord (150)
+  Velocity: (-2.31426, -2.58136, -0.474282)
+  AngularVelocity: (0.640155, 0.538146, -2.83678)
+  WorldTranslation: (0.528725, -0.529705, 0.0677136)
+CollisionEnded (153)
+  CollisionEnded with 'Sphere1'
+CollisionStarted (154)
+  CollisionStarted with 'Sphere1'
+CollisionEnded (159)
+  CollisionEnded with 'Sphere1'
+CollisionStarted (160)
+  CollisionStarted with 'Sphere1'
+CollisionEnded (168)
+  CollisionEnded with 'Sphere1'
+CollisionStarted (169)
+  CollisionStarted with 'Sphere1'
+CollisionEnded (174)
+  CollisionEnded with 'Sphere1'
+CollisionStarted (175)
+  CollisionStarted with 'Sphere1'
+FrameRecord (180)
+  Velocity: (-2.23277, -2.87192, -0.785964)
+  AngularVelocity: (-0.157734, 0.515322, -2.13722)
+  WorldTranslation: (-0.861704, -2.14021, -0.352929)
+CollisionEnded (181)
+  CollisionEnded with 'Sphere1'
+CollisionStarted (182)
+  CollisionStarted with 'Sphere1'
+CollisionEnded (190)
+  CollisionEnded with 'Sphere1'
+CollisionStarted (191)
+  CollisionStarted with 'Sphere1'
+CollisionEnded (200)
+  CollisionEnded with 'Sphere1'
+CollisionStarted (201)
+  CollisionStarted with 'Sphere1'
+FrameRecord (210)
+  Velocity: (0.764016, 0.420426, 0.396847)
+  AngularVelocity: (-0.296311, 0.492838, -1.68448)
+  WorldTranslation: (-1.20933, -2.79033, -0.458807)
+CollisionEnded (215)
+  CollisionEnded with 'Sphere1'
+CollisionStarted (216)
+  CollisionStarted with 'Sphere1'
+FrameRecord (240)
+  Velocity: (2.02251, 3.17055, 1.19378)
+  AngularVelocity: (-0.287136, 0.435738, -1.30306)
+  WorldTranslation: (-0.362868, -1.76298, -0.00532408)
+CollisionEnded (244)
+  CollisionEnded with 'Sphere1'
+CollisionStarted (245)
+  CollisionStarted with 'Sphere1'
+FrameRecord (270)
+  Velocity: (-0.343765, 2.36478, -0.0421219)
+  AngularVelocity: (-0.355676, 0.0132367, -1.70307)
+  WorldTranslation: (0.171885, -0.218688, 0.410032)
+CollisionEnded (279)
+  CollisionEnded with 'Sphere1'
+CollisionStarted (280)
+  CollisionStarted with 'Sphere1'
+CollisionEnded (291)
+  CollisionEnded with 'Sphere1'
+CollisionStarted (292)
+  CollisionStarted with 'Sphere1'
+

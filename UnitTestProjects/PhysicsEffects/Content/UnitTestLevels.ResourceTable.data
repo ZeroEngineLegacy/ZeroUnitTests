@@ -1,0 +1,39 @@
+[Version:1]
+ResourceTable 
+{
+	var ResourceType = "Level"
+	var EntryList = Array
+	{
+		Object
+		{
+			var Name = "Name2"
+			var Value = "58869c3f1473ad97:ForceEffects"
+			var Weight = 1
+		}
+		Object
+		{
+			var Name = "Name1"
+			var Value = "58869cac0ff5a9ae:GravityEffects"
+			var Weight = 1
+		}
+		Object
+		{
+			var Name = "Name3"
+			var Value = "58869e64cf7124fd:TorqueEffects"
+			var Weight = 1
+		}
+		Object
+		{
+			var Name = "Name4"
+			var Value = "58869e1cbaf6eb45:VortexEffects"
+			var Weight = 1
+		}
+		Object
+		{
+			var Name = "Name5"
+			var Value = "58869d3de8c522a7:PointEffects"
+			var Weight = 1
+		}
+	}
+	var MaxWeight = 1
+}

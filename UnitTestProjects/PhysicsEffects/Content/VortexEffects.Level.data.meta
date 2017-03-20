@@ -1,0 +1,12 @@
+[Version:1]
+DataContent 
+{
+	DataBuilder 
+	{
+		var Name = "VortexEffects"
+		var ResourceId = 0x58869e1cbaf6eb45
+		var LoaderType = "Level"
+		var Version = 0
+		var ShowInEditor = true
+	}
+}

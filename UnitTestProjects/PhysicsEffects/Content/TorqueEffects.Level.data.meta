@@ -1,0 +1,12 @@
+[Version:1]
+DataContent 
+{
+	DataBuilder 
+	{
+		var Name = "TorqueEffects"
+		var ResourceId = 0x58869e64cf7124fd
+		var LoaderType = "Level"
+		var Version = 0
+		var ShowInEditor = true
+	}
+}

@@ -1,0 +1,12 @@
+[Version:1]
+DataContent 
+{
+	DataBuilder 
+	{
+		var Name = "PointEffects"
+		var ResourceId = 0x58869d3de8c522a7
+		var LoaderType = "Level"
+		var Version = 0
+		var ShowInEditor = true
+	}
+}

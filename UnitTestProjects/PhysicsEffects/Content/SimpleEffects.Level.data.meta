@@ -1,0 +1,12 @@
+[Version:1]
+DataContent 
+{
+	DataBuilder 
+	{
+		var Name = "SimpleEffects"
+		var ResourceId = 0x58869dfdd5a3d2b8
+		var LoaderType = "Level"
+		var Version = 0
+		var ShowInEditor = true
+	}
+}
