@@ -50,10 +50,18 @@ Level
 	{
 		var Name = "Renderer"
 		var LinkId = 2
-		DefaultRenderer 
+		DeferredRenderer 
 		{
-			var ClearColor = Real4{0.274999976, 0.270874977, 0.270874977, 1}
 			var DrawDebug = true
+			var GeometryDebug = GeometryValue.None
+			var ShowDiffuse = true
+			var ShowSpecular = true
+			var Skybox = "5822dec85e380cf1:SimpleSkybox"
+			var DrawSkybox = true
+			var DirectLighting = true
+			var IndirectLighting = true
+			var IndirectIntensity = 1
+			var ToneMap = true
 		}
 	}
 	Cog 
