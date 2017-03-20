@@ -16,7 +16,10 @@ class LevelUnitTestManager : ZilchComponent
     // When the max duration of the test has been exceeded, stop the test
     var timePassed = this.Space.TimeSpace.TimePassed;
     if(timePassed >= this.TestDuration)
+    {
       this.StopTest();
+      Zero.Disconnect(this.Space, Events.LogicUpdate, this);
+    }
   }
   
   function StopTest()
