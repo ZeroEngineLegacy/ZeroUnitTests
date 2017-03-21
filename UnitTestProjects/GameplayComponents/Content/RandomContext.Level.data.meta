@@ -1,0 +1,12 @@
+[Version:1]
+DataContent 
+{
+	DataBuilder 
+	{
+		var Name = "RandomContext"
+		var ResourceId = 0x58875550292cc14a
+		var LoaderType = "Level"
+		var Version = 0
+		var ShowInEditor = true
+	}
+}

@@ -1,0 +1,8 @@
+[Version:1]
+ContentLibrary 
+{
+	var Name = "UnitTestTemplate"
+	var LibraryId = 0x589ad0c8469157cb
+	var SourceControlType = ""
+	var ReadOnly = false
+}
