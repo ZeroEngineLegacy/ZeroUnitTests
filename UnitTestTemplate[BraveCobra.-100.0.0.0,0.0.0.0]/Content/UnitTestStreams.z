@@ -18,6 +18,17 @@
 //  }
 //}
 
+class CheckedWriter[Type]
+{
+  [Static]
+  function WriteToStream(object : Type, stream : UnitTestStreamWriter)
+  {
+    if(object == null)
+      return;
+    object.WriteToStream(stream);
+  }
+}
+
 class UnitTestStreamWriter
 {
   var Indentation : Integer = 0;
@@ -41,8 +52,10 @@ class UnitTestStreamWriter
   function Write(prop : Property[Real2])          { this.WriteVirtual("`prop.Property.Name`: `prop.Get()`"); }
   function Write(prop : Property[Real3])          { this.WriteVirtual("`prop.Property.Name`: `prop.Get()`"); }
   function Write(prop : Property[Real4])          { this.WriteVirtual("`prop.Property.Name`: `prop.Get()`"); }
+  function Write(prop : Property[Real3x3])        { this.WriteVirtual("`prop.Property.Name`: `prop.Get()`"); }
   function Write(prop : Property[Quaternion])     { this.WriteVirtual("`prop.Property.Name`: `prop.Get()`"); }
   function Write(prop : Property[Enum])           { this.WriteVirtual("`prop.Property.Name`: `prop.Get()`"); }
+  function Write(prop : Property[String])         { this.WriteVirtual("`prop.Property.Name`: `prop.Get()`"); }
   function WriteLine(data : any)                  { this.WriteLineVirtual("`data`"); }
   function WriteLine(prop : Property[Boolean])    { this.WriteLineVirtual("`prop.Property.Name`: `prop.Get()`"); }
   function WriteLine(prop : Property[Integer])    { this.WriteLineVirtual("`prop.Property.Name`: `prop.Get()`"); }
@@ -53,8 +66,25 @@ class UnitTestStreamWriter
   function WriteLine(prop : Property[Real2])      { this.WriteLineVirtual("`prop.Property.Name`: `prop.Get()`"); }
   function WriteLine(prop : Property[Real3])      { this.WriteLineVirtual("`prop.Property.Name`: `prop.Get()`"); }
   function WriteLine(prop : Property[Real4])      { this.WriteLineVirtual("`prop.Property.Name`: `prop.Get()`"); }
+  function WriteLine(prop : Property[Real3x3])    { this.WriteLineVirtual("`prop.Property.Name`: `prop.Get()`"); }
   function WriteLine(prop : Property[Quaternion]) { this.WriteLineVirtual("`prop.Property.Name`: `prop.Get()`"); }
   function WriteLine(prop : Property[Enum])       { this.WriteLineVirtual("`prop.Property.Name`: `prop.Get()`"); }
+  function WriteLine(prop : Property[String])     { this.WriteLineVirtual("`prop.Property.Name`: `prop.Get()`"); }
+  
+  function GetCogName(cog : Cog) : String
+  {
+    if(cog == null)
+      return "null";
+    return cog.Name;
+  }
+  function GetComponentOwnerName(component : Component) : String
+  {
+    if(component == null)
+      return "null";
+    return component.Owner.Name;
+  }
+  function Write(prop : Property[Cog])            { this.WriteVirtual("`prop.Property.Name`: `this.GetCogName(prop.Get())`"); }
+  function WriteLine(prop : Property[Cog])        { this.WriteLineVirtual("`prop.Property.Name`: `this.GetCogName(prop.Get())`"); }
   
   function BeginScope()
   {
