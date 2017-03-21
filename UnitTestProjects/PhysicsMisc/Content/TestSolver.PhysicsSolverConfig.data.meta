@@ -1,0 +1,12 @@
+[Version:1]
+DataContent 
+{
+	DataBuilder 
+	{
+		var Name = "TestSolver"
+		var ResourceId = 0x588786c2ac2be94b
+		var LoaderType = "PhysicsSolverConfig"
+		var Version = 0
+		var ShowInEditor = true
+	}
+}

@@ -1,0 +1,9 @@
+[Version:1]
+TextContent 
+{
+	ZilchScriptBuilder 
+	{
+		var Name = "PhysicsSpaceTester"
+		var ResourceId = 0x58875db99b6f4709
+	}
+}

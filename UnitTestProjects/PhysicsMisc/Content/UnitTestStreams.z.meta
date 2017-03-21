@@ -1,0 +1,9 @@
+[Version:1]
+TextContent 
+{
+	ZilchScriptBuilder 
+	{
+		var Name = "UnitTestStreams"
+		var ResourceId = 0x589c1f026d22491f
+	}
+}

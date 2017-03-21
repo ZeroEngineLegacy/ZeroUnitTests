@@ -1,0 +1,9 @@
+[Version:1]
+TextContent 
+{
+	ZilchScriptBuilder 
+	{
+		var Name = "PhysicsMaterialTester"
+		var ResourceId = 0x5887833f92e284a0
+	}
+}

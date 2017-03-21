@@ -1,0 +1,35 @@
+class ConvexMeshTester : ZilchComponent
+{
+  [Property] var Active : Boolean = true;
+  
+  [Property] var ConvexMesh : ConvexMesh = ConvexMesh.Wedge;
+  
+  function Initialize(init : CogInitializer)
+  {
+    if(!this.Active)
+      return;
+      
+    Zero.Connect(this.Owner, Events.RecordInitialization, this.OnRecordInitialization);
+  }
+
+  function OnRecordInitialization(event : CogFrameRecordEvent)
+  {
+    this.ConvexMesh.WriteToStream(event.Stream);
+  }
+}
+
+class ConvexMeshExtensions
+{
+  [Extension(typeid(ConvexMesh))]
+  function WriteToStream(stream : UnitTestStreamWriter)
+  {
+    this.UpdateAndNotifyIfModified();
+    stream.WriteLine("ConvexMesh: `this.Name`");
+    stream.BeginScope();
+    
+    this.Indices.WriteToStream(stream);
+    this.Vertices.WriteToStream(stream);
+    
+    stream.EndScope();
+  }
+}

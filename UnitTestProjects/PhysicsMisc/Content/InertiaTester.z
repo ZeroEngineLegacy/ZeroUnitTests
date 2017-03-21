@@ -1,0 +1,38 @@
+class RigidBodyTester : ZilchComponent
+{
+  [Property] var Active : Boolean = true;
+  [Dependency] var RigidBody : RigidBody;
+  [Dependency] var BaseCogResultRecorder : BaseCogResultRecorder;
+  
+  function Initialize(init : CogInitializer)
+  {
+    if(!this.Active)
+      return;
+      
+    Zero.Connect(this.Owner, Events.RecordFrame, this.OnRecordFrame);
+  }
+
+  function OnRecordFrame(event : CogFrameRecordEvent)
+  {
+    var stream = event.Stream;
+    var rigidBody = this.RigidBody;
+    
+    stream.WriteLine("RigidBody:");
+    stream.BeginScope();
+    
+    stream.WriteLine(@rigidBody.Velocity);
+    stream.WriteLine(@rigidBody.AngularVelocity);
+    stream.WriteLine(@rigidBody.Force);
+    stream.WriteLine(@rigidBody.Torque);
+    stream.WriteLine("DynamicState: `rigidBody.DynamicState`");
+    stream.WriteLine(@rigidBody.AllowSleep);
+    stream.WriteLine(@rigidBody.Asleep);
+    stream.WriteLine(@rigidBody.RotationLocked);
+    stream.WriteLine("Mode2D: `rigidBody.Mode2D`");
+    stream.WriteLine(@rigidBody.LocalInverseInertiaTensor);
+    stream.WriteLine(@rigidBody.WorldInverseInertiaTensor);
+    stream.WriteLine(@rigidBody.WorldCenterOfMass);
+    
+    stream.EndScope();
+  }
+}

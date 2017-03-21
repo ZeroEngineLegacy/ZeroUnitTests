@@ -1,0 +1,9 @@
+[Version:1]
+TextContent 
+{
+	ZilchScriptBuilder 
+	{
+		var Name = "PhysicsSolverConfigTester"
+		var ResourceId = 0x58878609a15d443c
+	}
+}

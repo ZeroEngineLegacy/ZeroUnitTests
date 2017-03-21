@@ -1,0 +1,66 @@
+// Class required for a cog to print results. Mainly just manages adding the
+// cog to a list to help control initialization order.
+class BaseCogResultRecorder : ZilchComponent
+{
+  function Initialize(init : CogInitializer)
+  {
+    Zero.Connect(init, Events.AllObjectsInitialized, this.OnAllObjectsInitialized);
+  }
+
+  function OnAllObjectsInitialized(event : CogInitializerEvent)
+  {
+    // Send an event to say this cog should record information
+    var toSend = CogEvent();
+    toSend.Cog = this.Owner;
+    this.Space.DispatchEvent(Events.AddEventRecordingCog, toSend);
+  }
+}
+
+// Class to Transform data
+class TransformRecorder : ZilchComponent
+{
+  [Dependency] var BaseRecorder : BaseCogResultRecorder;
+  [Dependency] var Transform : Transform;
+  
+  [Property] var RecordTranslation : Boolean = true;
+  [Property] var RecordRotation : Boolean = true;
+  [Property] var RecordScale : Boolean = false;
+  
+  function Initialize(init : CogInitializer)
+  {
+    Zero.Connect(this.Owner, Events.RecordFrame, this.OnRecordFrame);
+  }
+
+  function OnRecordFrame(event : CogFrameRecordEvent)
+  {
+    if(this.RecordTranslation)
+      event.Stream.WriteLine(@this.Transform.WorldTranslation);
+    if(this.RecordRotation)
+      event.Stream.WriteLine(@this.Transform.WorldRotation);
+    if(this.RecordScale)
+      event.Stream.WriteLine(@this.Transform.WorldScale);
+  }
+}
+
+// Class to record linear and angular velocity (based on properties)
+class VelocityRecorder : ZilchComponent
+{
+  [Dependency] var BaseRecorder : BaseCogResultRecorder;
+  [Dependency] var RigidBody : RigidBody;
+  
+  [Property] var RecordLinearVelocity : Boolean = true;
+  [Property] var RecordAngularVelocity : Boolean = true;
+  
+  function Initialize(init : CogInitializer)
+  {
+    Zero.Connect(this.Owner, Events.RecordFrame, this.OnRecordFrame);
+  }
+
+  function OnRecordFrame(event : CogFrameRecordEvent)
+  {
+    if(this.RecordLinearVelocity)
+      event.Stream.WriteLine(@this.RigidBody.Velocity);
+    if(this.RecordAngularVelocity)
+      event.Stream.WriteLine(@this.RigidBody.AngularVelocity);
+  }
+}

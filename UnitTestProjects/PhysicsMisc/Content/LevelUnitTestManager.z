@@ -1,0 +1,32 @@
+// Simple manager for a level's unit test. Mainly consists of the max time to run the test.
+class LevelUnitTestManager : ZilchComponent
+{
+  [Property] var TestDuration : Real = 5;
+  
+  // Sent before a level ends so that all records in the level can be saved
+  sends DumpRecords : ZilchEvent;
+  
+  function Initialize(init : CogInitializer)
+  {
+    Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+  }
+
+  function OnLogicUpdate(event : UpdateEvent)
+  {
+    // When the max duration of the test has been exceeded, stop the test
+    var timePassed = this.Space.TimeSpace.TimePassed;
+    if(timePassed >= this.TestDuration)
+    {
+      this.StopTest();
+      Zero.Disconnect(this.Space, Events.LogicUpdate, this);
+    }
+  }
+  
+  function StopTest()
+  {
+    // Save the dump
+    this.Space.DispatchEvent(Events.DumpRecords, ZilchEvent());
+    // Stop the current unit test
+    this.GameSession.ProjectUnitTestManager.StopCurrentTest();
+  }
+}

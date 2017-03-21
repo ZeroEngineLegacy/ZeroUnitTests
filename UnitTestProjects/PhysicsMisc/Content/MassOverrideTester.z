@@ -1,0 +1,30 @@
+class MassOverrideTester : ZilchComponent
+{
+  [Property] var Active : Boolean = true;
+  [Dependency] var MassOverride : MassOverride;
+  [Dependency] var BaseCogResultRecorder : BaseCogResultRecorder;
+  
+  function Initialize(init : CogInitializer)
+  {
+    if(!this.Active)
+      return;
+      
+    Zero.Connect(this.Owner, Events.RecordFrame, this.OnRecordFrame);
+  }
+
+  function OnRecordFrame(event : CogFrameRecordEvent)
+  {
+    var stream = event.Stream;
+    var massOverride = this.MassOverride;
+    
+    stream.WriteLine("MassOverride:");
+    stream.BeginScope();
+    
+    stream.WriteLine(@massOverride.Mass);
+    stream.WriteLine(@massOverride.InverseMass);
+    stream.WriteLine(@massOverride.LocalCenterOfMass);
+    stream.WriteLine(@massOverride.LocalInverseInertiaTensor);
+    
+    stream.EndScope();
+  }
+}

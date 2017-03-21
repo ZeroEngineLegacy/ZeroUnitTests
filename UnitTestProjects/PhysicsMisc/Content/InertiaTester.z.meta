@@ -1,0 +1,9 @@
+[Version:1]
+TextContent 
+{
+	ZilchScriptBuilder 
+	{
+		var Name = "InertiaTester"
+		var ResourceId = 0x5887aec5b30b9cd8
+	}
+}

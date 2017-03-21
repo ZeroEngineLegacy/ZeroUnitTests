@@ -1,0 +1,77 @@
+class CollisionTableTester : ZilchComponent
+{
+  [Property] var Active : Boolean = true;
+  
+  [Dependency] var Collider : Collider;
+  
+  [Property] var CollisionTable : CollisionTable = CollisionTable.TestTable;
+  
+  function Initialize(init : CogInitializer)
+  {
+    if(!this.Active)
+      return;
+      
+    Zero.Connect(this.Owner, Events.RecordInitialization, this.OnRecordInitialization);
+  }
+
+  function OnRecordInitialization(event : CogFrameRecordEvent)
+  {
+    var stream = event.Stream;
+    var table = this.CollisionTable;
+    
+    stream.WriteLine("CollisionTable Initialization:");
+    stream.BeginScope();
+    
+    stream.WriteLine(@table.Name);
+    
+    this.WriteFilter(stream, CollisionGroup.GroupA, CollisionGroup.GroupB);
+    this.WriteFilter(stream, CollisionGroup.GroupA, CollisionGroup.GroupA);
+    this.WriteFilter(stream, CollisionGroup.GroupB, CollisionGroup.GroupB);
+    
+    stream.EndScope();
+  }
+  
+  function WriteFilter(stream : UnitTestStreamWriter, groupA : CollisionGroup, groupB : CollisionGroup)
+  {
+    var table = this.CollisionTable;
+    var filter = table.FindFilter(groupA, groupB);
+    if(filter != null)
+      filter.WriteToStream(stream);
+  }
+}
+
+class CollisionFilterExtensions
+{
+  [Extension(typeid(CollisionFilterBlock))]
+  function WriteToStream(stream : UnitTestStreamWriter)
+  {
+    stream.WriteLine("CollisionFilterBlock: `this.BlockType`");
+    stream.BeginScope();
+    
+    stream.WriteLine(@this.SendEventsToA);
+    stream.WriteLine(@this.SendEventsToB);
+    stream.WriteLine(@this.SendEventsToSpace);
+    stream.WriteLine(@this.EventOverride);
+    
+    stream.EndScope();
+  }
+  
+  [Extension(typeid(CollisionFilter))]
+  function WriteToStream(stream : UnitTestStreamWriter)
+  {
+    stream.WriteLine("CollisionFilter:  (`this.CollisionGroupA.Name` / `this.CollisionGroupB.Name`)");
+    stream.BeginScope();
+    
+    stream.WriteLine("CollisionFlags: `this.CollisionFlag`");
+    if(this.CollisionStartBlock != null)
+      this.CollisionStartBlock.WriteToStream(stream);
+    if(this.CollisionPersistedBlock != null)
+      this.CollisionPersistedBlock.WriteToStream(stream);
+    if(this.CollisionEndBlock != null)
+      this.CollisionEndBlock.WriteToStream(stream);
+    if(this.PreSolveBlock != null)
+      this.PreSolveBlock.WriteToStream(stream);
+    
+    stream.EndScope();
+  }
+}

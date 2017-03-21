@@ -1,0 +1,21 @@
+class CollisionGroupTester : ZilchComponent
+{
+  [Dependency] var Collider : Collider;
+  [Dependency] var BaseCogResultRecorder : BaseCogResultRecorder;
+  
+  function Initialize(init : CogInitializer)
+  {
+    Zero.Connect(this.Owner, Events.RecordInitialization, this.OnRecordInitialization);
+  }
+
+  function OnRecordInitialization(event : CogFrameRecordEvent)
+  {
+    var group = this.Collider.CollisionGroup;
+    var stream = event.Stream;
+    
+    stream.WriteLine("CollisionGroups:");
+    stream.BeginScope();
+    stream.WriteLine(@group.Name);
+    stream.EndScope();
+  }
+}

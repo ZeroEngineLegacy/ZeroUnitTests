@@ -1,0 +1,12 @@
+[Version:1]
+DataContent 
+{
+	DataBuilder 
+	{
+		var Name = "PhysicsResources"
+		var ResourceId = 0x588792f7072aaf88
+		var LoaderType = "Level"
+		var Version = 0
+		var ShowInEditor = true
+	}
+}
