@@ -1,0 +1,14 @@
+class ScriptPhysicsEffect : ZilchComponent
+{
+  function Initialize(init : CogInitializer)
+  {
+    Zero.Connect(this.Owner, Events.ApplyCustomPhysicsEffect, this.OnApplyCustomPhysicsEffect);
+  }
+
+  function OnApplyCustomPhysicsEffect(event : CustomPhysicsEffectEvent)
+  {
+    if(event.RigidBody.Owner.Name == "Sphere3")
+      return;
+    event.RigidBody.ApplyForce(Real3(0, 10, 0));
+  }
+}

@@ -34,6 +34,12 @@ ResourceTable
 			var Value = "58869d3de8c522a7:PointEffects"
 			var Weight = 1
 		}
+		Object
+		{
+			var Name = "Name6"
+			var Value = "588772079991a3eb:CustomEffects"
+			var Weight = 1
+		}
 	}
 	var MaxWeight = 1
 }
