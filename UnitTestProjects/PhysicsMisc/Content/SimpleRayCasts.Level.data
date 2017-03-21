@@ -298,7 +298,7 @@ Level
 			var Active = true
 			var LocalDirection = Real3{1, 0, 0}
 			var MaxDistance = 20
-			var DebugDrawRay = false
+			var DebugDrawRay = true
 		}
 	}
 	Cog 
@@ -356,7 +356,7 @@ Level
 			var Active = true
 			var LocalDirection = Real3{0, 1, 0}
 			var MaxDistance = 20
-			var DebugDrawRay = false
+			var DebugDrawRay = true
 		}
 	}
 	Cog 

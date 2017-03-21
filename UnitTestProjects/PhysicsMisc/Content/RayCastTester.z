@@ -4,7 +4,7 @@ class RayCastTester : ZilchComponent
   [Dependency] var Transform : Transform;
   [Property] var LocalDirection : Real3 = Real3.XAxis;
   [Property] var MaxDistance : Real = 20.0;
-  [Property] var DebugDrawRay : Boolean;
+  [Property] var DebugDrawRay : Boolean = true;
   
   function Initialize(init : CogInitializer)
   {
@@ -47,8 +47,8 @@ class RayCastTester : ZilchComponent
     
     if(this.DebugDrawRay)
     {
-      var debugRay = DebugLine(ray.Start, ray.Start + ray.Direction * minT, 0.1) {Color = Real4(1)};
-      DebugDraw.Add(debugRay);
+      var debugRay = DebugLine(ray.Start, ray.Start + ray.Direction * minT, 0.1);
+      DebugDraw.Add(this.Space.RuntimeId, debugRay);
     }
   }
 }
