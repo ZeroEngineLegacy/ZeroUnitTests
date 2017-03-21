@@ -152,6 +152,7 @@ FrameRecord (30)
       SplineSampleData
         WorldPoint: (52.8119, 6.11824, 2.32615)
         WorldTangent: (4.58209e-06, -0.498698, -0.866776)
+    QuerySpline. TotalDistance: (42.3436)
 FrameRecord (60)
   HierarchySpline:
     Spline:
@@ -307,4 +308,5 @@ FrameRecord (60)
       SplineSampleData
         WorldPoint: (52.8118, 2.88774, 2.17032)
         WorldTangent: (0, -0.687594, -0.726095)
+    QuerySpline. TotalDistance: (68.493)
 
