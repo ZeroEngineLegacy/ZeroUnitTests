@@ -1,0 +1,9 @@
+[Version:1]
+TextContent 
+{
+	ZilchScriptBuilder 
+	{
+		var Name = "SimpleResultRecorders"
+		var ResourceId = 0x589c26ee1a6662db
+	}
+}

@@ -1,0 +1,79 @@
+class RayCastTester : ZilchComponent
+{
+  [Property] var Active : Boolean = true;
+  [Dependency] var Transform : Transform;
+  [Property] var LocalDirection : Real3 = Real3.XAxis;
+  [Property] var MaxDistance : Real = 20.0;
+  [Property] var DebugDrawRay : Boolean = true;
+  
+  function Initialize(init : CogInitializer)
+  {
+    if(!this.Active)
+      return;
+      
+    Zero.Connect(this.Owner, Events.RecordFrame, this.OnRecordFrame);
+    Zero.Connect(this.Owner, "CustomRayCallback", this.OnCustomRayCallback);
+  }
+
+  function OnCustomRayCallback(event : CastFilterEvent)
+  {
+    if(event.Object.Name == "Ground")
+      event.FilterState = CastFilterState.Reject;
+  }
+
+  function OnRecordFrame(event : CogFrameRecordEvent)
+  {
+    var ray = Ray();
+    ray.Start = this.Transform.WorldTranslation;
+    ray.Direction = this.Transform.TransformNormal(this.LocalDirection);
+    
+    var stream = event.Stream;
+    stream.WriteLine("RayCast: `ray`");
+    
+    
+    var minT = this.MaxDistance;
+    var filter = CastFilter();
+    filter.CallbackObject = this.Owner;
+    filter.CallbackEventName = "CustomRayCallback";
+    var results = this.Space.PhysicsSpace.CastRay(ray, 100, filter);
+    foreach(var result in results)
+    {
+      if(result.Distance > this.MaxDistance)
+        continue;
+        
+      minT = Math.Min(result.Distance, minT);
+      result.WriteToStream(stream);
+    }
+    
+    if(this.DebugDrawRay)
+    {
+      var debugRay = DebugLine(ray.Start, ray.Start + ray.Direction * minT, 0.1);
+      DebugDraw.Add(this.Space.RuntimeId, debugRay);
+    }
+  }
+}
+
+class CastResultExtensions
+{
+  [Extension(typeid(CastResult))]
+  function WriteToStream(stream : UnitTestStreamWriter)
+  {
+    stream.WriteLine("Collider: `stream.GetComponentOwnerName(this.Collider)`");
+    stream.WriteLine(@this.ObjectHit);
+    stream.WriteLine(@this.Normal);
+    stream.WriteLine(@this.Distance);
+    stream.WriteLine(@this.WorldPosition);
+  }
+  
+  [Extension(typeid(CastResultsRange))]
+  function WriteToStream(stream : UnitTestStreamWriter)
+  {
+    stream.WriteLine("CastResultRange:");
+    stream.BeginScope();
+    
+    foreach(var result in this)
+      result.WriteToStream(stream);
+    
+    stream.EndScope();
+  }
+}

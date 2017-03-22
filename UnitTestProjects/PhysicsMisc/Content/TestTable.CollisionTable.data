@@ -1,0 +1,64 @@
+[Version:1]
+CollisionTable 
+{
+	var RegisteredGroups = Array
+	{
+		"4e740859314e5515:DefaultGroup"
+		"58878dac6fbc04ae:GroupB"
+		"58878da769199ca8:GroupA"
+	}
+	var CollisionFilters = Array
+	{
+		Object
+		{
+			var TypeA = "58878da769199ca8:GroupA"
+			var TypeB = "58878da769199ca8:GroupA"
+			var SkipResolution = false
+			var SkipDetectingCollision = true
+			var StartEvent = false
+			var EndEvent = false
+			var PersistedEvent = true
+			var PreSolveEvent = true
+			PreSolveBlock 
+			{
+				var SendEventsToA = false
+				var SendEventsToB = false
+				var SendEventsToSpace = false
+				var EventOverride = "Test"
+			}
+			CollisionPersistedBlock 
+			{
+				var SendEventsToA = true
+				var SendEventsToB = true
+				var SendEventsToSpace = false
+				var EventOverride = ""
+			}
+		}
+		Object
+		{
+			var TypeA = "58878da769199ca8:GroupA"
+			var TypeB = "58878dac6fbc04ae:GroupB"
+			var SkipResolution = true
+			var SkipDetectingCollision = false
+			var StartEvent = true
+			var EndEvent = true
+			var PersistedEvent = false
+			var PreSolveEvent = false
+			CollisionEndBlock 
+			{
+				var SendEventsToA = false
+				var SendEventsToB = true
+				var SendEventsToSpace = false
+				var EventOverride = ""
+			}
+			CollisionStartBlock 
+			{
+				var SendEventsToA = true
+				var SendEventsToB = true
+				var SendEventsToSpace = true
+				var EventOverride = ""
+			}
+		}
+	}
+	var AutoRegister = true
+}

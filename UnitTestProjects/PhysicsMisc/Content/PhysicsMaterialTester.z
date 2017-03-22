@@ -1,0 +1,40 @@
+class PhysicsMaterialTester : ZilchComponent
+{
+  [Property] var Active : Boolean = true;
+  
+  [Dependency] var Collider : Collider;
+  
+  [Property] var PhysicsMaterial : PhysicsMaterial = PhysicsMaterial.TestPhysicsMaterial;
+  
+  function Initialize(init : CogInitializer)
+  {
+    if(!this.Active)
+      return;
+      
+    Zero.Connect(this.Owner, Events.RecordInitialization, this.OnRecordInitialization);
+  }
+
+  function OnRecordInitialization(event : CogFrameRecordEvent)
+  {
+    this.PhysicsMaterial.WriteToStream(event.Stream);
+  }
+}
+
+class PhysicsMaterialExtensions
+{
+  [Extension(typeid(PhysicsMaterial))]
+  function WriteToStream(stream : UnitTestStreamWriter)
+  {
+    this.UpdateAndNotifyIfModified();
+    stream.WriteLine("PhysicsMaterial: `this.Name`");
+    stream.BeginScope();
+    
+    stream.WriteLine(@this.Density);
+    stream.WriteLine(@this.Friction);
+    stream.WriteLine(@this.HighPriority);
+    stream.WriteLine(@this.Restitution);
+    
+    stream.EndScope();
+  }
+}
+

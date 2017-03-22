@@ -1,0 +1,9 @@
+[Version:1]
+TextContent 
+{
+	ZilchScriptBuilder 
+	{
+		var Name = "CollisionGroupTester"
+		var ResourceId = 0x588792940e03cff2
+	}
+}

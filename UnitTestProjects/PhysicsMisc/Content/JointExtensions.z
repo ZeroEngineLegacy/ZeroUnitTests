@@ -1,0 +1,45 @@
+class JointExtensions
+{
+  [Extension(typeid(JointLimit))]
+  function WriteToStream(stream : UnitTestStreamWriter)
+  {
+    stream.WriteLine("JointLimit:");
+    stream.BeginScope();
+    
+    stream.WriteLine(@this.Active);
+    stream.WriteLine(@this.AtomIds);
+    stream.WriteLine(@this.LowerLimit);
+    stream.WriteLine(@this.UpperLimit);
+    
+    stream.EndScope();
+  }
+  
+  [Extension(typeid(JointMotor))]
+  function WriteToStream(stream : UnitTestStreamWriter)
+  {
+    stream.WriteLine("JointMotor:");
+    stream.BeginScope();
+    
+    stream.WriteLine(@this.Active);
+    stream.WriteLine(@this.AtomIds);
+    stream.WriteLine(@this.Reverse);
+    stream.WriteLine(@this.Speed);
+    stream.WriteLine(@this.MaxForce);
+    
+    stream.EndScope();
+  }
+  
+  [Extension(typeid(JointSpring))]
+  function WriteToStream(stream : UnitTestStreamWriter)
+  {
+    stream.WriteLine("JointSpring:");
+    stream.BeginScope();
+    
+    stream.WriteLine(@this.Active);
+    stream.WriteLine(@this.AtomIds);
+    stream.WriteLine(@this.FrequencyHz);
+    stream.WriteLine(@this.DampRatio);
+    
+    stream.EndScope();
+  }
+}

@@ -1,0 +1,46 @@
+class RandomContextTester : ZilchComponent
+{
+  [Dependency] var BaseCogResultRecorder : BaseCogResultRecorder;
+  [Dependency] var RandomContext : RandomContext;
+  
+  function Initialize(init : CogInitializer)
+  {
+    Zero.Connect(this.Owner, Events.RecordInitialization, this.OnRecordInitialization);
+  }
+
+  function OnRecordInitialization(event : CogFrameRecordEvent)
+  {
+    var stream = event.Stream;
+    var randomContext = this.RandomContext;
+    stream.WriteLine("RandomContext:");
+    stream.BeginScope();
+    
+    stream.WriteLine(@randomContext.Seed);
+    stream.WriteLine(@randomContext.RandomSeed);
+    stream.WriteLine(@randomContext.MaxInt);
+    stream.WriteLine("Bool: `randomContext.Bool()`");
+    stream.WriteLine("Int: `randomContext.Int()`");
+    stream.WriteLine("Float: `randomContext.Float()`");
+    stream.WriteLine("Real: `randomContext.Real()`");
+    stream.WriteLine("UnitVector2: `randomContext.UnitVector2()`");
+    stream.WriteLine("Vector2: `randomContext.Vector2(0, 3)`");
+    stream.WriteLine("UnitVector3: `randomContext.UnitVector3()`");
+    stream.WriteLine("Vector3: `randomContext.Vector3(0, 3)`");
+    stream.WriteLine("Quaternion: `randomContext.Quaternion()`");
+    stream.WriteLine("RangeInclusiveMax: `randomContext.RangeInclusiveMax(0, 3)`");
+    stream.WriteLine("RangeExclusiveMax: `randomContext.RangeExclusiveMax(0, 3)`");
+    stream.WriteLine("IntVariance: `randomContext.IntVariance(0, 3)`");
+    stream.WriteLine("Range: `randomContext.Range(0, 3)`");
+    stream.WriteLine("FloatVariance: `randomContext.FloatVariance(0, 4)`");
+    stream.WriteLine("RealVariance: `randomContext.RealVariance(0, 4)`");
+    stream.WriteLine("DieRoll: `randomContext.DieRoll(16)`");
+    stream.WriteLine("Probability: `randomContext.Probability(0.6)`");
+    stream.WriteLine("CoinFlip: `randomContext.CoinFlip()`");
+    stream.WriteLine("Rotation: `randomContext.Rotation()`");
+    stream.WriteLine("BellCurve: `randomContext.BellCurve()`");
+    stream.WriteLine("BellCurveRange: `randomContext.BellCurveRange(0, 3)`");
+    stream.WriteLine("BellCurveDistribution: `randomContext.BellCurveDistribution(0, 3, 1)`");
+    
+    stream.EndScope();
+  }
+}

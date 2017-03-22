@@ -1,0 +1,230 @@
+class PhysicsSpaceTester : ZilchComponent
+{
+  [Property] var Active : Boolean = true;
+  [Dependency] var BaseCogResultRecorder : BaseCogResultRecorder;
+  
+  function Initialize(init : CogInitializer)
+  {
+    if(!this.Active)
+      return;
+      
+    Zero.Connect(this.Owner, Events.RecordInitialization, this.OnRecordInitialization);
+    Zero.Connect(this.Owner, "TestSphereCast", this.OnTestSphereCast);
+    Zero.Connect(this.Owner, "TestAabbCast", this.OnTestAabbCast);
+  }
+
+  function OnTestSphereCast(event : ZilchEvent)
+  {
+    // Record later
+  }
+  
+  function OnTestAabbCast(event : ZilchEvent)
+  {
+    // Record later
+  }
+
+  function OnRecordInitialization(event : CogFrameRecordEvent)
+  {
+    var stream = event.Stream;
+    
+    var physicsSpace = this.Space.PhysicsSpace;
+    stream.WriteLine(@physicsSpace.SubStepCount);
+    stream.WriteLine(@physicsSpace.AllowSleep);
+    stream.WriteLine(@physicsSpace.Mode2D);
+    stream.WriteLine(@physicsSpace.Deterministic);
+    stream.WriteLine(@physicsSpace.PostProcessIslands);
+    stream.WriteLine(@physicsSpace.IsSolverShared);
+    stream.WriteLine(@physicsSpace.IslandCount);
+    
+    //// Ray Cast
+    this.CastRayFirst(stream);
+    this.CastRayFirstFiltered(stream);
+    this.CastRayResults(stream);
+    this.CastRayResultsFiltered(stream);
+    //// Segment Cast
+    this.CastSegmentResults(stream);
+    this.CastSegmentResultsFiltered(stream);
+    //// Volume Cast
+    this.CastSphereResults(stream);
+    this.CastAabbResults(stream);
+    this.CastColliderResults(stream);
+    //// Event Dispatching in Region
+    this.DispatchWithinSphere(stream);
+    this.DispatchWithinAabb(stream);
+    
+    this.WhyAreTheyNotColliding(stream);
+  }
+  
+  var WorldRay : Ray
+  {
+    get
+    {
+      var pos = this.Owner.Transform.WorldTranslation;
+      return Ray() {Start = pos, Direction = Real3(0, -1, 0)};
+    }
+  }
+  
+  var WorldSegment : Segment
+  {
+    get
+    {
+      var pos = this.Owner.Transform.WorldTranslation;
+      return Segment() {Start = pos, End = pos + Real3(0, -2, 0)};
+    }
+  }
+  
+  var WorldSphere : Sphere
+  {
+    get
+    {
+      var pos = this.Owner.Transform.WorldTranslation;
+      return Sphere() {Center = pos, Radius = 2};
+    }
+  }
+  
+  var WorldAabb : Aabb
+  {
+    get
+    {
+      var pos = this.Owner.Transform.WorldTranslation;
+      var halfExtents = Real3(1.5);
+      return Aabb() {Min = pos - halfExtents, Max = pos + halfExtents};
+    }
+  }
+  
+  function CastRayFirst(stream : UnitTestStreamWriter)
+  {
+    stream.WriteLine("PhysicsSpace.CastRayFirst:");
+    stream.BeginScope();
+      
+    var result = this.Space.PhysicsSpace.CastRayFirst(this.WorldRay);
+    result.WriteToStream(stream);
+    
+    stream.EndScope();
+  }
+  
+  function CastRayFirstFiltered(stream : UnitTestStreamWriter)
+  {
+    stream.WriteLine("PhysicsSpace.CastRayFirst With Filter:");
+    stream.BeginScope();
+      
+    var filter = CastFilter();
+    var result = this.Space.PhysicsSpace.CastRayFirst(this.WorldRay, filter);
+    result.WriteToStream(stream);
+    
+    stream.EndScope();
+  }
+  
+  function CastRayResults(stream : UnitTestStreamWriter)
+  {
+    stream.WriteLine("PhysicsSpace.CastRay:");
+    stream.BeginScope();
+      
+    var results = this.Space.PhysicsSpace.CastRay(this.WorldRay, 10);
+    results.WriteToStream(stream);
+    
+    stream.EndScope();
+  }
+  
+  function CastRayResultsFiltered(stream : UnitTestStreamWriter)
+  {
+    stream.WriteLine("PhysicsSpace.CastRay With Filter:");
+    stream.BeginScope();
+      
+    var filter = CastFilter();
+    var results = this.Space.PhysicsSpace.CastRay(this.WorldRay, 10, filter);
+    results.WriteToStream(stream);
+    
+    stream.EndScope();
+  }
+  
+  function CastSegmentResults(stream : UnitTestStreamWriter)
+  {
+    stream.WriteLine("PhysicsSpace.CastSegment:");
+    stream.BeginScope();
+      
+    var results = this.Space.PhysicsSpace.CastSegment(this.WorldSegment, 10);
+    results.WriteToStream(stream);
+    
+    stream.EndScope();
+  }
+  
+  function CastSegmentResultsFiltered(stream : UnitTestStreamWriter)
+  {
+    stream.WriteLine("PhysicsSpace.CastSegment With Filter:");
+    stream.BeginScope();
+      
+    var filter = CastFilter();
+    var results = this.Space.PhysicsSpace.CastSegment(this.WorldSegment, 10, filter);
+    results.WriteToStream(stream);
+    
+    stream.EndScope();
+  }
+  
+  function CastSphereResults(stream : UnitTestStreamWriter)
+  {
+    stream.WriteLine("PhysicsSpace.CastSphere:");
+    stream.BeginScope();
+      
+    var filter = CastFilter();
+    var results = this.Space.PhysicsSpace.CastSphere(this.WorldSphere, 10, filter);
+    results.WriteToStream(stream);
+    
+    stream.EndScope();
+  }
+  
+  function CastAabbResults(stream : UnitTestStreamWriter)
+  {
+    stream.WriteLine("PhysicsSpace.CastAabb:");
+    stream.BeginScope();
+      
+    var filter = CastFilter();
+    var results = this.Space.PhysicsSpace.CastAabb(this.WorldAabb, 10, filter);
+    results.WriteToStream(stream);
+    
+    stream.EndScope();
+  }
+  
+  function CastColliderResults(stream : UnitTestStreamWriter)
+  {
+    stream.WriteLine("PhysicsSpace.CastCollider:");
+    stream.BeginScope();
+    
+    var filter = CastFilter();
+    var results = this.Space.PhysicsSpace.CastCollider(Real3.Zero, this.Owner.Collider, filter);
+    results.WriteToStream(stream);
+    
+    stream.EndScope();
+  }
+  
+  function DispatchWithinSphere(stream : UnitTestStreamWriter)
+  {
+    stream.WriteLine("PhysicsSpace.DispatchWithinSphere:");
+    stream.BeginScope();
+    
+    this.Space.PhysicsSpace.DispatchWithinSphere(this.WorldSphere, "TestSphereCast", ZilchEvent());
+    
+    stream.EndScope();
+  }
+  
+  function DispatchWithinAabb(stream : UnitTestStreamWriter)
+  {
+    stream.WriteLine("PhysicsSpace.DispatchWithinAabb:");
+    stream.BeginScope();
+    
+    this.Space.PhysicsSpace.DispatchWithinAabb(this.WorldAabb, "TestAabbCast", ZilchEvent());
+    
+    stream.EndScope();
+  }
+  
+  function WhyAreTheyNotColliding(stream : UnitTestStreamWriter)
+  {
+    stream.WriteLine("PhysicsSpace.WhyAreTheyNotColliding:");
+    stream.BeginScope();
+    
+    var msg = this.Space.PhysicsSpace.WhyAreTheyNotColliding(this.Owner, this.Owner);
+    stream.WriteLine(msg);
+    
+    stream.EndScope();
+  }
+}

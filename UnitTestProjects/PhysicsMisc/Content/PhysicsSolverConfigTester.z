@@ -1,0 +1,86 @@
+class PhysicsSolverConfigTester : ZilchComponent
+{
+  [Property] var Active : Boolean = true;
+  
+  [Dependency] var Collider : Collider;
+  
+  [Property] var PhysicsSolverConfig : PhysicsSolverConfig = PhysicsSolverConfig.TestSolver;
+  
+  function Initialize(init : CogInitializer)
+  {
+    if(!this.Active)
+      return;
+      
+    Zero.Connect(this.Owner, Events.RecordInitialization, this.OnRecordInitialization);
+  }
+
+  function OnRecordInitialization(event : CogFrameRecordEvent)
+  {
+    this.PhysicsSolverConfig.WriteToStream(event.Stream);
+  }
+}
+
+class PhysicsSolverConfigExtensions
+{
+  [Extension(typeid(ConstraintConfigBlock))]
+  function WriteToStream(name : String, stream : UnitTestStreamWriter)
+  {
+    stream.WriteLine("ConstraintConfigBlock: `name`");
+    stream.BeginScope();
+    
+    stream.WriteLine(@this.AngularBaumgarte);
+    stream.WriteLine(@this.AngularErrorCorrection);
+    stream.WriteLine("CorrectionType: `this.CorrectionType`");
+    stream.WriteLine(@this.LinearBaumgarte);
+    stream.WriteLine(@this.LinearErrorCorrection);
+    stream.WriteLine(@this.Slop);
+    
+    stream.EndScope();
+  }
+  
+  [Extension(typeid(PhysicsSolverConfig))]
+  function WriteBlockToStream(blockTypeName : String, constraintBlock : ConstraintConfigBlock, stream : UnitTestStreamWriter)
+  {
+    if(constraintBlock != null)
+      constraintBlock.WriteToStream(blockTypeName, stream);
+  }
+  
+  [Extension(typeid(PhysicsSolverConfig))]
+  function WriteToStream(stream : UnitTestStreamWriter)
+  {
+    stream.WriteLine("PhysicsSolverConfig: `this.Name`");
+    stream.BeginScope();
+    
+    stream.WriteLine(@this.SolverIterationCount);
+    stream.WriteLine(@this.PositionIterationCount);
+    stream.WriteLine(@this.VelocityRestitutionThreshold);
+    stream.WriteLine(@this.WarmStart);
+    stream.WriteLine(@this.CacheContacts);
+    stream.WriteLine("SubSolverType: `this.SubCorrectionType`");
+    stream.WriteLine("SolverType: `this.SolverType`");
+    stream.WriteLine("PositionCorrectionType: `this.PositionCorrectionType`");
+    
+    this.WriteBlockToStream("StickJointBlock", this.StickJointBlock, stream);
+    this.WriteBlockToStream("PositionJointBlock", this.PositionJointBlock, stream);
+    this.WriteBlockToStream("PrismaticJointBlock", this.PrismaticJointBlock, stream);
+    this.WriteBlockToStream("RevoluteJointBlock", this.RevoluteJointBlock, stream);
+    this.WriteBlockToStream("UniversalJointBlock", this.UniversalJointBlock, stream);
+    this.WriteBlockToStream("WeldJointBlock", this.WeldJointBlock, stream);
+    this.WriteBlockToStream("FixedAngleJointBlock", this.FixedAngleJointBlock, stream);
+    this.WriteBlockToStream("WheelJointBlock", this.WheelJointBlock, stream);
+    this.WriteBlockToStream("GearJointBlock", this.GearJointBlock, stream);
+    this.WriteBlockToStream("PulleyJointBlock", this.PulleyJointBlock, stream);
+    this.WriteBlockToStream("ManipulatorJointBlock", this.ManipulatorJointBlock, stream);
+    this.WriteBlockToStream("PhyGunJointBlock", this.PhyGunJointBlock, stream);
+    this.WriteBlockToStream("LinearAxisJointBlock", this.LinearAxisJointBlock, stream);
+    this.WriteBlockToStream("PrismaticJoint2dBlock", this.PrismaticJoint2dBlock, stream);
+    this.WriteBlockToStream("RevoluteJoint2dBlock", this.RevoluteJoint2dBlock, stream);
+    this.WriteBlockToStream("WheelJoint2dBlock", this.WheelJoint2dBlock, stream);
+    this.WriteBlockToStream("RelativeVelocityJointBlock", this.RelativeVelocityJointBlock, stream);
+    this.WriteBlockToStream("UprightJointBlock", this.UprightJointBlock, stream);
+    this.WriteBlockToStream("CustomJointBlock", this.CustomJointBlock, stream);
+    this.WriteBlockToStream("ContactBlock", this.ContactBlock, stream);
+    
+    stream.EndScope();
+  }
+}

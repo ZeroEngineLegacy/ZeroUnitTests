@@ -1,0 +1,12 @@
+[Version:1]
+DataContent 
+{
+	DataBuilder 
+	{
+		var Name = "CustomEffects"
+		var ResourceId = 0x588772079991a3eb
+		var LoaderType = "Level"
+		var Version = 0
+		var ShowInEditor = true
+	}
+}

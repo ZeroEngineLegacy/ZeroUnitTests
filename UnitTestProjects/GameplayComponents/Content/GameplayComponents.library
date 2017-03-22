@@ -1,0 +1,8 @@
+[Version:1]
+ContentLibrary 
+{
+	var Name = "GameplayComponents"
+	var LibraryId = 0x5887554225c65522
+	var SourceControlType = ""
+	var ReadOnly = false
+}

@@ -1,0 +1,39 @@
+[Version:1]
+ResourceTable 
+{
+	var ResourceType = "Level"
+	var EntryList = Array
+	{
+		Object
+		{
+			var Name = "Name5"
+			var Value = "58875db494dde1d0:PhysicsSpace"
+			var Weight = 1
+		}
+		Object
+		{
+			var Name = "Name4"
+			var Value = "5887a5085655ca17:Casting"
+			var Weight = 1
+		}
+		Object
+		{
+			var Name = "Name2"
+			var Value = "5887bf81b29cdf37:Colliders"
+			var Weight = 1
+		}
+		Object
+		{
+			var Name = "Name1"
+			var Value = "588792f7072aaf88:PhysicsResources"
+			var Weight = 1
+		}
+		Object
+		{
+			var Name = "Name3"
+			var Value = "5887ae12ca53fb54:Misc"
+			var Weight = 1
+		}
+	}
+	var MaxWeight = 1
+}

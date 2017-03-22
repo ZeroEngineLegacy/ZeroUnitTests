@@ -1,0 +1,31 @@
+class MultiConvexMeshTester : ZilchComponent
+{
+  [Property] var Active : Boolean = true;
+  
+  [Property] var MultiConvexMesh : MultiConvexMesh = MultiConvexMesh.DefaultMultiConvexMesh;
+  
+  function Initialize(init : CogInitializer)
+  {
+    if(!this.Active)
+      return;
+      
+    Zero.Connect(this.Owner, Events.RecordInitialization, this.OnRecordInitialization);
+  }
+
+  function OnRecordInitialization(event : CogFrameRecordEvent)
+  {
+    this.MultiConvexMesh.WriteToStream(event.Stream);
+  }
+}
+
+class MultiConvexMeshExtensions
+{
+  [Extension(typeid(MultiConvexMesh))]
+  function WriteToStream(stream : UnitTestStreamWriter)
+  {
+    stream.WriteLine("MultiConvexMesh: `this.Name`");
+    stream.BeginScope();
+    
+    stream.EndScope();
+  }
+}

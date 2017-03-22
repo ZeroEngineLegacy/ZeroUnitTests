@@ -1,0 +1,207 @@
+class ColliderTester : ZilchComponent
+{
+  [Property] var Active : Boolean = true;
+  [Dependency] var Collider : Collider;
+  [Dependency] var BaseCogResultRecorder : BaseCogResultRecorder;
+  
+  function Initialize(init : CogInitializer)
+  {
+    if(!this.Active)
+      return;
+      
+    Zero.Connect(this.Owner, Events.RecordFrame, this.OnRecordFrame);
+  }
+
+  function OnRecordFrame(event : CogFrameRecordEvent)
+  {
+    var stream = event.Stream;
+    var collider = this.Collider;
+    
+    collider.WriteToStream(stream);
+  }
+}
+
+class BoxColliderTester : ZilchComponent
+{
+  [Property] var Active : Boolean = true;
+  [Dependency] var BoxCollider : BoxCollider;
+  [Dependency] var ColliderTester : ColliderTester;
+  
+  function Initialize(init : CogInitializer)
+  {
+    if(!this.Active)
+      return;
+      
+    Zero.Connect(this.Owner, Events.RecordFrame, this.OnRecordFrame);
+  }
+
+  function OnRecordFrame(event : CogFrameRecordEvent)
+  {
+    var stream = event.Stream;
+    var collider = this.BoxCollider;
+    
+    collider.WriteToStream(stream);
+  }
+}
+
+class SphereColliderTester : ZilchComponent
+{
+  [Property] var Active : Boolean = true;
+  [Dependency] var SphereCollider : SphereCollider;
+  [Dependency] var ColliderTester : ColliderTester;
+  
+  function Initialize(init : CogInitializer)
+  {
+    if(!this.Active)
+      return;
+      
+    Zero.Connect(this.Owner, Events.RecordFrame, this.OnRecordFrame);
+  }
+
+  function OnRecordFrame(event : CogFrameRecordEvent)
+  {
+    var stream = event.Stream;
+    var collider = this.SphereCollider;
+    
+    collider.WriteToStream(stream);
+  }
+}
+
+class ColliderExtensions
+{
+  [Extension(typeid(Collider))]
+  function WriteToStream(stream : UnitTestStreamWriter)
+  {
+    stream.WriteLine("Collider:");
+    stream.BeginScope();
+    
+    stream.WriteLine(@this.Ghost);
+    stream.WriteLine(@this.Offset);
+    stream.WriteLine(@this.SendsEvents);
+    stream.WriteLine("Aabb: `this.WorldAabb`");
+    stream.WriteLine("Sphere: `this.WorldBoundingSphere`");
+    
+    this.WriteContactsToStream(stream);
+    this.WriteJointsToStream(stream);
+    
+    stream.EndScope();
+  }
+  
+  [Extension(typeid(BoxCollider))]
+  function WriteToStream(stream : UnitTestStreamWriter)
+  {
+    stream.WriteLine("BoxCollider:");
+    stream.BeginScope();
+    
+    stream.WriteLine(@this.Size);
+    stream.WriteLine(@this.HalfSize);
+    stream.WriteLine(@this.WorldSize);
+    
+    stream.EndScope();
+  }
+  
+  [Extension(typeid(SphereCollider))]
+  function WriteToStream(stream : UnitTestStreamWriter)
+  {
+    stream.WriteLine("SphereCollider:");
+    stream.BeginScope();
+    
+    stream.WriteLine(@this.Radius);
+    stream.WriteLine(@this.WorldRadius);
+    
+    stream.EndScope();
+  }
+  
+  [Extension(typeid(Collider))]
+  function WriteContactsToStream(stream : UnitTestStreamWriter)
+  {
+    stream.WriteLine("Contacts (`this.ContactCount`):");
+    stream.BeginScope();
+    this.Contacts.WriteToStream(stream);
+    stream.EndScope();
+  }
+  
+  [Extension(typeid(Collider))]
+  function WriteJointsToStream(stream : UnitTestStreamWriter)
+  {
+    stream.WriteLine("Joints (`this.JointCount`):");
+    stream.BeginScope();
+    this.Joints.WriteToStream(stream);
+    stream.EndScope();
+  }
+  
+  [Extension(typeid(ContactPoint))]
+  function WriteToStream(stream : UnitTestStreamWriter)
+  {
+    stream.WriteLine("ContactPoint:");
+    stream.BeginScope();
+    
+    stream.WriteLine(@this.BodyPoint);
+    stream.WriteLine(@this.ComplexImpulse);
+    stream.WriteLine(@this.FrictionImpulse);
+    stream.WriteLine(@this.NormalImpulse);
+    stream.WriteLine(@this.OtherBodyPoint);
+    stream.WriteLine(@this.Penetration);
+    stream.WriteLine(@this.RelativeVelocity);
+    stream.WriteLine(@this.WorldNormalTowardsOther);
+    stream.WriteLine(@this.WorldPoint);
+    
+    stream.EndScope();
+  }
+  
+  [Extension(typeid(ContactHolder))]
+  function WriteToStream(stream : UnitTestStreamWriter)
+  {
+    stream.WriteLine("ContactHolder:");
+    stream.BeginScope();
+    
+    stream.WriteLine(@this.Object);
+    stream.WriteLine(@this.OtherObject);
+    stream.WriteLine(@this.IsNew);
+    stream.WriteLine(@this.IsGhost);
+    
+    stream.WriteLine("ContactPoints (`this.ContactPointCount`):");
+    foreach(var point in this.ContactPoints)
+    {
+      point.WriteToStream(stream);
+    }
+    stream.EndScope();
+  }
+  
+  [Extension(typeid(ContactRange))]
+  function WriteToStream(stream : UnitTestStreamWriter)
+  {
+    foreach(var contactHolder in this)
+      contactHolder.WriteToStream(stream);
+  }
+  
+  [Extension(typeid(JointHolder))]
+  function WriteToStream(stream : UnitTestStreamWriter)
+  {
+    stream.WriteLine("JointHolder:");
+    stream.BeginScope();
+    
+    stream.WriteLine(@this.Owner);//"Owner: `stream.GetCogName(this.Owner)`");
+    stream.WriteLine("OtherBody: `stream.GetComponentOwnerName(this.OtherBody)`");
+    stream.WriteLine("OtherCollider: `stream.GetComponentOwnerName(this.OtherCollider)`");
+    stream.WriteLine(@this.AutoSnaps);
+    stream.WriteLine(@this.IsGhost);
+    stream.WriteLine(@this.MaxForce);
+    stream.WriteLine(@this.Valid);
+    stream.WriteLine(@this.SendsEvents);
+    stream.WriteLine("Joint: `stream.GetComponentOwnerName(this.Joint)`");
+    CheckedWriter[JointLimit].WriteToStream(this.Limit, stream);
+    CheckedWriter[JointMotor].WriteToStream(this.Motor, stream);
+    CheckedWriter[JointSpring].WriteToStream(this.Spring, stream);
+    
+    stream.EndScope();
+  }
+  
+  [Extension(typeid(JointRange))]
+  function WriteToStream(stream : UnitTestStreamWriter)
+  {
+    foreach(var jointHolder in this)
+      jointHolder.WriteToStream(stream);
+  }
+}
+

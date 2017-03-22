@@ -1,0 +1,13 @@
+[Version:1]
+BinaryContent 
+{
+	BinaryBuilder 
+	{
+		var Name = "TestPhysicsMesh"
+		var ResourceId = 0x588783a687b28d1f
+		var LoaderType = "PhysicsMesh"
+		var Version = 0
+		var FilterTag = ""
+		var ResourceOwner = ""
+	}
+}

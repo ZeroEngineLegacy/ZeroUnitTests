@@ -1,0 +1,49 @@
+[Version:1]
+PhysicsSolverConfig 
+{
+	var SolverIterationCount = 10
+	var PositionIterationCount = 2
+	var VelocityRestitutionThreshold = 3
+	var WarmStart = true
+	var CacheContacts = true
+	var TangentType = PhysicsContactTangentTypes.OrthonormalTangents
+	var PositionCorrectionType = PhysicsPositionCorrection.PostStabilization
+	var SolverType = PhysicsSolverType.Basic
+	var SubType = SolverSubType.BlockSolving
+	ManipulatorJointBlock 
+	{
+		var Slop = 0.0199999996
+		var LinearBaumgarte = 4.5
+		var AngularBaumgarte = 4.5
+		var LinearErrorCorrection = 0.200000003
+		var AngularErrorCorrection = 0.200000003
+		var CorrectionType = ConstraintPositionCorrection.Baumgarte
+	}
+	PhyGunJointBlock 
+	{
+		var Slop = 0.0199999996
+		var LinearBaumgarte = 4.5
+		var AngularBaumgarte = 4.5
+		var LinearErrorCorrection = 0.200000003
+		var AngularErrorCorrection = 0.200000003
+		var CorrectionType = ConstraintPositionCorrection.Baumgarte
+	}
+	ContactBlock 
+	{
+		var Slop = 0.0199999996
+		var LinearBaumgarte = 2
+		var AngularBaumgarte = 4.5
+		var LinearErrorCorrection = 0.200000003
+		var AngularErrorCorrection = 0.200000003
+		var CorrectionType = ConstraintPositionCorrection.Inherit
+	}
+	StickJointBlock 
+	{
+		var Slop = 0.0199999996
+		var LinearBaumgarte = 0.400000006
+		var AngularBaumgarte = 4.5
+		var LinearErrorCorrection = 0.200000003
+		var AngularErrorCorrection = 0.200000003
+		var CorrectionType = ConstraintPositionCorrection.Inherit
+	}
+}

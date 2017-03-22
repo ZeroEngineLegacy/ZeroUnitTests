@@ -1,0 +1,74 @@
+class PhysicsMeshTester : ZilchComponent
+{
+  [Property] var Active : Boolean = true;
+  
+  [Property] var PhysicsMesh : PhysicsMesh = PhysicsMesh.TestPhysicsMesh;
+  
+  function Initialize(init : CogInitializer)
+  {
+    if(!this.Active)
+      return;
+      
+    Zero.Connect(this.Owner, Events.RecordInitialization, this.OnRecordInitialization);
+  }
+
+  function OnRecordInitialization(event : CogFrameRecordEvent)
+  {
+    this.PhysicsMesh.WriteToStream(event.Stream);
+  }
+}
+
+class PhysicsMeshExtensions
+{
+  [Extension(typeid(PhysicsMesh))]
+  function WriteToStream(stream : UnitTestStreamWriter)
+  {
+    this.UpdateAndNotifyIfModified();
+    stream.WriteLine("PhysicsMesh: `this.Name`");
+    stream.BeginScope();
+    
+    this.Indices.WriteToStream(stream);
+    this.Vertices.WriteToStream(stream);
+    
+    stream.EndScope();
+  }
+  
+  [Extension(typeid(PhysicsMeshIndexData))]
+  function WriteToStream(stream : UnitTestStreamWriter)
+  {
+    stream.WriteLine("Indices (`this.Count`):");
+    stream.BeginScope();
+    
+    var builder = StringBuilder();
+    builder.Write("[");
+    for(var i = 0; i < this.Count; ++i)
+    {
+      builder.Write(this[i]);
+      builder.Write(", ");
+    }
+    builder.Write("]");
+    stream.WriteLine(builder.ToString());
+    
+    stream.EndScope();
+  }
+  
+  [Extension(typeid(PhysicsMeshVertexData))]
+  function WriteToStream(stream : UnitTestStreamWriter)
+  {
+    stream.WriteLine("Vertices (`this.Count`):");
+    stream.BeginScope();
+    
+    var builder = StringBuilder();
+    builder.Write("[");
+    for(var i = 0; i < this.Count; ++i)
+    {
+      builder.Write(this[i]);
+      builder.Write(", ");
+    }
+    builder.Write("]");
+    stream.WriteLine(builder.ToString());
+    
+    stream.EndScope();
+  }
+}
+

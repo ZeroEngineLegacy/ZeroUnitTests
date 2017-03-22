@@ -17,6 +17,10 @@ class HierarchySplineTest : ZilchComponent
     var spline = this.HierarchySpline.Spline;
     spline.WriteToStream(stream);
     
+    var splineQueryEvent = SplineEvent();
+    this.Owner.DispatchEvent(Events.QuerySpline, splineQueryEvent);
+    stream.WriteLine("QuerySpline. TotalDistance: (`splineQueryEvent.Spline.TotalDistance`)");
+    
     stream.EndScope();
   }
   

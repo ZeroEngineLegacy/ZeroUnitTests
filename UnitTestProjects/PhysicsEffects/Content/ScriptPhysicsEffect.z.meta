@@ -1,0 +1,9 @@
+[Version:1]
+TextContent 
+{
+	ZilchScriptBuilder 
+	{
+		var Name = "ScriptPhysicsEffect"
+		var ResourceId = 0x588772318486c1f7
+	}
+}
