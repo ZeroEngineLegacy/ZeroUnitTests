@@ -1,0 +1,9 @@
+[Version:1]
+TextContent 
+{
+	ZilchScriptBuilder 
+	{
+		var Name = "GroupTester"
+		var ResourceId = 0x588758bd9422e61c
+	}
+}

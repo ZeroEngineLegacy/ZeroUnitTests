@@ -1,0 +1,48 @@
+class DelayCallTester : ZilchComponent
+{
+  [Dependency] var BaseRecorder : BaseCogResultRecorder;
+  [Dependency] var Transform : Transform;
+  
+  function Initialize(init : CogInitializer)
+  {
+    Zero.Connect(this.Owner, Events.RecordInitialization, this.OnRecordInitialization);
+  }
+  
+  function OnRecordInitialization(event : CogFrameRecordEvent)
+  {
+    event.Stream.WriteLine("Delay Call tests:");
+    event.Stream.BeginScope();
+     
+    this.SetUpActions();
+    
+    event.Stream.EndScope();
+  }
+  
+  function SetUpActions()
+  {
+    var translationProperty = @this.Owner.Transform.WorldTranslation;
+    var originalLocation = this.Owner.Transform.WorldTranslation;
+    var newWorldLocation = Real3(0.0, 20.0, 50.0);
+    
+    var scaleProperty = @this.Owner.Transform.LocalScale;
+    var originalScale = this.Owner.Transform.Scale;
+    var newScale = Real3(5.0, 5.0, 5.0);
+    
+    var duration = 1;
+    
+    var actionSequenece = Action.Sequence(this.Owner.Actions);
+    
+    Action.Property(actionSequenece, translationProperty, newWorldLocation, duration, EaseType.Linear);
+    Action.Property(actionSequenece, scaleProperty, newScale, duration, EaseType.Linear);
+    Action.Delay(actionSequenece, 1.0);
+    Action.Property(actionSequenece, translationProperty, originalLocation, duration, EaseType.Linear);
+    Action.Property(actionSequenece, scaleProperty, originalScale, duration, EaseType.Linear);
+    Action.Call(actionSequenece, this.CallTest);
+  }
+  
+  function CallTest()
+  {
+    this.Owner.Transform.LocalTranslation = Real3(100.0, 100.0, 100.0);
+    this.Owner.Transform.LocalScale = Real3(10.0, 10.0, 10.0);
+  }
+}

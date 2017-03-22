@@ -10,6 +10,7 @@ syntax: glob
 *.sdf
 *.opensdf
 *.ipch
+*.generated.txt
 
 */obj/
 */bin/

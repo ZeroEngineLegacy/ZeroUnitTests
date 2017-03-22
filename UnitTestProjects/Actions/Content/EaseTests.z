@@ -1,0 +1,36 @@
+class EaseTests : ZilchComponent
+{
+  [Dependency] var BaseRecorder : BaseCogResultRecorder;
+  [Dependency] var Transform : Transform;
+  
+  function Initialize(init : CogInitializer)
+  {
+    Zero.Connect(this.Owner, Events.RecordInitialization, this.OnRecordInitialization);
+  }
+
+  function OnRecordInitialization(event : CogFrameRecordEvent)
+  {
+    event.Stream.WriteLine("Ease tests:");
+    event.Stream.BeginScope();
+     
+    this.SetUpActions();
+    
+    event.Stream.EndScope();
+  }
+  
+  function SetUpActions()
+  {
+    var translationProperty = @this.Owner.Transform.WorldTranslation;
+    var duration = 1.0;
+    
+    var actionSequenece = Action.Sequence(this.Owner.Actions);
+    
+    Action.Property(actionSequenece, translationProperty, Real3(0.0, 0.0, 100.0), duration, EaseType.Linear);
+    Action.Property(actionSequenece, translationProperty, Real3(0.0, 0.0, 30.0), duration, EaseType.QuadIn);
+    Action.Property(actionSequenece, translationProperty, Real3(0.0, 0.0, 100.0), duration, EaseType.QuadInOut);
+    Action.Property(actionSequenece, translationProperty, Real3(0.0, 0.0, 30.0), duration, EaseType.QuadOut);
+    Action.Property(actionSequenece, translationProperty, Real3(0.0, 0.0, 100.0), duration, EaseType.SinIn);
+    Action.Property(actionSequenece, translationProperty, Real3(0.0, 0.0, 30.0), duration, EaseType.SinInOut);
+    Action.Property(actionSequenece, translationProperty, Real3(0.0, 0.0, 100.0), duration, EaseType.SinOut);
+  }
+}

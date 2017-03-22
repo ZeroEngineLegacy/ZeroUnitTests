@@ -1,0 +1,9 @@
+[Version:1]
+TextContent 
+{
+	ZilchScriptBuilder 
+	{
+		var Name = "EventRecorded"
+		var ResourceId = 0x589c25eb461c7b27
+	}
+}

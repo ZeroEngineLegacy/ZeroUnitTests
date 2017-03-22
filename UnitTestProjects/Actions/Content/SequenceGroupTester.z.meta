@@ -1,0 +1,9 @@
+[Version:1]
+TextContent 
+{
+	ZilchScriptBuilder 
+	{
+		var Name = "SequenceGroupTester"
+		var ResourceId = 0x58875afce9504bcf
+	}
+}

@@ -1,0 +1,44 @@
+class SequenceGroupTester : ZilchComponent
+{
+  [Dependency] var BaseRecorder : BaseCogResultRecorder;
+  [Dependency] var Transform : Transform;
+  
+  function Initialize(init : CogInitializer)
+  {
+    Zero.Connect(this.Owner, Events.RecordInitialization, this.OnRecordInitialization);
+  }
+
+  function OnRecordInitialization(event : CogFrameRecordEvent)
+  {
+    event.Stream.WriteLine("Sequence group tests:");
+    event.Stream.BeginScope();
+     
+    this.SetUpActions();
+    
+    event.Stream.EndScope();
+  }
+  
+  function SetUpActions()
+  {
+    var translationProperty = @this.Owner.Transform.WorldTranslation;
+    var scaleProperty = @this.Owner.Transform.LocalScale;
+    var rotationProperty = @this.Owner.Transform.LocalRotation;
+    //var colorProperty = @this.Owner.Model.Material.SolidColor;
+    
+    var duration = 1;
+    var duration2 = 3.5;
+    
+    var sequenece = Action.Sequence(this.Owner.Actions);
+    
+    Action.Property(sequenece, translationProperty, Real3(100.0, 0.0, 0.0), duration, EaseType.Linear);
+    Action.Property(sequenece, scaleProperty, Real3(2.0, 2.0, 2.0), duration, EaseType.Linear);
+    Action.Property(sequenece, rotationProperty, Math.ToQuaternion(Real3(90.0, 90.0, 90.0)), duration, EaseType.Linear);
+    
+    var group = Action.Group(sequenece);
+    
+    Action.Property(group, translationProperty, Real3(30.0, 0.0, 0.0), duration2, EaseType.Linear);
+    Action.Property(group, scaleProperty, Real3(1.0, 1.0, 1.0), duration2, EaseType.Linear);
+    Action.Property(group, rotationProperty, Math.ToQuaternion(Real3(0.0, 0.0, 0.0)), duration2, EaseType.Linear);
+    //Action.Property(group, colorProperty, Real4(0.0, 1.0, 0.0, 1.0), duration, EaseType.Linear);
+  }
+}
