@@ -1,0 +1,247 @@
+----Cube----
+ResourceTable: TestTable
+  Count: 5
+  MaxWeight: 1
+  ResourceType: Archetype
+  ResourceTableEntryRange:
+    Name: Item1
+      ResourceType: Archetype
+      Resource: Cube
+      Value: 4de020863e85dcdf:Cube
+      Weight: 1
+    Name: Name2
+      ResourceType: Archetype
+      Resource: DefaultArchetype
+      Value: 4faa6050b86884ec:DefaultArchetype
+      Weight: 0.25
+    Name: SpaceName
+      ResourceType: Archetype
+      Resource: Space
+      Value: 576f215c0825de61:Space
+      Weight: 0.57
+    Name: SphereName
+      ResourceType: Archetype
+      Resource: Sphere
+      Value: 4de020863e8476d9:Sphere
+      Weight: 0.8
+    Name: Name5
+      ResourceType: Archetype
+      Resource: Sprite
+      Value: 582c3e203dd864d9:Sprite
+      Weight: 0.06
+ClonedTable:
+  Clear:
+    ResourceTable: Runtime
+      Count: 0
+      MaxWeight: 1
+      ResourceType: Archetype
+      ResourceTableEntryRange:
+  Add:
+    ResourceTable: Runtime
+      Count: 1
+      MaxWeight: 1
+      ResourceType: Archetype
+      ResourceTableEntryRange:
+        Name: Item1
+          ResourceType: Archetype
+          Resource: Camera
+          Value: Camera
+          Weight: 0
+  Add:
+    ResourceTable: Runtime
+      Count: 2
+      MaxWeight: 1
+      ResourceType: Archetype
+      ResourceTableEntryRange:
+        Name: Item1
+          ResourceType: Archetype
+          Resource: Camera
+          Value: Camera
+          Weight: 0
+        Name: Item15
+          ResourceType: Archetype
+          Resource: Cylinder
+          Value: Cylinder
+          Weight: 0.4
+  GetOrDefault: Item1
+    Name: Item1
+      ResourceType: Archetype
+      Resource: Camera
+      Value: Camera
+      Weight: 0
+  GetOrDefault: Item0
+    Name: Item15
+      ResourceType: Archetype
+      Resource: Cylinder
+      Value: Cylinder
+      Weight: 0.4
+  operator[]: 'Item1'
+    Name: Item1
+      ResourceType: Archetype
+      Resource: Camera
+      Value: Camera
+      Weight: 0
+  operator[]: 0
+    Name: Item1
+      ResourceType: Archetype
+      Resource: Camera
+      Value: Camera
+      Weight: 0
+  Contains: Item15
+    true
+  Remove: Item1
+    ResourceTable: Runtime
+      Count: 1
+      MaxWeight: 1
+      ResourceType: Archetype
+      ResourceTableEntryRange:
+        Name: Item15
+          ResourceType: Archetype
+          Resource: Cylinder
+          Value: Cylinder
+          Weight: 0.4
+  Add:
+    ResourceTable: Runtime
+      Count: 2
+      MaxWeight: 1
+      ResourceType: Archetype
+      ResourceTableEntryRange:
+        Name: Item15
+          ResourceType: Archetype
+          Resource: Cylinder
+          Value: Cylinder
+          Weight: 0.4
+        Name: Item33
+          ResourceType: Archetype
+          Resource: Ellipsoid
+          Value: Ellipsoid
+          Weight: 1.5
+  Change MaxWeight: 10
+    ResourceTable: Runtime
+      Count: 2
+      MaxWeight: 10
+      ResourceType: Archetype
+      ResourceTableEntryRange:
+        Name: Item15
+          ResourceType: Archetype
+          Resource: Cylinder
+          Value: Cylinder
+          Weight: 0.4
+        Name: Item33
+          ResourceType: Archetype
+          Resource: Ellipsoid
+          Value: Ellipsoid
+          Weight: 1.5
+  Change MaxWeight: 0.25
+    ResourceTable: Runtime
+      Count: 2
+      MaxWeight: 0.25
+      ResourceType: Archetype
+      ResourceTableEntryRange:
+        Name: Item15
+          ResourceType: Archetype
+          Resource: Cylinder
+          Value: Cylinder
+          Weight: 0.25
+        Name: Item33
+          ResourceType: Archetype
+          Resource: Ellipsoid
+          Value: Ellipsoid
+          Weight: 0.25
+  ResourceType: String
+    ResourceTable: Runtime
+      Count: 2
+      MaxWeight: 0.25
+      ResourceType: String
+      ResourceTableEntryRange:
+        Name: Item15
+          ResourceType: String
+          Resource: null
+          Value: Cylinder
+          Weight: 0.25
+        Name: Item33
+          ResourceType: String
+          Resource: null
+          Value: Ellipsoid
+          Weight: 0.25
+  ResourceType: CollionGroup
+    ResourceTable: Runtime
+      Count: 2
+      MaxWeight: 0.25
+      ResourceType: CollionGroup
+      ResourceTableEntryRange:
+        Name: Item15
+          ResourceType: CollionGroup
+          Resource: null
+          Value: Cylinder
+          Weight: 0.25
+        Name: Item33
+          ResourceType: CollionGroup
+          Resource: null
+          Value: Ellipsoid
+          Weight: 0.25
+  ResourceType: Archetype
+    ResourceTable: Runtime
+      Count: 2
+      MaxWeight: 0.25
+      ResourceType: Archetype
+      ResourceTableEntryRange:
+        Name: Item15
+          ResourceType: Archetype
+          Resource: Cylinder
+          Value: Cylinder
+          Weight: 0.25
+        Name: Item33
+          ResourceType: Archetype
+          Resource: Ellipsoid
+          Value: Ellipsoid
+          Weight: 0.25
+  OriginalTable:
+    ResourceTable: TestTable
+      Count: 5
+      MaxWeight: 1
+      ResourceType: Archetype
+      ResourceTableEntryRange:
+        Name: Item1
+          ResourceType: Archetype
+          Resource: Cube
+          Value: 4de020863e85dcdf:Cube
+          Weight: 1
+        Name: Name2
+          ResourceType: Archetype
+          Resource: DefaultArchetype
+          Value: 4faa6050b86884ec:DefaultArchetype
+          Weight: 0.25
+        Name: SpaceName
+          ResourceType: Archetype
+          Resource: Space
+          Value: 576f215c0825de61:Space
+          Weight: 0.57
+        Name: SphereName
+          ResourceType: Archetype
+          Resource: Sphere
+          Value: 4de020863e8476d9:Sphere
+          Weight: 0.8
+        Name: Name5
+          ResourceType: Archetype
+          Resource: Sprite
+          Value: 582c3e203dd864d9:Sprite
+          Weight: 0.06
+  Sample:
+    Sample: [0.1, 0.5]
+      Name: Item1
+        ResourceType: Archetype
+        Resource: Cube
+        Value: 4de020863e85dcdf:Cube
+        Weight: 1
+    SampleIndex: [0.1, 0.5]
+      0
+    Sample: [0.9, 0.1]
+      Name: Name5
+        ResourceType: Archetype
+        Resource: Sprite
+        Value: 582c3e203dd864d9:Sprite
+        Weight: 0.06
+    SampleIndex: [0.9, 0.1]
+      4
+

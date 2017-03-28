@@ -1,0 +1,223 @@
+class ResourceTableTester : ZilchComponent
+{
+  [Dependency] var BaseCogResultRecorder : BaseCogResultRecorder;
+  var Table : ResourceTable = ResourceTable.TestTable;
+  
+  function Initialize(init : CogInitializer)
+  {
+    Zero.Connect(this.Owner, Events.RecordInitialization, this.OnRecordInitialization);
+  }
+  
+  function TestTableClone(stream : UnitTestStreamWriter)
+  {
+    var clonedTable = this.Table.RuntimeClone() as ResourceTable;
+    stream.WriteLine("ClonedTable:");
+    stream.BeginScope();
+    
+    // Clear the table
+    stream.WriteLine("Clear:");
+    stream.BeginScope();
+    clonedTable.Clear();
+    clonedTable.WriteToStream(stream);
+    stream.EndScope();
+    
+    // Add a new item
+    var entry = ResourceTableEntry();
+    stream.WriteLine("Add:");
+    stream.BeginScope();
+    entry.Name = "Item1";
+    entry.Resource = Archetype.Camera;
+    clonedTable.AddOrIgnore(entry);
+    clonedTable.WriteToStream(stream);
+    stream.EndScope();
+    
+    // Add another
+    stream.WriteLine("Add:");
+    stream.BeginScope();
+    entry.Name = "Item15";
+    entry.Resource = Archetype.Cylinder;
+    entry.Weight = 0.4;
+    clonedTable.AddOrIgnore(entry);
+    clonedTable.WriteToStream(stream);
+    stream.EndScope();
+    
+    // Find an item that should exist
+    stream.WriteLine("GetOrDefault: Item1");
+    stream.BeginScope();
+    var foundEntry = clonedTable.GetOrDefault("Item1", entry);
+    foundEntry.WriteToStream(stream);
+    stream.EndScope();
+    
+    // Find an item that shouldn't exist (defaults to "Item15")
+    stream.WriteLine("GetOrDefault: Item0");
+    stream.BeginScope();
+    foundEntry = clonedTable.GetOrDefault("Item0", entry);
+    foundEntry.WriteToStream(stream);
+    stream.EndScope();
+    
+    // Check HashMap[] on "Item1"
+    stream.WriteLine("operator[]: 'Item1'");
+    stream.BeginScope();
+    foundEntry = clonedTable["Item1"];
+    foundEntry.WriteToStream(stream);
+    stream.EndScope();
+    
+    // Check Array[] at index 0 (Item1)
+    stream.WriteLine("operator[]: 0");
+    stream.BeginScope();
+    foundEntry = clonedTable[0];
+    foundEntry.WriteToStream(stream);
+    stream.EndScope();
+    
+    // Check contains
+    stream.WriteLine("Contains: Item15");
+    stream.BeginScope();
+    stream.WriteLine(clonedTable.Contains("Item15"));
+    stream.EndScope();
+    
+    // Remove the first item
+    stream.WriteLine("Remove: Item1");
+    stream.BeginScope();
+    clonedTable.RemoveOrIgnore("Item1");
+    clonedTable.WriteToStream(stream);
+    stream.EndScope();
+    
+    // Add another item
+    stream.WriteLine("Add:");
+    stream.BeginScope();
+    entry.Name = "Item33";
+    entry.Resource = Archetype.Ellipsoid;
+    entry.Weight = 1.5;
+    clonedTable.AddOrIgnore(entry);
+    clonedTable.WriteToStream(stream);
+    stream.EndScope();
+    
+    // Change the weight up (no entry weight should change)
+    stream.WriteLine("Change MaxWeight: 10");
+    stream.BeginScope();
+    clonedTable.MaxWeight = 10;
+    clonedTable.WriteToStream(stream);
+    stream.EndScope();
+    
+    // Change the weight down (all entries should be clamped)
+    stream.WriteLine("Change MaxWeight: 0.25");
+    stream.BeginScope();
+    clonedTable.MaxWeight = 0.25;
+    clonedTable.WriteToStream(stream);
+    stream.EndScope();
+    
+    // Change the contained type to string (all resouce* should be null but the values should be the same)
+    stream.WriteLine("ResourceType: String");
+    stream.BeginScope();
+    clonedTable.ResourceType = "String";
+    clonedTable.WriteToStream(stream);
+    stream.EndScope();
+    
+    // Change the contained type to CollisionGroup (all resouce* should be null but the values should be the same)
+    stream.WriteLine("ResourceType: CollionGroup");
+    stream.BeginScope();
+    clonedTable.ResourceType = "CollionGroup";
+    clonedTable.WriteToStream(stream);
+    stream.EndScope();
+    
+    // Change the contained type back to Archetype (all resouce* should go back to the correct type)
+    stream.WriteLine("ResourceType: Archetype");
+    stream.BeginScope();
+    clonedTable.ResourceType = "Archetype";
+    clonedTable.WriteToStream(stream);
+    stream.EndScope();
+  }
+  
+  function TestSample(stream : UnitTestStreamWriter)
+  {
+    stream.WriteLine("Sample:");
+    stream.BeginScope();
+    
+    stream.WriteLine("Sample: [0.1, 0.5]");
+    stream.BeginScope();
+    var foundEntry = this.Table.Sample(0.1, 0.5);
+    foundEntry.WriteToStream(stream);
+    stream.EndScope();
+    stream.WriteLine("SampleIndex: [0.1, 0.5]");
+    stream.BeginScope();
+    var foundIndex = this.Table.SampleIndex(0.1, 0.5);
+    stream.WriteLine(foundIndex);
+    stream.EndScope();
+    
+    stream.WriteLine("Sample: [0.9, 0.1]");
+    stream.BeginScope();
+    foundEntry = this.Table.Sample(0.9, 0.1);
+    foundEntry.WriteToStream(stream);
+    stream.EndScope();
+    stream.WriteLine("SampleIndex: [0.9, 0.1]");
+    stream.BeginScope();
+    foundIndex = this.Table.SampleIndex(0.9, 0.1);
+    stream.WriteLine(foundIndex);
+    stream.EndScope();
+    
+    stream.EndScope();
+  }
+
+  function OnRecordInitialization(event : CogFrameRecordEvent)
+  {
+    var stream = event.Stream;
+    this.Table.WriteToStream(stream);
+    
+    this.TestTableClone(stream);
+    
+    stream.WriteLine("OriginalTable:");
+    stream.BeginScope();
+    this.Table.WriteToStream(stream);
+    stream.EndScope();
+    
+    this.TestSample(stream);
+  }
+}
+
+class ResourceTableExtensions
+{
+  [Extension(typeid(ResourceTableEntry))]
+  function WriteToStream(stream : UnitTestStreamWriter)
+  {
+    stream.WriteLine(@this.Name);
+    
+    stream.BeginScope();
+    stream.WriteLine(@this.ResourceType);
+    // Print the resource name to enforce consistency (no memory address values are good)
+    if(this.Resource == null)
+      stream.WriteLine("Resource: null");
+    else
+      stream.WriteLine("Resource: `this.Resource.Name`");
+      
+    stream.WriteLine(@this.Value);
+    stream.WriteLine(@this.Weight);
+    stream.EndScope();
+  }
+  
+  [Extension(typeid(ResourceTableEntryRange))]
+  function WriteToStream(stream : UnitTestStreamWriter)
+  {
+    stream.WriteLine("ResourceTableEntryRange:");
+    stream.BeginScope();
+    foreach(var entry in this)
+    {
+      entry.WriteToStream(stream);
+    }
+    stream.EndScope();
+  }
+  
+  [Extension(typeid(ResourceTable))]
+  function WriteToStream(stream : UnitTestStreamWriter)
+  {
+    stream.WriteLine("ResourceTable: `this.Name`");
+    stream.BeginScope();
+    
+    stream.WriteLine(@this.Count);
+    stream.WriteLine(@this.MaxWeight);
+    stream.WriteLine(@this.ResourceType);
+    
+    this.All.WriteToStream(stream);
+    
+    stream.EndScope();
+  }
+}

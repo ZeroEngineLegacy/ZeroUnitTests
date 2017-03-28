@@ -1,0 +1,12 @@
+[Version:1]
+DataContent 
+{
+	DataBuilder 
+	{
+		var Name = "TestTable"
+		var ResourceId = 0x588c18e890a178b6
+		var LoaderType = "ResourceTable"
+		var Version = 0
+		var ShowInEditor = true
+	}
+}

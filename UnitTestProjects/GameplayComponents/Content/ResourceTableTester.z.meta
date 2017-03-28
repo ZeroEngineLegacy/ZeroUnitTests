@@ -1,0 +1,9 @@
+[Version:1]
+TextContent 
+{
+	ZilchScriptBuilder 
+	{
+		var Name = "ResourceTableTester"
+		var ResourceId = 0x588c0d3e0f849f63
+	}
+}

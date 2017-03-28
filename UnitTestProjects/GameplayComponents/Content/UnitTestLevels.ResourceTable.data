@@ -10,6 +10,12 @@ ResourceTable
 			var Value = "58875550292cc14a:RandomContext"
 			var Weight = 1
 		}
+		Object
+		{
+			var Name = "Name2"
+			var Value = "588c190672c960c8:ResourceTableTest"
+			var Weight = 1
+		}
 	}
 	var MaxWeight = 1
 }

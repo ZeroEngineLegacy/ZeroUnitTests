@@ -1,0 +1,39 @@
+[Version:1]
+ResourceTable 
+{
+	var ResourceType = "Archetype"
+	var EntryList = Array
+	{
+		Object
+		{
+			var Name = "Item1"
+			var Value = "4de020863e85dcdf:Cube"
+			var Weight = 1
+		}
+		Object
+		{
+			var Name = "Name2"
+			var Value = "4faa6050b86884ec:DefaultArchetype"
+			var Weight = 0.25
+		}
+		Object
+		{
+			var Name = "SpaceName"
+			var Value = "576f215c0825de61:Space"
+			var Weight = 0.569999993
+		}
+		Object
+		{
+			var Name = "SphereName"
+			var Value = "4de020863e8476d9:Sphere"
+			var Weight = 0.799999952
+		}
+		Object
+		{
+			var Name = "Name5"
+			var Value = "582c3e203dd864d9:Sprite"
+			var Weight = 0.0599999987
+		}
+	}
+	var MaxWeight = 1
+}
