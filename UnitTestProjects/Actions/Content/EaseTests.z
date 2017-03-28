@@ -25,12 +25,12 @@ class EaseTests : ZilchComponent
     
     var actionSequenece = Action.Sequence(this.Owner.Actions);
     
-    Action.Property(actionSequenece, translationProperty, Real3(0.0, 0.0, 100.0), duration, EaseType.Linear);
-    Action.Property(actionSequenece, translationProperty, Real3(0.0, 0.0, 30.0), duration, EaseType.QuadIn);
-    Action.Property(actionSequenece, translationProperty, Real3(0.0, 0.0, 100.0), duration, EaseType.QuadInOut);
-    Action.Property(actionSequenece, translationProperty, Real3(0.0, 0.0, 30.0), duration, EaseType.QuadOut);
-    Action.Property(actionSequenece, translationProperty, Real3(0.0, 0.0, 100.0), duration, EaseType.SinIn);
-    Action.Property(actionSequenece, translationProperty, Real3(0.0, 0.0, 30.0), duration, EaseType.SinInOut);
-    Action.Property(actionSequenece, translationProperty, Real3(0.0, 0.0, 100.0), duration, EaseType.SinOut);
+    Action.Property(actionSequenece, translationProperty, Real3(0.0, 0.0, 100.0), duration, Ease.Linear);
+    Action.Property(actionSequenece, translationProperty, Real3(0.0, 0.0, 30.0), duration, Ease.QuadIn);
+    Action.Property(actionSequenece, translationProperty, Real3(0.0, 0.0, 100.0), duration, Ease.QuadInOut);
+    Action.Property(actionSequenece, translationProperty, Real3(0.0, 0.0, 30.0), duration, Ease.QuadOut);
+    Action.Property(actionSequenece, translationProperty, Real3(0.0, 0.0, 100.0), duration, Ease.SinIn);
+    Action.Property(actionSequenece, translationProperty, Real3(0.0, 0.0, 30.0), duration, Ease.SinInOut);
+    Action.Property(actionSequenece, translationProperty, Real3(0.0, 0.0, 100.0), duration, Ease.SinOut);
   }
 }

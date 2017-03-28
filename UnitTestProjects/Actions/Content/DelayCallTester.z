@@ -32,11 +32,11 @@ class DelayCallTester : ZilchComponent
     
     var actionSequenece = Action.Sequence(this.Owner.Actions);
     
-    Action.Property(actionSequenece, translationProperty, newWorldLocation, duration, EaseType.Linear);
-    Action.Property(actionSequenece, scaleProperty, newScale, duration, EaseType.Linear);
+    Action.Property(actionSequenece, translationProperty, newWorldLocation, duration, Ease.Linear);
+    Action.Property(actionSequenece, scaleProperty, newScale, duration, Ease.Linear);
     Action.Delay(actionSequenece, 1.0);
-    Action.Property(actionSequenece, translationProperty, originalLocation, duration, EaseType.Linear);
-    Action.Property(actionSequenece, scaleProperty, originalScale, duration, EaseType.Linear);
+    Action.Property(actionSequenece, translationProperty, originalLocation, duration, Ease.Linear);
+    Action.Property(actionSequenece, scaleProperty, originalScale, duration, Ease.Linear);
     Action.Call(actionSequenece, this.CallTest);
   }
   

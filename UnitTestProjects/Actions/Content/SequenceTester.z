@@ -30,7 +30,7 @@ class SequenceTester : ZilchComponent
     
     var actionSequenece = Action.Sequence(this.Owner.Actions);
     
-    Action.Property(actionSequenece, translationProperty, newWorldLocation, duration, EaseType.Linear);
-    Action.Property(actionSequenece, scaleProperty, newScale, duration, EaseType.Linear);
+    Action.Property(actionSequenece, translationProperty, newWorldLocation, duration, Ease.Linear);
+    Action.Property(actionSequenece, scaleProperty, newScale, duration, Ease.Linear);
   }
 }

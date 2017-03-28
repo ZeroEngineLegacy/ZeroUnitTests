@@ -30,7 +30,7 @@ class GroupTester : ZilchComponent
     
     var actionGroup = Action.Group(this.Owner.Actions);
     
-    Action.Property(actionGroup, translationProperty, newWorldLocation, duration, EaseType.Linear);
-    Action.Property(actionGroup, scaleProperty, newScale, duration, EaseType.Linear);
+    Action.Property(actionGroup, translationProperty, newWorldLocation, duration, Ease.Linear);
+    Action.Property(actionGroup, scaleProperty, newScale, duration, Ease.Linear);
   }
 }
