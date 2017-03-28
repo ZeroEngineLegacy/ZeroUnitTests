@@ -1,0 +1,8 @@
+[Version:1]
+ContentLibrary 
+{
+	var Name = "Actions"
+	var LibraryId = 0x5887ac9273e2f000
+	var SourceControlType = ""
+	var ReadOnly = false
+}

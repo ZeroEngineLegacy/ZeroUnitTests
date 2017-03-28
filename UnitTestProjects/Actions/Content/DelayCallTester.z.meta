@@ -1,0 +1,9 @@
+[Version:1]
+TextContent 
+{
+	ZilchScriptBuilder 
+	{
+		var Name = "DelayCallTester"
+		var ResourceId = 0x588462d297695dd5
+	}
+}

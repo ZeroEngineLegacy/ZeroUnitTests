@@ -1,0 +1,36 @@
+class SequenceTester : ZilchComponent
+{
+  [Dependency] var BaseRecorder : BaseCogResultRecorder;
+  [Dependency] var Transform : Transform;
+  
+  function Initialize(init : CogInitializer)
+  {
+    Zero.Connect(this.Owner, Events.RecordInitialization, this.OnRecordInitialization);
+  }
+
+  function OnRecordInitialization(event : CogFrameRecordEvent)
+  {
+    event.Stream.WriteLine("Sequence tests:");
+    event.Stream.BeginScope();
+     
+    this.SetUpActions();
+    
+    event.Stream.EndScope();
+  }
+  
+  function SetUpActions()
+  {
+    var translationProperty = @this.Owner.Transform.WorldTranslation;
+    var newWorldLocation = Real3(10.0, 10.0, 10.0);
+    
+    var scaleProperty = @this.Owner.Transform.LocalScale;
+    var newScale = Real3(5.0, 5.0, 5.0);
+    
+    var duration = 3.5;
+    
+    var actionSequenece = Action.Sequence(this.Owner.Actions);
+    
+    Action.Property(actionSequenece, translationProperty, newWorldLocation, duration, EaseType.Linear);
+    Action.Property(actionSequenece, scaleProperty, newScale, duration, EaseType.Linear);
+  }
+}
