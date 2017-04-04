@@ -17,7 +17,7 @@ PhysicsSolverConfig
 		var AngularBaumgarte = 4.5
 		var LinearErrorCorrection = 0.200000003
 		var AngularErrorCorrection = 0.200000003
-		var CorrectionType = ConstraintPositionCorrection.Baumgarte
+		var PositionCorrectionType = ConstraintPositionCorrection.Baumgarte
 	}
 	PhyGunJointBlock 
 	{
@@ -26,7 +26,7 @@ PhysicsSolverConfig
 		var AngularBaumgarte = 4.5
 		var LinearErrorCorrection = 0.200000003
 		var AngularErrorCorrection = 0.200000003
-		var CorrectionType = ConstraintPositionCorrection.Baumgarte
+		var PositionCorrectionType = ConstraintPositionCorrection.Baumgarte
 	}
 	ContactBlock 
 	{
@@ -35,7 +35,7 @@ PhysicsSolverConfig
 		var AngularBaumgarte = 4.5
 		var LinearErrorCorrection = 0.200000003
 		var AngularErrorCorrection = 0.200000003
-		var CorrectionType = ConstraintPositionCorrection.Inherit
+		var PositionCorrectionType = ConstraintPositionCorrection.Inherit
 	}
 	StickJointBlock 
 	{
@@ -44,6 +44,6 @@ PhysicsSolverConfig
 		var AngularBaumgarte = 4.5
 		var LinearErrorCorrection = 0.200000003
 		var AngularErrorCorrection = 0.200000003
-		var CorrectionType = ConstraintPositionCorrection.Inherit
+		var PositionCorrectionType = ConstraintPositionCorrection.Inherit
 	}
 }
