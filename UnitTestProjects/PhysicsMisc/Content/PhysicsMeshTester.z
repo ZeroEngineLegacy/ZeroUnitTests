@@ -12,9 +12,63 @@ class PhysicsMeshTester : ZilchComponent
     Zero.Connect(this.Owner, Events.RecordInitialization, this.OnRecordInitialization);
   }
 
+  function TestRuntimeClone(stream : UnitTestStreamWriter)
+  {
+    stream.WriteLine("Cloned Physics Mesh:");
+    stream.BeginScope();
+
+    var clone = this.PhysicsMesh.RuntimeClone();
+    clone.WriteToStream(stream);
+    
+    stream.WriteLine("Update Physics:");
+    clone.Vertices.Clear();
+    clone.Vertices.Add(Real3(0));
+    clone.Vertices.Add(Real3(1, 0, 0));
+    clone.Vertices.Add(Real3(0, 1, 0));
+    clone.Vertices.Add(Real3(0, 0, 1));
+    
+    clone.Indices.Clear();
+    clone.Indices.Add(0);
+    clone.Indices.Add(1);
+    clone.Indices.Add(2);
+    
+    clone.Indices.Add(0);
+    clone.Indices.Add(1);
+    clone.Indices.Add(3);
+    
+    clone.Indices.Add(0);
+    clone.Indices.Add(2);
+    clone.Indices.Add(3);
+    
+    clone.Indices.Add(1);
+    clone.Indices.Add(2);
+    clone.Indices.Add(3);
+    
+    clone.WriteToStream(stream);
+    
+    stream.EndScope();
+  }
+
+  function TestCreateRuntime(stream : UnitTestStreamWriter)
+  {
+    stream.WriteLine("Create Physics Mesh:");
+    stream.BeginScope();
+
+    var convexMesh = PhysicsMesh.CreateRuntime();
+    convexMesh.WriteToStream(stream);
+    
+    stream.EndScope();
+  }
+
   function OnRecordInitialization(event : CogFrameRecordEvent)
   {
-    this.PhysicsMesh.WriteToStream(event.Stream);
+    var stream = event.Stream;
+    this.PhysicsMesh.WriteToStream(stream);
+    
+    this.TestCreateRuntime(stream);
+    this.TestRuntimeClone(stream);
+    stream.WriteLine("Original Physics Mesh:");
+    this.PhysicsMesh.WriteToStream(stream);
   }
 }
 

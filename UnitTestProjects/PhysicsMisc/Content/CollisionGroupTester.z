@@ -7,15 +7,52 @@ class CollisionGroupTester : ZilchComponent
   {
     Zero.Connect(this.Owner, Events.RecordInitialization, this.OnRecordInitialization);
   }
+  
+  function TestRuntimeClone(stream : UnitTestStreamWriter)
+  {
+    stream.WriteLine("ClonedGroup:");
+    stream.BeginScope();
+
+    var clone = this.Collider.CollisionGroup.RuntimeClone();
+    clone.WriteToStream(stream);
+    
+    stream.EndScope();
+  }
+  
+  function TestCreateRuntime(stream : UnitTestStreamWriter)
+  {
+    stream.WriteLine("CreateRuntime:");
+    stream.BeginScope();
+
+    var group = CollisionGroup.CreateRuntime();
+    group.WriteToStream(stream);
+    
+    stream.EndScope();
+  }
 
   function OnRecordInitialization(event : CogFrameRecordEvent)
   {
     var group = this.Collider.CollisionGroup;
     var stream = event.Stream;
     
-    stream.WriteLine("CollisionGroups:");
+    group.WriteToStream(stream);
+    
+    this.TestCreateRuntime(stream);
+    this.TestRuntimeClone(stream);
+    
+    stream.WriteLine("OriginalGroup:");
+    group.WriteToStream(stream);
+  }
+}
+
+class CollisionGroupExtensions
+{
+  [Extension(typeid(CollisionGroup))]
+  function WriteToStream(stream : UnitTestStreamWriter)
+  {
+    stream.WriteLine("CollisionGroup:");
     stream.BeginScope();
-    stream.WriteLine(@group.Name);
+    stream.WriteLine(@this.Name);
     stream.EndScope();
   }
 }

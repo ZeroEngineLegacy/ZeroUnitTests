@@ -1,9 +1,75 @@
 ----CollisionGroup----
-CollisionGroups:
+CollisionGroup:
+  Name: DefaultGroup
+CreateRuntime:
+  CollisionGroup:
+    Name: Runtime
+ClonedGroup:
+  CollisionGroup:
+    Name: Runtime
+OriginalGroup:
+CollisionGroup:
   Name: DefaultGroup
 
 ----CollisionTable----
-CollisionTable Initialization:
+CollisionTable:
+  Name: TestTable
+  CollisionFilter:  (GroupA / GroupB)
+    CollisionFlags: SkipResolution
+    CollisionFilterBlock: CollisionStartedBlock
+      SendEventsToA: true
+      SendEventsToB: true
+      SendEventsToSpace: true
+      EventOverride: 
+    CollisionFilterBlock: CollisionEndedBlock
+      SendEventsToA: false
+      SendEventsToB: true
+      SendEventsToSpace: false
+      EventOverride: 
+  CollisionFilter:  (GroupA / GroupA)
+    CollisionFlags: SkipDetection
+    CollisionFilterBlock: CollisionPersistedBlock
+      SendEventsToA: true
+      SendEventsToB: true
+      SendEventsToSpace: false
+      EventOverride: 
+    CollisionFilterBlock: PreSolveBlock
+      SendEventsToA: false
+      SendEventsToB: false
+      SendEventsToSpace: false
+      EventOverride: Test
+CreateTable:
+  CollisionTable:
+    Name: Runtime
+ClonedTable:
+  CollisionTable:
+    Name: Runtime
+    CollisionFilter:  (GroupA / GroupB)
+      CollisionFlags: SkipResolution
+      CollisionFilterBlock: CollisionStartedBlock
+        SendEventsToA: true
+        SendEventsToB: true
+        SendEventsToSpace: true
+        EventOverride: 
+      CollisionFilterBlock: CollisionEndedBlock
+        SendEventsToA: false
+        SendEventsToB: true
+        SendEventsToSpace: false
+        EventOverride: 
+    CollisionFilter:  (GroupA / GroupA)
+      CollisionFlags: SkipDetection
+      CollisionFilterBlock: CollisionPersistedBlock
+        SendEventsToA: true
+        SendEventsToB: true
+        SendEventsToSpace: false
+        EventOverride: 
+      CollisionFilterBlock: PreSolveBlock
+        SendEventsToA: false
+        SendEventsToB: false
+        SendEventsToSpace: false
+        EventOverride: Test
+Original Table:
+CollisionTable:
   Name: TestTable
   CollisionFilter:  (GroupA / GroupB)
     CollisionFlags: SkipResolution
@@ -75,6 +141,30 @@ PhysicsMaterial: TestPhysicsMaterial
   Friction: 0.5
   HighPriority: false
   Restitution: 0.5
+Create Material:
+  PhysicsMaterial: Runtime
+    Density: 1
+    Friction: 0.5
+    HighPriority: false
+    Restitution: 0.5
+Cloned Material:
+  PhysicsMaterial: Runtime
+    Density: 1
+    Friction: 0.5
+    HighPriority: false
+    Restitution: 0.5
+  Update Material:
+  PhysicsMaterial: Runtime
+    Density: 15
+    Friction: 0.5
+    HighPriority: true
+    Restitution: 0
+Original Table:
+PhysicsMaterial: TestPhysicsMaterial
+  Density: 1
+  Friction: 0.5
+  HighPriority: false
+  Restitution: 0.5
 
 ----PhysicsMesh----
 PhysicsMesh: HalfSlopeRightInv2
@@ -82,8 +172,56 @@ PhysicsMesh: HalfSlopeRightInv2
     [0, 1, 2, 0, 2, 3, 4, 5, 1, 4, 1, 0, 5, 6, 2, 5, 2, 1, 6, 7, 3, 6, 3, 2, 7, 4, 0, 7, 0, 3, 4, 7, 6, 4, 6, 5, ]
   Vertices (8):
     [(-0.5, -0.5, 0.5), (0.5, 0, 0.5), (0.5, 0.5, 0.5), (-0.5, 0.5, 0.5), (-0.5, -0.5, -0.5), (0.5, 0, -0.5), (0.5, 0.5, -0.5), (-0.5, 0.5, -0.5), ]
+Create Physics Mesh:
+  PhysicsMesh: Runtime
+    Indices (0):
+      []
+    Vertices (0):
+      []
+Cloned Physics Mesh:
+  PhysicsMesh: Runtime
+    Indices (36):
+      [0, 1, 2, 0, 2, 3, 4, 5, 1, 4, 1, 0, 5, 6, 2, 5, 2, 1, 6, 7, 3, 6, 3, 2, 7, 4, 0, 7, 0, 3, 4, 7, 6, 4, 6, 5, ]
+    Vertices (8):
+      [(-0.5, -0.5, 0.5), (0.5, 0, 0.5), (0.5, 0.5, 0.5), (-0.5, 0.5, 0.5), (-0.5, -0.5, -0.5), (0.5, 0, -0.5), (0.5, 0.5, -0.5), (-0.5, 0.5, -0.5), ]
+  Update Physics:
+  PhysicsMesh: Runtime
+    Indices (12):
+      [0, 1, 2, 0, 1, 3, 0, 2, 3, 1, 2, 3, ]
+    Vertices (4):
+      [(0, 0, 0), (1, 0, 0), (0, 1, 0), (0, 0, 1), ]
+Original Physics Mesh:
+PhysicsMesh: HalfSlopeRightInv2
+  Indices (36):
+    [0, 1, 2, 0, 2, 3, 4, 5, 1, 4, 1, 0, 5, 6, 2, 5, 2, 1, 6, 7, 3, 6, 3, 2, 7, 4, 0, 7, 0, 3, 4, 7, 6, 4, 6, 5, ]
+  Vertices (8):
+    [(-0.5, -0.5, 0.5), (0.5, 0, 0.5), (0.5, 0.5, 0.5), (-0.5, 0.5, 0.5), (-0.5, -0.5, -0.5), (0.5, 0, -0.5), (0.5, 0.5, -0.5), (-0.5, 0.5, -0.5), ]
 
 ----ConvexMesh----
+ConvexMesh: Wedge
+  Indices (24):
+    [0, 2, 1, 2, 0, 3, 0, 1, 3, 1, 2, 4, 3, 1, 4, 2, 3, 5, 4, 2, 5, 3, 4, 5, ]
+  Vertices (6):
+    [(-0.5, -0.5, 0.5), (-0.5, -0.5, -0.5), (-0.5, 0.5, -0.5), (0.5, -0.5, 0.5), (0.5, -0.5, -0.5), (0.5, 0.5, -0.5), ]
+Create Convex Mesh:
+  ConvexMesh: Runtime
+    Indices (0):
+      []
+    Vertices (0):
+      []
+Cloned Convex Mesh:
+  ConvexMesh: Runtime
+    Indices (24):
+      [0, 2, 1, 2, 0, 3, 0, 1, 3, 1, 2, 4, 3, 1, 4, 2, 3, 5, 4, 2, 5, 3, 4, 5, ]
+    Vertices (6):
+      [(-0.5, -0.5, 0.5), (-0.5, -0.5, -0.5), (-0.5, 0.5, -0.5), (0.5, -0.5, 0.5), (0.5, -0.5, -0.5), (0.5, 0.5, -0.5), ]
+  Update ConvexMesh:
+  ConvexMesh: Runtime
+    Indices (12):
+      [0, 1, 2, 0, 1, 3, 0, 2, 3, 1, 2, 3, ]
+    Vertices (4):
+      [(0, 0, 0), (1, 0, 0), (0, 1, 0), (0, 0, 1), ]
+Original Convex Mesh:
 ConvexMesh: Wedge
   Indices (24):
     [0, 2, 1, 2, 0, 3, 0, 1, 3, 1, 2, 4, 3, 1, 4, 2, 3, 5, 4, 2, 5, 3, 4, 5, ]
