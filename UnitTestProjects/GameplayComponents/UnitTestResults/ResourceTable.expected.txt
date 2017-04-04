@@ -227,6 +227,12 @@ ClonedTable:
           Resource: Sprite
           Value: 582c3e203dd864d9:Sprite
           Weight: 0.06
+  CreateRuntime:
+    ResourceTable: Runtime
+      Count: 0
+      MaxWeight: 1
+      ResourceType: String
+      ResourceTableEntryRange:
   Sample:
     Sample: [0.1, 0.5]
       Name: Item1

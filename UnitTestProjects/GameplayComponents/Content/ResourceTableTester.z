@@ -128,6 +128,17 @@ class ResourceTableTester : ZilchComponent
     stream.EndScope();
   }
   
+  function TestTableNewTable(stream : UnitTestStreamWriter)
+  {
+    stream.WriteLine("CreateRuntime:");
+    stream.BeginScope();
+    
+    var table = ResourceTable.CreateRuntime();
+    table.WriteToStream(stream);
+    
+    stream.EndScope();
+  }
+  
   function TestSample(stream : UnitTestStreamWriter)
   {
     stream.WriteLine("Sample:");
@@ -169,6 +180,8 @@ class ResourceTableTester : ZilchComponent
     stream.BeginScope();
     this.Table.WriteToStream(stream);
     stream.EndScope();
+    
+    this.TestTableNewTable(stream);
     
     this.TestSample(stream);
   }
