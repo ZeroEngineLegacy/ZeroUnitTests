@@ -43,28 +43,28 @@ PhysicsSolverConfig: TestSolver
   ConstraintConfigBlock: StickJointBlock
     AngularBaumgarte: 4.5
     AngularErrorCorrection: 0.2
-    CorrectionType: Inherit
+    PositionCorrectionType: Baumgarte
     LinearBaumgarte: 0.4
     LinearErrorCorrection: 0.2
     Slop: 0.02
   ConstraintConfigBlock: ManipulatorJointBlock
     AngularBaumgarte: 4.5
     AngularErrorCorrection: 0.2
-    CorrectionType: Baumgarte
+    PositionCorrectionType: Baumgarte
     LinearBaumgarte: 4.5
     LinearErrorCorrection: 0.2
     Slop: 0.02
   ConstraintConfigBlock: PhyGunJointBlock
     AngularBaumgarte: 4.5
     AngularErrorCorrection: 0.2
-    CorrectionType: Baumgarte
+    PositionCorrectionType: Baumgarte
     LinearBaumgarte: 4.5
     LinearErrorCorrection: 0.2
     Slop: 0.02
   ConstraintConfigBlock: ContactBlock
     AngularBaumgarte: 4.5
     AngularErrorCorrection: 0.2
-    CorrectionType: Inherit
+    PositionCorrectionType: Baumgarte
     LinearBaumgarte: 2
     LinearErrorCorrection: 0.2
     Slop: 0.02

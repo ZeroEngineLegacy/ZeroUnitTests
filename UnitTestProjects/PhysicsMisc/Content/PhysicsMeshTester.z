@@ -41,11 +41,8 @@ class PhysicsMeshExtensions
     
     var builder = StringBuilder();
     builder.Write("[");
-    for(var i = 0; i < this.Count; ++i)
-    {
-      builder.Write(this[i]);
-      builder.Write(", ");
-    }
+    foreach(var index in this)
+      builder.Write("`index`, ");
     builder.Write("]");
     stream.WriteLine(builder.ToString());
     
@@ -60,11 +57,8 @@ class PhysicsMeshExtensions
     
     var builder = StringBuilder();
     builder.Write("[");
-    for(var i = 0; i < this.Count; ++i)
-    {
-      builder.Write(this[i]);
-      builder.Write(", ");
-    }
+    foreach(var vertex in this)
+      builder.Write("`vertex`, ");
     builder.Write("]");
     stream.WriteLine(builder.ToString());
     

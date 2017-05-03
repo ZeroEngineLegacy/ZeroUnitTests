@@ -30,7 +30,7 @@ class PhysicsSolverConfigExtensions
     
     stream.WriteLine(@this.AngularBaumgarte);
     stream.WriteLine(@this.AngularErrorCorrection);
-    stream.WriteLine("CorrectionType: `this.CorrectionType`");
+    stream.WriteLine("PositionCorrectionType: `this.PositionCorrectionType`");
     stream.WriteLine(@this.LinearBaumgarte);
     stream.WriteLine(@this.LinearErrorCorrection);
     stream.WriteLine(@this.Slop);
