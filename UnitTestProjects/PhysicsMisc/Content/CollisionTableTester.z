@@ -13,27 +13,58 @@ class CollisionTableTester : ZilchComponent
       
     Zero.Connect(this.Owner, Events.RecordInitialization, this.OnRecordInitialization);
   }
+  
+  function TestRuntimeClone(stream : UnitTestStreamWriter)
+  {
+    stream.WriteLine("ClonedTable:");
+    stream.BeginScope();
+
+    var clone = this.CollisionTable.RuntimeClone();
+    this.WriteTable(stream, clone);
+    
+    stream.EndScope();
+  }
+  
+  function TestCreateRuntime(stream : UnitTestStreamWriter)
+  {
+    stream.WriteLine("CreateTable:");
+    stream.BeginScope();
+
+    var table = CollisionTable.CreateRuntime();
+    this.WriteTable(stream, table);
+    
+    stream.EndScope();
+  }
 
   function OnRecordInitialization(event : CogFrameRecordEvent)
   {
     var stream = event.Stream;
     var table = this.CollisionTable;
     
-    stream.WriteLine("CollisionTable Initialization:");
+    this.WriteTable(stream, table);
+    
+    this.TestCreateRuntime(stream);
+    this.TestRuntimeClone(stream);
+    
+    stream.WriteLine("Original Table:");
+    this.WriteTable(stream, table);
+  }
+  
+  function WriteTable(stream : UnitTestStreamWriter, table : CollisionTable)
+  {
+    stream.WriteLine("CollisionTable:");
     stream.BeginScope();
     
     stream.WriteLine(@table.Name);
-    
-    this.WriteFilter(stream, CollisionGroup.GroupA, CollisionGroup.GroupB);
-    this.WriteFilter(stream, CollisionGroup.GroupA, CollisionGroup.GroupA);
-    this.WriteFilter(stream, CollisionGroup.GroupB, CollisionGroup.GroupB);
+    this.WriteFilter(stream, table, CollisionGroup.GroupA, CollisionGroup.GroupB);
+    this.WriteFilter(stream, table, CollisionGroup.GroupA, CollisionGroup.GroupA);
+    this.WriteFilter(stream, table, CollisionGroup.GroupB, CollisionGroup.GroupB);
     
     stream.EndScope();
   }
   
-  function WriteFilter(stream : UnitTestStreamWriter, groupA : CollisionGroup, groupB : CollisionGroup)
+  function WriteFilter(stream : UnitTestStreamWriter, table : CollisionTable, groupA : CollisionGroup, groupB : CollisionGroup)
   {
-    var table = this.CollisionTable;
     var filter = table.FindFilter(groupA, groupB);
     if(filter != null)
       filter.WriteToStream(stream);

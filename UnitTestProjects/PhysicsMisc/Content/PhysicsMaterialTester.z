@@ -13,10 +13,44 @@ class PhysicsMaterialTester : ZilchComponent
       
     Zero.Connect(this.Owner, Events.RecordInitialization, this.OnRecordInitialization);
   }
+  
+  function TestRuntimeClone(stream : UnitTestStreamWriter)
+  {
+    stream.WriteLine("Cloned Material:");
+    stream.BeginScope();
 
+    var clone = this.PhysicsMaterial.RuntimeClone();
+    clone.WriteToStream(stream);
+    
+    stream.WriteLine("Update Material:");
+    clone.Density = 15;
+    clone.HighPriority = true;
+    clone.Restitution = 0;
+    clone.WriteToStream(stream);
+    
+    stream.EndScope();
+  }
+  
+  function TestCreateRuntime(stream : UnitTestStreamWriter)
+  {
+    stream.WriteLine("Create Material:");
+    stream.BeginScope();
+
+    var material = PhysicsMaterial.CreateRuntime();
+    material.WriteToStream(stream);
+    
+    stream.EndScope();
+  }
+  
   function OnRecordInitialization(event : CogFrameRecordEvent)
   {
-    this.PhysicsMaterial.WriteToStream(event.Stream);
+    var stream = event.Stream;
+    this.PhysicsMaterial.WriteToStream(stream);
+    
+    this.TestCreateRuntime(stream);
+    this.TestRuntimeClone(stream);
+    stream.WriteLine("Original Table:");
+    this.PhysicsMaterial.WriteToStream(stream);
   }
 }
 
