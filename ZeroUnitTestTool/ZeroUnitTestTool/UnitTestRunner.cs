@@ -54,16 +54,25 @@ namespace ZeroUnitTestTool
         builder.Append("  " + message + "\n");
       }
       if (builder.Length != 0)
-        Log(projectPath, builder.ToString());
+        LogFailure(projectPath, builder.ToString());
+      else
+        LogSuccess(projectPath);
     }
 
-    public void Log(string projectPath, string message)
+    public void LogFailure(string projectPath, string message)
     {
-      string logMessage = string.Format("Project {0} Failed:\n{1}", projectPath, message);
+      string logMessage = string.Format("Project '{0}' Failed:\n{1}", projectPath, message);
       mLoggingDelegate?.Invoke(logMessage);
       Console.WriteLine(logMessage);
     }
-    
+
+    public void LogSuccess(string projectPath)
+    {
+      string logMessage = string.Format("Project '{0}' Succeeded:\n", projectPath);
+      mLoggingDelegate?.Invoke(logMessage);
+      Console.WriteLine(logMessage);
+    }
+
     String RunProcess(string exePath, string arguments, int maxTimeAllowed)
     {
       var processOutputStream = new StringBuilder();
