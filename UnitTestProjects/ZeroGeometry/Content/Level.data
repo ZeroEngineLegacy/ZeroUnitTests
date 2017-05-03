@@ -7,27 +7,29 @@ Level
 		var LinkId = 1
 		GravityEffect 
 		{
+			var Active = true
+			var WakeUpOnChange = true
+			var DebugDrawEffect = true
 			var LocalSpaceDirection = true
 			var Strength = 10
 			var Direction = Real3{0, -1, 0}
-			var Active = true
-			var WakeUpOnChange = true
 		}
 		DragEffect 
 		{
+			var Active = true
+			var WakeUpOnChange = true
+			var DebugDrawEffect = true
 			var LinearDamping = 0.200000003
 			var AngularDamping = 0.100000001
 			var LinearDrag = 0
 			var AngularDrag = 0
-			var Active = true
-			var WakeUpOnChange = true
 		}
 		GridDraw 
 		{
 			var Active = false
 			var HalfCellOffset = false
 			var CellSize = 1
-			var Axis = GridAxis.YAxis
+			var Axis = AxisDirection.X
 			var Lines = 100
 			var DrawAxisOrigins = true
 			var AlwaysDrawInEditor = true
@@ -62,9 +64,9 @@ Level
 		var LinkId = 3
 		Transform 
 		{
-			var Translation = Real3{63.973156, 9.49819565, 9.16778851}
+			var Translation = Real3{-3.77411652, 4.15921164, 2.14067292}
 			var Scale = Real3{1, 1, 1}
-			var Rotation = Quaternion{-0.191454545, 0.381406873, 0.0810705274, 0.900722742}
+			var Rotation = Quaternion{-0.286006421, -0.504147649, -0.181504458, 0.794412792}
 		}
 		CameraViewport 
 		{
@@ -120,10 +122,10 @@ Level
 		EditorCameraController 
 		{
 			var ControlMode = ControlMode.Orbit
-			var LookDistance = 14.2217474
-			var VerticalAngle = 0.418879032
-			var HorizontalAngle = 5.48207903
-			var LookTarget = Real3{54.6431046, 3.71369004, 0.126342356}
+			var LookDistance = 6.52502728
+			var VerticalAngle = 0.691150963
+			var HorizontalAngle = 1.13096952
+			var LookTarget = Real3{0.774999976, 0, 0}
 			var MoveSensitivity = 1
 		}
 	}
@@ -483,6 +485,257 @@ Level
 		}
 		FrustumTester 
 		{
+		}
+	}
+	Cog 
+	{
+		var Name = "Cube"
+		var LinkId = 12
+		Transform 
+		{
+			var Translation = Real3{0, 0.508878827, 0}
+			var Scale = Real3{0.90884459, 1.48248327, 2.84407473}
+			var Rotation = Quaternion{0, 0, 0, 1}
+		}
+		Model 
+		{
+			var Visible = false
+			var ViewCulling = true
+			var VisibilityEvents = true
+			var Material = "583afb5e7bf75e18:ZeroMaterial"
+			var Mesh = "4de0354322b345ae:Cube"
+		}
+		RigidBody 
+		{
+			var Velocity = Real3{0, 0, 0}
+			var AngularVelocity = Real3{0, 0, 0}
+			var DynamicState = RigidBodyDynamicState.Dynamic
+			var AllowSleep = true
+			var Asleep = false
+			var RotationLocked = false
+			var Mode2D = Mode2DStates.InheritFromSpace
+		}
+		BoxCollider 
+		{
+			var Ghost = false
+			var SendsEvents = true
+			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
+			var CollisionGroup = "4e740859314e5515:DefaultGroup"
+			var Offset = Real3{0, 0, 0}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
+		}
+		VectorDrawer 
+		{
+		}
+		Orientation 
+		{
+			var GlobalUp = Real3{0, 1, 0}
+			var LocalOrientationBasis = Quaternion{0.303545535, -0.180601344, 0.478358209, 0.804000378}
+			var DefaultBases = OrientationBases.Custom
+		}
+		Hierarchy 
+		{
+			Cog 
+			{
+				var Name = "Sphere"
+				var LinkId = 13
+				Transform 
+				{
+					var Translation = Real3{2, 0, 0}
+					var Scale = Real3{0.100000001, 0.100000001, 0.100000001}
+					var Rotation = Quaternion{0, 0, 0, 1}
+				}
+				Model 
+				{
+					var Visible = true
+					var ViewCulling = true
+					var VisibilityEvents = true
+					var Material = "583afb5e7bf75e18:ZeroMaterial"
+					var Mesh = "4de0354322b376ae:Sphere"
+				}
+				RigidBody 
+				{
+					var Velocity = Real3{0, 0, 0}
+					var AngularVelocity = Real3{0, 0, 0}
+					var DynamicState = RigidBodyDynamicState.Dynamic
+					var AllowSleep = true
+					var Asleep = false
+					var RotationLocked = false
+					var Mode2D = Mode2DStates.InheritFromSpace
+				}
+				SphereCollider 
+				{
+					var Ghost = false
+					var SendsEvents = true
+					var Material = "4de020863e872da8:DefaultPhysicsMaterial"
+					var CollisionGroup = "4e740859314e5515:DefaultGroup"
+					var Offset = Real3{0, 0, 0}
+					var Radius = 0.5
+				}
+			}
+		}
+	}
+	Cog 
+	{
+		var Name = "Cube"
+		var LinkId = 14
+		Transform 
+		{
+			var Translation = Real3{0.774999976, -0.999457121, 0}
+			var Scale = Real3{1, 1, 1}
+			var Rotation = Quaternion{0, 0, 0, 1}
+		}
+		Model 
+		{
+			var Visible = true
+			var ViewCulling = true
+			var VisibilityEvents = true
+			var Material = "583afb5e7bf75e18:ZeroMaterial"
+			var Mesh = "4de0354322b345ae:Cube"
+		}
+		RigidBody 
+		{
+			var Velocity = Real3{0, 0, 0}
+			var AngularVelocity = Real3{0, 0, 0}
+			var DynamicState = RigidBodyDynamicState.Dynamic
+			var AllowSleep = true
+			var Asleep = false
+			var RotationLocked = false
+			var Mode2D = Mode2DStates.InheritFromSpace
+		}
+		BoxCollider 
+		{
+			var Ghost = false
+			var SendsEvents = true
+			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
+			var CollisionGroup = "4e740859314e5515:DefaultGroup"
+			var Offset = Real3{0, 0, 0}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
+		}
+		HierarchySpline 
+		{
+			var Closed = false
+			var SplineType = SplineType.CatmulRom
+			var Error = 0.00999999978
+			var DebugDrawSpline = true
+			var SplineColor = Real4{0, 0, 0, 1}
+		}
+		Hierarchy 
+		{
+			Cog 
+			{
+				var Name = "Sphere"
+				var LinkId = 15
+				Transform 
+				{
+					var Translation = Real3{0, 0.999457121, 0}
+					var Scale = Real3{0.100000001, 0.100000001, 0.100000001}
+					var Rotation = Quaternion{0, 0, 0, 1}
+				}
+				Model 
+				{
+					var Visible = false
+					var ViewCulling = true
+					var VisibilityEvents = true
+					var Material = "583afb5e7bf75e18:ZeroMaterial"
+					var Mesh = "4de0354322b376ae:Sphere"
+				}
+				RigidBody 
+				{
+					var Velocity = Real3{0, 0, 0}
+					var AngularVelocity = Real3{0, 0, 0}
+					var DynamicState = RigidBodyDynamicState.Dynamic
+					var AllowSleep = true
+					var Asleep = false
+					var RotationLocked = false
+					var Mode2D = Mode2DStates.InheritFromSpace
+				}
+				SphereCollider 
+				{
+					var Ghost = false
+					var SendsEvents = true
+					var Material = "4de020863e872da8:DefaultPhysicsMaterial"
+					var CollisionGroup = "4e740859314e5515:DefaultGroup"
+					var Offset = Real3{0, 0, 0}
+					var Radius = 0.5
+				}
+			}
+			Cog 
+			{
+				var Name = "Sphere"
+				var LinkId = 16
+				Transform 
+				{
+					var Translation = Real3{0, 0.999457121, 2.43899727}
+					var Scale = Real3{0.100000001, 0.100000001, 0.100000001}
+					var Rotation = Quaternion{0, 0, 0.3302432, 0.943895876}
+				}
+				Model 
+				{
+					var Visible = false
+					var ViewCulling = true
+					var VisibilityEvents = true
+					var Material = "583afb5e7bf75e18:ZeroMaterial"
+					var Mesh = "4de0354322b376ae:Sphere"
+				}
+				RigidBody 
+				{
+					var Velocity = Real3{0, 0, 0}
+					var AngularVelocity = Real3{0, 0, 0}
+					var DynamicState = RigidBodyDynamicState.Dynamic
+					var AllowSleep = true
+					var Asleep = false
+					var RotationLocked = false
+					var Mode2D = Mode2DStates.InheritFromSpace
+				}
+				SphereCollider 
+				{
+					var Ghost = false
+					var SendsEvents = true
+					var Material = "4de020863e872da8:DefaultPhysicsMaterial"
+					var CollisionGroup = "4e740859314e5515:DefaultGroup"
+					var Offset = Real3{0, 0, 0}
+					var Radius = 0.5
+				}
+			}
+			Cog 
+			{
+				var Name = "Sphere"
+				var LinkId = 17
+				Transform 
+				{
+					var Translation = Real3{0, 2.72063971, 2.43899727}
+					var Scale = Real3{0.100000001, 0.100000001, 0.100000001}
+					var Rotation = Quaternion{0, 0, 0, 1}
+				}
+				Model 
+				{
+					var Visible = false
+					var ViewCulling = true
+					var VisibilityEvents = true
+					var Material = "583afb5e7bf75e18:ZeroMaterial"
+					var Mesh = "4de0354322b376ae:Sphere"
+				}
+				RigidBody 
+				{
+					var Velocity = Real3{0, 0, 0}
+					var AngularVelocity = Real3{0, 0, 0}
+					var DynamicState = RigidBodyDynamicState.Dynamic
+					var AllowSleep = true
+					var Asleep = false
+					var RotationLocked = false
+					var Mode2D = Mode2DStates.InheritFromSpace
+				}
+				SphereCollider 
+				{
+					var Ghost = false
+					var SendsEvents = true
+					var Material = "4de020863e872da8:DefaultPhysicsMaterial"
+					var CollisionGroup = "4e740859314e5515:DefaultGroup"
+					var Offset = Real3{0, 0, 0}
+					var Radius = 0.5
+				}
+			}
 		}
 	}
 }

@@ -3,8 +3,55 @@ Level
 {
 	Cog 
 	{
-		var Name = "Sphere1"
+		var Name = "LevelSettings"
 		var LinkId = 1
+		GravityEffect 
+		{
+			var Active = true
+			var WakeUpOnChange = true
+			var DebugDrawEffect = true
+			var LocalSpaceDirection = true
+			var Strength = 10
+			var Direction = Real3{0, -1, 0}
+		}
+		DragEffect 
+		{
+			var Active = true
+			var WakeUpOnChange = true
+			var DebugDrawEffect = true
+			var LinearDamping = 0.200000003
+			var AngularDamping = 0.100000001
+			var LinearDrag = 0
+			var AngularDrag = 0
+		}
+		GridDraw 
+		{
+			var Active = false
+			var HalfCellOffset = false
+			var CellSize = 1
+			var Axis = AxisDirection.Y
+			var Lines = 100
+			var DrawAxisOrigins = true
+			var AlwaysDrawInEditor = true
+			var DrawInGame = false
+			var GridColor = Real4{0.5, 0.5, 0.5, 0.400000006}
+			var GridHighlight = Real4{0, 0, 0, 0.400000006}
+			var HighlightInterval = 10
+			var FollowEditorCamera = false
+		}
+		LevelUnitTestManager 
+		{
+			var TestDuration = 5
+		}
+		EventRecorder 
+		{
+			var LogicUpdateRecordingFrequency = 0.5
+		}
+	}
+	Cog 
+	{
+		var Name = "Sphere1"
+		var LinkId = 2
 		Transform 
 		{
 			var Translation = Real3{-5.52646208, 5, 0}
@@ -59,51 +106,6 @@ Level
 	}
 	Cog 
 	{
-		var Name = "LevelSettings"
-		var LinkId = 2
-		GravityEffect 
-		{
-			var LocalSpaceDirection = true
-			var Strength = 10
-			var Direction = Real3{0, -1, 0}
-			var Active = true
-			var WakeUpOnChange = true
-		}
-		DragEffect 
-		{
-			var LinearDamping = 0.200000003
-			var AngularDamping = 0.100000001
-			var LinearDrag = 0
-			var AngularDrag = 0
-			var Active = true
-			var WakeUpOnChange = true
-		}
-		GridDraw 
-		{
-			var Active = false
-			var HalfCellOffset = false
-			var CellSize = 1
-			var Axis = GridAxis.YAxis
-			var Lines = 100
-			var DrawAxisOrigins = true
-			var AlwaysDrawInEditor = true
-			var DrawInGame = false
-			var GridColor = Real4{0.5, 0.5, 0.5, 0.400000006}
-			var GridHighlight = Real4{0, 0, 0, 0.400000006}
-			var HighlightInterval = 10
-			var FollowEditorCamera = false
-		}
-		LevelUnitTestManager 
-		{
-			var TestDuration = 5
-		}
-		EventRecorder 
-		{
-			var LogicUpdateRecordingFrequency = 0.5
-		}
-	}
-	Cog 
-	{
 		var Name = "Renderer"
 		var LinkId = 3
 		DeferredRenderer 
@@ -113,6 +115,7 @@ Level
 			var ShowDiffuse = true
 			var ShowSpecular = true
 			var Skybox = "5822dec85e380cf1:SimpleSkybox"
+			var ClearColor = Real4{0, 0, 0, 1}
 			var DrawSkybox = true
 			var DirectLighting = true
 			var IndirectLighting = true
@@ -224,11 +227,12 @@ Level
 		}
 		ForceEffect 
 		{
+			var Active = true
+			var WakeUpOnChange = true
+			var DebugDrawEffect = true
 			var LocalSpaceDirection = true
 			var Strength = 30
 			var Direction = Real3{1, 0, 0}
-			var Active = true
-			var WakeUpOnChange = true
 		}
 	}
 	Cog 
@@ -264,11 +268,12 @@ Level
 		}
 		ForceEffect 
 		{
+			var Active = true
+			var WakeUpOnChange = true
+			var DebugDrawEffect = true
 			var LocalSpaceDirection = true
 			var Strength = 30
 			var Direction = Real3{0, 1, 0}
-			var Active = true
-			var WakeUpOnChange = true
 		}
 	}
 	Cog 
@@ -304,11 +309,12 @@ Level
 		}
 		ForceEffect 
 		{
+			var Active = true
+			var WakeUpOnChange = true
+			var DebugDrawEffect = true
 			var LocalSpaceDirection = true
 			var Strength = 30
 			var Direction = Real3{0, 1, 0}
-			var Active = true
-			var WakeUpOnChange = true
 		}
 	}
 	Cog 
@@ -344,11 +350,12 @@ Level
 		}
 		ForceEffect 
 		{
+			var Active = true
+			var WakeUpOnChange = true
+			var DebugDrawEffect = true
 			var LocalSpaceDirection = true
 			var Strength = 20
 			var Direction = Real3{0, 1, 0}
-			var Active = true
-			var WakeUpOnChange = true
 		}
 	}
 	Cog 
@@ -392,6 +399,11 @@ Level
 		SelectionIcon 
 		{
 			var Visible = true
+			var ViewCulling = true
+			var VisibilityEvents = true
+			var Material = "56581e2bb81777be:DebugDrawOnTop"
+			var Visible = true
+			var VisibilityEvents = true
 			var Material = "56581e2bb81777be:DebugDrawOnTop"
 			var SpriteSource = "5586f579ca73ecc2:SquareBordered"
 			var ViewScale = 1

@@ -7,27 +7,29 @@ Level
 		var LinkId = 1
 		GravityEffect 
 		{
+			var Active = true
+			var WakeUpOnChange = true
+			var DebugDrawEffect = true
 			var LocalSpaceDirection = true
 			var Strength = 10
 			var Direction = Real3{0, -1, 0}
-			var Active = true
-			var WakeUpOnChange = true
 		}
 		DragEffect 
 		{
+			var Active = true
+			var WakeUpOnChange = true
+			var DebugDrawEffect = true
 			var LinearDamping = 0.200000003
 			var AngularDamping = 0.100000001
 			var LinearDrag = 0
 			var AngularDrag = 0
-			var Active = true
-			var WakeUpOnChange = true
 		}
 		GridDraw 
 		{
 			var Active = false
 			var HalfCellOffset = false
 			var CellSize = 1
-			var Axis = GridAxis.YAxis
+			var Axis = AxisDirection.Y
 			var Lines = 100
 			var DrawAxisOrigins = true
 			var AlwaysDrawInEditor = true
@@ -226,11 +228,12 @@ Level
 		}
 		ForceEffect 
 		{
+			var Active = true
+			var WakeUpOnChange = true
+			var DebugDrawEffect = true
 			var LocalSpaceDirection = true
 			var Strength = 30
 			var Direction = Real3{0, 1, 0}
-			var Active = true
-			var WakeUpOnChange = true
 		}
 	}
 	Cog 
@@ -266,11 +269,12 @@ Level
 		}
 		ForceEffect 
 		{
+			var Active = true
+			var WakeUpOnChange = true
+			var DebugDrawEffect = true
 			var LocalSpaceDirection = true
 			var Strength = 30
 			var Direction = Real3{0, 1, 0}
-			var Active = true
-			var WakeUpOnChange = true
 		}
 	}
 	Cog 
@@ -306,11 +310,12 @@ Level
 		}
 		ForceEffect 
 		{
+			var Active = true
+			var WakeUpOnChange = true
+			var DebugDrawEffect = true
 			var LocalSpaceDirection = true
 			var Strength = 20
 			var Direction = Real3{0, 1, 0}
-			var Active = true
-			var WakeUpOnChange = true
 		}
 	}
 	Cog 
@@ -420,11 +425,12 @@ Level
 		}
 		ForceEffect 
 		{
+			var Active = true
+			var WakeUpOnChange = true
+			var DebugDrawEffect = true
 			var LocalSpaceDirection = true
 			var Strength = 30
 			var Direction = Real3{1, 0, 0}
-			var Active = true
-			var WakeUpOnChange = true
 		}
 	}
 }
