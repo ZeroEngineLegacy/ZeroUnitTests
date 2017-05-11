@@ -95,12 +95,27 @@ class EventRecorder : ZilchComponent
     return this.TimeStamp;
   }
   
+  function GetCogFullName(cog : Cog) : String
+  {
+    if(cog == null)
+      return "";
+      
+    var name = cog.Name;
+    var parent = cog.Parent;
+    while(parent != null)
+    {
+      name = "`parent.Name`.`name`";
+      parent = parent.Parent;
+    }
+    return name;
+  }
+  
   function OnAddEventRecordingCog(event : CogEvent)
   {
     // Create information for the given cog and add it to our list
     var info = CogInfo();
     info.Cog = event.Cog;
-    info.CogName = info.Cog.Name;
+    info.CogName = this.GetCogFullName(info.Cog);
     this.CogInfoList.Add(info);
     // Create a mapping from this cog to its info
     this.CogsToInfo.Add(info.Cog, info);
