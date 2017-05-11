@@ -1,0 +1,215 @@
+// A record for a cog over time.
+class CogRecord
+{
+  var Stream : StringUnitTestStreamWriter = StringUnitTestStreamWriter();
+}
+
+// Simple event to pass a cog around. Ideally an ObjectEvent or something like that should be sent later.
+class CogEvent : ZilchEvent
+{
+  var Cog : Cog;
+}
+
+// Event sent to record information about a cog for the current frame.
+// This is how we do things like record velocity or position.
+class CogFrameRecordEvent : ZilchEvent
+{
+  var Cog : Cog;
+  var Stream : StringUnitTestStreamWriter;
+}
+
+// Event sent by a cog when an interesting incident happens. Currently
+// the only interface should be to construct and add messages
+class CogIncidentEvent : ZilchEvent
+{
+  var Cog : Cog;
+  var IncidentName : String;
+  var InternalMessages : Array[String] = Array[String]();
+  
+  constructor() : base()
+  {
+  }
+  
+  constructor(cog : Cog, incidentName : String) : base()
+  {
+    this.Cog = cog;
+    this.IncidentName = incidentName;
+  }
+  
+  function AddMessage(message : String)
+  {
+    this.InternalMessages.Add(message);
+  }
+}
+
+// Cached information about a cog over the course of the simulation.
+class CogInfo
+{
+  // Cog we're storing information for
+  var Cog : Cog;
+  // Cached name of the cog (cached in-case the cog is destroyed)
+  var CogName : String = "";
+  // Id associated with this cog to try to prevent accidental cog re-use. Not currently used.
+  var Id : Integer = 0;
+  // The record of important information that has happened over time for this cog.
+  var Record : CogRecord = CogRecord();
+}
+
+// Records information of all Cogs that send the AddEventRecordingCog (currently BaseCogResultRecorder). T
+// his contains a mix of sparadic frame information and events (collisions, etc...).
+class EventRecorder : ZilchComponent
+{
+  // Not actually sent by this class, but registering this event. Sent by a cog when it wants results recorded.
+  sends AddEventRecordingCog : CogEvent;
+  // Sent to get current frame information about a cog
+  sends RecordFrame : CogFrameRecordEvent;
+  // Sent to a cog when it can do any initialization recording
+  sends RecordInitialization : CogFrameRecordEvent;
+  // Sent by a cog when some interesting event happens (e.g. a collision)
+  sends RecordCogIncident : CogIncidentEvent;
+  
+  // How often to record logic update information
+  [Property] var LogicUpdateRecordingFrequency : Real = 0.5;
+  
+  // Keep track of how much time has passed so we can record frames at a certain frequency
+  var LogicUpdateTimer : Real = 0;
+  // Time-stamp for a given frame. Used to help avoid any potential
+  // numerical issues. Currently this is just the frame counter.
+  var TimeStamp : Real = 0;
+  
+  // List of all cogs that have been recording information
+  var CogInfoList : Array[CogInfo] = Array[CogInfo]();
+  // Map of a cog to its information.
+  var CogsToInfo : HashMap[Cog, CogInfo] = HashMap[Cog, CogInfo]();
+  
+  function Initialize(init : CogInitializer)
+  {
+    Zero.Connect(this.Space, Events.AddEventRecordingCog, this.OnAddEventRecordingCog);
+    Zero.Connect(this.Space, Events.RecordCogIncident, this.OnRecordCogIncident);
+    Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+    Zero.Connect(this.Space, Events.DumpRecords, this.OnDumpRecords);
+  }
+  
+  function GetTimeStamp() : Real
+  {
+    return this.TimeStamp;
+  }
+  
+  function GetCogFullName(cog : Cog) : String
+  {
+    if(cog == null)
+      return "";
+      
+    var name = cog.Name;
+    var parent = cog.Parent;
+    while(parent != null)
+    {
+      name = "`parent.Name`.`name`";
+      parent = parent.Parent;
+    }
+    return name;
+  }
+  
+  function OnAddEventRecordingCog(event : CogEvent)
+  {
+    // Create information for the given cog and add it to our list
+    var info = CogInfo();
+    info.Cog = event.Cog;
+    info.CogName = this.GetCogFullName(info.Cog);
+    this.CogInfoList.Add(info);
+    // Create a mapping from this cog to its info
+    this.CogsToInfo.Add(info.Cog, info);
+    
+    // Tell the cog that it can record any initialization data
+    var toSend = CogFrameRecordEvent();
+    toSend.Stream = info.Record.Stream;
+    info.Cog.DispatchEvent(Events.RecordInitialization, toSend);
+  }
+
+  function OnRecordCogIncident(event : CogIncidentEvent)
+  {
+    // Get the cog's info, if this has an error then the cog never registered itself.
+    var info = this.CogsToInfo.GetOrError(event.Cog);
+    info.Record.Stream.WriteLine("`event.IncidentName` (`this.GetTimeStamp()`)");
+    
+    // Add each message to our record with proper indentation
+    info.Record.Stream.BeginScope();
+    foreach(var message in event.InternalMessages)
+      info.Record.Stream.WriteLine(message);
+    info.Record.Stream.EndScope();
+  }
+  
+  function RecordCogFrameInfo(cogInfo : CogInfo)
+  {
+    // Make sure this is a valid cog (if a cog is destroyed, currently we'll iterate over it in the list)
+    var cog = cogInfo.Cog;
+    if(cog == null)
+      return;
+    
+    var record = cogInfo.Record;
+    
+    // Write the current time-stamp of this record
+    var timeStamp = this.GetTimeStamp();
+    record.Stream.WriteLine("FrameRecord (`timeStamp`)");
+    
+    // Send an event to the cog to record it's current frame state
+    record.Stream.BeginScope();
+    
+    var toSend = CogFrameRecordEvent();
+    toSend.Stream = record.Stream;
+    cog.DispatchEvent(Events.RecordFrame, toSend);
+    
+    record.Stream.EndScope();
+  }
+  
+  function RecordFrameInfo()
+  {
+    // Record all cog information
+    foreach(var info in this.CogInfoList)
+      this.RecordCogFrameInfo(info);
+  }
+  
+  function UpdateTimeStamp(event : UpdateEvent)
+  {
+    // To avoid numerical issues, just record each frame
+    this.TimeStamp += 1;
+  }
+
+  function OnLogicUpdate(event : UpdateEvent)
+  {
+    // Advance the time-stamp
+    this.UpdateTimeStamp(event);
+    
+    // Update the timer
+    this.LogicUpdateTimer += event.Dt;
+    if(this.LogicUpdateTimer < this.LogicUpdateRecordingFrequency)
+      return;
+      
+    // Enough time has passed so update the timer and record the frame info
+    this.LogicUpdateTimer -= this.LogicUpdateRecordingFrequency;
+    this.RecordFrameInfo();
+  }
+  
+  function OnDumpRecords(event : ZilchEvent)
+  {
+    // Potentially this should be changed from:
+    // foreach cog:
+    //    foreach frame:
+    // to
+    // foreach frame:
+    //    foreach cog:
+    // but that'll be left up for future iterations
+    
+    // Append all of the cog results into one string.
+    var totalResults = StringBuilder();
+    foreach(var info in this.CogInfoList)
+    {
+      totalResults.WriteLine("----`info.CogName`----");
+      totalResults.WriteLine(info.Record.Stream.ToString());
+    }
+    
+    // Tell the space to record the current levels results
+    var levelName = this.Space.CurrentLevel.Name;
+    this.GameSession.UnitTestWriter.WriteAndDiffTest(levelName, totalResults.ToString());
+  }
+}

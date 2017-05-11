@@ -1,0 +1,188 @@
+----RootSpring.Constrained----
+FrameRecord (30)
+  WorldTranslation: (1.02203, 1.749, 0)
+  WorldRotation: (0, 0, 0, 1), Euler: (0, -0, 0), Axis: (0, 0, 0), Angle: 0
+  Velocity: (0, -4.76569, 0)
+  AngularVelocity: (0, 0, 0)
+FrameRecord (60)
+  WorldTranslation: (1.02203, 1.0228, 0)
+  WorldRotation: (0, 0, 0, 1), Euler: (0, -0, 0), Axis: (0, 0, 0), Angle: 0
+  Velocity: (0, 2.17729, 0)
+  AngularVelocity: (0, 0, 0)
+FrameRecord (90)
+  WorldTranslation: (1.02203, 0.837299, 0)
+  WorldRotation: (0, 0, 0, 1), Euler: (0, -0, 0), Axis: (0, 0, 0), Angle: 0
+  Velocity: (0, -2.00611, 0)
+  AngularVelocity: (0, 0, 0)
+FrameRecord (120)
+  WorldTranslation: (1.02203, 0.847731, 0)
+  WorldRotation: (0, 0, 0, 1), Euler: (0, -0, 0), Axis: (0, 0, 0), Angle: 0
+  Velocity: (0, -0.552745, 0)
+  AngularVelocity: (0, 0, 0)
+FrameRecord (150)
+  WorldTranslation: (1.02203, 0.842562, 0)
+  WorldRotation: (0, 0, 0, 1), Euler: (0, -0, 0), Axis: (0, 0, 0), Angle: 0
+  Velocity: (0, -0.142933, 0)
+  AngularVelocity: (0, 0, 0)
+FrameRecord (180)
+  WorldTranslation: (1.02203, 0.838987, 0)
+  WorldRotation: (0, 0, 0, 1), Euler: (0, -0, 0), Axis: (0, 0, 0), Angle: 0
+  Velocity: (0, -0.0343553, 0)
+  AngularVelocity: (0, 0, 0)
+FrameRecord (210)
+  WorldTranslation: (1.02203, 0.836868, 0)
+  WorldRotation: (0, 0, 0, 1), Euler: (0, -0, 0), Axis: (0, 0, 0), Angle: 0
+  Velocity: (0, 0, 0)
+  AngularVelocity: (0, 0, 0)
+FrameRecord (240)
+  WorldTranslation: (1.02203, 0.836868, 0)
+  WorldRotation: (0, 0, 0, 1), Euler: (0, -0, 0), Axis: (0, 0, 0), Angle: 0
+  Velocity: (0, 0, 0)
+  AngularVelocity: (0, 0, 0)
+FrameRecord (270)
+  WorldTranslation: (1.02203, 0.836868, 0)
+  WorldRotation: (0, 0, 0, 1), Euler: (0, -0, 0), Axis: (0, 0, 0), Angle: 0
+  Velocity: (0, 0, 0)
+  AngularVelocity: (0, 0, 0)
+
+----RootLimit.Constrained----
+FrameRecord (30)
+  WorldTranslation: (-1.90515, 1.749, 0)
+  WorldRotation: (0, 0, 0, 1), Euler: (0, -0, 0), Axis: (0, 0, 0), Angle: 0
+  Velocity: (0, -4.76569, 0)
+  AngularVelocity: (0, 0, 0)
+FrameRecord (60)
+  WorldTranslation: (-1.90515, 0.92206, 0)
+  WorldRotation: (0, 0, 0, 1), Euler: (0, -0, 0), Axis: (0, 0, 0), Angle: 0
+  Velocity: (0, 0, 0)
+  AngularVelocity: (0, 0, 0)
+FrameRecord (90)
+  WorldTranslation: (-1.90515, 0.92206, 0)
+  WorldRotation: (0, 0, 0, 1), Euler: (0, -0, 0), Axis: (0, 0, 0), Angle: 0
+  Velocity: (0, 0, 0)
+  AngularVelocity: (0, 0, 0)
+FrameRecord (120)
+  WorldTranslation: (-1.90515, 0.92206, 0)
+  WorldRotation: (0, 0, 0, 1), Euler: (0, -0, 0), Axis: (0, 0, 0), Angle: 0
+  Velocity: (0, 0, 0)
+  AngularVelocity: (0, 0, 0)
+FrameRecord (150)
+  WorldTranslation: (-1.90515, 0.92206, 0)
+  WorldRotation: (0, 0, 0, 1), Euler: (0, -0, 0), Axis: (0, 0, 0), Angle: 0
+  Velocity: (0, 0, 0)
+  AngularVelocity: (0, 0, 0)
+FrameRecord (180)
+  WorldTranslation: (-1.90515, 0.92206, 0)
+  WorldRotation: (0, 0, 0, 1), Euler: (0, -0, 0), Axis: (0, 0, 0), Angle: 0
+  Velocity: (0, 0, 0)
+  AngularVelocity: (0, 0, 0)
+FrameRecord (210)
+  WorldTranslation: (-1.90515, 0.92206, 0)
+  WorldRotation: (0, 0, 0, 1), Euler: (0, -0, 0), Axis: (0, 0, 0), Angle: 0
+  Velocity: (0, 0, 0)
+  AngularVelocity: (0, 0, 0)
+FrameRecord (240)
+  WorldTranslation: (-1.90515, 0.92206, 0)
+  WorldRotation: (0, 0, 0, 1), Euler: (0, -0, 0), Axis: (0, 0, 0), Angle: 0
+  Velocity: (0, 0, 0)
+  AngularVelocity: (0, 0, 0)
+FrameRecord (270)
+  WorldTranslation: (-1.90515, 0.92206, 0)
+  WorldRotation: (0, 0, 0, 1), Euler: (0, -0, 0), Axis: (0, 0, 0), Angle: 0
+  Velocity: (0, 0, 0)
+  AngularVelocity: (0, 0, 0)
+
+----Cube----
+FrameRecord (30)
+  WorldTranslation: (4.26292, 3.8165, -1.66392e-05)
+  WorldRotation: (-5.8121e-07, 9.49993e-07, 0.000286251, 1), Euler: (-1.16188e-06, 1.90032e-06, 0.000572502), Axis: (-5.8121e-07, 9.49993e-07, 0.000286251), Angle: 0
+  Velocity: (-1.56462e-07, 1, -8.44826e-07)
+  AngularVelocity: (-9.10113e-07, -2.94502e-08, 2.76804e-07)
+FrameRecord (60)
+  WorldTranslation: (4.26292, 4.3165, -1.66554e-05)
+  WorldRotation: (-5.90374e-07, 9.49311e-07, 0.000286251, 1), Euler: (-1.18021e-06, 1.89896e-06, 0.000572502), Axis: (-5.90374e-07, 9.49311e-07, 0.000286251), Angle: 0
+  Velocity: (-8.84756e-09, 1, -6.98492e-10)
+  AngularVelocity: (3.19716e-09, 1.02491e-08, 2.5894e-08)
+FrameRecord (90)
+  WorldTranslation: (4.26241, 4.13956, 0.000145532)
+  WorldRotation: (6.19293e-05, -2.20304e-05, 0.000410375, 1), Euler: (0.000123841, -4.41116e-05, 0.000820748), Axis: (6.19293e-05, -2.20304e-05, 0.000410375), Angle: 0.000690534
+  Velocity: (-4.38886e-08, -2.31616, -1.28057e-09)
+  AngularVelocity: (1.25839e-08, 3.95553e-08, 1.19069e-07)
+FrameRecord (120)
+  WorldTranslation: (4.26145, 3.37174, 0.000765009)
+  WorldRotation: (0.000692377, -0.000124707, 0.00133447, 0.999999), Euler: (0.00138442, -0.000251261, 0.00266876), Axis: (0.472663, -0.0851331, 0.910997), Angle: 0.00292969
+  Velocity: (-0.0417987, -1.4766, 0.0414058)
+  AngularVelocity: (0.0508012, -0.00521248, 0.0161616)
+FrameRecord (150)
+  WorldTranslation: (4.26031, 3.32312, 0.000661475)
+  WorldRotation: (0.000421757, -0.000907601, 0.00140518, 0.999999), Euler: (0.000840964, -0.00181639, 0.0028096), Axis: (0.249346, -0.53658, 0.830751), Angle: 0.00338291
+  Velocity: (-5.85762e-06, 0.207647, -4.37994e-06)
+  AngularVelocity: (-5.21385e-06, -8.11114e-07, 7.11854e-06)
+FrameRecord (180)
+  WorldTranslation: (4.26031, 3.4843, 0.000661559)
+  WorldRotation: (0.000421805, -0.000907603, 0.00140518, 0.999999), Euler: (0.00084106, -0.00181639, 0.0028096), Axis: (0.249374, -0.536581, 0.830753), Angle: 0.00338291
+  Velocity: (9.89144e-09, 0.426139, -1.43261e-09)
+  AngularVelocity: (-4.5953e-09, -5.10093e-09, -2.4779e-08)
+FrameRecord (210)
+  WorldTranslation: (4.26031, 3.74925, 0.00066156)
+  WorldRotation: (0.000421807, -0.000907606, 0.00140519, 0.999999), Euler: (0.000841063, -0.0018164, 0.00280962), Axis: (0.249375, -0.536583, 0.830757), Angle: 0.00338291
+  Velocity: (-1.50966e-09, 0.623807, 4.05137e-09)
+  AngularVelocity: (-2.72461e-09, -8.44526e-09, -9.8795e-09)
+FrameRecord (240)
+  WorldTranslation: (4.26031, 4.1081, 0.00066156)
+  WorldRotation: (0.000421807, -0.00090761, 0.0014052, 0.999999), Euler: (0.000841064, -0.0018164, 0.00280963), Axis: (0.249375, -0.536585, 0.830761), Angle: 0.00338291
+  Velocity: (3.82842e-09, 0.802633, 6.24917e-09)
+  AngularVelocity: (6.92691e-09, -1.02132e-08, -1.89274e-08)
+FrameRecord (270)
+  WorldTranslation: (4.26031, 4.55188, 0.000661561)
+  WorldRotation: (0.000421809, -0.000907613, 0.0014052, 0.999999), Euler: (0.000841068, -0.00181641, 0.00280965), Axis: (0.249376, -0.536587, 0.830766), Angle: 0.00338291
+  Velocity: (-6.14177e-09, 0.964416, 5.36593e-09)
+  AngularVelocity: (1.36387e-08, 1.01879e-08, 2.38525e-08)
+
+----RootRegular.Constrained----
+FrameRecord (30)
+  WorldTranslation: (-5.05972, 5, 0)
+  WorldRotation: (0, 0, 0, 1), Euler: (0, -0, 0), Axis: (0, 0, 0), Angle: 0
+  Velocity: (0, 0, 0)
+  AngularVelocity: (0, 0, 0)
+FrameRecord (60)
+  WorldTranslation: (-5.05972, 5, 0)
+  WorldRotation: (0, 0, 0, 1), Euler: (0, -0, 0), Axis: (0, 0, 0), Angle: 0
+  Velocity: (0, 0, 0)
+  AngularVelocity: (0, 0, 0)
+FrameRecord (90)
+  WorldTranslation: (-5.05972, 5, 0)
+  WorldRotation: (0, 0, 0, 1), Euler: (0, -0, 0), Axis: (0, 0, 0), Angle: 0
+  Velocity: (0, 0, 0)
+  AngularVelocity: (0, 0, 0)
+FrameRecord (120)
+  WorldTranslation: (-5.05972, 5, 0)
+  WorldRotation: (0, 0, 0, 1), Euler: (0, -0, 0), Axis: (0, 0, 0), Angle: 0
+  Velocity: (0, 0, 0)
+  AngularVelocity: (0, 0, 0)
+FrameRecord (150)
+  WorldTranslation: (-5.05972, 5, 0)
+  WorldRotation: (0, 0, 0, 1), Euler: (0, -0, 0), Axis: (0, 0, 0), Angle: 0
+  Velocity: (0, 0, 0)
+  AngularVelocity: (0, 0, 0)
+FrameRecord (180)
+  WorldTranslation: (-5.05972, 5, 0)
+  WorldRotation: (0, 0, 0, 1), Euler: (0, -0, 0), Axis: (0, 0, 0), Angle: 0
+  Velocity: (0, 0, 0)
+  AngularVelocity: (0, 0, 0)
+FrameRecord (210)
+  WorldTranslation: (-5.05972, 5, 0)
+  WorldRotation: (0, 0, 0, 1), Euler: (0, -0, 0), Axis: (0, 0, 0), Angle: 0
+  Velocity: (0, 0, 0)
+  AngularVelocity: (0, 0, 0)
+FrameRecord (240)
+  WorldTranslation: (-5.05972, 5, 0)
+  WorldRotation: (0, 0, 0, 1), Euler: (0, -0, 0), Axis: (0, 0, 0), Angle: 0
+  Velocity: (0, 0, 0)
+  AngularVelocity: (0, 0, 0)
+FrameRecord (270)
+  WorldTranslation: (-5.05972, 5, 0)
+  WorldRotation: (0, 0, 0, 1), Euler: (0, -0, 0), Axis: (0, 0, 0), Angle: 0
+  Velocity: (0, 0, 0)
+  AngularVelocity: (0, 0, 0)
+

@@ -1,0 +1,63 @@
+[Version:1]
+ResourceTable 
+{
+	var ResourceType = "Level"
+	var EntryList = Array
+	{
+		Object
+		{
+			var Name = "Name1"
+			var Value = "5942aa982acdb96e:StickJoints"
+			var Weight = 1
+		}
+		Object
+		{
+			var Name = "Name2"
+			var Value = "5942a91b7bab7c33:PositionJoints"
+			var Weight = 1
+		}
+		Object
+		{
+			var Name = "Name3"
+			var Value = "5942abb3e3793fb9:PrismaticJoints"
+			var Weight = 1
+		}
+		Object
+		{
+			var Name = "Name4"
+			var Value = "5942ab200621a4fc:RevoluteJoints"
+			var Weight = 1
+		}
+		Object
+		{
+			var Name = "Name5"
+			var Value = "5942a5f59988330a:WeldJoints"
+			var Weight = 1
+		}
+		Object
+		{
+			var Name = "Name6"
+			var Value = "5942a5bd88f6f32f:UprightJoints"
+			var Weight = 1
+		}
+		Object
+		{
+			var Name = "Name7"
+			var Value = "5942a77b4e4da115:GearJoints"
+			var Weight = 1
+		}
+		Object
+		{
+			var Name = "Name8"
+			var Value = "5942a6d66b5a2618:PulleyJoints"
+			var Weight = 1
+		}
+		Object
+		{
+			var Name = "Name9"
+			var Value = "5942a7d23c2bdf88:JointEvents"
+			var Weight = 1
+		}
+	}
+	var MaxWeight = 1
+}

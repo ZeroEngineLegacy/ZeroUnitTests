@@ -1,0 +1,89 @@
+----RootLowerLimit.StickJoint----
+FrameRecord (15)
+FrameRecord (30)
+JointLowerLimitReached (32)
+  JointLowerLimitReached
+FrameRecord (45)
+JointLowerLimitReached (51)
+  JointLowerLimitReached
+JointLowerLimitReached (55)
+  JointLowerLimitReached
+FrameRecord (60)
+FrameRecord (75)
+JointLowerLimitReached (85)
+  JointLowerLimitReached
+JointLowerLimitReached (89)
+  JointLowerLimitReached
+FrameRecord (90)
+FrameRecord (105)
+JointLowerLimitReached (118)
+  JointLowerLimitReached
+FrameRecord (120)
+
+----RootUpperLimit.StickJoint----
+FrameRecord (15)
+JointUpperLimitReached (27)
+  JointUpperLimitReached
+FrameRecord (30)
+FrameRecord (45)
+FrameRecord (60)
+FrameRecord (75)
+FrameRecord (90)
+FrameRecord (105)
+FrameRecord (120)
+
+----RootForceExceeded.StickJoint----
+FrameRecord (15)
+JointExceedForceLimit (27)
+  JointExceedForceLimit
+JointUpperLimitReached (27)
+  JointUpperLimitReached
+FrameRecord (30)
+JointExceedForceLimit (33)
+  JointExceedForceLimit
+JointExceedForceLimit (34)
+  JointExceedForceLimit
+JointExceedForceLimit (35)
+  JointExceedForceLimit
+JointExceedForceLimit (36)
+  JointExceedForceLimit
+FrameRecord (45)
+FrameRecord (60)
+FrameRecord (75)
+FrameRecord (90)
+FrameRecord (105)
+FrameRecord (120)
+
+----RootForceExceededWithSnapping.Constrained----
+FrameRecord (15)
+  WorldTranslation: (6, 2.6718, 0)
+  WorldRotation: (0, 0, 0, 1), Euler: (0, -0, 0), Axis: (0, 0, 0), Angle: 0
+FrameRecord (30)
+  WorldTranslation: (6.00002, 1.80146, 2.40364e-05)
+  WorldRotation: (-0.0783706, -2.81129e-09, 0.0783706, 0.993839), Euler: (-0.156424, 0.0122842, 0.156424), Axis: (-0.707108, -2.53652e-08, 0.707108), Angle: 0.222122
+FrameRecord (45)
+  WorldTranslation: (6.00003, 0.554937, 3.2713e-05)
+  WorldRotation: (-0.417896, 0, 0.417896, 0.806676), Euler: (-0.803123, 0.356796, 0.803123), Axis: (-0.707107, 0, 0.707107), Angle: 1.26458
+FrameRecord (60)
+  WorldTranslation: (5.65667, 0.360162, -0.343325)
+  WorldRotation: (-0.610429, -9.50571e-06, 0.610398, 0.504767), Euler: (-1.17881, 0.840835, 1.17868), Axis: (-0.707125, -1.10115e-05, 0.707089), Angle: 2.08337
+FrameRecord (75)
+  WorldTranslation: (5.27389, 0.241597, -0.726106)
+  WorldRotation: (0.6922, 3.36686e-05, -0.692142, -0.204448), Euler: (-1.42448, 1.2806, 1.42391), Axis: (0.707137, 3.43951e-05, -0.707077), Angle: 3.55339
+FrameRecord (90)
+  WorldTranslation: (4.96242, -0.00265411, -1.03759)
+  WorldRotation: (0.707909, 0.00185876, -0.70629, -0.0039984), Euler: (-1.83901, 1.5622, 1.29958), Axis: (0.707915, 0.00185878, -0.706296), Angle: 3.14959
+FrameRecord (105)
+  WorldTranslation: (4.80304, -0.00357894, -1.19697)
+  WorldRotation: (0.708741, 0.000991362, -0.705468, 0.000817791), Euler: (-3.08989, 1.56616, 0.0542592), Axis: (0.708741, 0.000991362, -0.705468), Angle: 3.13996
+FrameRecord (120)
+  WorldTranslation: (4.72831, -0.00357894, -1.27172)
+  WorldRotation: (0.70944, 0.000990551, -0.704765, 0.000818773), Euler: (-3.10614, 1.56418, 0.0380128), Axis: (0.70944, 0.000990552, -0.704765), Angle: 3.13996
+
+----RootForceExceededWithSnapping.StickJoint----
+FrameRecord (15)
+JointExceedForceLimit (27)
+  JointExceedForceLimit
+JointUpperLimitReached (27)
+  JointUpperLimitReached
+

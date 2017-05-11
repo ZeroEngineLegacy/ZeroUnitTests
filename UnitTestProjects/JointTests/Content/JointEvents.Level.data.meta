@@ -1,0 +1,12 @@
+[Version:1]
+DataContent 
+{
+	DataBuilder 
+	{
+		var Name = "JointEvents"
+		var ResourceId = 0x5942a7d23c2bdf88
+		var LoaderType = "Level"
+		var Version = 0
+		var ShowInEditor = true
+	}
+}

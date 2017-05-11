@@ -1,0 +1,20 @@
+class ForceTester : ZilchComponent
+{
+  [Property] var JointPath : CogPath = CogPath();
+  
+  function Initialize(init : CogInitializer)
+  {
+    Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+    Zero.Connect(this.JointPath.Cog, Events.JointExceedForceLimit, this.OnJointExceedForceLimit);
+  }
+
+  function OnJointExceedForceLimit(event : JointEvent)
+  {
+    Console.WriteLine("Exceeded");
+  }
+
+  function OnLogicUpdate(event : UpdateEvent)
+  {
+    Console.WriteLine(this.Owner.RigidBody.Velocity);
+  }
+}

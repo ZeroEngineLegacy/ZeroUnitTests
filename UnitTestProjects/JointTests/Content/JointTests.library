@@ -1,0 +1,8 @@
+[Version:1]
+ContentLibrary 
+{
+	var Name = "JointTests"
+	var LibraryId = 0x5942a8f5957f14e9
+	var SourceControlType = ""
+	var ReadOnly = false
+}

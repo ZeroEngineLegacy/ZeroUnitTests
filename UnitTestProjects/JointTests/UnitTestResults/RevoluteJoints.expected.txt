@@ -1,0 +1,248 @@
+----RootMotor.Constrained----
+FrameRecord (15)
+  WorldTranslation: (7.51028, 4.24676, 0)
+  WorldRotation: (0, 0, 0.124343, 0.992239), Euler: (0, -0, 0.249331), Axis: (0, 0, 1), Angle: 0.24933
+  Velocity: (-0.23057, 0.973224, 0)
+  AngularVelocity: (0, 0, 1)
+FrameRecord (30)
+  WorldTranslation: (7.41913, 4.47888, 0)
+  WorldRotation: (0, 0, 0.247101, 0.96899), Euler: (0, -0, 0.499375), Axis: (0, 0, 1), Angle: 0.499374
+  Velocity: (-0.464183, 0.886057, 0)
+  AngularVelocity: (0, 0, 1)
+FrameRecord (45)
+  WorldTranslation: (7.27336, 4.68124, 0)
+  WorldRotation: (0, 0, 0.366017, 0.930608), Euler: (0, -0, 0.749451), Axis: (0, 0, 1), Angle: 0.74945
+  Velocity: (-0.669046, 0.743727, 0)
+  AngularVelocity: (0, 0, 1)
+FrameRecord (60)
+  WorldTranslation: (7.08201, 4.84121, 0)
+  WorldRotation: (0, 0, 0.479218, 0.877696), Euler: (0, -0, 0.999527), Axis: (0, 0, 1), Angle: 0.999526
+  Velocity: (-0.832428, 0.555022, 0)
+  AngularVelocity: (0, 0, 1)
+FrameRecord (75)
+  WorldTranslation: (6.85697, 4.94885, 0)
+  WorldRotation: (0, 0, 0.58493, 0.811084), Euler: (0, -0, 1.24959), Axis: (0, 0, 1), Angle: 1.24959
+  Velocity: (-0.944055, 0.331726, 0)
+  AngularVelocity: (0, 0, 1)
+FrameRecord (90)
+  WorldTranslation: (6.61226, 4.99747, 0)
+  WorldRotation: (0, 0, 0.681518, 0.731801), Euler: (0, -0, 1.49967), Axis: (0, 0, 1), Angle: 1.49967
+  Velocity: (-0.996892, 0.0877535, 0)
+  AngularVelocity: (0, 0, 1)
+FrameRecord (105)
+  WorldTranslation: (6.50859, 4.99947, 2.42745e-05)
+  WorldRotation: (-0.000221766, 0.000636153, 0.718541, 0.695484), Euler: (0.000605735, 0.00120357, 1.60341), Axis: (-0.000308634, 0.00088534, 0.999999), Angle: 1.60341
+  Velocity: (7.28133e-09, 2.83959e-09, 1.54534e-08)
+  AngularVelocity: (9.73227e-09, -2.41944e-08, 1.14685e-08)
+FrameRecord (120)
+  WorldTranslation: (6.50859, 4.99947, 9.19073e-05)
+  WorldRotation: (-0.000221754, 0.000636119, 0.718541, 0.695484), Euler: (0.000605703, 0.0012035, 1.60341), Axis: (-0.000308617, 0.000885292, 1), Angle: 1.60341
+  Velocity: (1.67462e-08, -4.48276e-09, 1.51719e-08)
+  AngularVelocity: (6.53785e-09, -2.13706e-08, -9.9726e-09)
+FrameRecord (135)
+  WorldTranslation: (6.50859, 4.99947, 9.25655e-05)
+  WorldRotation: (-0.000221742, 0.000636085, 0.718541, 0.695484), Euler: (0.000605671, 0.00120344, 1.60341), Axis: (-0.0003086, 0.000885245, 0.999999), Angle: 1.60341
+  Velocity: (-2.53946e-08, 7.82344e-09, -1.69939e-08)
+  AngularVelocity: (-7.76356e-09, 2.49313e-08, 1.55687e-08)
+FrameRecord (150)
+  WorldTranslation: (6.50859, 4.99947, 9.25671e-05)
+  WorldRotation: (-0.000221729, 0.00063605, 0.718541, 0.695484), Euler: (0.000605638, 0.00120337, 1.60341), Axis: (-0.000308582, 0.000885196, 1), Angle: 1.60341
+  Velocity: (3.61478e-08, -1.08273e-08, 1.81193e-08)
+  AngularVelocity: (5.41302e-09, -3.05858e-08, -2.34627e-08)
+FrameRecord (165)
+  WorldTranslation: (6.50859, 4.99947, 9.25639e-05)
+  WorldRotation: (-0.000221722, 0.00063603, 0.718541, 0.695484), Euler: (0.00060562, 0.00120333, 1.60341), Axis: (-0.000308572, 0.000885168, 0.999999), Angle: 1.60341
+  Velocity: (0, 0, 0)
+  AngularVelocity: (0, 0, 0)
+FrameRecord (180)
+  WorldTranslation: (6.50859, 4.99947, 9.25639e-05)
+  WorldRotation: (-0.000221722, 0.00063603, 0.718541, 0.695484), Euler: (0.00060562, 0.00120333, 1.60341), Axis: (-0.000308572, 0.000885168, 0.999999), Angle: 1.60341
+  Velocity: (0, 0, 0)
+  AngularVelocity: (0, 0, 0)
+
+----RootSpring.Constrained----
+FrameRecord (15)
+  WorldTranslation: (3.7731, 3.72303, 0)
+  WorldRotation: (0, 0, -0.139858, 0.990172), Euler: (0, 0, -0.280635), Axis: (0, 0, -1), Angle: 0.280635
+  Velocity: (-0.506225, -2.01618, 0)
+  AngularVelocity: (0, 0, -2.07876)
+FrameRecord (30)
+  WorldTranslation: (3.33723, 3.14818, 0)
+  WorldRotation: (0, 0, -0.487938, 0.872879), Euler: (0, 0, -1.01945), Axis: (0, 0, -1), Angle: 1.01945
+  Velocity: (-2.77149, -1.92689, 0)
+  AngularVelocity: (0, 0, -3.37562)
+FrameRecord (45)
+  WorldTranslation: (2.79867, 3.00009, 0.000201969)
+  WorldRotation: (-8.64176e-05, -0.000182259, -0.711861, 0.70232), Euler: (0.000138101, -0.000379043, -1.58429), Axis: (-0.000121397, -0.000256031, -1), Angle: 1.58429
+  Velocity: (-0.287742, -0.0667398, 0.025061)
+  AngularVelocity: (-0.0228446, -0.00800039, -0.115433)
+FrameRecord (60)
+  WorldTranslation: (3.16102, 3.06269, -1.57759e-05)
+  WorldRotation: (-8.84466e-06, -0.000150294, -0.570747, 0.821126), Euler: (0.000157035, -0.000256917, -1.21483), Axis: (-1.54966e-05, -0.000263329, -1), Angle: 1.21483
+  Velocity: (2.22567, 0.730167, -3.31305e-07)
+  AngularVelocity: (-2.13111e-12, -2.44427e-12, 2.34239)
+FrameRecord (75)
+  WorldTranslation: (3.57685, 3.35534, -1.97033e-05)
+  WorldRotation: (2.96802e-05, -0.0001476, -0.34317, 0.939273), Euler: (0.000157059, -0.000256903, -0.700579), Axis: (8.64884e-05, -0.000430108, -1), Angle: 0.700579
+  Velocity: (0.946529, 1.06972, 8.60562e-07)
+  AngularVelocity: (-2.45439e-12, -2.55795e-12, 1.4284)
+FrameRecord (90)
+  WorldTranslation: (3.6486, 3.45192, -1.97608e-05)
+  WorldRotation: (3.85012e-05, -0.000145549, -0.285983, 0.958235), Euler: (0.000157035, -0.000256918, -0.580063), Axis: (0.000134628, -0.000508942, -1), Angle: 0.580063
+  Velocity: (-0.195102, -0.30168, -1.12062e-07)
+  AngularVelocity: (-1.2006e-12, 4.16378e-12, -0.359273)
+FrameRecord (105)
+  WorldTranslation: (3.44254, 3.2234, -1.98107e-05)
+  WorldRotation: (1.5656e-05, -0.000149739, -0.430116, 0.902773), Euler: (0.000157078, -0.000256892, -0.889243), Axis: (3.63995e-05, -0.000348135, -1), Angle: 0.889243
+  Velocity: (-1.40466, -1.21358, -7.96373e-07)
+  AngularVelocity: (9.90494e-12, -5.68662e-13, -1.8564)
+FrameRecord (120)
+  WorldTranslation: (3.0758, 3.03536, -1.98018e-05)
+  WorldRotation: (-1.55653e-05, -0.000149748, -0.6068, 0.794855), Euler: (0.00015699, -0.000256946, -1.30406), Axis: (-2.56515e-05, -0.000246784, -1), Angle: 1.30406
+  Velocity: (-1.04641, -0.306452, 5.21341e-07)
+  AngularVelocity: (-9.20651e-12, 3.55271e-12, -1.09036)
+FrameRecord (135)
+  WorldTranslation: (3.07396, 3.03487, -1.97929e-05)
+  WorldRotation: (-1.57097e-05, -0.000149734, -0.607552, 0.79428), Euler: (0.000156986, -0.00025695, -1.30595), Axis: (-2.58573e-05, -0.000246454, -1), Angle: 1.30595
+  Velocity: (0.856655, 0.218848, -3.07458e-07)
+  AngularVelocity: (7.4454e-12, 5.26512e-12, 0.884167)
+FrameRecord (150)
+  WorldTranslation: (3.37076, 3.17043, -1.97766e-05)
+  WorldRotation: (8.9432e-06, -0.00015029, -0.469895, 0.882722), Euler: (0.00015703, -0.000256923, -0.978344), Axis: (1.90323e-05, -0.000319837, -1), Angle: 0.978344
+  Velocity: (1.12266, 0.719962, 2.9144e-07)
+  AngularVelocity: (8.7765e-12, 1.10836e-12, 1.33371)
+FrameRecord (165)
+  WorldTranslation: (3.51101, 3.28472, -1.97567e-05)
+  WorldRotation: (2.24967e-05, -0.000148866, -0.388047, 0.92164), Euler: (0.000157001, -0.000256941, -0.797023), Axis: (5.79743e-05, -0.000383628, -1), Angle: 0.797023
+  Velocity: (0.0445492, 0.0434415, 9.61046e-08)
+  AngularVelocity: (-4.50362e-12, -7.38964e-13, 0.0622286)
+FrameRecord (180)
+  WorldTranslation: (3.39367, 3.18637, -1.97821e-05)
+  WorldRotation: (1.10371e-05, -0.000150151, -0.457502, 0.889209), Euler: (0.000157017, -0.000256932, -0.950367), Axis: (2.41248e-05, -0.000328198, -1), Angle: 0.950367
+  Velocity: (-0.825554, -0.611564, -2.9156e-07)
+  AngularVelocity: (2.51389e-12, 5.11474e-13, -1.02744)
+
+----RootRegular.Constrained----
+FrameRecord (15)
+  WorldTranslation: (-5.09879, 3.72303, 0)
+  WorldRotation: (0, 0, -0.139858, 0.990172), Euler: (0, 0, -0.280635), Axis: (0, 0, -1), Angle: 0.280635
+  Velocity: (-0.506225, -2.01618, 0)
+  AngularVelocity: (0, 0, -2.07876)
+FrameRecord (30)
+  WorldTranslation: (-5.54261, 3.14335, 0)
+  WorldRotation: (0, 0, -0.491988, 0.870602), Euler: (0, 0, -1.02874), Axis: (0, 0, -1), Angle: 1.02874
+  Velocity: (-2.98995, -2.05809, 0)
+  AngularVelocity: (0, 0, -3.62989)
+FrameRecord (45)
+  WorldTranslation: (-6.04101, 3.00017, -0.000365566)
+  WorldRotation: (-1.45853e-05, -0.000200839, -0.70046, 0.713692), Euler: (0.00026054, -0.000307107, -1.55208), Axis: (-2.08225e-05, -0.000286724, -1), Angle: 1.55208
+  Velocity: (0.857699, 0.00378926, -0.000388993)
+  AngularVelocity: (2.12461e-09, -7.84439e-12, 0.857708)
+FrameRecord (60)
+  WorldTranslation: (-5.85647, 3.02087, -2.60073e-05)
+  WorldRotation: (4.12627e-06, -0.000201326, -0.631174, 0.775641), Euler: (0.000260544, -0.000307104, -1.36613), Axis: (6.53745e-06, -0.00031897, -1), Angle: 1.36613
+  Velocity: (0.572358, 0.113012, 1.14842e-08)
+  AngularVelocity: (-3.63176e-12, 2.42095e-12, 0.583409)
+FrameRecord (75)
+  WorldTranslation: (-5.78311, 3.03902, -2.36469e-05)
+  WorldRotation: (1.17298e-05, -0.000201026, -0.601412, 0.798939), Euler: (0.000260541, -0.000307106, -1.29053), Axis: (1.95037e-05, -0.000334256, -1), Angle: 1.29053
+  Velocity: (0.0330413, 0.00949007, 1.58434e-08)
+  AngularVelocity: (9.06291e-12, -4.57412e-13, 0.0343771)
+FrameRecord (90)
+  WorldTranslation: (-5.84781, 3.02271, -2.36364e-05)
+  WorldRotation: (5.01698e-06, -0.000201305, -0.627732, 0.77843), Euler: (0.000260541, -0.000307104, -1.35727), Axis: (7.99223e-06, -0.000320686, -1), Angle: 1.35727
+  Velocity: (-0.493882, -0.111459, -6.57345e-08)
+  AngularVelocity: (-8.1994e-12, -1.8332e-12, -0.506303)
+FrameRecord (105)
+  WorldTranslation: (-6.01604, 3.00095, -2.36826e-05)
+  WorldRotation: (-1.20768e-05, -0.000201004, -0.691491, 0.722385), Euler: (0.000260537, -0.000307107, -1.5271), Axis: (-1.74649e-05, -0.000290682, -1), Angle: 1.5271
+  Velocity: (-0.7716, -0.0436988, -2.69517e-08)
+  AngularVelocity: (-5.17627e-12, 4.35874e-13, -0.772837)
+FrameRecord (120)
+  WorldTranslation: (-6.04174, 3.00016, -4.53102e-05)
+  WorldRotation: (2.72587e-06, -0.000138349, -0.70072, 0.713436), Euler: (0.000197777, -0.000193586, -1.55281), Axis: (3.8901e-06, -0.000197438, -1), Angle: 1.55281
+  Velocity: (0.185486, 0.00276232, -0.000175812)
+  AngularVelocity: (-1.46078e-11, -2.27374e-13, 0.185507)
+FrameRecord (135)
+  WorldTranslation: (-6.00527, 3.00148, -1.51783e-05)
+  WorldRotation: (5.24959e-06, -0.000138276, -0.687587, 0.726102), Euler: (0.000197777, -0.000193586, -1.51632), Axis: (7.63481e-06, -0.000201104, -1), Angle: 1.51632
+  Velocity: (0.0993381, 0.00525178, 2.85621e-09)
+  AngularVelocity: (7.18848e-12, -4.26881e-14, 0.0994768)
+FrameRecord (150)
+  WorldTranslation: (-5.99775, 3.00192, -1.48942e-05)
+  WorldRotation: (5.77021e-06, -0.000138256, -0.684845, 0.728688), Euler: (0.000197778, -0.000193588, -1.50878), Axis: (8.42556e-06, -0.000201879, -1), Angle: 1.50878
+  Velocity: (-0.0323935, -0.00202899, -4.95262e-10)
+  AngularVelocity: (-7.81009e-12, -1.02293e-13, -0.032457)
+FrameRecord (165)
+  WorldTranslation: (-6.02159, 3.00073, -1.48926e-05)
+  WorldRotation: (4.11895e-06, -0.000138315, -0.693496, 0.720461), Euler: (0.000197777, -0.000193588, -1.53266), Axis: (5.9394e-06, -0.000199446, -1), Angle: 1.53266
+  Velocity: (-0.142031, -0.00575604, -2.08934e-09)
+  AngularVelocity: (-7.84284e-12, -1.7325e-13, -0.142147)
+FrameRecord (180)
+  WorldTranslation: (-6.06147, 3, 4.70103e-05)
+  WorldRotation: (-1.67262e-05, -0.000176264, -0.707726, 0.706487), Euler: (0.000225859, -0.000272731, -1.57255), Axis: (-2.36337e-05, -0.000249057, -1), Angle: 1.57255
+  Velocity: (-0.0598555, -0.0141864, 0.0051901)
+  AngularVelocity: (-0.00475716, -0.00167161, -0.0242201)
+
+----RootLimit.Constrained----
+FrameRecord (15)
+  WorldTranslation: (-0.454918, 3.72303, 0)
+  WorldRotation: (0, 0, -0.139858, 0.990172), Euler: (0, 0, -0.280635), Axis: (0, 0, -1), Angle: 0.280635
+  Velocity: (-0.506225, -2.01618, 0)
+  AngularVelocity: (0, 0, -2.07876)
+FrameRecord (30)
+  WorldTranslation: (-0.709491, 3.29286, 0)
+  WorldRotation: (0, 0, -0.38315, 0.923686), Euler: (0, 0, -0.786408), Axis: (0, 0, -1), Angle: 0.786408
+  Velocity: (0.111629, 0.109769, 0)
+  AngularVelocity: (0, 0, 0.155799)
+FrameRecord (45)
+  WorldTranslation: (-0.708811, 3.29283, 0)
+  WorldRotation: (0, 0, -0.382727, 0.923862), Euler: (0, 0, -0.785492), Axis: (0, 0, -1), Angle: 0.785492
+  Velocity: (1.15822e-08, 2.98023e-08, 0)
+  AngularVelocity: (0, 0, 1.63782e-08)
+FrameRecord (60)
+  WorldTranslation: (-0.708811, 3.29283, 0)
+  WorldRotation: (0, 0, -0.382727, 0.923862), Euler: (0, 0, -0.785492), Axis: (0, 0, -1), Angle: 0.785492
+  Velocity: (8.77559e-10, -1.49012e-08, 0)
+  AngularVelocity: (0, 0, 1.24094e-09)
+FrameRecord (75)
+  WorldTranslation: (-0.708811, 3.29283, 0)
+  WorldRotation: (0, 0, -0.382727, 0.923862), Euler: (0, 0, -0.785492), Axis: (0, 0, -1), Angle: 0.785492
+  Velocity: (-3.81693e-10, -1.49012e-08, 0)
+  AngularVelocity: (0, 0, -5.39745e-10)
+FrameRecord (90)
+  WorldTranslation: (-0.708811, 3.29283, 0)
+  WorldRotation: (0, 0, -0.382727, 0.923862), Euler: (0, 0, -0.785492), Axis: (0, 0, -1), Angle: 0.785492
+  Velocity: (0, 0, 0)
+  AngularVelocity: (0, 0, 0)
+FrameRecord (105)
+  WorldTranslation: (-0.708811, 3.29283, 0)
+  WorldRotation: (0, 0, -0.382727, 0.923862), Euler: (0, 0, -0.785492), Axis: (0, 0, -1), Angle: 0.785492
+  Velocity: (0, 0, 0)
+  AngularVelocity: (0, 0, 0)
+FrameRecord (120)
+  WorldTranslation: (-0.708811, 3.29283, 0)
+  WorldRotation: (0, 0, -0.382727, 0.923862), Euler: (0, 0, -0.785492), Axis: (0, 0, -1), Angle: 0.785492
+  Velocity: (0, 0, 0)
+  AngularVelocity: (0, 0, 0)
+FrameRecord (135)
+  WorldTranslation: (-0.708811, 3.29283, 0)
+  WorldRotation: (0, 0, -0.382727, 0.923862), Euler: (0, 0, -0.785492), Axis: (0, 0, -1), Angle: 0.785492
+  Velocity: (0, 0, 0)
+  AngularVelocity: (0, 0, 0)
+FrameRecord (150)
+  WorldTranslation: (-0.708811, 3.29283, 0)
+  WorldRotation: (0, 0, -0.382727, 0.923862), Euler: (0, 0, -0.785492), Axis: (0, 0, -1), Angle: 0.785492
+  Velocity: (0, 0, 0)
+  AngularVelocity: (0, 0, 0)
+FrameRecord (165)
+  WorldTranslation: (-0.708811, 3.29283, 0)
+  WorldRotation: (0, 0, -0.382727, 0.923862), Euler: (0, 0, -0.785492), Axis: (0, 0, -1), Angle: 0.785492
+  Velocity: (0, 0, 0)
+  AngularVelocity: (0, 0, 0)
+FrameRecord (180)
+  WorldTranslation: (-0.708811, 3.29283, 0)
+  WorldRotation: (0, 0, -0.382727, 0.923862), Euler: (0, 0, -0.785492), Axis: (0, 0, -1), Angle: 0.785492
+  Velocity: (0, 0, 0)
+  AngularVelocity: (0, 0, 0)
+

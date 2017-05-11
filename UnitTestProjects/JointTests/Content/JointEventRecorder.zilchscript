@@ -1,0 +1,34 @@
+// Sends out incident events when joint events happen
+class JointEventRecorder : ZilchComponent
+{
+  [Dependency] var BaseRecorder : BaseCogResultRecorder;
+  
+  [Property] var RecordExceedForceLimit : Boolean = true;
+  [Property] var RecordLowerLimitReached : Boolean = true;
+  [Property] var RecordUpperLimitReached : Boolean = true;
+  
+  function Initialize(init : CogInitializer)
+  {
+    // Listen for collision the various collision events
+    if(this.RecordExceedForceLimit)
+      Zero.Connect(this.Owner, Events.JointExceedForceLimit, this.OnJointEvent);
+    if(this.RecordLowerLimitReached)
+      Zero.Connect(this.Owner, Events.JointLowerLimitReached, this.OnJointEvent);
+    if(this.RecordUpperLimitReached)
+      Zero.Connect(this.Owner, Events.JointUpperLimitReached, this.OnJointEvent);
+  }
+  
+  function SendCogIncidentEvent(incidentName : String, message : String)
+  {
+    var toSend = CogIncidentEvent(this.Owner, incidentName);
+    toSend.AddMessage(message);
+    this.Space.DispatchEvent(Events.RecordCogIncident, toSend);
+  }
+  
+  function OnJointEvent(event : JointEvent)
+  {
+    var incidentName = event.EventId;
+    var msg = "`incidentName`";
+    this.SendCogIncidentEvent(incidentName, msg);
+  }
+}

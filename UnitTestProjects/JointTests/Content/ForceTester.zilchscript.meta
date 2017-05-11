@@ -1,0 +1,9 @@
+[Version:1]
+TextContent 
+{
+	ZilchScriptBuilder 
+	{
+		var Name = "ForceTester"
+		var ResourceId = 0x59425b2cc5199a6b
+	}
+}

@@ -1,0 +1,9 @@
+[Version:1]
+TextContent 
+{
+	ZilchScriptBuilder 
+	{
+		var Name = "ColorOverride"
+		var ResourceId = 0x5942a9da657212d7
+	}
+}
