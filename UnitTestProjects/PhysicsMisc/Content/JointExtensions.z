@@ -24,7 +24,7 @@ class JointExtensions
     stream.WriteLine(@this.AtomIds);
     stream.WriteLine(@this.Reverse);
     stream.WriteLine(@this.Speed);
-    stream.WriteLine(@this.MaxForce);
+    stream.WriteLine(@this.MaxImpulse);
     
     stream.EndScope();
   }

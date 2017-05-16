@@ -130,7 +130,7 @@ FrameRecord (61)
         OtherCollider: Anchor
         AutoSnaps: false
         IsGhost: false
-        MaxForce: 0
+        MaxImpulse: 0
         Valid: true
         SendsEvents: true
         Joint: StickJoint
@@ -154,7 +154,7 @@ FrameRecord (121)
         OtherCollider: Anchor
         AutoSnaps: false
         IsGhost: false
-        MaxForce: 0
+        MaxImpulse: 0
         Valid: true
         SendsEvents: true
         Joint: StickJoint

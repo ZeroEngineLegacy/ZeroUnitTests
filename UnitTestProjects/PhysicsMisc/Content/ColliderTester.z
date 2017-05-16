@@ -186,7 +186,7 @@ class ColliderExtensions
     stream.WriteLine("OtherCollider: `stream.GetComponentOwnerName(this.OtherCollider)`");
     stream.WriteLine(@this.AutoSnaps);
     stream.WriteLine(@this.IsGhost);
-    stream.WriteLine(@this.MaxForce);
+    stream.WriteLine(@this.MaxImpulse);
     stream.WriteLine(@this.Valid);
     stream.WriteLine(@this.SendsEvents);
     stream.WriteLine("Joint: `stream.GetComponentOwnerName(this.Joint)`");

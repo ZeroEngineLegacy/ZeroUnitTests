@@ -187,9 +187,9 @@ Level
 		var LinkId = 4
 		Transform 
 		{
-			var Translation = Real3{2.14291263, 4.28479576, 13.6461735}
+			var Translation = Real3{2.14093471, 7.3730154, 13.4573002}
 			var Scale = Real3{1, 1, 1}
-			var Rotation = Quaternion{0.0261765625, 0.00523433089, -0.000137065072, 0.999643683}
+			var Rotation = Quaternion{-0.0871545449, 0.00521619944, 0.000456356502, 0.996181011}
 		}
 		CameraViewport 
 		{
@@ -245,9 +245,8 @@ Level
 		EditorCameraController 
 		{
 			var ControlMode = ControlMode.Orbit
-			var Previous3DMode = ControlMode.Orbit
 			var LookDistance = 13.6656504
-			var VerticalAngle = -0.0523598194
+			var VerticalAngle = 0.17453292
 			var HorizontalAngle = -0.0104723424
 			var LookTarget = Real3{2, 5, 0}
 			var MoveSensitivity = 1
@@ -574,7 +573,7 @@ Level
 					var SendsEvents = false
 					var AutoSnaps = false
 					var CollideConnected = true
-					var MaxImpulse = 0
+					var MaxForce = 0
 					var LocalPointA = Real3{0, 0, 0}
 					var LocalPointB = Real3{0, 0, 0}
 					var LocalAngleA = Quaternion{-0, -0, -0, 1}
@@ -775,7 +774,7 @@ Level
 					var SendsEvents = false
 					var AutoSnaps = false
 					var CollideConnected = true
-					var MaxImpulse = 0
+					var MaxForce = 0
 					var LocalPointA = Real3{0, 0, 0}
 					var LocalPointB = Real3{0, 0, 0}
 					var LocalAngleA = Quaternion{-0, -0, -0, 1}
@@ -1021,7 +1020,7 @@ Level
 					var SendsEvents = false
 					var AutoSnaps = false
 					var CollideConnected = true
-					var MaxImpulse = 0
+					var MaxForce = 0
 					var LocalPointA = Real3{0, 0, 0}
 					var LocalPointB = Real3{0, 0, 0}
 					var LocalAngleA = Quaternion{-0, -0, -0, 1}
@@ -1194,7 +1193,7 @@ Level
 					var SendsEvents = false
 					var AutoSnaps = false
 					var CollideConnected = true
-					var MaxImpulse = 0
+					var MaxForce = 0
 					var LocalPointA = Real3{0, 0, 0}
 					var LocalPointB = Real3{0, 0, 0}
 					var LocalAngleA = Quaternion{-0, -0, -0, 1}
@@ -1214,7 +1213,7 @@ Level
 					var Active = true
 					var Reverse = false
 					var Speed = 1
-					var MaxImpulse = 0.699999988
+					var MaxForce = 2
 					var AtomIds = 4
 				}
 			}
