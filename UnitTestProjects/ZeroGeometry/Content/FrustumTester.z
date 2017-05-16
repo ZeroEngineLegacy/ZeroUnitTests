@@ -21,8 +21,8 @@ class FrustumTester : ZilchComponent
     // Plane order are: Front, Back, Right, Left, Bottom, Top
     var frustum = Frustum();
     event.Stream.WriteLine(frustum.DebugToString());
-    frustum[0] = Plane(Real3(0, 0, 1), Real3(0));
-    frustum[1] = Plane(Real3(0, 0, -1), Real3(3));
+    frustum[0] = Plane(Real3(0, 0, 1), Real3(0, 0, 3));
+    frustum[1] = Plane(Real3(0, 0, -1), Real3(0, 0, -3));
     frustum[2] = Plane(Real3(-1, 0, 0), Real3(-1, 0, 0));
     frustum[3] = Plane(Real3(1, 0, 0), Real3(1, 0, 0));
     frustum[4] = Plane(Real3(0, -1, 0), Real3(0, -1, 0));
