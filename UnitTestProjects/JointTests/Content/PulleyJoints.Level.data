@@ -54,13 +54,14 @@ Level
 		var LinkId = 2
 		DeferredRenderer 
 		{
-			var DrawDebug = true
 			var GeometryDebug = GeometryValue.None
-			var ShowDiffuse = true
-			var ShowSpecular = true
+			var EditorDebugDraw = true
+			var GameDebugDraw = true
+			var RenderDiffuse = true
+			var RenderSpecular = true
+			var RenderSkybox = true
 			var Skybox = "5822dec85e380cf1:SimpleSkybox"
 			var ClearColor = Real4{0, 0, 0, 1}
-			var DrawSkybox = true
 			var DirectLighting = true
 			var IndirectLighting = true
 			var IndirectIntensity = 1
@@ -100,10 +101,6 @@ Level
 		SelectionIcon 
 		{
 			var Visible = true
-			var ViewCulling = true
-			var VisibilityEvents = true
-			var Material = "56581e2bb81777be:DebugDrawOnTop"
-			var Visible = true
 			var VisibilityEvents = true
 			var Material = "56581e2bb81777be:DebugDrawOnTop"
 			var SpriteSource = "58f8e4be736f5ea2:LightIcon"
@@ -134,7 +131,7 @@ Level
 			var RenderOrder = -1
 			var NormalizedSize = Real2{1, 1}
 			var NormalizedOffset = Real2{0, 0}
-			var Camera = CogPath
+			var CameraPath = CogPath
 			{
 				var Path = "."
 				var ErrorOnResolveToNull = false
@@ -149,7 +146,7 @@ Level
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
 			}
-			var Renderer = CogPath
+			var RendererPath = CogPath
 			{
 				var Path = "."
 				var ErrorOnResolveToNull = false
@@ -200,7 +197,7 @@ Level
 			var RenderOrder = 0
 			var NormalizedSize = Real2{1, 1}
 			var NormalizedOffset = Real2{0, 0}
-			var Camera = CogPath
+			var CameraPath = CogPath
 			{
 				var Path = "."
 				var ErrorOnResolveToNull = false
@@ -215,7 +212,7 @@ Level
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
 			}
-			var Renderer = CogPath
+			var RendererPath = CogPath
 			{
 				var Path = ":/Renderer"
 				var ErrorOnResolveToNull = false
@@ -266,10 +263,6 @@ Level
 		SelectionIcon 
 		{
 			var Visible = true
-			var ViewCulling = true
-			var VisibilityEvents = true
-			var Material = "56581e2bb81777be:DebugDrawOnTop"
-			var Visible = true
 			var VisibilityEvents = true
 			var Material = "56581e2bb81777be:DebugDrawOnTop"
 			var SpriteSource = "58f8e4be7360cf7c:CameraIcon"
@@ -285,7 +278,7 @@ Level
 			var RenderOrder = 0
 			var NormalizedSize = Real2{1, 1}
 			var NormalizedOffset = Real2{0, 0}
-			var Camera = CogPath
+			var CameraPath = CogPath
 			{
 				var Path = "."
 				var ErrorOnResolveToNull = false
@@ -300,7 +293,7 @@ Level
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
 			}
-			var Renderer = CogPath
+			var RendererPath = CogPath
 			{
 				var Path = ":/Renderer"
 				var ErrorOnResolveToNull = false
@@ -588,7 +581,7 @@ Level
 					var SendsEvents = false
 					var AutoSnaps = false
 					var CollideConnected = true
-					var MaxForce = 0
+					var MaxImpulse = 0
 					var Ratio = 1
 					var JointAPath = CogPath
 					{
@@ -667,7 +660,7 @@ Level
 					var SendsEvents = false
 					var AutoSnaps = false
 					var CollideConnected = true
-					var MaxForce = 0
+					var MaxImpulse = 0
 					var Length = 3
 					var LocalPointA = Real3{-0.449999988, -0.5, 0}
 					var LocalPointB = Real3{0, 0.5, 0}
@@ -718,7 +711,7 @@ Level
 					var SendsEvents = false
 					var AutoSnaps = false
 					var CollideConnected = true
-					var MaxForce = 0
+					var MaxImpulse = 0
 					var Length = 3
 					var LocalPointA = Real3{0.449999988, -0.5, 0}
 					var LocalPointB = Real3{0, 0.5, 0}
@@ -954,7 +947,7 @@ Level
 					var SendsEvents = false
 					var AutoSnaps = false
 					var CollideConnected = true
-					var MaxForce = 0
+					var MaxImpulse = 0
 					var Ratio = 2
 					var JointAPath = CogPath
 					{
@@ -1033,7 +1026,7 @@ Level
 					var SendsEvents = false
 					var AutoSnaps = false
 					var CollideConnected = true
-					var MaxForce = 0
+					var MaxImpulse = 0
 					var Length = 3
 					var LocalPointA = Real3{-0.449999988, -0.5, 0}
 					var LocalPointB = Real3{0, 0.5, 0}
@@ -1084,7 +1077,7 @@ Level
 					var SendsEvents = false
 					var AutoSnaps = false
 					var CollideConnected = true
-					var MaxForce = 0
+					var MaxImpulse = 0
 					var Length = 3
 					var LocalPointA = Real3{0.449999988, -0.5, 0}
 					var LocalPointB = Real3{0, 0.5, 0}
@@ -1345,7 +1338,7 @@ Level
 					var SendsEvents = false
 					var AutoSnaps = false
 					var CollideConnected = true
-					var MaxForce = 0
+					var MaxImpulse = 0
 					var Ratio = 1
 					var JointAPath = CogPath
 					{
@@ -1424,7 +1417,7 @@ Level
 					var SendsEvents = false
 					var AutoSnaps = false
 					var CollideConnected = true
-					var MaxForce = 0
+					var MaxImpulse = 0
 					var Length = 3
 					var LocalPointA = Real3{-0.449999988, -0.5, 0}
 					var LocalPointB = Real3{0, 0.5, 0}
@@ -1475,7 +1468,7 @@ Level
 					var SendsEvents = false
 					var AutoSnaps = false
 					var CollideConnected = true
-					var MaxForce = 0
+					var MaxImpulse = 0
 					var Length = 3
 					var LocalPointA = Real3{0.449999988, -0.5, 0}
 					var LocalPointB = Real3{0, 0.5, 0}
@@ -1711,7 +1704,7 @@ Level
 					var SendsEvents = false
 					var AutoSnaps = false
 					var CollideConnected = true
-					var MaxForce = 0
+					var MaxImpulse = 0
 					var Ratio = 9
 					var JointAPath = CogPath
 					{
@@ -1790,7 +1783,7 @@ Level
 					var SendsEvents = false
 					var AutoSnaps = false
 					var CollideConnected = true
-					var MaxForce = 0
+					var MaxImpulse = 0
 					var Length = 3
 					var LocalPointA = Real3{-0.449999988, -0.5, 0}
 					var LocalPointB = Real3{0, 0.5, 0}
@@ -1841,7 +1834,7 @@ Level
 					var SendsEvents = false
 					var AutoSnaps = false
 					var CollideConnected = true
-					var MaxForce = 0
+					var MaxImpulse = 0
 					var Length = 3
 					var LocalPointA = Real3{0.449999988, -0.5, 0}
 					var LocalPointB = Real3{0, 0.5, 0}

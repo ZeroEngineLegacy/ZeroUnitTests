@@ -54,13 +54,14 @@ Level
 		var LinkId = 2
 		DeferredRenderer 
 		{
-			var DrawDebug = true
 			var GeometryDebug = GeometryValue.None
-			var ShowDiffuse = true
-			var ShowSpecular = true
+			var EditorDebugDraw = true
+			var GameDebugDraw = true
+			var RenderDiffuse = true
+			var RenderSpecular = true
+			var RenderSkybox = true
 			var Skybox = "5822dec85e380cf1:SimpleSkybox"
 			var ClearColor = Real4{0, 0, 0, 1}
-			var DrawSkybox = true
 			var DirectLighting = true
 			var IndirectLighting = true
 			var IndirectIntensity = 1
@@ -86,7 +87,7 @@ Level
 			var RenderOrder = 0
 			var NormalizedSize = Real2{1, 1}
 			var NormalizedOffset = Real2{0, 0}
-			var Camera = CogPath
+			var CameraPath = CogPath
 			{
 				var Path = "."
 				var ErrorOnResolveToNull = false
@@ -101,7 +102,7 @@ Level
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
 			}
-			var Renderer = CogPath
+			var RendererPath = CogPath
 			{
 				var Path = ":/Renderer"
 				var ErrorOnResolveToNull = false
@@ -131,6 +132,7 @@ Level
 		EditorCameraController 
 		{
 			var ControlMode = ControlMode.Orbit
+			var Previous3DMode = ControlMode.Orbit
 			var LookDistance = 39.6762695
 			var VerticalAngle = 0.378736138
 			var HorizontalAngle = -1.71740687
@@ -153,7 +155,7 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "589c68a742f4fd21:BlackZero"
+			var Material = "583afb5e7bf75e18:ZeroMaterial"
 			var Mesh = "4de0354322b376ae:Sphere"
 		}
 		RigidBody 
@@ -205,7 +207,7 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "589c68a742f4fd21:BlackZero"
+			var Material = "583afb5e7bf75e18:ZeroMaterial"
 			var Mesh = "4de0354322b376ae:Sphere"
 		}
 		RigidBody 
@@ -257,7 +259,7 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "589c68a742f4fd21:BlackZero"
+			var Material = "583afb5e7bf75e18:ZeroMaterial"
 			var Mesh = "4de0354322b345ae:Cube"
 		}
 		BoxCollider 
@@ -285,7 +287,7 @@ Level
 			var Visible = false
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "589c68a742f4fd21:BlackZero"
+			var Material = "583afb5e7bf75e18:ZeroMaterial"
 			var Mesh = "4de0354322b345ae:Cube"
 		}
 		SphereCollider 
@@ -333,7 +335,7 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "589c68a742f4fd21:BlackZero"
+			var Material = "583afb5e7bf75e18:ZeroMaterial"
 			var Mesh = "4de0354322b376ae:Sphere"
 		}
 		RigidBody 
@@ -385,7 +387,7 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "589c68a742f4fd21:BlackZero"
+			var Material = "583afb5e7bf75e18:ZeroMaterial"
 			var Mesh = "4de0354322b376ae:Sphere"
 		}
 		RigidBody 
@@ -435,10 +437,6 @@ Level
 		SelectionIcon 
 		{
 			var Visible = true
-			var ViewCulling = true
-			var VisibilityEvents = true
-			var Material = "56581e2bb81777be:DebugDrawOnTop"
-			var Visible = true
 			var VisibilityEvents = true
 			var Material = "56581e2bb81777be:DebugDrawOnTop"
 			var SpriteSource = "58f8e4be7360cf7c:CameraIcon"
@@ -454,7 +452,7 @@ Level
 			var RenderOrder = 0
 			var NormalizedSize = Real2{1, 1}
 			var NormalizedOffset = Real2{0, 0}
-			var Camera = CogPath
+			var CameraPath = CogPath
 			{
 				var Path = "."
 				var ErrorOnResolveToNull = false
@@ -469,7 +467,7 @@ Level
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
 			}
-			var Renderer = CogPath
+			var RendererPath = CogPath
 			{
 				var Path = ":/Renderer"
 				var ErrorOnResolveToNull = false

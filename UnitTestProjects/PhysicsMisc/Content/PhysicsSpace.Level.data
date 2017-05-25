@@ -7,27 +7,29 @@ Level
 		var LinkId = 1
 		GravityEffect 
 		{
+			var Active = true
+			var WakeUpOnChange = true
+			var DebugDrawEffect = true
 			var LocalSpaceDirection = true
 			var Strength = 10
 			var Direction = Real3{0, -1, 0}
-			var Active = true
-			var WakeUpOnChange = true
 		}
 		DragEffect 
 		{
+			var Active = true
+			var WakeUpOnChange = true
+			var DebugDrawEffect = true
 			var LinearDamping = 0.200000003
 			var AngularDamping = 0.100000001
 			var LinearDrag = 0
 			var AngularDrag = 0
-			var Active = true
-			var WakeUpOnChange = true
 		}
 		GridDraw 
 		{
 			var Active = false
 			var HalfCellOffset = false
 			var CellSize = 1
-			var Axis = GridAxis.YAxis
+			var Axis = AxisDirection.X
 			var Lines = 100
 			var DrawAxisOrigins = true
 			var AlwaysDrawInEditor = true
@@ -52,12 +54,14 @@ Level
 		var LinkId = 2
 		DeferredRenderer 
 		{
-			var DrawDebug = true
 			var GeometryDebug = GeometryValue.None
-			var ShowDiffuse = true
-			var ShowSpecular = true
+			var EditorDebugDraw = true
+			var GameDebugDraw = true
+			var RenderDiffuse = true
+			var RenderSpecular = true
+			var RenderSkybox = true
 			var Skybox = "5822dec85e380cf1:SimpleSkybox"
-			var DrawSkybox = true
+			var ClearColor = Real4{0, 0, 0, 1}
 			var DirectLighting = true
 			var IndirectLighting = true
 			var IndirectIntensity = 1
@@ -70,9 +74,9 @@ Level
 		var LinkId = 3
 		Transform 
 		{
-			var Translation = Real3{67.462326, 6.69483042, -5.26239443}
+			var Translation = Real3{81.4143448, 18.6952477, 10.725771}
 			var Scale = Real3{1, 1, 1}
-			var Rotation = Quaternion{-0.0583252944, 0.828282654, 0.087786831, 0.550308466}
+			var Rotation = Quaternion{-0.245952815, 0.536655903, 0.167149663, 0.789663613}
 		}
 		CameraViewport 
 		{
@@ -83,7 +87,7 @@ Level
 			var RenderOrder = 0
 			var NormalizedSize = Real2{1, 1}
 			var NormalizedOffset = Real2{0, 0}
-			var Camera = CogPath
+			var CameraPath = CogPath
 			{
 				var Path = "."
 				var ErrorOnResolveToNull = false
@@ -98,7 +102,7 @@ Level
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
 			}
-			var Renderer = CogPath
+			var RendererPath = CogPath
 			{
 				var Path = ":/Renderer"
 				var ErrorOnResolveToNull = false
@@ -128,10 +132,11 @@ Level
 		EditorCameraController 
 		{
 			var ControlMode = ControlMode.Orbit
-			var LookDistance = 14.2217474
-			var VerticalAngle = 0.21118471
-			var HorizontalAngle = -1.96873355
-			var LookTarget = Real3{54.6431046, 3.71369004, 0.126342356}
+			var Previous3DMode = ControlMode.Orbit
+			var LookDistance = 34.9798393
+			var VerticalAngle = 0.603883803
+			var HorizontalAngle = -1.19380701
+			var LookTarget = Real3{54.6431046, -1.16783309, 0.126342773}
 			var MoveSensitivity = 1
 		}
 	}
@@ -154,7 +159,7 @@ Level
 			var RenderOrder = 0
 			var NormalizedSize = Real2{1, 1}
 			var NormalizedOffset = Real2{0, 0}
-			var Camera = CogPath
+			var CameraPath = CogPath
 			{
 				var Path = "."
 				var ErrorOnResolveToNull = false
@@ -169,7 +174,7 @@ Level
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
 			}
-			var Renderer = CogPath
+			var RendererPath = CogPath
 			{
 				var Path = ":/Renderer"
 				var ErrorOnResolveToNull = false
@@ -216,7 +221,7 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "589c68a742f4fd21:BlackZero"
+			var Material = "583afb5e7bf75e18:ZeroMaterial"
 			var Mesh = "4de0354322b345ae:Cube"
 		}
 		BoxCollider 
