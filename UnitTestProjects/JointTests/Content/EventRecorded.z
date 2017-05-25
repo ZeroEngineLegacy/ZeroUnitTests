@@ -84,6 +84,7 @@ class EventRecorder : ZilchComponent
   
   function Initialize(init : CogInitializer)
   {
+    Console.WriteLine("Initialize EventRecorder");
     Zero.Connect(this.Space, Events.AddEventRecordingCog, this.OnAddEventRecordingCog);
     Zero.Connect(this.Space, Events.RecordCogIncident, this.OnRecordCogIncident);
     Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
@@ -124,6 +125,8 @@ class EventRecorder : ZilchComponent
     var toSend = CogFrameRecordEvent();
     toSend.Stream = info.Record.Stream;
     info.Cog.DispatchEvent(Events.RecordInitialization, toSend);
+    
+    Console.WriteLine("Start Tracking Cog `info.CogName`");
   }
 
   function OnRecordCogIncident(event : CogIncidentEvent)

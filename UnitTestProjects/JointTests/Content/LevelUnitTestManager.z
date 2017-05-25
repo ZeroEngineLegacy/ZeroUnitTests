@@ -8,6 +8,7 @@ class LevelUnitTestManager : ZilchComponent
   
   function Initialize(init : CogInitializer)
   {
+    Console.WriteLine("Initialize Level `this.Space.CurrentLevel.Name`");
     Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
   }
 
@@ -15,6 +16,7 @@ class LevelUnitTestManager : ZilchComponent
   {
     // When the max duration of the test has been exceeded, stop the test
     var timePassed = this.Space.TimeSpace.TimePassed;
+    Console.WriteLine("LogicUpdate: TotalTime `timePassed` of `this.TestDuration`.");
     if(timePassed >= this.TestDuration)
     {
       this.StopTest();
@@ -24,6 +26,7 @@ class LevelUnitTestManager : ZilchComponent
   
   function StopTest()
   {
+    Console.WriteLine("Stopping Level `this.Space.CurrentLevel.Name`");
     // Save the dump
     this.Space.DispatchEvent(Events.DumpRecords, ZilchEvent());
     // Stop the current unit test
