@@ -1,0 +1,60 @@
+class QuaternionTester : ZilchComponent
+{
+  [Dependency] var BaseRecorder : BaseCogResultRecorder;
+  
+  function Initialize(init : CogInitializer)
+  {
+    Zero.Connect(this.Owner, Events.RecordInitialization, this.OnRecordInitialization);
+  }
+  
+  function TestStaticFunctions(stream : UnitTestStreamWriter)
+  {
+    stream.WriteLine("StaticFunctions");
+    stream.BeginScope();
+    
+    stream.WriteLine(@Quaternion.Count);
+    stream.WriteLine(@Quaternion.Identity);
+    
+    stream.EndScope();
+  }
+  
+  function TestMemberFunctions(stream : UnitTestStreamWriter, data : Quaternion)
+  {
+    stream.WriteLine("MemberFunctions");
+    stream.BeginScope();
+    
+    stream.WriteLine("Constructor: `Quaternion()`");
+    stream.WriteLine("Constructor: `Quaternion(1.1)`");
+    stream.WriteLine("Constructor: `Quaternion(1, 2, 3, 4)`");
+    stream.WriteLine("Constructor: `Quaternion(Real2(1, 2), 3, 4)`");
+    stream.WriteLine("Constructor: `Quaternion(1, Real2(2, 3), 4)`");
+    stream.WriteLine("Constructor: `Quaternion(1, 2, Real2(3, 4))`");
+    stream.WriteLine("Constructor: `Quaternion(Real2(1, 2), Real2(3, 4))`");
+    stream.WriteLine("Constructor: `Quaternion(Real3(1, 2, 3), 4)`");
+    stream.WriteLine("Constructor: `Quaternion(1, Real3(2, 3, 4))`");
+    stream.WriteLine("ToDo: Constructor Quaternion(Real4))"); 
+    //stream.WriteLine("Constructor: `Quaternion(Real4(1, 2, 3, 4))`");
+    
+    stream.WriteLine(@data.Count);
+    
+    stream.WriteLine("operator[].Get: `data[0]` `data[1]` `data[2]`");
+    data[0] = 1.58;
+    data[1] = -75;
+    data[2] = 4.21;
+    data[3] = -0.0001;
+    stream.WriteLine("operator[].Set: `data`");
+    
+    stream.EndScope();
+  }
+  
+  function OnRecordInitialization(event : CogFrameRecordEvent)
+  {
+    var stream = event.Stream;
+    stream.WriteLine("Quaternion tests:");
+    stream.BeginScope();
+    
+    this.TestStaticFunctions(stream);
+    var q = Math.ToQuaternion(Real3(1, 2, 3), 19);
+    this.TestMemberFunctions(stream, q);
+  }
+}

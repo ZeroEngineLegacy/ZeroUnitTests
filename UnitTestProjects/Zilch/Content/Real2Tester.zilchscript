@@ -1,0 +1,57 @@
+class Real2Tester : ZilchComponent
+{
+  [Dependency] var BaseRecorder : BaseCogResultRecorder;
+  
+  function Initialize(init : CogInitializer)
+  {
+    Zero.Connect(this.Owner, Events.RecordInitialization, this.OnRecordInitialization);
+  }
+  
+  function TestStaticFunctions(stream : UnitTestStreamWriter)
+  {
+    stream.WriteLine("StaticFunctions");
+    stream.BeginScope();
+    
+    stream.WriteLine(@Real2.Count);
+    stream.WriteLine("Axis(0): `Real2.GetAxis(0)`");
+    stream.WriteLine("Axis(1): `Real2.GetAxis(1)`");
+    stream.WriteLine(@Real2.NegativeMin);
+    stream.WriteLine(@Real2.NegativeValueClosestToZero);
+    stream.WriteLine(@Real2.PositiveMax);
+    stream.WriteLine(@Real2.PositiveValueClosestToZero);
+    stream.WriteLine(@Real2.XAxis);
+    stream.WriteLine(@Real2.YAxis);
+    stream.WriteLine(@Real2.Zero);
+    
+    stream.EndScope();
+  }
+  
+  function TestMemberFunctions(stream : UnitTestStreamWriter, data : Real2)
+  {
+    stream.WriteLine("MemberFunctions");
+    stream.BeginScope();
+    
+    stream.WriteLine("Constructor: `Real2()`");
+    stream.WriteLine("Constructor: `Real2(1)`");
+    stream.WriteLine("Constructor: `Real2(1.58, -97)`");
+    stream.WriteLine("Constructor: `Real2(data)`");
+    
+    stream.WriteLine(@data.Count);
+    
+    stream.WriteLine("operator[].Get: `data[0]` `data[1]`");
+    data[0] = 1.58;
+    data[1] = -75;
+    stream.WriteLine("Operator[].Set: `data`");
+    stream.EndScope();
+  }
+  
+  function OnRecordInitialization(event : CogFrameRecordEvent)
+  {
+    var stream = event.Stream;
+    stream.WriteLine("Real2 tests:");
+    stream.BeginScope();
+    
+    this.TestStaticFunctions(stream);
+    this.TestMemberFunctions(stream, Real2(1.45, -1.28));
+  }
+}

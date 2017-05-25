@@ -1,0 +1,1083 @@
+class ExpressionTester[T]
+{
+  [Static]
+  function Test(stream : UnitTestStreamWriter, result : T, expected : T)
+  {
+    stream.WriteLine("Expected: '`expected`'. Result: '`result`'");
+    if(result != expected)
+    {
+        throw Exception("Expected '`expected`' but got '`result`'");
+    }
+  }
+}
+
+class StringTester : ZilchComponent
+{
+  [Property]
+  var Test : Integer;
+  
+  function LifetimeTest() : StringRange
+  {
+      return "Testing".All;
+  }
+  
+  function TestContains(stream : UnitTestStreamWriter)
+  {
+    stream.WriteLine("Contains:");
+    stream.BeginScope();
+    
+    var text = "The quick brown fox jumps over the lazy dog";
+    
+    var nullRange : StringRange = null;
+    //text.All.Contains(null);
+    
+    ExpressionTester[Boolean].Test(stream, text.Contains("The"), true);
+    ExpressionTester[Boolean].Test(stream, text.Contains("quick"), true);
+    ExpressionTester[Boolean].Test(stream, text.Contains("brown"), true);
+    ExpressionTester[Boolean].Test(stream, text.Contains("fox"), true);
+    ExpressionTester[Boolean].Test(stream, text.Contains("jumps"), true);
+    ExpressionTester[Boolean].Test(stream, text.Contains("over"), true);
+    ExpressionTester[Boolean].Test(stream, text.Contains("the"), true);
+    ExpressionTester[Boolean].Test(stream, text.Contains("lazy"), true);
+    ExpressionTester[Boolean].Test(stream, text.Contains("dog"), true);
+    ExpressionTester[Boolean].Test(stream, text.Contains("cat"), false);
+    
+    ExpressionTester[Boolean].Test(stream, text.Contains("k b"), true);
+    ExpressionTester[Boolean].Test(stream, text.Contains(" "), true);
+    
+    //'brown fox'
+    var subRange = text.SubStringBytes(10, 9);
+    ExpressionTester[Boolean].Test(stream, subRange.Contains("brown"), true);
+    ExpressionTester[Boolean].Test(stream, subRange.Contains("fox"), true);
+    ExpressionTester[Boolean].Test(stream, subRange.Contains("the"), false);
+    ExpressionTester[Boolean].Test(stream, subRange.Contains("jumps"), false);
+    
+    
+    var rune : Rune = Rune(100);
+    rune.Value = 101;
+    //100 = d
+    ExpressionTester[Boolean].Test(stream, text.Contains("`Rune(100)`"), true);
+    // 133 = [
+    ExpressionTester[Boolean].Test(stream, text.Contains("`Rune(133)`"), false);
+    
+    stream.EndScope();
+  }
+  
+  function TestCompareTo(stream : UnitTestStreamWriter)
+  {
+    stream.WriteLine("CompareTo:");
+    stream.BeginScope();
+    
+    // String
+    ExpressionTester[Integer].Test(stream, "b".CompareTo("a"), 1);
+    ExpressionTester[Integer].Test(stream, "b".CompareTo("b"), 0);
+    ExpressionTester[Integer].Test(stream, "b".CompareTo("c"), -1);
+    ExpressionTester[Integer].Test(stream, "bat".CompareTo("batman"), -1);
+    ExpressionTester[Integer].Test(stream, "batman".CompareTo("batman"), 0);
+    ExpressionTester[Integer].Test(stream, "batman".CompareTo("bat"), 1);
+    
+    // String ranges
+    ExpressionTester[Integer].Test(stream, "b".All.CompareTo("a"), 1);
+    ExpressionTester[Integer].Test(stream, "b".All.CompareTo("b"), 0);
+    ExpressionTester[Integer].Test(stream, "b".All.CompareTo("c"), -1);
+    ExpressionTester[Integer].Test(stream, "bat".All.CompareTo("batman"), -1);
+    ExpressionTester[Integer].Test(stream, "batman".All.CompareTo("batman"), 0);
+    ExpressionTester[Integer].Test(stream, "batman".All.CompareTo("bat"), 1);
+    
+    // Static function
+    ExpressionTester[Integer].Test(stream, String.Compare("b", "a"), 1);
+    ExpressionTester[Integer].Test(stream, String.Compare("b", "b"), 0);
+    ExpressionTester[Integer].Test(stream, String.Compare("b", "c"), -1);
+    ExpressionTester[Integer].Test(stream, String.Compare("bat", "batman"), -1);
+    ExpressionTester[Integer].Test(stream, String.Compare("batman", "batman"), 0);
+    ExpressionTester[Integer].Test(stream, String.Compare("batman", "bat"), 1);
+    
+    stream.EndScope();
+  }
+  
+  function TestJoin(stream : UnitTestStreamWriter)
+  {
+    stream.WriteLine("Join:");
+    stream.BeginScope();
+    
+    var nullRange : StringRange = null;
+    //String.Join(" ".All, nullRange, " ".All);
+    
+    ExpressionTester[String].Test(stream, String.Join(" ", "This", "is"), "This is");
+    ExpressionTester[String].Test(stream, String.Join(" ", "This", "is", "a"), "This is a");
+    ExpressionTester[String].Test(stream, String.Join(" ", "This", "is", "a", "test."), "This is a test.");
+    ExpressionTester[String].Test(stream, String.Join(",", "This", "is", "a", "test."), "This,is,a,test.");
+    ExpressionTester[String].Test(stream, String.Join(",;", "This", "is", "a", "test."), "This,;is,;a,;test.");
+    
+    stream.EndScope();
+  }
+  
+  function InternalTestSplit(stream : UnitTestStreamWriter, input : String, separator : String, output : String)
+  {
+    var builder = StringBuilder();
+    
+    foreach(var subStr in input.All.Split(separator.All))
+    {
+      builder.Write("`subStr.ToString()`");
+    }
+    
+    ExpressionTester[String].Test(stream, builder.ToString(), output);
+  }
+  
+  function TestSplit(stream : UnitTestStreamWriter)
+  {
+    stream.WriteLine("Split:");
+    stream.BeginScope();
+    
+    var strings : Array[String] = Array[String](){"This", "is", "a", "test"};
+      
+    this.InternalTestSplit(stream, "This is a test", " ", "Thisisatest");
+    this.InternalTestSplit(stream, "This,is,a,test", ",", "Thisisatest");
+    this.InternalTestSplit(stream, "This,;is,;a,;test", ",;", "Thisisatest");
+    
+    this.InternalTestSplit(stream, "TA", "T", "A");
+    this.InternalTestSplit(stream, "TA", "A", "T");
+    this.InternalTestSplit(stream, "TA", "TA", "");
+    
+    stream.EndScope();
+  }
+  
+  function TestStartsWith(stream : UnitTestStreamWriter)
+  {
+    stream.WriteLine("StartsWith:");
+    stream.BeginScope();
+    
+    var string = "This is a test";
+    ExpressionTester[Boolean].Test(stream, string.StartsWith("T"), true);
+    ExpressionTester[Boolean].Test(stream, string.StartsWith("This"), true);
+    ExpressionTester[Boolean].Test(stream, string.StartsWith("This is "), true);
+    ExpressionTester[Boolean].Test(stream, string.StartsWith(string), true);
+    ExpressionTester[Boolean].Test(stream, string.StartsWith("is"), false);
+    
+    var subRange = string.SubStringBytes(5, 4);
+    ExpressionTester[Boolean].Test(stream, subRange.StartsWith("is"), true);
+    ExpressionTester[Boolean].Test(stream, subRange.StartsWith("This"), false);
+    
+    stream.EndScope();
+  }
+  
+  function TestEndsWith(stream : UnitTestStreamWriter)
+  {
+    stream.WriteLine("EndsWith:");
+    stream.BeginScope();
+    
+    var string = "This is a test";
+    ExpressionTester[Boolean].Test(stream, string.EndsWith("t"), true);
+    ExpressionTester[Boolean].Test(stream, string.EndsWith("est"), true);
+    ExpressionTester[Boolean].Test(stream, string.EndsWith("a test"), true);
+    ExpressionTester[Boolean].Test(stream, string.EndsWith(string), true);
+    ExpressionTester[Boolean].Test(stream, string.EndsWith("a"), false);
+    
+    var subRange = string.SubStringBytes(5, 4);
+    ExpressionTester[Boolean].Test(stream, subRange.EndsWith("a"), true);
+    ExpressionTester[Boolean].Test(stream, subRange.EndsWith("test"), false);
+    
+    stream.EndScope();
+  }
+  
+  function TestTrimStart(stream : UnitTestStreamWriter)
+  {
+    stream.WriteLine("TrimStart:");
+    stream.BeginScope();
+    
+    var text0 = "  Some Text ";
+    var text1 = "      Some Text ";
+    var trimmed = "Some Text ";
+    
+    ExpressionTester[String].Test(stream, text0.TrimStart().ToString(), trimmed);
+    ExpressionTester[String].Test(stream, text1.TrimStart().ToString(), trimmed);
+    ExpressionTester[String].Test(stream, trimmed.TrimStart().ToString(), trimmed);
+    
+    var text2 = "Some  Text";
+    var subRange = text2.SubStringBytes(4, 6);
+    ExpressionTester[String].Test(stream, subRange.TrimStart().ToString(), "Text");
+    
+    var empty0 = "    ";
+    var empty1 = "";
+    var trimmedEmpty = "";
+    
+    ExpressionTester[String].Test(stream, empty0.TrimStart().ToString(), trimmedEmpty);
+    ExpressionTester[String].Test(stream, empty1.TrimStart().ToString(), trimmedEmpty);
+    ExpressionTester[String].Test(stream, trimmedEmpty.TrimStart().ToString(), trimmedEmpty);
+    
+    stream.EndScope();
+  }
+  
+  function TestTrimEnd(stream : UnitTestStreamWriter)
+  {
+    stream.WriteLine("TrimEnd:");
+    stream.BeginScope();
+    
+    var text0 = " Some Text ";
+    var text1 = " Some Text    ";
+    var trimmed = " Some Text";
+    
+    ExpressionTester[String].Test(stream, text0.TrimEnd().ToString(), trimmed);
+    ExpressionTester[String].Test(stream, text1.TrimEnd().ToString(), trimmed);
+    ExpressionTester[String].Test(stream, trimmed.TrimEnd().ToString(), trimmed);
+    
+    var text2 = "Some  Text";
+    var subRange = text2.SubStringBytes(0, 6);
+    ExpressionTester[String].Test(stream, subRange.TrimEnd().ToString(), "Some");
+    
+    var empty0 = "    ";
+    var empty1 = "";
+    var trimmedEmpty = "";
+    
+    ExpressionTester[String].Test(stream, empty0.TrimEnd().ToString(), trimmedEmpty);
+    ExpressionTester[String].Test(stream, empty1.TrimEnd().ToString(), trimmedEmpty);
+    ExpressionTester[String].Test(stream, trimmedEmpty.TrimEnd().ToString(), trimmedEmpty);
+    
+    stream.EndScope();
+  }
+  
+  function TestTrim(stream : UnitTestStreamWriter)
+  {
+    stream.WriteLine("Trim:");
+    stream.BeginScope();
+    
+    var text0 = "  Some Text  ";
+    var text1 = "  Some Text";
+    var text2 = "Some Text  ";
+    var trimmed = "Some Text";
+    
+    ExpressionTester[String].Test(stream, text0.Trim().ToString(), trimmed);
+    ExpressionTester[String].Test(stream, text1.Trim().ToString(), trimmed);
+    ExpressionTester[String].Test(stream, text2.Trim().ToString(), trimmed);
+    ExpressionTester[String].Test(stream, trimmed.Trim().ToString(), trimmed);
+    
+    var text3 = "Some  More  Text";
+    var subRange = text3.All.SubStringBytes(4, 8);
+    ExpressionTester[String].Test(stream, subRange.Trim().ToString(), "More");
+    
+    var empty0 = "    ";
+    var empty1 = "";
+    var trimmedEmpty = "";
+    
+    ExpressionTester[String].Test(stream, empty0.Trim().ToString(), trimmedEmpty);
+    ExpressionTester[String].Test(stream, empty1.Trim().ToString(), trimmedEmpty);
+    ExpressionTester[String].Test(stream, trimmedEmpty.Trim().ToString(), trimmedEmpty);
+    
+    stream.EndScope();
+  }
+  
+  function TestToLower(stream : UnitTestStreamWriter)
+  {
+    stream.WriteLine("ToLower:");
+    stream.BeginScope();
+    
+    var text = ("THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG?!.-");
+    var expected = ("the quick brown fox jumps over the lazy dog?!.-");
+    
+    ExpressionTester[String].Test(stream, text.ToLower(), expected);
+    
+    var subRange = text.SubStringBytes(4, 11);
+    ExpressionTester[String].Test(stream, subRange.ToLower(), "quick brown");
+    
+    stream.EndScope();
+  }
+  
+  function TestToUpper(stream : UnitTestStreamWriter)
+  {
+    stream.WriteLine("ToUpper:");
+    stream.BeginScope();
+    
+    var text = ("the quick brown fox jumps over the lazy dog?!.-");
+    var expected = ("THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG?!.-");
+    
+    ExpressionTester[String].Test(stream, text.ToUpper(), expected);
+    
+    var subRange = text.SubStringBytes(4, 11);
+    ExpressionTester[String].Test(stream, subRange.ToUpper(), "QUICK BROWN");
+    
+    stream.EndScope();
+  }
+  
+  function TestIsNullOrEmpty(stream : UnitTestStreamWriter)
+  {
+    stream.WriteLine("IsNullOrEmpty:");
+    stream.BeginScope();
+    
+    var nullRange : StringRange = null;
+    ExpressionTester[Boolean].Test(stream, String.IsNullOrEmpty(nullRange), true);
+    ExpressionTester[Boolean].Test(stream, String.IsNullOrEmpty("".All), true);
+    ExpressionTester[Boolean].Test(stream, String.IsNullOrEmpty("    ".All), false);
+    ExpressionTester[Boolean].Test(stream, String.IsNullOrEmpty("a".All), false);
+    
+    stream.EndScope();
+  }
+  
+  function TestIsNullOrWhitespace(stream : UnitTestStreamWriter)
+  {
+    stream.WriteLine("IsNullOrWhitespace:");
+    stream.BeginScope();
+    
+    var nullRange : StringRange = null;
+    ExpressionTester[Boolean].Test(stream, String.IsNullOrWhitespace(nullRange), true);
+    ExpressionTester[Boolean].Test(stream, String.IsNullOrWhitespace("".All), true);
+    ExpressionTester[Boolean].Test(stream, String.IsNullOrWhitespace("    ".All), true);
+    ExpressionTester[Boolean].Test(stream, String.IsNullOrWhitespace(" \t\r\n ".All), true);
+    ExpressionTester[Boolean].Test(stream, String.IsNullOrWhitespace("     no".All), false);
+    
+    var text = "nope\r\n\t";
+    var subRange = text.SubStringBytes(4, 3);
+    ExpressionTester[Boolean].Test(stream, String.IsNullOrWhitespace(text.All), false);
+    ExpressionTester[Boolean].Test(stream, String.IsNullOrWhitespace(subRange), true);
+    
+    stream.EndScope();
+  }
+  
+  function TestReplace(stream : UnitTestStreamWriter)
+  {
+    stream.WriteLine("Replace:");
+    stream.BeginScope();
+    
+    //           00000000001111
+    //           01234567890123
+    var text = "This is a test";
+    
+    ExpressionTester[String].Test(stream, text.Replace(" ", "-"), "This-is-a-test");
+    ExpressionTester[String].Test(stream, text.Replace("-", " "), text);
+    ExpressionTester[String].Test(stream, text.Replace("is", "was"), "Thwas was a test");
+    
+    ExpressionTester[String].Test(stream, text.Replace("T", "t"), "this is a test");
+    ExpressionTester[String].Test(stream, text.Replace("t", "T"), "This is a TesT");
+    
+    //" is a "
+    var subStr = text.SubStringBytes(4, 6);
+    ExpressionTester[String].Test(stream, subStr.Replace(" ", "-"), "-is-a-");
+    
+    stream.EndScope();
+  }
+  
+  function TestFindRangeInclusive(stream : UnitTestStreamWriter)
+  {
+    stream.WriteLine("FindRangeInclusive:");
+    stream.BeginScope();
+    
+    var text0 = "Array[TemplateType]()";
+    var text1 = "[TemplateType]()";
+    var text2 = "Array[TemplateType]";
+    var text3 = "[TemplateType]";
+    var text4 = "TemplateType";
+    var text5 = "";
+    var text6 = "Array[[TemplateType]]()";
+    
+    ExpressionTester[String].Test(stream, text0.FindRangeInclusive("[", "]").ToString(), "[TemplateType]");
+    ExpressionTester[String].Test(stream, text1.FindRangeInclusive("[", "]").ToString(), "[TemplateType]");
+    ExpressionTester[String].Test(stream, text2.FindRangeInclusive("[", "]").ToString(), "[TemplateType]");
+    ExpressionTester[String].Test(stream, text3.FindRangeInclusive("[", "]").ToString(), "[TemplateType]");
+    ExpressionTester[String].Test(stream, text4.FindRangeInclusive("[", "]").ToString(), "");
+    ExpressionTester[String].Test(stream, text5.FindRangeInclusive("[", "]").ToString(), "");
+    ExpressionTester[String].Test(stream, text6.FindRangeInclusive("[[", "]]").ToString(), "[[TemplateType]]");
+    
+    var text7 = "Array[Array[TemplateType]]";
+    var subRange = text7.SubStringBytes(6, 19);
+    ExpressionTester[String].Test(stream, subRange.FindRangeInclusive("[", "]").ToString(), "[TemplateType]");
+    
+    stream.EndScope();
+  }
+  
+  function TestFindRangeExclusive(stream : UnitTestStreamWriter)
+  {
+    stream.WriteLine("FindRangeExclusive:");
+    stream.BeginScope();
+    
+    var text0 = "Array[TemplateType]()";
+    var text1 = "[TemplateType]()";
+    var text2 = "Array[TemplateType]";
+    var text3 = "[TemplateType]";
+    var text4 = "TemplateType";
+    var text5 = "";
+    var text6 = "Array[[TemplateType]]()";
+    
+    ExpressionTester[String].Test(stream, text0.FindRangeExclusive("[", "]").ToString(), "TemplateType");
+    ExpressionTester[String].Test(stream, text1.FindRangeExclusive("[", "]").ToString(), "TemplateType");
+    ExpressionTester[String].Test(stream, text2.FindRangeExclusive("[", "]").ToString(), "TemplateType");
+    ExpressionTester[String].Test(stream, text3.FindRangeExclusive("[", "]").ToString(), "TemplateType");
+    ExpressionTester[String].Test(stream, text4.FindRangeExclusive("[", "]").ToString(), "");
+    ExpressionTester[String].Test(stream, text5.FindRangeExclusive("[", "]").ToString(), "");
+    ExpressionTester[String].Test(stream, text6.FindRangeExclusive("[[", "]]").ToString(), "TemplateType");
+    
+    var text7 = "Array[Array[TemplateType]]";
+    var subRange = text7.SubStringBytes(6, 19);
+    ExpressionTester[String].Test(stream, subRange.FindRangeExclusive("[", "]").ToString(), "TemplateType");
+    
+    stream.EndScope();
+  }
+  
+  function TestFindFirstOf(stream : UnitTestStreamWriter)
+  {
+    stream.WriteLine("FindFirstOf:");
+    stream.BeginScope();
+    
+    var text = "the quick brown fox jumps over the lazy dog";
+    
+    ExpressionTester[Integer].Test(stream, text.FindFirstOf("a").Begin.ByteIndex, 36);
+    ExpressionTester[Integer].Test(stream, text.FindFirstOf("b").Begin.ByteIndex, 10);
+    ExpressionTester[Integer].Test(stream, text.FindFirstOf("c").Begin.ByteIndex,  7);
+    ExpressionTester[Integer].Test(stream, text.FindFirstOf("d").Begin.ByteIndex, 40);
+    ExpressionTester[Integer].Test(stream, text.FindFirstOf("e").Begin.ByteIndex,  2);
+    ExpressionTester[Integer].Test(stream, text.FindFirstOf("f").Begin.ByteIndex, 16);
+    ExpressionTester[Integer].Test(stream, text.FindFirstOf("g").Begin.ByteIndex, 42);
+    ExpressionTester[Integer].Test(stream, text.FindFirstOf("h").Begin.ByteIndex,  1);
+    ExpressionTester[Integer].Test(stream, text.FindFirstOf("i").Begin.ByteIndex,  6);
+    ExpressionTester[Integer].Test(stream, text.FindFirstOf("j").Begin.ByteIndex, 20);
+    ExpressionTester[Integer].Test(stream, text.FindFirstOf("k").Begin.ByteIndex,  8);
+    ExpressionTester[Integer].Test(stream, text.FindFirstOf("l").Begin.ByteIndex, 35);
+    ExpressionTester[Integer].Test(stream, text.FindFirstOf("m").Begin.ByteIndex, 22);
+    ExpressionTester[Integer].Test(stream, text.FindFirstOf("n").Begin.ByteIndex, 14);
+    ExpressionTester[Integer].Test(stream, text.FindFirstOf("o").Begin.ByteIndex, 12);
+    ExpressionTester[Integer].Test(stream, text.FindFirstOf("p").Begin.ByteIndex, 23);
+    ExpressionTester[Integer].Test(stream, text.FindFirstOf("q").Begin.ByteIndex,  4);
+    ExpressionTester[Integer].Test(stream, text.FindFirstOf("r").Begin.ByteIndex, 11);
+    ExpressionTester[Integer].Test(stream, text.FindFirstOf("s").Begin.ByteIndex, 24);
+    ExpressionTester[Integer].Test(stream, text.FindFirstOf("t").Begin.ByteIndex,  0);
+    ExpressionTester[Integer].Test(stream, text.FindFirstOf("u").Begin.ByteIndex,  5);
+    ExpressionTester[Integer].Test(stream, text.FindFirstOf("v").Begin.ByteIndex, 27);
+    ExpressionTester[Integer].Test(stream, text.FindFirstOf("w").Begin.ByteIndex, 13);
+    ExpressionTester[Integer].Test(stream, text.FindFirstOf("x").Begin.ByteIndex, 18);
+    ExpressionTester[Integer].Test(stream, text.FindFirstOf("y").Begin.ByteIndex, 38);
+    ExpressionTester[Integer].Test(stream, text.FindFirstOf("z").Begin.ByteIndex, 37);
+    
+    ExpressionTester[Integer].Test(stream, text.FindFirstOf("the").Begin.ByteIndex, 0);
+    ExpressionTester[Integer].Test(stream, text.FindFirstOf("quick").Begin.ByteIndex, 4);
+    ExpressionTester[Integer].Test(stream, text.FindFirstOf("brown").Begin.ByteIndex, 10);
+    ExpressionTester[Integer].Test(stream, text.FindFirstOf("fox").Begin.ByteIndex, 16);
+    ExpressionTester[Integer].Test(stream, text.FindFirstOf("jumps").Begin.ByteIndex, 20);
+    ExpressionTester[Integer].Test(stream, text.FindFirstOf("over").Begin.ByteIndex, 26);
+    ExpressionTester[Integer].Test(stream, text.FindFirstOf("the").Begin.ByteIndex, 0);
+    ExpressionTester[Integer].Test(stream, text.FindFirstOf("lazy").Begin.ByteIndex, 35);
+    ExpressionTester[Integer].Test(stream, text.FindFirstOf("dog").Begin.ByteIndex, 40);
+    ExpressionTester[Integer].Test(stream, text.FindFirstOf("the quick brown fox jumps over the lazy dog").Begin.ByteIndex, 0);
+    
+    ExpressionTester[Boolean].Test(stream, text.FindFirstOf("F").IsNotEmpty, false);
+    ExpressionTester[Boolean].Test(stream, text.FindFirstOf("5").IsNotEmpty, false);
+    ExpressionTester[Boolean].Test(stream, text.FindFirstOf("!").IsNotEmpty, false);
+    
+    // range no find
+    ExpressionTester[Boolean].Test(stream, text.FindFirstOf("four").IsNotEmpty, false);
+    ExpressionTester[Boolean].Test(stream, text.FindFirstOf("char").IsNotEmpty, false);
+    ExpressionTester[Boolean].Test(stream, text.FindFirstOf("word").IsNotEmpty, false);
+    
+    // before the beginning
+    ExpressionTester[Boolean].Test(stream, text.FindFirstOf(" the quick").IsNotEmpty, false);
+    
+    // past the end
+    ExpressionTester[Boolean].Test(stream, text.FindFirstOf("lazy dogs").IsNotEmpty, false);
+    
+    // too many characters
+    ExpressionTester[Boolean].Test(stream, text.FindFirstOf("the quick brown fox jumps over the lazy doge").IsNotEmpty, false);
+    
+    // not enough characters
+    ExpressionTester[Boolean].Test(stream, text.FindFirstOf("").IsNotEmpty, false);
+    
+    // no text
+    ExpressionTester[Boolean].Test(stream, "".FindFirstOf("anything").IsNotEmpty, false);
+    
+    // no anything
+    ExpressionTester[Boolean].Test(stream, "".FindFirstOf("").IsNotEmpty, false);
+    
+    //check range values
+    var jumpsRange = text.FindFirstOf("jumps");
+    ExpressionTester[Integer].Test(stream, jumpsRange.Begin.ByteIndex, 20);
+    ExpressionTester[Integer].Test(stream, jumpsRange.End.ByteIndex, 25);
+    
+    var overRange = text.FindFirstOf("over");
+    ExpressionTester[Integer].Test(stream, overRange.Begin.ByteIndex, 26);
+    ExpressionTester[Integer].Test(stream, overRange.End.ByteIndex, 30);
+    
+    var theRange = text.FindFirstOf("the");
+    ExpressionTester[Integer].Test(stream, theRange.Begin.ByteIndex, 0);
+    ExpressionTester[Integer].Test(stream, theRange.End.ByteIndex, 3);
+    
+    var lazyRange = text.FindFirstOf("lazy");
+    ExpressionTester[Integer].Test(stream, lazyRange.Begin.ByteIndex, 35);
+    ExpressionTester[Integer].Test(stream, lazyRange.End.ByteIndex, 39);
+    
+    stream.EndScope();
+  }
+  
+  function TestFindLastOf(stream : UnitTestStreamWriter)
+  {
+    stream.WriteLine("FindLastOf:");
+    stream.BeginScope();
+    
+    var text = "the quick brown fox jumps over the lazy dog";
+    
+    // character find
+    ExpressionTester[Integer].Test(stream, text.FindLastOf("a").Begin.ByteIndex, 36);
+    ExpressionTester[Integer].Test(stream, text.FindLastOf("b").Begin.ByteIndex, 10);
+    ExpressionTester[Integer].Test(stream, text.FindLastOf("c").Begin.ByteIndex,  7);
+    ExpressionTester[Integer].Test(stream, text.FindLastOf("d").Begin.ByteIndex, 40);
+    ExpressionTester[Integer].Test(stream, text.FindLastOf("e").Begin.ByteIndex, 33);
+    ExpressionTester[Integer].Test(stream, text.FindLastOf("f").Begin.ByteIndex, 16);
+    ExpressionTester[Integer].Test(stream, text.FindLastOf("g").Begin.ByteIndex, 42);
+    ExpressionTester[Integer].Test(stream, text.FindLastOf("h").Begin.ByteIndex, 32);
+    ExpressionTester[Integer].Test(stream, text.FindLastOf("i").Begin.ByteIndex,  6);
+    ExpressionTester[Integer].Test(stream, text.FindLastOf("j").Begin.ByteIndex, 20);
+    ExpressionTester[Integer].Test(stream, text.FindLastOf("k").Begin.ByteIndex,  8);
+    ExpressionTester[Integer].Test(stream, text.FindLastOf("l").Begin.ByteIndex, 35);
+    ExpressionTester[Integer].Test(stream, text.FindLastOf("m").Begin.ByteIndex, 22);
+    ExpressionTester[Integer].Test(stream, text.FindLastOf("n").Begin.ByteIndex, 14);
+    ExpressionTester[Integer].Test(stream, text.FindLastOf("o").Begin.ByteIndex, 41);
+    ExpressionTester[Integer].Test(stream, text.FindLastOf("p").Begin.ByteIndex, 23);
+    ExpressionTester[Integer].Test(stream, text.FindLastOf("q").Begin.ByteIndex,  4);
+    ExpressionTester[Integer].Test(stream, text.FindLastOf("r").Begin.ByteIndex, 29);
+    ExpressionTester[Integer].Test(stream, text.FindLastOf("s").Begin.ByteIndex, 24);
+    ExpressionTester[Integer].Test(stream, text.FindLastOf("t").Begin.ByteIndex, 31);
+    ExpressionTester[Integer].Test(stream, text.FindLastOf("u").Begin.ByteIndex, 21);
+    ExpressionTester[Integer].Test(stream, text.FindLastOf("v").Begin.ByteIndex, 27);
+    ExpressionTester[Integer].Test(stream, text.FindLastOf("w").Begin.ByteIndex, 13);
+    ExpressionTester[Integer].Test(stream, text.FindLastOf("x").Begin.ByteIndex, 18);
+    ExpressionTester[Integer].Test(stream, text.FindLastOf("y").Begin.ByteIndex, 38);
+    ExpressionTester[Integer].Test(stream, text.FindLastOf("z").Begin.ByteIndex, 37);
+    
+    // range find
+    ExpressionTester[Integer].Test(stream, text.FindLastOf("the").Begin.ByteIndex, 31);
+    ExpressionTester[Integer].Test(stream, text.FindLastOf("quick").Begin.ByteIndex, 4);
+    ExpressionTester[Integer].Test(stream, text.FindLastOf("brown").Begin.ByteIndex, 10);
+    ExpressionTester[Integer].Test(stream, text.FindLastOf("fox").Begin.ByteIndex, 16);
+    ExpressionTester[Integer].Test(stream, text.FindLastOf("jumps").Begin.ByteIndex, 20);
+    ExpressionTester[Integer].Test(stream, text.FindLastOf("over").Begin.ByteIndex, 26);
+    ExpressionTester[Integer].Test(stream, text.FindLastOf("the").Begin.ByteIndex, 31);
+    ExpressionTester[Integer].Test(stream, text.FindLastOf("lazy").Begin.ByteIndex, 35);
+    ExpressionTester[Integer].Test(stream, text.FindLastOf("dog").Begin.ByteIndex, 40);
+    ExpressionTester[Integer].Test(stream, text.FindLastOf("the quick brown fox jumps over the lazy dog").Begin.ByteIndex, 0);
+    
+    // character no find
+    ExpressionTester[Boolean].Test(stream, text.FindLastOf("F").IsNotEmpty, false);
+    ExpressionTester[Boolean].Test(stream, text.FindLastOf("5").IsNotEmpty, false);
+    ExpressionTester[Boolean].Test(stream, text.FindLastOf("!").IsNotEmpty, false);
+    
+    // range no find
+    ExpressionTester[Boolean].Test(stream, text.FindLastOf("four").IsNotEmpty, false);
+    ExpressionTester[Boolean].Test(stream, text.FindLastOf("char").IsNotEmpty, false);
+    ExpressionTester[Boolean].Test(stream, text.FindLastOf("word").IsNotEmpty, false);
+    
+    // before the beginning
+    ExpressionTester[Boolean].Test(stream, text.FindLastOf(" the quick").IsNotEmpty, false);
+    
+    // past the end
+    ExpressionTester[Boolean].Test(stream, text.FindLastOf("lazy dogs").IsNotEmpty, false);
+    
+    // too many characters
+    ExpressionTester[Boolean].Test(stream, text.FindLastOf("the quick brown fox jumps over the lazy doge").IsNotEmpty, false);
+    
+    // not enough characters
+    ExpressionTester[Boolean].Test(stream, text.FindLastOf("").IsNotEmpty, false);
+    
+    // no text
+    ExpressionTester[Boolean].Test(stream, "".FindLastOf("anything").IsNotEmpty, false);
+    
+    // no anything
+    ExpressionTester[Boolean].Test(stream, "".FindLastOf("").IsNotEmpty, false);
+    
+    //check range values
+    var jumpsRange = text.FindLastOf("jumps");
+    ExpressionTester[Integer].Test(stream, jumpsRange.Begin.ByteIndex, 20);
+    ExpressionTester[Integer].Test(stream, jumpsRange.End.ByteIndex, 25);
+    
+    var overRange = text.FindLastOf("over");
+    ExpressionTester[Integer].Test(stream, overRange.Begin.ByteIndex, 26);
+    ExpressionTester[Integer].Test(stream, overRange.End.ByteIndex, 30);
+    
+    var theRange = text.FindLastOf("the");
+    ExpressionTester[Integer].Test(stream, theRange.Begin.ByteIndex, 31);
+    ExpressionTester[Integer].Test(stream, theRange.End.ByteIndex, 34);
+    
+    var lazyRange = text.FindLastOf("lazy");
+    ExpressionTester[Integer].Test(stream, lazyRange.Begin.ByteIndex, 35);
+    ExpressionTester[Integer].Test(stream, lazyRange.End.ByteIndex, 39);
+    
+    stream.EndScope();
+  }
+  
+  function TestSubString(stream : UnitTestStreamWriter)
+  {
+    stream.WriteLine("SubString:");
+    stream.BeginScope();
+    
+    var text = "This was a test";
+    var range = text.All.FindFirstOf("was".All);
+    
+    ExpressionTester[String].Test(stream, text.All.SubString(range.Begin, range.End).ToString(), "was");
+    ExpressionTester[String].Test(stream, text.All.SubString(text.All.Begin, range.Begin).ToString(), "This ");
+    ExpressionTester[String].Test(stream, text.All.SubString(text.All.Begin, range.End).ToString(), "This was");
+    ExpressionTester[String].Test(stream, text.All.SubString(range.End, text.All.End).ToString(), " a test");
+    ExpressionTester[String].Test(stream, text.All.SubString(range.Begin, text.All.End).ToString(), "was a test");
+    ExpressionTester[String].Test(stream, text.All.SubString(range.End, range.Begin).ToString(), "");
+    
+    stream.EndScope();
+  }
+  
+  function TestConcatenate(stream : UnitTestStreamWriter)
+  {
+    stream.WriteLine("Concatenate:");
+    stream.BeginScope();
+    
+    var text0 = "the quick";
+    var text1 = "brown fox";
+    
+    ExpressionTester[String].Test(stream, String.Concatenate(text0, text1), "the quickbrown fox");
+    ExpressionTester[String].Test(stream, String.Concatenate(text1, text0), "brown foxthe quick");
+    
+    var range00 = text0.SubStringBytes(0, 3);
+    var range01 = text0.SubStringBytes(4, 5);
+    ExpressionTester[String].Test(stream, String.Concatenate(range00, range01), "thequick");
+    ExpressionTester[String].Test(stream, String.Concatenate(range01, range00), "quickthe");
+    
+    stream.EndScope();
+  }
+  
+  function TestRuneIterators(stream : UnitTestStreamWriter)
+  {
+    stream.WriteLine("RuneIterators:");
+    stream.BeginScope();
+    
+    var str = "This is a test";
+    var strRange = str.All;
+    
+    
+    ExpressionTester[String].Test(stream, "`str.All.RuneIteratorFromByteIndex(0)`", "T");
+    ExpressionTester[String].Test(stream, "`str.All.RuneIteratorFromByteIndex(13)`", "t");
+    
+    
+    //ExpressionTester[RuneIterator].Test(stream, str.Begin, strRange.Begin);
+    //ExpressionTester[RuneIterator].Test(stream, str.End,   strRange.End);
+    
+    var str2 = "ėįšų ԽՊ֏؇ ػڱ۩߷";
+    var strRange2 = str2.All;
+    
+    //ExpressionTester[RuneIterator].Test(stream, str.Begin, strRange.Begin);
+    //ExpressionTester[RuneIterator].Test(stream, str.End,   strRange.End);
+    
+    stream.EndScope();
+  }
+  
+  function ReverseSort(left : String, right : String) : Integer
+  {
+    return String.Compare(right, left);
+  }
+  
+  function TestStringSort(stream : UnitTestStreamWriter)
+  {
+    stream.WriteLine("Sort:");
+    stream.BeginScope();
+    
+    var array : Array[String] = Array[String]();
+    array.Add("d");
+    array.Add("e");
+    array.Add("b");
+    array.Add("a");
+    
+    array.Sort(this.ReverseSort);
+    stream.WriteLine(array);
+    
+    stream.EndScope();
+  }
+  
+  function UnicodeTestContains(stream : UnitTestStreamWriter)
+  {
+    stream.WriteLine("Unicode Contains:");
+    stream.BeginScope();
+    
+    var text = "σδφγηξκλ ȸɎɤʀ ėįšų ԽՊ֏؇ ػڱ۩߷ ऽॉफ़ ওਊਖ਼૱ఔ ുെൈ ฮฯ฿ຊໜ";
+    
+    ExpressionTester[Boolean].Test(stream, text.Contains("σδφγηξκλ"), true);
+    //ExpressionTester[Boolean].Test(stream, text.Contains("\xCF83\xCEB4\xCF86\xCEB3\xCEB7\xCEBE\xCEBA\xCEBB"), true);
+    //ExpressionTester[Boolean].Test(stream, text.Contains("\uCF83\uCEB4\uCF86\uCEB3\uCEB7\uCEBE\uCEBA\uCEBB"), true);
+    ExpressionTester[Boolean].Test(stream, text.Contains("ȸɎɤʀ"), true);
+    ExpressionTester[Boolean].Test(stream, text.Contains("ėįšų"), true);
+    ExpressionTester[Boolean].Test(stream, text.Contains("ԽՊ֏؇"), true);
+    ExpressionTester[Boolean].Test(stream, text.Contains("ػڱ۩߷"), true);
+    ExpressionTester[Boolean].Test(stream, text.Contains("ऽॉफ़"), true);
+    ExpressionTester[Boolean].Test(stream, text.Contains("ওਊਖ਼૱ఔ"), true);
+    ExpressionTester[Boolean].Test(stream, text.Contains("ുെൈ"), true);
+    ExpressionTester[Boolean].Test(stream, text.Contains("ฮฯ฿ຊໜ"), true);
+    ExpressionTester[Boolean].Test(stream, text.Contains("σȸėԽػڱऽওുฮ"), false);
+    
+    ExpressionTester[Boolean].Test(stream, text.Contains("؇ ػ"), true);
+    ExpressionTester[Boolean].Test(stream, text.Contains(" "), true);
+    
+    stream.EndScope();
+  }
+  
+  function UnicodeTestCompareTo(stream : UnitTestStreamWriter)
+  {
+    stream.WriteLine("Unicode CompareTo:");
+    stream.BeginScope();
+    
+    // String
+    ExpressionTester[Integer].Test(stream, "δσδφγη".CompareTo("ασδφγη"), 1);
+    ExpressionTester[Integer].Test(stream, "δσδφγη".CompareTo("δσδφγη"), 0);
+    ExpressionTester[Integer].Test(stream, "δσδφγη".CompareTo("ωσδφγη"), -1);
+    
+    // String ranges
+    ExpressionTester[Integer].Test(stream, "δσδφγη".All.CompareTo("ασδφγη"), 1);
+    ExpressionTester[Integer].Test(stream, "δσδφγη".All.CompareTo("δσδφγη"), 0);
+    ExpressionTester[Integer].Test(stream, "δσδφγη".All.CompareTo("ωσδφγη"), -1);
+    
+    // Static function
+    ExpressionTester[Integer].Test(stream, String.Compare("δσδφγη", "ασδφγη"), 1);
+    ExpressionTester[Integer].Test(stream, String.Compare("δσδφγη", "δσδφγη"), 0);
+    ExpressionTester[Integer].Test(stream, String.Compare("δσδφγη", "ωσδφγη"), -1);
+    
+    ExpressionTester[Integer].Test(stream, String.Compare("ūųšį", "ūųšįėęčą"), -1);
+    ExpressionTester[Integer].Test(stream, String.Compare("ūųšįėęčą", "ūųšįėęčą"), 0);
+    ExpressionTester[Integer].Test(stream, String.Compare("ūųšįėęčą", "ūųšį"), 1);
+    
+    stream.EndScope();
+  }
+  
+  function UnicodeTestJoin(stream : UnitTestStreamWriter)
+  {
+    stream.WriteLine("Unicode Join:");
+    stream.BeginScope();
+    
+    ExpressionTester[String].Test(stream, String.Join(" ", "σδφγηξκλ", "ȸɎɤʀ"), "σδφγηξκλ ȸɎɤʀ");
+    ExpressionTester[String].Test(stream, String.Join(" ", "σδφγηξκλ", "ȸɎɤʀ", "ėįšų"), "σδφγηξκλ ȸɎɤʀ ėįšų");
+    ExpressionTester[String].Test(stream, String.Join(" ", "σδφγηξκλ", "ȸɎɤʀ", "ėįšų", "ԽՊ֏؇."), "σδφγηξκλ ȸɎɤʀ ėįšų ԽՊ֏؇.");
+    ExpressionTester[String].Test(stream, String.Join(",", "σδφγηξκλ", "ȸɎɤʀ", "ėįšų", "ԽՊ֏؇."), "σδφγηξκλ,ȸɎɤʀ,ėįšų,ԽՊ֏؇.");
+    ExpressionTester[String].Test(stream, String.Join(",;", "σδφγηξκλ", "ȸɎɤʀ", "ėįšų", "ԽՊ֏؇."), "σδφγηξκλ,;ȸɎɤʀ,;ėįšų,;ԽՊ֏؇.");
+    
+    stream.EndScope();
+  }
+  
+  function UnicodeTestSplit(stream : UnitTestStreamWriter)
+  {
+    stream.WriteLine("Unicode Split:");
+    stream.BeginScope();
+    
+    var strings : Array[String] = Array[String](){"This", "is", "a", "test"};
+    
+    this.InternalTestSplit(stream, "σδφγηξκλ ȸɎɤʀ ėįšų ԽՊ֏؇", " ", "σδφγηξκλȸɎɤʀėįšųԽՊ֏؇");
+    this.InternalTestSplit(stream, "σδφγηξκλ,ȸɎɤʀ,ėįšų,ԽՊ֏؇", ",", "σδφγηξκλȸɎɤʀėįšųԽՊ֏؇");
+    this.InternalTestSplit(stream, "σδφγηξκλ,;ȸɎɤʀ,;ėįšų,;ԽՊ֏؇", ",;", "σδφγηξκλȸɎɤʀėįšųԽՊ֏؇");
+    
+    this.InternalTestSplit(stream, "φԽ", "φ", "Խ");
+    this.InternalTestSplit(stream, "φԽ", "Խ", "φ");
+    this.InternalTestSplit(stream, "φԽ", "φԽ", "");
+    
+    stream.EndScope();
+  }
+  
+  function UnicodeTestStartsWith(stream : UnitTestStreamWriter)
+  {
+    stream.WriteLine("Unicode StartsWith:");
+    stream.BeginScope();
+    
+    var string = "σδφγηξκλ ȸɎɤʀ ėįšų ԽՊ֏؇";
+    ExpressionTester[Boolean].Test(stream, string.StartsWith("σ"), true);
+    ExpressionTester[Boolean].Test(stream, string.StartsWith("σδφγηξκλ"), true);
+    ExpressionTester[Boolean].Test(stream, string.StartsWith("σδφγηξκλ ȸɎɤʀ "), true);
+    ExpressionTester[Boolean].Test(stream, string.StartsWith(string), true);
+    ExpressionTester[Boolean].Test(stream, string.StartsWith("ԽՊ֏؇"), false);
+    
+    //var subRange = string.SubString(14, string);
+    //ExpressionTester[Boolean].Test(stream, subRange.StartsWith("is"), true);
+    //ExpressionTester[Boolean].Test(stream, subRange.StartsWith("This"), false);
+    
+    stream.EndScope();
+  }
+  
+  function UnicodeTestEndsWith(stream : UnitTestStreamWriter)
+  {
+    stream.WriteLine("Unicode EndsWith:");
+    stream.BeginScope();
+    
+    var string = "σδφγηξκλ ȸɎɤʀ ėįšų ԽՊ֏؇";
+    ExpressionTester[Boolean].Test(stream, string.EndsWith("؇"), true);
+    ExpressionTester[Boolean].Test(stream, string.EndsWith("ԽՊ֏؇"), true);
+    ExpressionTester[Boolean].Test(stream, string.EndsWith("ėįšų ԽՊ֏؇"), true);
+    ExpressionTester[Boolean].Test(stream, string.EndsWith(string), true);
+    ExpressionTester[Boolean].Test(stream, string.EndsWith("σδφγηξκλ"), false);
+    
+    //var subRange = string.SubStringBytes(5, 4);
+    //ExpressionTester[Boolean].Test(stream, subRange.EndsWith("a"), true);
+    //ExpressionTester[Boolean].Test(stream, subRange.EndsWith("test"), false);
+    
+    stream.EndScope();
+  }
+  
+  function UnicodeTestTrimStart(stream : UnitTestStreamWriter)
+  {
+    stream.WriteLine("Unicode TrimStart:");
+    stream.BeginScope();
+    
+    var text0 = "  σδφγηξκλ ėįšų ";
+    var text1 = "      σδφγηξκλ ėįšų ";
+    var trimmed = "σδφγηξκλ ėįšų ";
+    
+    ExpressionTester[String].Test(stream, text0.TrimStart().ToString(), trimmed);
+    ExpressionTester[String].Test(stream, text1.TrimStart().ToString(), trimmed);
+    ExpressionTester[String].Test(stream, trimmed.TrimStart().ToString(), trimmed);
+    
+    //var text2 = "Some  Text";
+    //var subRange = text2.SubStringBytes(4, 6);
+    //ExpressionTester[String].Test(stream, subRange.TrimStart().ToString(), "Text");
+    
+    stream.EndScope();
+  }
+  
+  function UnicodeTestTrimEnd(stream : UnitTestStreamWriter)
+  {
+    stream.WriteLine("Unicode TrimEnd:");
+    stream.BeginScope();
+    
+    var text0 = " σδφγηξκλ ėįšų ";
+    var text1 = " σδφγηξκλ ėįšų           ";
+    var trimmed = " σδφγηξκλ ėįšų";
+    
+    ExpressionTester[String].Test(stream, text0.TrimEnd().ToString(), trimmed);
+    ExpressionTester[String].Test(stream, text1.TrimEnd().ToString(), trimmed);
+    ExpressionTester[String].Test(stream, trimmed.TrimEnd().ToString(), trimmed);
+    
+    //var text2 = "Some  Text";
+    //var subRange = text2.SubStringBytes(0, 6);
+    //ExpressionTester[String].Test(stream, subRange.TrimEnd().ToString(), "Some");
+    
+    stream.EndScope();
+  }
+  
+  function UnicodeTestTrim(stream : UnitTestStreamWriter)
+  {
+    stream.WriteLine("Unicode Trim:");
+    stream.BeginScope();
+    
+    var text0 = "  σδφγηξκλ ėįšų  ";
+    var text1 = "  σδφγηξκλ ėįšų";
+    var text2 = "σδφγηξκλ ėįšų  ";
+    var trimmed = "σδφγηξκλ ėįšų";
+    
+    ExpressionTester[String].Test(stream, text0.Trim().ToString(), trimmed);
+    ExpressionTester[String].Test(stream, text1.Trim().ToString(), trimmed);
+    ExpressionTester[String].Test(stream, text2.Trim().ToString(), trimmed);
+    ExpressionTester[String].Test(stream, trimmed.Trim().ToString(), trimmed);
+    
+    //var text3 = "Some  More  Text";
+    //var subRange = text3.All.SubStringBytes(4, 8);
+    //ExpressionTester[String].Test(stream, subRange.Trim().ToString(), "More");
+    
+    stream.EndScope();
+  }
+  
+  function UnicodeTestReplace(stream : UnitTestStreamWriter)
+  {
+    stream.WriteLine("Unicode Replace:");
+    stream.BeginScope();
+    
+    //           00000000001111
+    //           01234567890123
+    var text = "σδφγηξκλ ȸɎɤʀ ėįšų ԽՊ֏؇";
+    
+    ExpressionTester[String].Test(stream, text.Replace(" ", "-"), "σδφγηξκλ-ȸɎɤʀ-ėįšų-ԽՊ֏؇");
+    ExpressionTester[String].Test(stream, text.Replace("-", " "), text);
+    ExpressionTester[String].Test(stream, text.Replace("κλ", "ȸɎɤʀ"), "σδφγηξȸɎɤʀ ȸɎɤʀ ėįšų ԽՊ֏؇");
+    
+    //
+    //var subStr = text.SubStringBytes(4, 6);
+    //ExpressionTester[String].Test(stream, subStr.Replace(" ", "-"), "-is-a-");
+    
+    stream.EndScope();
+  }
+  
+  function UnicodeTestFindRangeInclusive(stream : UnitTestStreamWriter)
+  {
+    stream.WriteLine("Unicode FindRangeInclusive:");
+    stream.BeginScope();
+    
+    var text0 = "ᑄσδφγηξȸɎɤʀᑁ ȸɎɤʀ ėįšų ԽՊ֏؇";
+    var text1 = "ȸɎɤʀ ėįšų ᑄσδφγηξȸɎɤʀᑁ ԽՊ֏؇";
+    var text2 = " ȸɎɤʀėįšųԽՊ֏؇ᑄσδφγηξȸɎɤʀᑁ";
+    var text3 = "ᑄσδφγηξȸɎɤʀᑁ";
+    var text4 = "σδφγηξȸɎɤʀ";
+    var text5 = "";
+    var text6 = "ᑄᑄσδφγηξȸɎɤʀᑁᑁ ȸɎɤʀ ėįšų ԽՊ֏؇";
+    
+    ExpressionTester[String].Test(stream, text0.FindRangeInclusive("ᑄ", "ᑁ").ToString(), "ᑄσδφγηξȸɎɤʀᑁ");
+    ExpressionTester[String].Test(stream, text1.FindRangeInclusive("ᑄ", "ᑁ").ToString(), "ᑄσδφγηξȸɎɤʀᑁ");
+    ExpressionTester[String].Test(stream, text2.FindRangeInclusive("ᑄ", "ᑁ").ToString(), "ᑄσδφγηξȸɎɤʀᑁ");
+    ExpressionTester[String].Test(stream, text3.FindRangeInclusive("ᑄ", "ᑁ").ToString(), "ᑄσδφγηξȸɎɤʀᑁ");
+    ExpressionTester[String].Test(stream, text4.FindRangeInclusive("ᑄ", "ᑁ").ToString(), "");
+    ExpressionTester[String].Test(stream, text5.FindRangeInclusive("ᑄ", "ᑁ").ToString(), "");
+    ExpressionTester[String].Test(stream, text6.FindRangeInclusive("ᑄᑄ", "ᑁᑁ").ToString(), "ᑄᑄσδφγηξȸɎɤʀᑁᑁ");
+    
+    stream.EndScope();
+  }
+  
+  function UnicodeTestFindRangeExclusive(stream : UnitTestStreamWriter)
+  {
+    stream.WriteLine("Unicode FindRangeExclusive:");
+    stream.BeginScope();
+    
+    var text0 = "ᑄσδφγηξȸɎɤʀᑁ ȸɎɤʀ ėįšų ԽՊ֏؇";
+    var text1 = "ȸɎɤʀ ėįšų ᑄσδφγηξȸɎɤʀᑁ ԽՊ֏؇";
+    var text2 = " ȸɎɤʀėįšųԽՊ֏؇ᑄσδφγηξȸɎɤʀᑁ";
+    var text3 = "ᑄσδφγηξȸɎɤʀᑁ";
+    var text4 = "σδφγηξȸɎɤʀ";
+    var text5 = "";
+    var text6 = "ᑄᑄσδφγηξȸɎɤʀᑁᑁ ȸɎɤʀ ėįšų ԽՊ֏؇";
+    
+    ExpressionTester[String].Test(stream, text0.FindRangeExclusive("ᑄ", "ᑁ").ToString(), "σδφγηξȸɎɤʀ");
+    ExpressionTester[String].Test(stream, text1.FindRangeExclusive("ᑄ", "ᑁ").ToString(), "σδφγηξȸɎɤʀ");
+    ExpressionTester[String].Test(stream, text2.FindRangeExclusive("ᑄ", "ᑁ").ToString(), "σδφγηξȸɎɤʀ");
+    ExpressionTester[String].Test(stream, text3.FindRangeExclusive("ᑄ", "ᑁ").ToString(), "σδφγηξȸɎɤʀ");
+    ExpressionTester[String].Test(stream, text4.FindRangeExclusive("ᑄ", "ᑁ").ToString(), "");
+    ExpressionTester[String].Test(stream, text5.FindRangeExclusive("ᑄ", "ᑁ").ToString(), "");
+    ExpressionTester[String].Test(stream, text6.FindRangeExclusive("ᑄᑄ", "ᑁᑁ").ToString(), "σδφγηξȸɎɤʀ");
+    
+    stream.EndScope();
+  }
+  
+  //Need to write actual find first of tests
+  function UnicodeTestFindFirstOf(stream : UnitTestStreamWriter)
+  {
+    stream.WriteLine("Unicode FindFirstOf:");
+    stream.BeginScope();
+    
+    var text = "ąčę ėįšų ū ςερτυ θιοπα σδφγηξκλ΄ζχψωβνμ αω";
+    
+    //ExpressionTester[StringRange].Test(stream, text.FindFirstOf("ėįšų"), "ėį".All);
+    
+    stream.EndScope();
+  }
+  
+  //Need to write actual find last of tests
+  function UnicodeTestFindLastOf(stream : UnitTestStreamWriter)
+  {
+    stream.WriteLine("Unicode FindLastOf:");
+    stream.BeginScope();
+    
+    var text = "ąčę ėįšų ū ςερτυ θιοπα σδφγηξκλ΄ζχψωβνμ αω";
+    
+    //ExpressionTester[StringRange].Test(stream, text.FindFirstOf("ėįšų"), "ėį".All);
+    
+    stream.EndScope();
+  }
+  
+  function UnicodeTestConcatenate(stream : UnitTestStreamWriter)
+  {
+    stream.WriteLine("Unicode Concatenate:");
+    stream.BeginScope();
+    
+    var text0 = "σδφγηξκλ ȸɎɤʀ";
+    var text1 = "ԽՊ֏؇ ػڱ۩߷";
+    
+    ExpressionTester[String].Test(stream, String.Concatenate(text0, text1), "σδφγηξκλ ȸɎɤʀԽՊ֏؇ ػڱ۩߷");
+    ExpressionTester[String].Test(stream, String.Concatenate(text1, text0), "ԽՊ֏؇ ػڱ۩߷σδφγηξκλ ȸɎɤʀ");
+    
+    stream.EndScope();
+  }
+  
+  function TestRuneSubString(stream : UnitTestStreamWriter)
+  {
+    stream.WriteLine("RunSubString:");
+    stream.BeginScope();
+    
+    var text0 = "This is a test string";
+    
+    var start = text0.RuneIteratorFromRuneIndex(5);
+    var end   = text0.RuneIteratorFromRuneIndex(14);
+    
+    ExpressionTester[String].Test(stream, text0.SubString(start, end), "is a test");
+    
+    start = text0.Begin;
+    end   = text0.End;
+    
+    ExpressionTester[String].Test(stream, text0.SubString(start, end), "This is a test string");
+    
+    var text1 = "σδφγηξκλ  ėįšų";
+    
+    start = text1.RuneIteratorFromRuneIndex(0);
+    end   = text1.RuneIteratorFromRuneIndex(8);
+    
+    ExpressionTester[String].Test(stream, text1.SubString(start, end), "σδφγηξκλ");
+    
+    start = text1.Begin;
+    end   = text1.End;
+    
+    ExpressionTester[String].Test(stream, text1.SubString(start, end), "σδφγηξκλ  ėįšų");
+    
+    stream.EndScope();
+  }
+  
+  function TestGetOriginalString(stream : UnitTestStreamWriter)
+  {
+    stream.WriteLine("GetOriginalString:");
+    stream.BeginScope();
+    
+    var text0 = "This is a test string";
+    var range0 = text0.All;
+    
+    ExpressionTester[String].Test(stream, text0, range0.OriginalString);
+    
+    var text1 = "σδφγηξκλ ȸɎɤʀ ėįšų ԽՊ֏؇";
+    var range1 = text1.All;
+    
+    ExpressionTester[String].Test(stream, text1, range1.OriginalString);
+    
+    ExpressionTester[Boolean].Test(stream, text0.Contains(range1.OriginalString), false);
+    
+    stream.EndScope();
+  }
+    
+  function Initialize(init : CogInitializer)
+  {
+    Zero.Connect(this.Owner, Events.RecordInitialization, this.OnRecordInitialization);
+  }
+  
+  function OnRecordInitialization(event : CogFrameRecordEvent)
+  {
+    var stream = event.Stream;
+    stream.WriteLine("String tests:");
+    stream.BeginScope();
+    
+    this.TestContains(stream);
+    this.TestCompareTo(stream);
+    this.TestJoin(stream);
+    this.TestSplit(stream);
+    this.TestStartsWith(stream);
+    this.TestEndsWith(stream);
+    this.TestTrimStart(stream);
+    this.TestTrimEnd(stream);
+    this.TestTrim(stream);
+    this.TestToLower(stream);
+    this.TestToUpper(stream);
+    this.TestIsNullOrEmpty(stream);
+    this.TestIsNullOrWhitespace(stream);
+    this.TestReplace(stream);
+    this.TestFindRangeInclusive(stream);
+    this.TestFindRangeExclusive(stream);
+    this.TestFindFirstOf(stream);
+    this.TestFindLastOf(stream);
+    this.TestSubString(stream);
+    this.TestRuneIterators(stream);
+    this.TestStringSort(stream);
+    
+    //Unicode Tests
+    this.UnicodeTestContains(stream);
+    this.UnicodeTestCompareTo(stream);
+    this.UnicodeTestJoin(stream);
+    this.UnicodeTestSplit(stream);
+    this.UnicodeTestStartsWith(stream);
+    this.UnicodeTestEndsWith(stream);
+    this.UnicodeTestTrimStart(stream);
+    this.UnicodeTestTrimEnd(stream);
+    this.UnicodeTestTrim(stream);
+    this.UnicodeTestReplace(stream);
+    this.UnicodeTestFindRangeInclusive(stream);
+    this.UnicodeTestFindRangeExclusive(stream);
+    this.UnicodeTestFindFirstOf(stream);
+    this.UnicodeTestFindLastOf(stream);
+    this.UnicodeTestConcatenate(stream);
+    
+    this.TestRuneSubString(stream);
+    this.TestGetOriginalString(stream);
+  }
+}

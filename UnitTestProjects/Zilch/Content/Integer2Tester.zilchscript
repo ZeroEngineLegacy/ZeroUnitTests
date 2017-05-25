@@ -1,0 +1,58 @@
+class Integer2Tester : ZilchComponent
+{
+  [Dependency] var BaseRecorder : BaseCogResultRecorder;
+  
+  function Initialize(init : CogInitializer)
+  {
+    Zero.Connect(this.Owner, Events.RecordInitialization, this.OnRecordInitialization);
+  }
+  
+  function TestStaticFunctions(stream : UnitTestStreamWriter)
+  {
+    stream.WriteLine("StaticFunctions");
+    stream.BeginScope();
+    
+    
+    stream.WriteLine(@Integer2.Count);
+    stream.WriteLine("Axis(0): `Integer2.GetAxis(0)`");
+    stream.WriteLine("Axis(1): `Integer2.GetAxis(1)`");
+    stream.WriteLine(@Integer2.NegativeMin);
+    stream.WriteLine(@Integer2.NegativeValueClosestToZero);
+    stream.WriteLine(@Integer2.PositiveMax);
+    stream.WriteLine(@Integer2.PositiveValueClosestToZero);
+    stream.WriteLine(@Integer2.XAxis);
+    stream.WriteLine(@Integer2.YAxis);
+    stream.WriteLine(@Integer2.Zero);
+    
+    stream.EndScope();
+  }
+  
+  function TestMemberFunctions(stream : UnitTestStreamWriter, data : Integer2)
+  {
+    stream.WriteLine("MemberFunctions");
+    stream.BeginScope();
+    
+    stream.WriteLine("Constructor: `Integer2()`");
+    stream.WriteLine("Constructor: `Integer2(1)`");
+    stream.WriteLine("Constructor: `Integer2(11, -17)`");
+    stream.WriteLine("Constructor: `Integer2(data)`");
+    
+    stream.WriteLine(@data.Count);
+    
+    stream.WriteLine("operator[].Get: `data[0]` `data[1]`");
+    data[0] = 15;
+    data[1] = -75;
+    stream.WriteLine("Operator[].Set: `data`");
+    stream.EndScope();
+  }
+  
+  function OnRecordInitialization(event : CogFrameRecordEvent)
+  {
+    var stream = event.Stream;
+    stream.WriteLine("Integer2 tests:");
+    stream.BeginScope();
+    
+    this.TestStaticFunctions(stream);
+    this.TestMemberFunctions(stream, Integer2(1, -1));
+  }
+}

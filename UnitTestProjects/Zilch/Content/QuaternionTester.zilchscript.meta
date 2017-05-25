@@ -1,0 +1,9 @@
+[Version:1]
+TextContent 
+{
+	ZilchScriptBuilder 
+	{
+		var Name = "QuaternionTester"
+		var ResourceId = 0x59737ee0a7b175f4
+	}
+}

@@ -1,0 +1,64 @@
+class Real3Tester : ZilchComponent
+{
+  [Dependency] var BaseRecorder : BaseCogResultRecorder;
+  
+  function Initialize(init : CogInitializer)
+  {
+    Zero.Connect(this.Owner, Events.RecordInitialization, this.OnRecordInitialization);
+  }
+  
+  function TestStaticFunctions(stream : UnitTestStreamWriter)
+  {
+    stream.WriteLine("StaticFunctions");
+    stream.BeginScope();
+    
+    stream.WriteLine(@Real3.Count);
+    stream.WriteLine("Axis(0): `Real3.GetAxis(0)`");
+    stream.WriteLine("Axis(1): `Real3.GetAxis(1)`");
+    stream.WriteLine("Axis(2): `Real3.GetAxis(2)`");
+    stream.WriteLine(@Real3.NegativeMin);
+    stream.WriteLine(@Real3.NegativeValueClosestToZero);
+    stream.WriteLine(@Real3.PositiveMax);
+    stream.WriteLine(@Real3.PositiveValueClosestToZero);
+    stream.WriteLine(@Real3.XAxis);
+    stream.WriteLine(@Real3.YAxis);
+    stream.WriteLine(@Real3.ZAxis);
+    stream.WriteLine(@Real3.Zero);
+    
+    stream.EndScope();
+  }
+  
+  function TestMemberFunctions(stream : UnitTestStreamWriter, data : Real3)
+  {
+    stream.WriteLine("MemberFunctions");
+    stream.BeginScope();
+    
+    stream.WriteLine("Constructor: `Real3()`");
+    stream.WriteLine("Constructor: `Real3(1.1)`");
+    stream.WriteLine("Constructor: `Real3(1.1, 2.0, -3)`");
+    stream.WriteLine("Constructor: `Real3(Real2(1.1, 2.0), -3)`");
+    stream.WriteLine("Constructor: `Real3(1.1, Real2(2.0, -3))`");
+    stream.WriteLine("ToDo: Constructor Real3(Real3))");
+    //stream.WriteLine("Constructor: `Real3(data)`");
+    
+    stream.WriteLine(@data.Count);
+    
+    stream.WriteLine("operator[].Get: `data[0]` `data[1]` `data[2]`");
+    data[0] = 1.58;
+    data[1] = -75;
+    data[2] = 4.21;
+    stream.WriteLine("operator[].Set: `data`");
+    
+    stream.EndScope();
+  }
+  
+  function OnRecordInitialization(event : CogFrameRecordEvent)
+  {
+    var stream = event.Stream;
+    stream.WriteLine("Real3 tests:");
+    stream.BeginScope();
+    
+    this.TestStaticFunctions(stream);
+    this.TestMemberFunctions(stream, Real3(1, -1, 2));
+  }
+}

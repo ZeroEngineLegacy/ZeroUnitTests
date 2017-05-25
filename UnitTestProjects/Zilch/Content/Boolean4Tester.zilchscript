@@ -1,0 +1,66 @@
+class Boolean4Tester : ZilchComponent
+{
+  [Dependency] var BaseRecorder : BaseCogResultRecorder;
+  
+  function Initialize(init : CogInitializer)
+  {
+    Zero.Connect(this.Owner, Events.RecordInitialization, this.OnRecordInitialization);
+  }
+  
+  function TestStaticFunctions(stream : UnitTestStreamWriter)
+  {
+    stream.WriteLine("StaticFunctions");
+    stream.BeginScope();
+    
+    stream.WriteLine(@Integer3.Count);
+    stream.WriteLine("Axis(0): `Boolean4.GetAxis(0)`");
+    stream.WriteLine("Axis(1): `Boolean4.GetAxis(1)`");
+    stream.WriteLine("Axis(2): `Boolean4.GetAxis(2)`");
+    stream.WriteLine("Axis(3): `Boolean4.GetAxis(3)`");
+    stream.WriteLine(@Boolean4.XAxis);
+    stream.WriteLine(@Boolean4.YAxis);
+    stream.WriteLine(@Boolean4.ZAxis);
+    stream.WriteLine(@Boolean4.WAxis);
+    stream.WriteLine(@Boolean4.Zero);
+    
+    stream.EndScope();
+  }
+  
+  function TestMemberFunctions(stream : UnitTestStreamWriter, data : Boolean4)
+  {
+    stream.WriteLine("MemberFunctions");
+    stream.BeginScope();
+    
+    stream.WriteLine("Constructor: `Boolean4()`");
+    stream.WriteLine("Constructor: `Boolean4(true)`");
+    stream.WriteLine("Constructor: `Boolean4(false, false, true, true)`");
+    stream.WriteLine("ToDo: Boolean vector constructors");
+    //stream.WriteLine("Constructor: `Boolean4(Boolean2(false, false), true, true)`");
+    //stream.WriteLine("Constructor: `Boolean4(false, Boolean2(false, true), true)`");
+    //stream.WriteLine("Constructor: `Boolean4(false, false, Boolean2(true, true))`");
+    //stream.WriteLine("Constructor: `Boolean4(Boolean2(false, false), Boolean2(true, true))`");
+    //stream.WriteLine("Constructor: `Boolean4(Boolean3(false, false, true), true)`");
+    //stream.WriteLine("Constructor: `Boolean4(false, Boolean3(false, true, true))`");
+    
+    stream.WriteLine(@data.Count);
+    
+    stream.WriteLine("operator[].Get: `data[0]` `data[1]` `data[2]` `data[3]`");
+    data[0] = true;
+    data[1] = false;
+    data[2] = true;
+    data[3] = false;
+    stream.WriteLine("operator[].Set: `data`");
+    
+    stream.EndScope();
+  }
+  
+  function OnRecordInitialization(event : CogFrameRecordEvent)
+  {
+    var stream = event.Stream;
+    stream.WriteLine("Boolean4 tests:");
+    stream.BeginScope();
+    
+    this.TestStaticFunctions(stream);
+    this.TestMemberFunctions(stream, Boolean4(true, false, false, true));
+  }
+}

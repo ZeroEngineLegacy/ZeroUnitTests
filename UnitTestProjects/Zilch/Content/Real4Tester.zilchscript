@@ -1,0 +1,69 @@
+class Real4Tester : ZilchComponent
+{
+  [Dependency] var BaseRecorder : BaseCogResultRecorder;
+  
+  function Initialize(init : CogInitializer)
+  {
+    Zero.Connect(this.Owner, Events.RecordInitialization, this.OnRecordInitialization);
+  }
+  
+  function TestStaticFunctions(stream : UnitTestStreamWriter)
+  {
+    stream.WriteLine("StaticFunctions");
+    stream.BeginScope();
+    
+    stream.WriteLine(@Real4.Count);
+    stream.WriteLine("Axis(0): `Real4.GetAxis(0)`");
+    stream.WriteLine("Axis(1): `Real4.GetAxis(1)`");
+    stream.WriteLine("Axis(2): `Real4.GetAxis(2)`");
+    stream.WriteLine("Axis(3): `Real4.GetAxis(3)`");
+    stream.WriteLine(@Real4.NegativeMin);
+    stream.WriteLine(@Real4.NegativeValueClosestToZero);
+    stream.WriteLine(@Real4.PositiveMax);
+    stream.WriteLine(@Real4.PositiveValueClosestToZero);
+    stream.WriteLine(@Real4.XAxis);
+    stream.WriteLine(@Real4.YAxis);
+    stream.WriteLine(@Real4.ZAxis);
+    stream.WriteLine(@Real4.WAxis);
+    stream.WriteLine(@Real4.Zero);
+    
+    stream.EndScope();
+  }
+  
+  function TestMemberFunctions(stream : UnitTestStreamWriter, data : Real4)
+  {
+    stream.WriteLine("MemberFunctions");
+    stream.BeginScope();
+    
+    stream.WriteLine("Constructor: `Real4()`");
+    stream.WriteLine("Constructor: `Real4(1.1)`");
+    stream.WriteLine("Constructor: `Real4(1, 2, 3, 4)`");
+    stream.WriteLine("Constructor: `Real4(Real2(1, 2), 3, 4)`");
+    stream.WriteLine("Constructor: `Real4(1, Real2(2, 3), 4)`");
+    stream.WriteLine("Constructor: `Real4(1, 2, Real2(3, 4))`");
+    stream.WriteLine("Constructor: `Real4(Real2(1, 2), Real2(3, 4))`");
+    stream.WriteLine("Constructor: `Real4(Real3(1, 2, 3), 4)`");
+    stream.WriteLine("Constructor: `Real4(1, Real3(2, 3, 4))`");
+    
+    stream.WriteLine(@data.Count);
+    
+    stream.WriteLine("operator[].Get: `data[0]` `data[1]` `data[2]` `data[3]`");
+    data[0] = 1.58;
+    data[1] = -75;
+    data[2] = 4.21;
+    data[3] = -0.0001;
+    stream.WriteLine("operator[].Set: `data`");
+    
+    stream.EndScope();
+  }
+  
+  function OnRecordInitialization(event : CogFrameRecordEvent)
+  {
+    var stream = event.Stream;
+    stream.WriteLine("Real4 tests:");
+    stream.BeginScope();
+    
+    this.TestStaticFunctions(stream);
+    this.TestMemberFunctions(stream, Real4(0.1, -49.2, 0, 1.0));
+  }
+}

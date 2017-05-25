@@ -1,0 +1,9 @@
+[Version:1]
+TextContent 
+{
+	ZilchScriptBuilder 
+	{
+		var Name = "BooleanTester"
+		var ResourceId = 0x597343145a21534b
+	}
+}

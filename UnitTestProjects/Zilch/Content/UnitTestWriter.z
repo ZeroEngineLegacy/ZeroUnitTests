@@ -1,0 +1,103 @@
+// Utility class to perform diff logic. Exists as a separate class right now due to RunInEditor not working with game session components.
+class DifferUtility
+{
+  // Where unit test files are saved to
+  var SavePath : String;
+  
+  constructor()
+  {
+    // Construct the default save path
+    var projectPath = Zero.Editor.ProjectCog.ProjectSettings.ProjectFolder;
+    this.SavePath = FilePath.CombineDirectories(projectPath, "UnitTestResults");
+  }
+  
+  function ReadFileContents(filePath : String) : String
+  {
+    // Have to do this as there's no other way to check if a file exists so we force it to exist but as empty
+    var stream = FileStream(filePath, FileMode.Append);
+    stream.Close();
+    
+    // Now we can safely open the file in read mode because it'll always exist
+    stream = FileStream(filePath, FileMode.Read);
+    return stream.ReadAllText();
+  }
+  
+  // Run a visual diff command on the given two files
+  function RunVisualDiff(generatedPath : String, expectedPath : String)
+  {
+    // Change as you see fit for your application. This runs tortoise merge to display the diffs
+    var startInfo = ProcessStartInfo();
+    startInfo.ApplicationName = "tortoisemerge";
+    startInfo.Arguments = "`generatedPath` `expectedPath`";
+    startInfo.ShowWindow = true;
+    
+    var process = ProcessClass();
+    process.Open(startInfo);
+  }
+  
+  function GetGeneratedFileName(testName : String) : String
+  {
+    var generatedTestPath = FilePath.CombineDirectoriesAndFile(this.SavePath, "`testName`.generated.txt");
+    return generatedTestPath;
+  }
+  
+  function GetExpectedFileName(testName : String) : String
+  {
+    var expectedTestPath = FilePath.CombineDirectoriesAndFile(this.SavePath, "`testName`.expected.txt");
+    return expectedTestPath;
+  }
+  
+  function RunVisualDiffIfNeeded(testName : String)
+  {
+    var savePath = this.SavePath;
+    var generatedTestPath = this.GetGeneratedFileName(testName);
+    var expectedTestPath = this.GetExpectedFileName(testName);
+    
+    // Get the contents of the two files
+    var expectedResults = this.ReadFileContents(expectedTestPath);
+    var generatedResults = this.ReadFileContents(generatedTestPath);
+    // If they're different then actually run the visual diff tool
+    if(expectedResults != generatedResults)
+      this.RunVisualDiff(generatedTestPath, expectedTestPath);
+  }
+}
+
+// GameSession component. This is in charge of writing out the results from unit tests
+class UnitTestWriter : ZilchComponent
+{
+  // Do we run the given visual diff tool whenever a test fails? Typically off and
+  // the RunVisualDiffs command is just used after-the-fact.
+  [Property] var VisualDiffs : Boolean = false;
+  
+  function Initialize(init : CogInitializer)
+  {
+  }
+  
+  function WriteAndDiffTest(testName : String, testData : String)
+  {
+    var differ = DifferUtility();
+    
+    // Write out the test data to the generated test file path
+    var generatedTestPath = differ.GetGeneratedFileName(testName);
+    var generatedStream = FileStream(generatedTestPath, FileMode.Write);
+    generatedStream.WriteText(testData);
+    generatedStream.Close();
+    
+    // Read the expected test results
+    var expectedTestPath = differ.GetExpectedFileName(testName);
+    var expectedResults = differ.ReadFileContents(expectedTestPath);
+    
+    // If they match then just print a message, nothing else to do
+    if(expectedResults == testData)
+    {
+      Console.WriteLine("Unit Test Passed: '`testName`'");
+      return;
+    }
+    
+    // Otherwise, print that we failed
+    Console.WriteLine("Unit Test Failed: '`testName`'");
+    // Run our visual diff command if we can
+    if(this.VisualDiffs)
+      differ.RunVisualDiff(generatedTestPath, expectedTestPath);
+  }
+}

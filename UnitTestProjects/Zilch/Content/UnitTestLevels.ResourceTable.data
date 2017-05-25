@@ -1,0 +1,21 @@
+[Version:1]
+ResourceTable 
+{
+	var ResourceType = "Level"
+	var EntryList = Array
+	{
+		Object
+		{
+			var Name = "Name2"
+			var Value = "5973490e6ec96261:MathTypes"
+			var Weight = 1
+		}
+		Object
+		{
+			var Name = "Name1"
+			var Value = "59734e6908826c48:Strings"
+			var Weight = 1
+		}
+	}
+	var MaxWeight = 1
+}

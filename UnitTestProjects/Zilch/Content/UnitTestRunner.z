@@ -1,0 +1,31 @@
+// Runs the game when the "RunUnitTests" command executes (from command line typically). Also terminates the engine after running.
+[RunInEditor]
+class UnitTestRunner : ZilchComponent
+{
+  function Initialize(init : CogInitializer)
+  {
+    Zero.Connect(Zero.Engine, "RunUnitTests", this.OnRunUnitTests);
+  }
+
+  function OnRunUnitTests(event : Event)
+  {
+    var game = Zero.Editor.PlayNewGame();
+    
+    // Make sure we run unit tests
+    var projectUnitTestManager = game.ProjectUnitTestManager;
+    if(projectUnitTestManager != null)
+      projectUnitTestManager.RunTestsOnPlayGame = true;
+      
+    // Make sure to not display visual diffs if we're running from command line
+    var unitTestWriter = game.UnitTestWriter;
+    if(unitTestWriter != null)
+      unitTestWriter.VisualDiffs = false;
+      
+    Zero.Connect(game, Events.GameQuit, this.OnGameRequestQuit);
+  }
+
+  function OnGameRequestQuit(event : GameEvent)
+  {
+    Zero.Engine.Terminate();
+  }
+}

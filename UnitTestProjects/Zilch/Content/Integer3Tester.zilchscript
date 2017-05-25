@@ -1,0 +1,65 @@
+class Integer3Tester : ZilchComponent
+{
+  [Dependency] var BaseRecorder : BaseCogResultRecorder;
+  
+  function Initialize(init : CogInitializer)
+  {
+    Zero.Connect(this.Owner, Events.RecordInitialization, this.OnRecordInitialization);
+  }
+  
+  function TestStaticFunctions(stream : UnitTestStreamWriter)
+  {
+    stream.WriteLine("StaticFunctions");
+    stream.BeginScope();
+    
+    stream.WriteLine(@Integer3.Count);
+    stream.WriteLine("Axis(0): `Integer3.GetAxis(0)`");
+    stream.WriteLine("Axis(1): `Integer3.GetAxis(1)`");
+    stream.WriteLine("Axis(2): `Integer3.GetAxis(2)`");
+    stream.WriteLine(@Integer3.NegativeMin);
+    stream.WriteLine(@Integer3.NegativeValueClosestToZero);
+    stream.WriteLine(@Integer3.PositiveMax);
+    stream.WriteLine(@Integer3.PositiveValueClosestToZero);
+    stream.WriteLine(@Integer3.XAxis);
+    stream.WriteLine(@Integer3.YAxis);
+    stream.WriteLine(@Integer3.ZAxis);
+    stream.WriteLine(@Integer3.Zero);
+    
+    stream.EndScope();
+  }
+  
+  function TestMemberFunctions(stream : UnitTestStreamWriter, data : Integer3)
+  {
+    stream.WriteLine("MemberFunctions");
+    stream.BeginScope();
+    
+    stream.WriteLine("Constructor: `Integer3()`");
+    stream.WriteLine("Constructor: `Integer3(11)`");
+    stream.WriteLine("Constructor: `Integer3(1, 2, 3)`");
+    stream.WriteLine("Constructor: `Integer3(Integer2(1, 2), 3)`");
+    stream.WriteLine("Constructor: `Integer3(1, Integer2(2, 3))`");
+    // Doesn't currently exist
+    stream.WriteLine("ToDo: Constructor Integer2(Integer3))");
+    //stream.WriteLine("Constructor: `Integer3(data)`");
+    
+    stream.WriteLine(@data.Count);
+    
+    stream.WriteLine("operator[].Get: `data[0]` `data[1]` `data[2]`");
+    data[0] = 18;
+    data[1] = -45;
+    data[2] = 41;
+    stream.WriteLine("operator[].Set: `data`");
+    
+    stream.EndScope();
+  }
+  
+  function OnRecordInitialization(event : CogFrameRecordEvent)
+  {
+    var stream = event.Stream;
+    stream.WriteLine("Integer3 tests:");
+    stream.BeginScope();
+    
+    this.TestStaticFunctions(stream);
+    this.TestMemberFunctions(stream, Integer3(1, -1, 2));
+  }
+}

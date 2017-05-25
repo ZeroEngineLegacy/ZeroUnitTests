@@ -1,0 +1,71 @@
+class IntegerTester : ZilchComponent
+{
+  [Dependency] var BaseRecorder : BaseCogResultRecorder;
+  
+  function Initialize(init : CogInitializer)
+  {
+    Zero.Connect(this.Owner, Events.RecordInitialization, this.OnRecordInitialization);
+  }
+  
+  function TestParse(stream : UnitTestStreamWriter, str : String)
+  {
+    stream.WriteLine("Parse(`str`): `Integer.Parse(str)`");
+  }
+  
+  function TestStaticFunctions(stream : UnitTestStreamWriter)
+  {
+    stream.WriteLine("StaticFunctions");
+    stream.BeginScope();
+    
+    stream.WriteLine(@Integer.Count);
+    stream.WriteLine("Axis(0): `Integer.GetAxis(0)`");
+    stream.WriteLine(@Integer.NegativeMin);
+    stream.WriteLine(@Integer.NegativeValueClosestToZero);
+    stream.WriteLine(@Integer.PositiveMax);
+    stream.WriteLine(@Integer.PositiveValueClosestToZero);
+    stream.WriteLine(@Integer.XAxis);
+    stream.WriteLine(@Integer.Zero);
+    
+    this.TestParse(stream, "1");
+    this.TestParse(stream, "0");
+    this.TestParse(stream, "-9");
+    this.TestParse(stream, "1123");
+    // Scientific notation not currently supported on ints
+    //this.TestParse(stream, "1e12");
+    //this.TestParse(stream, "1e+13");
+    //this.TestParse(stream, "1e-14");
+    
+    stream.EndScope();
+  }
+  
+  function TestMemberFunctions(stream : UnitTestStreamWriter, data : Integer)
+  {
+    stream.WriteLine("MemberFunctions");
+    stream.BeginScope();
+    
+    stream.WriteLine("Constructor: `Integer()`");
+    stream.WriteLine("Constructor: `Integer(1)`");
+    stream.WriteLine("Constructor: `Integer(-2)`");
+    
+    stream.WriteLine(@data.Count);
+    
+    stream.WriteLine("operator[].Get: `data[0]`");
+    data[0] = 16;
+    stream.WriteLine("operator[].Set: `data`");
+    stream.WriteLine(@data.X);
+    stream.WriteLine(@data.XX);
+    stream.WriteLine(@data.XXX);
+    stream.WriteLine(@data.XXXX);
+    stream.EndScope();
+  }
+  
+  function OnRecordInitialization(event : CogFrameRecordEvent)
+  {
+    var stream = event.Stream;
+    stream.WriteLine("Integer tests:");
+    stream.BeginScope();
+    
+    this.TestStaticFunctions(stream);
+    this.TestMemberFunctions(stream, 3);
+  }
+}

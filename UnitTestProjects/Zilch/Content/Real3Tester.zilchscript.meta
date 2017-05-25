@@ -1,0 +1,9 @@
+[Version:1]
+TextContent 
+{
+	ZilchScriptBuilder 
+	{
+		var Name = "Real3Tester"
+		var ResourceId = 0x59734b28fe8d1ba2
+	}
+}

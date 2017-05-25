@@ -1,0 +1,9 @@
+[Version:1]
+TextContent 
+{
+	ZilchScriptBuilder 
+	{
+		var Name = "Integer4Tester"
+		var ResourceId = 0x597341a4af297d34
+	}
+}

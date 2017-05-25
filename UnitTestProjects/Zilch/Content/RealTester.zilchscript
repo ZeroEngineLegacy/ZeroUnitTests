@@ -1,0 +1,71 @@
+class RealTester : ZilchComponent
+{
+  [Dependency] var BaseRecorder : BaseCogResultRecorder;
+  
+  function Initialize(init : CogInitializer)
+  {
+    Zero.Connect(this.Owner, Events.RecordInitialization, this.OnRecordInitialization);
+  }
+  
+  function TestParse(stream : UnitTestStreamWriter, str : String)
+  {
+    stream.WriteLine("Parse(`str`): `Real.Parse(str)`");
+  }
+  
+  function TestStaticFunctions(stream : UnitTestStreamWriter)
+  {
+    stream.WriteLine("StaticFunctions");
+    stream.BeginScope();
+    
+    stream.WriteLine(@Real.Count);
+    stream.WriteLine("Axis(0): `Real.GetAxis(0)`");
+    stream.WriteLine(@Real.NegativeMin);
+    stream.WriteLine(@Real.NegativeValueClosestToZero);
+    stream.WriteLine(@Real.PositiveMax);
+    stream.WriteLine(@Real.PositiveValueClosestToZero);
+    stream.WriteLine(@Real.XAxis);
+    stream.WriteLine(@Real.Zero);
+    
+    this.TestParse(stream, "1.123");
+    this.TestParse(stream, "0.012");
+    this.TestParse(stream, "-9.99");
+    this.TestParse(stream, "1123");
+    this.TestParse(stream, "1.1e12");
+    this.TestParse(stream, "1.1e+13");
+    this.TestParse(stream, "1.1e-14");
+    
+    stream.EndScope();
+  }
+  
+  function TestMemberFunctions(stream : UnitTestStreamWriter, data : Real)
+  {
+    stream.WriteLine("MemberFunctions");
+    stream.BeginScope();
+    
+    stream.WriteLine("Constructor: `Real()`");
+    stream.WriteLine("Constructor: `Real(1)`");
+    stream.WriteLine("Constructor: `Real(-2)`");
+    stream.WriteLine("Constructor: `Real(1.345)`");
+    
+    stream.WriteLine(@data.Count);
+    
+    stream.WriteLine("operator[].Get: `data[0]`");
+    data[0] = 1.58;
+    stream.WriteLine("operator[].Set: `data`");
+    stream.WriteLine(@data.X);
+    stream.WriteLine(@data.XX);
+    stream.WriteLine(@data.XXX);
+    stream.WriteLine(@data.XXXX);
+    stream.EndScope();
+  }
+  
+  function OnRecordInitialization(event : CogFrameRecordEvent)
+  {
+    var stream = event.Stream;
+    stream.WriteLine("Real tests:");
+    stream.BeginScope();
+    
+    this.TestStaticFunctions(stream);
+    this.TestMemberFunctions(stream, 1.3);
+  }
+}

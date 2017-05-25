@@ -1,0 +1,53 @@
+class BooleanTester : ZilchComponent
+{
+  [Dependency] var BaseRecorder : BaseCogResultRecorder;
+  
+  function Initialize(init : CogInitializer)
+  {
+    Zero.Connect(this.Owner, Events.RecordInitialization, this.OnRecordInitialization);
+  }
+  
+  function TestMemberFunctions(stream : UnitTestStreamWriter, data : Boolean)
+  {
+    stream.WriteLine("MemberFunctions");
+    stream.BeginScope();
+    
+    stream.WriteLine("Constructor: `Boolean()`");
+    stream.WriteLine("Constructor: `Boolean(true)`");
+    stream.WriteLine("Constructor: `Boolean(false)`");
+    
+    stream.WriteLine(@data.Count);
+    
+    stream.WriteLine("operator[].Get: `data[0]`");
+    data[0] = true;
+    stream.WriteLine("operator[].Set: `data`");
+    stream.WriteLine(@data.X);
+    stream.WriteLine(@data.XX);
+    stream.WriteLine(@data.XXX);
+    stream.WriteLine(@data.XXXX);
+    stream.EndScope();
+  }
+  
+  function TestStaticFunctions(stream : UnitTestStreamWriter)
+  {
+    stream.WriteLine("StaticFunctions");
+    stream.BeginScope();
+    
+    stream.WriteLine(@Boolean.Count);
+    stream.WriteLine("Axis(0): `Boolean.GetAxis(0)`");
+    stream.WriteLine(@Boolean.XAxis);
+    stream.WriteLine(@Boolean.Zero);
+    
+    stream.EndScope();
+  }
+  
+  function OnRecordInitialization(event : CogFrameRecordEvent)
+  {
+    var stream = event.Stream;
+    stream.WriteLine("Boolean tests:");
+    stream.BeginScope();
+    
+    this.TestStaticFunctions(stream);
+    this.TestMemberFunctions(stream, false);
+  }
+}
