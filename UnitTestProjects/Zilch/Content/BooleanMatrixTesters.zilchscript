@@ -1,0 +1,74 @@
+class Boolean2x2MatrixTester : BaseMatrixTester[Boolean2x2, Boolean]
+{
+  [Override] function SetInstance()
+  {
+    this.Instance = Boolean2x2(false, true, false, true);
+  }
+}
+
+class Boolean2x3MatrixTester : BaseMatrixTester[Boolean2x3, Boolean]
+{
+  [Override] function SetInstance()
+  {
+    this.Instance = Boolean2x3(false, true, false, true, false, true);
+  }
+}
+
+class Boolean2x4MatrixTester : BaseMatrixTester[Boolean2x4, Boolean]
+{
+  [Override] function SetInstance()
+  {
+    this.Instance = Boolean2x4(false, true, false, true, false, true, false, true);
+  }
+}
+
+class Boolean3x2MatrixTester : BaseMatrixTester[Boolean3x2, Boolean]
+{
+  [Override] function SetInstance()
+  {
+    this.Instance = Boolean3x2(false, true, false, true, false, true);
+  }
+}
+
+class Boolean3x3MatrixTester : BaseMatrixTester[Boolean3x3, Boolean]
+{
+  [Override] function SetInstance()
+  {
+    this.Instance = Boolean3x3(false, true, false, true, false, true, false, true, false);
+  }
+}
+
+class Boolean3x4MatrixTester : BaseMatrixTester[Boolean3x4, Boolean]
+{
+  [Override] function SetInstance()
+  {
+    this.Instance = Boolean3x4(false, true, false, true, false, true, false, true, false, true, false, true);
+  }
+}
+
+class Boolean4x2MatrixTester : BaseMatrixTester[Boolean4x2, Boolean]
+{
+  [Override] function SetInstance()
+  {
+    this.Instance = Boolean4x2(false, true, false, true, false, true, false, true);
+  }
+}
+
+class Boolean4x3MatrixTester : BaseMatrixTester[Boolean4x3, Boolean]
+{
+  [Override] function SetInstance()
+  {
+    this.Instance = Boolean4x3(false, true, false, true, false, true, false, true, false, true, false, true);
+  }
+}
+
+class Boolean4x4MatrixTester : BaseMatrixTester[Boolean4x4, Boolean]
+{
+  [Override] function SetInstance()
+  {
+    this.Instance = Boolean4x4(false, true, false, true,
+                               false, true, false, true,
+                               false, true, false, true,
+                               false, true, false, true);
+  }
+}

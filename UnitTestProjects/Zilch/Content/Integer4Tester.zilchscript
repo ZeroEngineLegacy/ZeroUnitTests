@@ -44,6 +44,8 @@ class Integer4Tester : ZilchComponent
     stream.WriteLine("Constructor: `Integer4(Integer2(1, 2), Integer2(3, 4))`");
     stream.WriteLine("Constructor: `Integer4(Integer3(1, 2, 3), 4)`");
     stream.WriteLine("Constructor: `Integer4(1, Integer3(2, 3, 4))`");
+    stream.WriteLine("ToDo: Constructor Integer4(Integer4))");
+    //stream.WriteLine("Constructor: `Integer4(data)`");
     
     stream.WriteLine(@data.Count);
     

@@ -177,6 +177,7 @@ Integer4 tests:
     Constructor: (1, 2, 3, 4)
     Constructor: (1, 2, 3, 4)
     Constructor: (1, 2, 3, 4)
+    ToDo: Constructor Integer4(Integer4))
     Count: 4
     operator[].Get: 4 -49 0 1
     operator[].Set: (18, -65, 41, 0)

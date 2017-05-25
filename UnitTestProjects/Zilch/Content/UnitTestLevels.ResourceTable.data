@@ -12,6 +12,12 @@ ResourceTable
 		}
 		Object
 		{
+			var Name = "Name3"
+			var Value = "5971c8776cc8f990:MatrixTypes"
+			var Weight = 1
+		}
+		Object
+		{
 			var Name = "Name1"
 			var Value = "59734e6908826c48:Strings"
 			var Weight = 1

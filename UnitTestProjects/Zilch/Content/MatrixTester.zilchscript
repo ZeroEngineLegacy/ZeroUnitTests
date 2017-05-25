@@ -1,0 +1,158 @@
+class MatrixTester[MatrixType, ScalarType]
+{
+  [Static]
+  function TestStaticGetPropertyByName(stream : UnitTestStreamWriter, matrixType : BoundType, name : String)
+  {
+    var prop = matrixType.GetProperty(name, Members.Static);
+    if(prop != null)
+      stream.WriteLine("`name`: `prop.GetValue(null)`");
+  }
+  
+  [Static]
+  function TestInstanceGetPropertyByName(stream : UnitTestStreamWriter, matrixType : BoundType, instance : any, name : String)
+  {
+    var prop = matrixType.GetProperty(name, Members.Instance);
+    if(prop != null)
+      stream.WriteLine("`name`: `prop.GetValue(instance)`");
+  }
+  
+  [Static]
+  function TestStaticFunctions(stream : UnitTestStreamWriter)
+  {
+    stream.WriteLine("StaticFunctions");
+    stream.BeginScope();
+    
+    var matrixType = typeid(MatrixType);
+    stream.WriteLine(@MatrixType.Count);
+    stream.WriteLine(@MatrixType.CountX);
+    stream.WriteLine(@MatrixType.CountY);
+    
+    stream.EndScope();
+  }
+  
+  [Static]
+  function TestConstructors(stream : UnitTestStreamWriter, matrix : MatrixType)
+  {
+    stream.WriteLine("Constructor: `MatrixType()`");
+    stream.WriteLine("Constructor: `MatrixType(matrix.GetByIndex(1))`");
+    stream.WriteLine("Constructor: `matrix`");
+  }
+  
+  [Extension(typeid(Array[ScalarType]))]
+  function GetWrapped(index : Integer) : ScalarType
+  {
+    if(index < 0)
+      index *= -1;
+    var wrappedIndex = index % this.Count;
+    return this.Get(wrappedIndex);
+  }
+  
+  [Static]
+  function TestMemberFunctions(stream : UnitTestStreamWriter, matrix : MatrixType, data : Array[ScalarType])
+  {
+    stream.WriteLine("MemberFunctions");
+    stream.BeginScope();
+    
+    var matrixType : BoundType = typeid(MatrixType);
+    var count = matrix.Count;
+    var countX = matrix.CountX;
+    var countY = matrix.CountY;
+    
+    stream.WriteLine("Initial Matrix: `matrix`");
+    // Print all instance members of MYX (use reflection)
+    for(var y = 0; y < countY; ++y)
+    {
+      for(var x = 0; x < countX; ++x)
+      {
+        MatrixTester[MatrixType, ScalarType].TestInstanceGetPropertyByName(stream, matrixType, matrix, "M`y``x`");
+      }
+    }
+    
+    // Print all operator.Get : Vector
+    for(var y = 0; y < countY; ++y)
+    {
+      stream.WriteLine("operator[`y`]: `matrix[y]`");
+    }
+    // Test operator.Set(vector). It's a little annoying to update the vector here since I don't know it's type.
+    // To more easily do this, use the vector's count to set its individual properties
+    for(var y = 0; y < countY; ++y)
+    {
+      var vector = matrix[y];
+      for(var i = 0; i < vector.Count; ++i)
+        vector[i] = data.GetWrapped(y + i + 1);
+      matrix[y] = vector;
+    }
+    stream.WriteLine("Matrix operator[].Set: `matrix`");
+    
+    // Test matrix[y][x]
+    for(var y = 0; y < countY; ++y)
+    {
+      for(var x = 0; x < countX; ++x)
+      {
+        stream.WriteLine("operator[`y`][`x`]: `matrix[y][x]`");
+      }
+    }
+    // Test setting matrix[y][x] (current doesn't work)
+    for(var y = 0; y < countY; ++y)
+    {
+      for(var x = 0; x < countX; ++x)
+      {
+        matrix[y][x] = data.GetWrapped(-y - x);
+      }
+    }
+    stream.WriteLine("Wrong!!");
+    stream.WriteLine("Matrix operator[][].Set: `matrix`");
+    
+    // Get by index
+    for(var i = 0; i < count; ++i)
+    {
+      stream.WriteLine("GetByIndex: `matrix.GetByIndex(i)`");
+    }
+    // Set by index
+    for(var i = 0; i < count; ++i)
+    {
+      matrix.SetByIndex(i, data.GetWrapped(i * 2));
+    }
+    stream.WriteLine("SetByIndex: `matrix`");
+    
+    stream.EndScope();
+  }
+}
+
+class BaseMatrixTester[MatrixType, ScalarType] : ZilchComponent
+{
+  [Dependency] var BaseRecorder : BaseCogResultRecorder;
+  [Property] var Active : Boolean = true;
+  
+  var Instance : MatrixType = MatrixType();
+  
+  function Initialize(init : CogInitializer)
+  {
+    Zero.Connect(this.Owner, Events.RecordInitialization, this.OnRecordInitialization);
+  }
+  
+  [Virtual]
+  function SetInstance()
+  {
+  }
+  
+  function OnRecordInitialization(event : CogFrameRecordEvent)
+  {
+    if(!this.Active)
+      return;
+      
+    var stream = event.Stream;
+    stream.WriteLine("Matrix tests:");
+    stream.BeginScope();
+    
+    this.SetInstance();
+    
+    var data = Array[ScalarType]();
+    for(var i = 0; i < this.Instance.Count; ++i)
+      data.Add(this.Instance.GetByIndex(i));
+    
+    MatrixTester[MatrixType, ScalarType].TestStaticFunctions(stream);
+    MatrixTester[MatrixType, ScalarType].TestConstructors(stream, this.Instance);
+    MatrixTester[MatrixType, ScalarType].TestMemberFunctions(stream, this.Instance, data);
+  }
+}

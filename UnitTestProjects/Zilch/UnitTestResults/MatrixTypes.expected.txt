@@ -1,0 +1,912 @@
+----BooleanMatrices.Boolean2x2----
+
+----BooleanMatrices.Boolean2x3----
+
+----BooleanMatrices.Boolean2x4----
+
+----BooleanMatrices.Boolean3x2----
+
+----BooleanMatrices.Boolean3x3----
+
+----BooleanMatrices.Boolean3x4----
+
+----BooleanMatrices.Boolean4x2----
+
+----BooleanMatrices.Boolean4x3----
+
+----BooleanMatrices.Boolean4x4----
+Matrix tests:
+  StaticFunctions
+    Count: 16
+    CountX: 4
+    CountY: 4
+  Constructor: [(false, false, false, false), (false, false, false, false), (false, false, false, false), (false, false, false, false)]
+  Constructor: [(true, true, true, true), (true, true, true, true), (true, true, true, true), (true, true, true, true)]
+  Constructor: [(false, true, true, true), (true, true, true, false), (false, false, false, false), (true, false, false, false)]
+  MemberFunctions
+    Initial Matrix: [(false, true, true, true), (true, true, true, false), (false, false, false, false), (true, false, false, false)]
+    M00: false
+    M01: true
+    M02: true
+    M03: true
+    M10: true
+    M11: true
+    M12: true
+    M13: false
+    M20: false
+    M21: false
+    M22: false
+    M23: false
+    M30: true
+    M31: false
+    M32: false
+    M33: false
+    operator[0]: (false, true, true, true)
+    operator[1]: (true, true, true, false)
+    operator[2]: (false, false, false, false)
+    operator[3]: (true, false, false, false)
+    Matrix operator[].Set: [(true, true, true, true), (true, true, true, true), (true, true, true, true), (true, true, true, false)]
+    operator[0][0]: true
+    operator[0][1]: true
+    operator[0][2]: true
+    operator[0][3]: true
+    operator[1][0]: true
+    operator[1][1]: true
+    operator[1][2]: true
+    operator[1][3]: true
+    operator[2][0]: true
+    operator[2][1]: true
+    operator[2][2]: true
+    operator[2][3]: true
+    operator[3][0]: true
+    operator[3][1]: true
+    operator[3][2]: true
+    operator[3][3]: false
+    Wrong!!
+    Matrix operator[][].Set: [(true, true, true, true), (true, true, true, true), (true, true, true, true), (true, true, true, false)]
+    GetByIndex: true
+    GetByIndex: true
+    GetByIndex: true
+    GetByIndex: true
+    GetByIndex: true
+    GetByIndex: true
+    GetByIndex: true
+    GetByIndex: true
+    GetByIndex: true
+    GetByIndex: true
+    GetByIndex: true
+    GetByIndex: true
+    GetByIndex: true
+    GetByIndex: true
+    GetByIndex: true
+    GetByIndex: false
+    SetByIndex: [(false, true, true, true), (false, false, true, false), (false, true, true, true), (false, false, true, false)]
+
+----IntegerMatrices.Integer2x2----
+Matrix tests:
+  StaticFunctions
+    Count: 4
+    CountX: 2
+    CountY: 2
+  Constructor: [(0, 0), (0, 0)]
+  Constructor: [(1, 1), (1, 1)]
+  Constructor: [(0, 1), (2, 3)]
+  MemberFunctions
+    Initial Matrix: [(0, 1), (2, 3)]
+    M00: 0
+    M01: 1
+    M10: 2
+    M11: 3
+    operator[0]: (0, 1)
+    operator[1]: (2, 3)
+    Matrix operator[].Set: [(1, 2), (2, 3)]
+    operator[0][0]: 1
+    operator[0][1]: 2
+    operator[1][0]: 2
+    operator[1][1]: 3
+    Wrong!!
+    Matrix operator[][].Set: [(1, 2), (2, 3)]
+    GetByIndex: 1
+    GetByIndex: 2
+    GetByIndex: 2
+    GetByIndex: 3
+    SetByIndex: [(0, 2), (0, 2)]
+
+----IntegerMatrices.Integer2x3----
+Matrix tests:
+  StaticFunctions
+    Count: 6
+    CountX: 3
+    CountY: 2
+  Constructor: [(0, 0, 0), (0, 0, 0)]
+  Constructor: [(1, 1, 1), (1, 1, 1)]
+  Constructor: [(0, 1, 2), (3, 4, 5)]
+  MemberFunctions
+    Initial Matrix: [(0, 1, 2), (3, 4, 5)]
+    M00: 0
+    M01: 1
+    M02: 2
+    M10: 3
+    M11: 4
+    M12: 5
+    operator[0]: (0, 1, 2)
+    operator[1]: (3, 4, 5)
+    Matrix operator[].Set: [(1, 2, 3), (2, 3, 4)]
+    operator[0][0]: 1
+    operator[0][1]: 2
+    operator[0][2]: 3
+    operator[1][0]: 2
+    operator[1][1]: 3
+    operator[1][2]: 4
+    Wrong!!
+    Matrix operator[][].Set: [(1, 2, 3), (2, 3, 4)]
+    GetByIndex: 1
+    GetByIndex: 2
+    GetByIndex: 3
+    GetByIndex: 2
+    GetByIndex: 3
+    GetByIndex: 4
+    SetByIndex: [(0, 2, 4), (0, 2, 4)]
+
+----IntegerMatrices.Integer2x4----
+Matrix tests:
+  StaticFunctions
+    Count: 8
+    CountX: 4
+    CountY: 2
+  Constructor: [(0, 0, 0, 0), (0, 0, 0, 0)]
+  Constructor: [(1, 1, 1, 1), (1, 1, 1, 1)]
+  Constructor: [(0, 1, 2, 3), (4, 5, 6, 7)]
+  MemberFunctions
+    Initial Matrix: [(0, 1, 2, 3), (4, 5, 6, 7)]
+    M00: 0
+    M01: 1
+    M02: 2
+    M03: 3
+    M10: 4
+    M11: 5
+    M12: 6
+    M13: 7
+    operator[0]: (0, 1, 2, 3)
+    operator[1]: (4, 5, 6, 7)
+    Matrix operator[].Set: [(1, 2, 3, 4), (2, 3, 4, 5)]
+    operator[0][0]: 1
+    operator[0][1]: 2
+    operator[0][2]: 3
+    operator[0][3]: 4
+    operator[1][0]: 2
+    operator[1][1]: 3
+    operator[1][2]: 4
+    operator[1][3]: 5
+    Wrong!!
+    Matrix operator[][].Set: [(1, 2, 3, 4), (2, 3, 4, 5)]
+    GetByIndex: 1
+    GetByIndex: 2
+    GetByIndex: 3
+    GetByIndex: 4
+    GetByIndex: 2
+    GetByIndex: 3
+    GetByIndex: 4
+    GetByIndex: 5
+    SetByIndex: [(0, 2, 4, 6), (0, 2, 4, 6)]
+
+----IntegerMatrices.Integer3x2----
+Matrix tests:
+  StaticFunctions
+    Count: 6
+    CountX: 2
+    CountY: 3
+  Constructor: [(0, 0), (0, 0), (0, 0)]
+  Constructor: [(1, 1), (1, 1), (1, 1)]
+  Constructor: [(0, 1), (2, 3), (4, 5)]
+  MemberFunctions
+    Initial Matrix: [(0, 1), (2, 3), (4, 5)]
+    M00: 0
+    M01: 1
+    M10: 2
+    M11: 3
+    M20: 4
+    M21: 5
+    operator[0]: (0, 1)
+    operator[1]: (2, 3)
+    operator[2]: (4, 5)
+    Matrix operator[].Set: [(1, 2), (2, 3), (3, 4)]
+    operator[0][0]: 1
+    operator[0][1]: 2
+    operator[1][0]: 2
+    operator[1][1]: 3
+    operator[2][0]: 3
+    operator[2][1]: 4
+    Wrong!!
+    Matrix operator[][].Set: [(1, 2), (2, 3), (3, 4)]
+    GetByIndex: 1
+    GetByIndex: 2
+    GetByIndex: 2
+    GetByIndex: 3
+    GetByIndex: 3
+    GetByIndex: 4
+    SetByIndex: [(0, 2), (4, 0), (2, 4)]
+
+----IntegerMatrices.Integer3x3----
+Matrix tests:
+  StaticFunctions
+    Count: 9
+    CountX: 3
+    CountY: 3
+  Constructor: [(0, 0, 0), (0, 0, 0), (0, 0, 0)]
+  Constructor: [(1, 1, 1), (1, 1, 1), (1, 1, 1)]
+  Constructor: [(0, 1, 2), (3, 4, 5), (6, 7, 8)]
+  MemberFunctions
+    Initial Matrix: [(0, 1, 2), (3, 4, 5), (6, 7, 8)]
+    M00: 0
+    M01: 1
+    M02: 2
+    M10: 3
+    M11: 4
+    M12: 5
+    M20: 6
+    M21: 7
+    M22: 8
+    operator[0]: (0, 1, 2)
+    operator[1]: (3, 4, 5)
+    operator[2]: (6, 7, 8)
+    Matrix operator[].Set: [(1, 2, 3), (2, 3, 4), (3, 4, 5)]
+    operator[0][0]: 1
+    operator[0][1]: 2
+    operator[0][2]: 3
+    operator[1][0]: 2
+    operator[1][1]: 3
+    operator[1][2]: 4
+    operator[2][0]: 3
+    operator[2][1]: 4
+    operator[2][2]: 5
+    Wrong!!
+    Matrix operator[][].Set: [(1, 2, 3), (2, 3, 4), (3, 4, 5)]
+    GetByIndex: 1
+    GetByIndex: 2
+    GetByIndex: 3
+    GetByIndex: 2
+    GetByIndex: 3
+    GetByIndex: 4
+    GetByIndex: 3
+    GetByIndex: 4
+    GetByIndex: 5
+    SetByIndex: [(0, 2, 4), (6, 8, 1), (3, 5, 7)]
+
+----IntegerMatrices.Integer3x4----
+Matrix tests:
+  StaticFunctions
+    Count: 12
+    CountX: 4
+    CountY: 3
+  Constructor: [(0, 0, 0, 0), (0, 0, 0, 0), (0, 0, 0, 0)]
+  Constructor: [(1, 1, 1, 1), (1, 1, 1, 1), (1, 1, 1, 1)]
+  Constructor: [(0, 1, 2, 3), (4, 5, 6, 7), (8, 9, 10, 11)]
+  MemberFunctions
+    Initial Matrix: [(0, 1, 2, 3), (4, 5, 6, 7), (8, 9, 10, 11)]
+    M00: 0
+    M01: 1
+    M02: 2
+    M03: 3
+    M10: 4
+    M11: 5
+    M12: 6
+    M13: 7
+    M20: 8
+    M21: 9
+    M22: 10
+    M23: 11
+    operator[0]: (0, 1, 2, 3)
+    operator[1]: (4, 5, 6, 7)
+    operator[2]: (8, 9, 10, 11)
+    Matrix operator[].Set: [(1, 2, 3, 4), (2, 3, 4, 5), (3, 4, 5, 6)]
+    operator[0][0]: 1
+    operator[0][1]: 2
+    operator[0][2]: 3
+    operator[0][3]: 4
+    operator[1][0]: 2
+    operator[1][1]: 3
+    operator[1][2]: 4
+    operator[1][3]: 5
+    operator[2][0]: 3
+    operator[2][1]: 4
+    operator[2][2]: 5
+    operator[2][3]: 6
+    Wrong!!
+    Matrix operator[][].Set: [(1, 2, 3, 4), (2, 3, 4, 5), (3, 4, 5, 6)]
+    GetByIndex: 1
+    GetByIndex: 2
+    GetByIndex: 3
+    GetByIndex: 4
+    GetByIndex: 2
+    GetByIndex: 3
+    GetByIndex: 4
+    GetByIndex: 5
+    GetByIndex: 3
+    GetByIndex: 4
+    GetByIndex: 5
+    GetByIndex: 6
+    SetByIndex: [(0, 2, 4, 6), (8, 10, 0, 2), (4, 6, 8, 10)]
+
+----IntegerMatrices.Integer4x2----
+Matrix tests:
+  StaticFunctions
+    Count: 8
+    CountX: 2
+    CountY: 4
+  Constructor: [(0, 0), (0, 0), (0, 0), (0, 0)]
+  Constructor: [(1, 1), (1, 1), (1, 1), (1, 1)]
+  Constructor: [(0, 1), (2, 3), (4, 5), (6, 7)]
+  MemberFunctions
+    Initial Matrix: [(0, 1), (2, 3), (4, 5), (6, 7)]
+    M00: 0
+    M01: 1
+    M10: 2
+    M11: 3
+    M20: 4
+    M21: 5
+    M30: 6
+    M31: 7
+    operator[0]: (0, 1)
+    operator[1]: (2, 3)
+    operator[2]: (4, 5)
+    operator[3]: (6, 7)
+    Matrix operator[].Set: [(1, 2), (2, 3), (3, 4), (4, 5)]
+    operator[0][0]: 1
+    operator[0][1]: 2
+    operator[1][0]: 2
+    operator[1][1]: 3
+    operator[2][0]: 3
+    operator[2][1]: 4
+    operator[3][0]: 4
+    operator[3][1]: 5
+    Wrong!!
+    Matrix operator[][].Set: [(1, 2), (2, 3), (3, 4), (4, 5)]
+    GetByIndex: 1
+    GetByIndex: 2
+    GetByIndex: 2
+    GetByIndex: 3
+    GetByIndex: 3
+    GetByIndex: 4
+    GetByIndex: 4
+    GetByIndex: 5
+    SetByIndex: [(0, 2), (4, 6), (0, 2), (4, 6)]
+
+----IntegerMatrices.Integer4x3----
+Matrix tests:
+  StaticFunctions
+    Count: 12
+    CountX: 3
+    CountY: 4
+  Constructor: [(0, 0, 0), (0, 0, 0), (0, 0, 0), (0, 0, 0)]
+  Constructor: [(1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1)]
+  Constructor: [(0, 1, 2), (3, 4, 5), (6, 7, 8), (9, 10, 11)]
+  MemberFunctions
+    Initial Matrix: [(0, 1, 2), (3, 4, 5), (6, 7, 8), (9, 10, 11)]
+    M00: 0
+    M01: 1
+    M02: 2
+    M10: 3
+    M11: 4
+    M12: 5
+    M20: 6
+    M21: 7
+    M22: 8
+    M30: 9
+    M31: 10
+    M32: 11
+    operator[0]: (0, 1, 2)
+    operator[1]: (3, 4, 5)
+    operator[2]: (6, 7, 8)
+    operator[3]: (9, 10, 11)
+    Matrix operator[].Set: [(1, 2, 3), (2, 3, 4), (3, 4, 5), (4, 5, 6)]
+    operator[0][0]: 1
+    operator[0][1]: 2
+    operator[0][2]: 3
+    operator[1][0]: 2
+    operator[1][1]: 3
+    operator[1][2]: 4
+    operator[2][0]: 3
+    operator[2][1]: 4
+    operator[2][2]: 5
+    operator[3][0]: 4
+    operator[3][1]: 5
+    operator[3][2]: 6
+    Wrong!!
+    Matrix operator[][].Set: [(1, 2, 3), (2, 3, 4), (3, 4, 5), (4, 5, 6)]
+    GetByIndex: 1
+    GetByIndex: 2
+    GetByIndex: 3
+    GetByIndex: 2
+    GetByIndex: 3
+    GetByIndex: 4
+    GetByIndex: 3
+    GetByIndex: 4
+    GetByIndex: 5
+    GetByIndex: 4
+    GetByIndex: 5
+    GetByIndex: 6
+    SetByIndex: [(0, 2, 4), (6, 8, 10), (0, 2, 4), (6, 8, 10)]
+
+----IntegerMatrices.Integer4x4----
+Matrix tests:
+  StaticFunctions
+    Count: 16
+    CountX: 4
+    CountY: 4
+  Constructor: [(0, 0, 0, 0), (0, 0, 0, 0), (0, 0, 0, 0), (0, 0, 0, 0)]
+  Constructor: [(1, 1, 1, 1), (1, 1, 1, 1), (1, 1, 1, 1), (1, 1, 1, 1)]
+  Constructor: [(0, 1, 2, 3), (4, 5, 6, 7), (8, 9, 10, 11), (12, 13, 14, 15)]
+  MemberFunctions
+    Initial Matrix: [(0, 1, 2, 3), (4, 5, 6, 7), (8, 9, 10, 11), (12, 13, 14, 15)]
+    M00: 0
+    M01: 1
+    M02: 2
+    M03: 3
+    M10: 4
+    M11: 5
+    M12: 6
+    M13: 7
+    M20: 8
+    M21: 9
+    M22: 10
+    M23: 11
+    M30: 12
+    M31: 13
+    M32: 14
+    M33: 15
+    operator[0]: (0, 1, 2, 3)
+    operator[1]: (4, 5, 6, 7)
+    operator[2]: (8, 9, 10, 11)
+    operator[3]: (12, 13, 14, 15)
+    Matrix operator[].Set: [(1, 2, 3, 4), (2, 3, 4, 5), (3, 4, 5, 6), (4, 5, 6, 7)]
+    operator[0][0]: 1
+    operator[0][1]: 2
+    operator[0][2]: 3
+    operator[0][3]: 4
+    operator[1][0]: 2
+    operator[1][1]: 3
+    operator[1][2]: 4
+    operator[1][3]: 5
+    operator[2][0]: 3
+    operator[2][1]: 4
+    operator[2][2]: 5
+    operator[2][3]: 6
+    operator[3][0]: 4
+    operator[3][1]: 5
+    operator[3][2]: 6
+    operator[3][3]: 7
+    Wrong!!
+    Matrix operator[][].Set: [(1, 2, 3, 4), (2, 3, 4, 5), (3, 4, 5, 6), (4, 5, 6, 7)]
+    GetByIndex: 1
+    GetByIndex: 2
+    GetByIndex: 3
+    GetByIndex: 4
+    GetByIndex: 2
+    GetByIndex: 3
+    GetByIndex: 4
+    GetByIndex: 5
+    GetByIndex: 3
+    GetByIndex: 4
+    GetByIndex: 5
+    GetByIndex: 6
+    GetByIndex: 4
+    GetByIndex: 5
+    GetByIndex: 6
+    GetByIndex: 7
+    SetByIndex: [(0, 2, 4, 6), (8, 10, 12, 14), (0, 2, 4, 6), (8, 10, 12, 14)]
+
+----RealMatrices.Real2x2----
+Matrix tests:
+  StaticFunctions
+    Count: 4
+    CountX: 2
+    CountY: 2
+  Constructor: [(0, 0), (0, 0)]
+  Constructor: [(1, 1), (1, 1)]
+  Constructor: [(0, 1), (2, 3)]
+  MemberFunctions
+    Initial Matrix: [(0, 1), (2, 3)]
+    M00: 0
+    M01: 1
+    M10: 2
+    M11: 3
+    operator[0]: (0, 1)
+    operator[1]: (2, 3)
+    Matrix operator[].Set: [(1, 2), (2, 3)]
+    operator[0][0]: 1
+    operator[0][1]: 2
+    operator[1][0]: 2
+    operator[1][1]: 3
+    Wrong!!
+    Matrix operator[][].Set: [(1, 2), (2, 3)]
+    GetByIndex: 1
+    GetByIndex: 2
+    GetByIndex: 2
+    GetByIndex: 3
+    SetByIndex: [(0, 2), (0, 2)]
+
+----RealMatrices.Real2x3----
+Matrix tests:
+  StaticFunctions
+    Count: 6
+    CountX: 3
+    CountY: 2
+  Constructor: [(0, 0, 0), (0, 0, 0)]
+  Constructor: [(1, 1, 1), (1, 1, 1)]
+  Constructor: [(0, 1, 2), (3, 4, 5)]
+  MemberFunctions
+    Initial Matrix: [(0, 1, 2), (3, 4, 5)]
+    M00: 0
+    M01: 1
+    M02: 2
+    M10: 3
+    M11: 4
+    M12: 5
+    operator[0]: (0, 1, 2)
+    operator[1]: (3, 4, 5)
+    Matrix operator[].Set: [(1, 2, 3), (2, 3, 4)]
+    operator[0][0]: 1
+    operator[0][1]: 2
+    operator[0][2]: 3
+    operator[1][0]: 2
+    operator[1][1]: 3
+    operator[1][2]: 4
+    Wrong!!
+    Matrix operator[][].Set: [(1, 2, 3), (2, 3, 4)]
+    GetByIndex: 1
+    GetByIndex: 2
+    GetByIndex: 3
+    GetByIndex: 2
+    GetByIndex: 3
+    GetByIndex: 4
+    SetByIndex: [(0, 2, 4), (0, 2, 4)]
+
+----RealMatrices.Real2x4----
+Matrix tests:
+  StaticFunctions
+    Count: 8
+    CountX: 4
+    CountY: 2
+  Constructor: [(0, 0, 0, 0), (0, 0, 0, 0)]
+  Constructor: [(1, 1, 1, 1), (1, 1, 1, 1)]
+  Constructor: [(0, 1, 2, 3), (4, 5, 6, 7)]
+  MemberFunctions
+    Initial Matrix: [(0, 1, 2, 3), (4, 5, 6, 7)]
+    M00: 0
+    M01: 1
+    M02: 2
+    M03: 3
+    M10: 4
+    M11: 5
+    M12: 6
+    M13: 7
+    operator[0]: (0, 1, 2, 3)
+    operator[1]: (4, 5, 6, 7)
+    Matrix operator[].Set: [(1, 2, 3, 4), (2, 3, 4, 5)]
+    operator[0][0]: 1
+    operator[0][1]: 2
+    operator[0][2]: 3
+    operator[0][3]: 4
+    operator[1][0]: 2
+    operator[1][1]: 3
+    operator[1][2]: 4
+    operator[1][3]: 5
+    Wrong!!
+    Matrix operator[][].Set: [(1, 2, 3, 4), (2, 3, 4, 5)]
+    GetByIndex: 1
+    GetByIndex: 2
+    GetByIndex: 3
+    GetByIndex: 4
+    GetByIndex: 2
+    GetByIndex: 3
+    GetByIndex: 4
+    GetByIndex: 5
+    SetByIndex: [(0, 2, 4, 6), (0, 2, 4, 6)]
+
+----RealMatrices.Real3x2----
+Matrix tests:
+  StaticFunctions
+    Count: 6
+    CountX: 2
+    CountY: 3
+  Constructor: [(0, 0), (0, 0), (0, 0)]
+  Constructor: [(1, 1), (1, 1), (1, 1)]
+  Constructor: [(0, 1), (2, 3), (4, 5)]
+  MemberFunctions
+    Initial Matrix: [(0, 1), (2, 3), (4, 5)]
+    M00: 0
+    M01: 1
+    M10: 2
+    M11: 3
+    M20: 4
+    M21: 5
+    operator[0]: (0, 1)
+    operator[1]: (2, 3)
+    operator[2]: (4, 5)
+    Matrix operator[].Set: [(1, 2), (2, 3), (3, 4)]
+    operator[0][0]: 1
+    operator[0][1]: 2
+    operator[1][0]: 2
+    operator[1][1]: 3
+    operator[2][0]: 3
+    operator[2][1]: 4
+    Wrong!!
+    Matrix operator[][].Set: [(1, 2), (2, 3), (3, 4)]
+    GetByIndex: 1
+    GetByIndex: 2
+    GetByIndex: 2
+    GetByIndex: 3
+    GetByIndex: 3
+    GetByIndex: 4
+    SetByIndex: [(0, 2), (4, 0), (2, 4)]
+
+----RealMatrices.Real3x3----
+Matrix tests:
+  StaticFunctions
+    Count: 9
+    CountX: 3
+    CountY: 3
+  Constructor: [(0, 0, 0), (0, 0, 0), (0, 0, 0)]
+  Constructor: [(1, 1, 1), (1, 1, 1), (1, 1, 1)]
+  Constructor: [(0, 1, 2), (3, 4, 5), (6, 7, 8)]
+  MemberFunctions
+    Initial Matrix: [(0, 1, 2), (3, 4, 5), (6, 7, 8)]
+    M00: 0
+    M01: 1
+    M02: 2
+    M10: 3
+    M11: 4
+    M12: 5
+    M20: 6
+    M21: 7
+    M22: 8
+    operator[0]: (0, 1, 2)
+    operator[1]: (3, 4, 5)
+    operator[2]: (6, 7, 8)
+    Matrix operator[].Set: [(1, 2, 3), (2, 3, 4), (3, 4, 5)]
+    operator[0][0]: 1
+    operator[0][1]: 2
+    operator[0][2]: 3
+    operator[1][0]: 2
+    operator[1][1]: 3
+    operator[1][2]: 4
+    operator[2][0]: 3
+    operator[2][1]: 4
+    operator[2][2]: 5
+    Wrong!!
+    Matrix operator[][].Set: [(1, 2, 3), (2, 3, 4), (3, 4, 5)]
+    GetByIndex: 1
+    GetByIndex: 2
+    GetByIndex: 3
+    GetByIndex: 2
+    GetByIndex: 3
+    GetByIndex: 4
+    GetByIndex: 3
+    GetByIndex: 4
+    GetByIndex: 5
+    SetByIndex: [(0, 2, 4), (6, 8, 1), (3, 5, 7)]
+
+----RealMatrices.Real3x4----
+Matrix tests:
+  StaticFunctions
+    Count: 12
+    CountX: 4
+    CountY: 3
+  Constructor: [(0, 0, 0, 0), (0, 0, 0, 0), (0, 0, 0, 0)]
+  Constructor: [(1, 1, 1, 1), (1, 1, 1, 1), (1, 1, 1, 1)]
+  Constructor: [(0, 1, 2, 3), (4, 5, 6, 7), (8, 9, 10, 11)]
+  MemberFunctions
+    Initial Matrix: [(0, 1, 2, 3), (4, 5, 6, 7), (8, 9, 10, 11)]
+    M00: 0
+    M01: 1
+    M02: 2
+    M03: 3
+    M10: 4
+    M11: 5
+    M12: 6
+    M13: 7
+    M20: 8
+    M21: 9
+    M22: 10
+    M23: 11
+    operator[0]: (0, 1, 2, 3)
+    operator[1]: (4, 5, 6, 7)
+    operator[2]: (8, 9, 10, 11)
+    Matrix operator[].Set: [(1, 2, 3, 4), (2, 3, 4, 5), (3, 4, 5, 6)]
+    operator[0][0]: 1
+    operator[0][1]: 2
+    operator[0][2]: 3
+    operator[0][3]: 4
+    operator[1][0]: 2
+    operator[1][1]: 3
+    operator[1][2]: 4
+    operator[1][3]: 5
+    operator[2][0]: 3
+    operator[2][1]: 4
+    operator[2][2]: 5
+    operator[2][3]: 6
+    Wrong!!
+    Matrix operator[][].Set: [(1, 2, 3, 4), (2, 3, 4, 5), (3, 4, 5, 6)]
+    GetByIndex: 1
+    GetByIndex: 2
+    GetByIndex: 3
+    GetByIndex: 4
+    GetByIndex: 2
+    GetByIndex: 3
+    GetByIndex: 4
+    GetByIndex: 5
+    GetByIndex: 3
+    GetByIndex: 4
+    GetByIndex: 5
+    GetByIndex: 6
+    SetByIndex: [(0, 2, 4, 6), (8, 10, 0, 2), (4, 6, 8, 10)]
+
+----RealMatrices.Real4x3----
+Matrix tests:
+  StaticFunctions
+    Count: 12
+    CountX: 3
+    CountY: 4
+  Constructor: [(0, 0, 0), (0, 0, 0), (0, 0, 0), (0, 0, 0)]
+  Constructor: [(1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1)]
+  Constructor: [(0, 1, 2), (3, 4, 5), (6, 7, 8), (9, 10, 11)]
+  MemberFunctions
+    Initial Matrix: [(0, 1, 2), (3, 4, 5), (6, 7, 8), (9, 10, 11)]
+    M00: 0
+    M01: 1
+    M02: 2
+    M10: 3
+    M11: 4
+    M12: 5
+    M20: 6
+    M21: 7
+    M22: 8
+    M30: 9
+    M31: 10
+    M32: 11
+    operator[0]: (0, 1, 2)
+    operator[1]: (3, 4, 5)
+    operator[2]: (6, 7, 8)
+    operator[3]: (9, 10, 11)
+    Matrix operator[].Set: [(1, 2, 3), (2, 3, 4), (3, 4, 5), (4, 5, 6)]
+    operator[0][0]: 1
+    operator[0][1]: 2
+    operator[0][2]: 3
+    operator[1][0]: 2
+    operator[1][1]: 3
+    operator[1][2]: 4
+    operator[2][0]: 3
+    operator[2][1]: 4
+    operator[2][2]: 5
+    operator[3][0]: 4
+    operator[3][1]: 5
+    operator[3][2]: 6
+    Wrong!!
+    Matrix operator[][].Set: [(1, 2, 3), (2, 3, 4), (3, 4, 5), (4, 5, 6)]
+    GetByIndex: 1
+    GetByIndex: 2
+    GetByIndex: 3
+    GetByIndex: 2
+    GetByIndex: 3
+    GetByIndex: 4
+    GetByIndex: 3
+    GetByIndex: 4
+    GetByIndex: 5
+    GetByIndex: 4
+    GetByIndex: 5
+    GetByIndex: 6
+    SetByIndex: [(0, 2, 4), (6, 8, 10), (0, 2, 4), (6, 8, 10)]
+
+----RealMatrices.Real4x2----
+Matrix tests:
+  StaticFunctions
+    Count: 8
+    CountX: 2
+    CountY: 4
+  Constructor: [(0, 0), (0, 0), (0, 0), (0, 0)]
+  Constructor: [(1, 1), (1, 1), (1, 1), (1, 1)]
+  Constructor: [(0, 1), (2, 3), (4, 5), (6, 7)]
+  MemberFunctions
+    Initial Matrix: [(0, 1), (2, 3), (4, 5), (6, 7)]
+    M00: 0
+    M01: 1
+    M10: 2
+    M11: 3
+    M20: 4
+    M21: 5
+    M30: 6
+    M31: 7
+    operator[0]: (0, 1)
+    operator[1]: (2, 3)
+    operator[2]: (4, 5)
+    operator[3]: (6, 7)
+    Matrix operator[].Set: [(1, 2), (2, 3), (3, 4), (4, 5)]
+    operator[0][0]: 1
+    operator[0][1]: 2
+    operator[1][0]: 2
+    operator[1][1]: 3
+    operator[2][0]: 3
+    operator[2][1]: 4
+    operator[3][0]: 4
+    operator[3][1]: 5
+    Wrong!!
+    Matrix operator[][].Set: [(1, 2), (2, 3), (3, 4), (4, 5)]
+    GetByIndex: 1
+    GetByIndex: 2
+    GetByIndex: 2
+    GetByIndex: 3
+    GetByIndex: 3
+    GetByIndex: 4
+    GetByIndex: 4
+    GetByIndex: 5
+    SetByIndex: [(0, 2), (4, 6), (0, 2), (4, 6)]
+
+----RealMatrices.Real4x4----
+Matrix tests:
+  StaticFunctions
+    Count: 16
+    CountX: 4
+    CountY: 4
+  Constructor: [(0, 0, 0, 0), (0, 0, 0, 0), (0, 0, 0, 0), (0, 0, 0, 0)]
+  Constructor: [(1, 1, 1, 1), (1, 1, 1, 1), (1, 1, 1, 1), (1, 1, 1, 1)]
+  Constructor: [(0, 1, 2, 3), (4, 5, 6, 7), (8, 9, 10, 11), (12, 13, 14, 15)]
+  MemberFunctions
+    Initial Matrix: [(0, 1, 2, 3), (4, 5, 6, 7), (8, 9, 10, 11), (12, 13, 14, 15)]
+    M00: 0
+    M01: 1
+    M02: 2
+    M03: 3
+    M10: 4
+    M11: 5
+    M12: 6
+    M13: 7
+    M20: 8
+    M21: 9
+    M22: 10
+    M23: 11
+    M30: 12
+    M31: 13
+    M32: 14
+    M33: 15
+    operator[0]: (0, 1, 2, 3)
+    operator[1]: (4, 5, 6, 7)
+    operator[2]: (8, 9, 10, 11)
+    operator[3]: (12, 13, 14, 15)
+    Matrix operator[].Set: [(1, 2, 3, 4), (2, 3, 4, 5), (3, 4, 5, 6), (4, 5, 6, 7)]
+    operator[0][0]: 1
+    operator[0][1]: 2
+    operator[0][2]: 3
+    operator[0][3]: 4
+    operator[1][0]: 2
+    operator[1][1]: 3
+    operator[1][2]: 4
+    operator[1][3]: 5
+    operator[2][0]: 3
+    operator[2][1]: 4
+    operator[2][2]: 5
+    operator[2][3]: 6
+    operator[3][0]: 4
+    operator[3][1]: 5
+    operator[3][2]: 6
+    operator[3][3]: 7
+    Wrong!!
+    Matrix operator[][].Set: [(1, 2, 3, 4), (2, 3, 4, 5), (3, 4, 5, 6), (4, 5, 6, 7)]
+    GetByIndex: 1
+    GetByIndex: 2
+    GetByIndex: 3
+    GetByIndex: 4
+    GetByIndex: 2
+    GetByIndex: 3
+    GetByIndex: 4
+    GetByIndex: 5
+    GetByIndex: 3
+    GetByIndex: 4
+    GetByIndex: 5
+    GetByIndex: 6
+    GetByIndex: 4
+    GetByIndex: 5
+    GetByIndex: 6
+    GetByIndex: 7
+    SetByIndex: [(0, 2, 4, 6), (8, 10, 12, 14), (0, 2, 4, 6), (8, 10, 12, 14)]
+

@@ -221,7 +221,7 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "589c68a742f4fd21:BlackZero"
+			var Material = "583afb5e7bf75e18:ZeroMaterial"
 			var Mesh = "4de0354322b345ae:Cube"
 		}
 		BoxCollider 
@@ -680,7 +680,7 @@ Level
 				var LinkId = 17
 				Transform 
 				{
-					var Translation = Real3{-1.78609085, 0, 0}
+					var Translation = Real3{-101.250015, -4.19137001, 9.68325806}
 					var Scale = Real3{1, 1, 1}
 					var Rotation = Quaternion{0, 0, 0, 1}
 				}

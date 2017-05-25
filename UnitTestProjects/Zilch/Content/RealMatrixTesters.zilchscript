@@ -1,0 +1,71 @@
+class Real2x2MatrixTester : BaseMatrixTester[Real2x2, Real]
+{
+  [Override] function SetInstance()
+  {
+    this.Instance = Real2x2(0, 1, 2, 3);
+  }
+}
+
+class Real2x3MatrixTester : BaseMatrixTester[Real2x3, Real]
+{
+  [Override] function SetInstance()
+  {
+    this.Instance = Real2x3(0, 1, 2, 3, 4, 5);
+  }
+}
+
+class Real2x4MatrixTester : BaseMatrixTester[Real2x4, Real]
+{
+  [Override] function SetInstance()
+  {
+    this.Instance = Real2x4(0, 1, 2, 3, 4, 5, 6, 7);
+  }
+}
+
+class Real3x2MatrixTester : BaseMatrixTester[Real3x2, Real]
+{
+  [Override] function SetInstance()
+  {
+    this.Instance = Real3x2(0, 1, 2, 3, 4, 5);
+  }
+}
+
+class Real3x3MatrixTester : BaseMatrixTester[Real3x3, Real]
+{
+  [Override] function SetInstance()
+  {
+    this.Instance = Real3x3(0, 1, 2, 3, 4, 5, 6, 7, 8);
+  }
+}
+
+class Real3x4MatrixTester : BaseMatrixTester[Real3x4, Real]
+{
+  [Override] function SetInstance()
+  {
+    this.Instance = Real3x4(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11);
+  }
+}
+
+class Real4x2MatrixTester : BaseMatrixTester[Real4x2, Real]
+{
+  [Override] function SetInstance()
+  {
+    this.Instance = Real4x2(0, 1, 2, 3, 4, 5, 6, 7);
+  }
+}
+
+class Real4x3MatrixTester : BaseMatrixTester[Real4x3, Real]
+{
+  [Override] function SetInstance()
+  {
+    this.Instance = Real4x3(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11);
+  }
+}
+
+class Real4x4MatrixTester : BaseMatrixTester[Real4x4, Real]
+{
+  [Override] function SetInstance()
+  {
+    this.Instance = Real4x4(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15);
+  }
+}
