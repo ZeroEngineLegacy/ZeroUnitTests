@@ -87,6 +87,7 @@ namespace ZeroUnitTestTool
       info.UseShellExecute = false;
       info.CreateNoWindow = true;
       info.RedirectStandardOutput = true;
+      info.WorkingDirectory = Path.GetDirectoryName(exePath);
       info.WindowStyle = ProcessWindowStyle.Hidden;
 
       Log(String.Format("Running project '{0}' with arguments '{1}' with max time of {2}ms\n", exePath, arguments, maxTimeAllowed));
