@@ -59,18 +59,22 @@ namespace ZeroUnitTestTool
         LogSuccess(projectPath);
     }
 
+    public void Log(string msg)
+    {
+      mLoggingDelegate?.Invoke(msg);
+      Console.WriteLine(msg);
+    }
+
     public void LogFailure(string projectPath, string message)
     {
       string logMessage = string.Format("Project '{0}' Failed:\n{1}", projectPath, message);
-      mLoggingDelegate?.Invoke(logMessage);
-      Console.WriteLine(logMessage);
+      Log(logMessage);
     }
 
     public void LogSuccess(string projectPath)
     {
       string logMessage = string.Format("Project '{0}' Succeeded:\n", projectPath);
-      mLoggingDelegate?.Invoke(logMessage);
-      Console.WriteLine(logMessage);
+      Log(logMessage);
     }
 
     String RunProcess(string exePath, string arguments, int maxTimeAllowed)
@@ -85,6 +89,10 @@ namespace ZeroUnitTestTool
       info.RedirectStandardOutput = true;
       info.WindowStyle = ProcessWindowStyle.Hidden;
 
+      Log(String.Format("Running project '{0}' with arguments '{1}' with max time of {2}ms\n", exePath, arguments, maxTimeAllowed));
+
+      Stopwatch stopwatch = Stopwatch.StartNew();
+
       var process = Process.Start(info);
       process.OutputDataReceived += (sender, outputLine) => { if (outputLine.Data != null) processOutputStream.AppendLine(outputLine.Data); };
       process.BeginOutputReadLine();
@@ -92,7 +100,7 @@ namespace ZeroUnitTestTool
       if (!gracefullyExited)
       {
         process.Kill();
-        return "Unit Test Failed: Timed out";
+        return String.Format("Unit Test Failed: Timed out after {0}ms", stopwatch.ElapsedMilliseconds);
       }
 
       int exitCode = process.ExitCode;
