@@ -1,0 +1,39 @@
+class SampleCurveTester : ZilchComponent
+{
+  [Dependency] var BaseCogResultRecorder : BaseCogResultRecorder;
+  [Property] var Curve : SampleCurve = SampleCurve.MyCurve;
+  
+  function Initialize(init : CogInitializer)
+  {
+    Zero.Connect(this.Owner, Events.RecordInitialization, this.OnRecordInitialization);
+  }
+
+  function OnRecordInitialization(event : CogFrameRecordEvent)
+  {
+    var stream = event.Stream;
+    
+    this.Curve.WriteToStream(stream, 20);
+  }
+}
+
+class SampleCurveExtensions
+{
+  [Extension(typeid(SampleCurve))]
+  function WriteToStream(stream : UnitTestStreamWriter, samples : Integer)
+  {
+    stream.WriteLine(@this.Name);
+    
+    stream.BeginScope();
+    stream.WriteLine(@this.HeightMax);
+    stream.WriteLine(@this.WidthMax);
+    
+    for(var i = 0; i <= samples; ++i)
+    {
+      var sampleT = i / samples as Real;
+      var sample = this.Sample(sampleT);
+      stream.WriteLine("Sample(`sampleT`): `sample`");
+    }
+    
+    stream.EndScope();
+  }
+}

@@ -1,0 +1,9 @@
+[Version:1]
+TextContent 
+{
+	ZilchScriptBuilder 
+	{
+		var Name = "SampleCurveTester"
+		var ResourceId = 0x59719ef8e8da3f2c
+	}
+}

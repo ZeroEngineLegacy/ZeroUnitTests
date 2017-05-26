@@ -16,6 +16,12 @@ ResourceTable
 			var Value = "588c190672c960c8:ResourceTableTest"
 			var Weight = 1
 		}
+		Object
+		{
+			var Name = "Name3"
+			var Value = "59719d2f276ba4cd:SampleCurve"
+			var Weight = 1
+		}
 	}
 	var MaxWeight = 1
 }
