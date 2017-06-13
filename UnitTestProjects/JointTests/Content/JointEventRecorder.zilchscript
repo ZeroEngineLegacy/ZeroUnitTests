@@ -11,7 +11,7 @@ class JointEventRecorder : ZilchComponent
   {
     // Listen for collision the various collision events
     if(this.RecordExceedForceLimit)
-      Zero.Connect(this.Owner, Events.JointExceedForceLimit, this.OnJointEvent);
+      Zero.Connect(this.Owner, Events.JointExceedImpulseLimit, this.OnJointEvent);
     if(this.RecordLowerLimitReached)
       Zero.Connect(this.Owner, Events.JointLowerLimitReached, this.OnJointEvent);
     if(this.RecordUpperLimitReached)

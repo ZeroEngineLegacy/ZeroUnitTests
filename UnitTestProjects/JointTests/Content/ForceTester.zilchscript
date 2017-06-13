@@ -5,10 +5,10 @@ class ForceTester : ZilchComponent
   function Initialize(init : CogInitializer)
   {
     Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
-    Zero.Connect(this.JointPath.Cog, Events.JointExceedForceLimit, this.OnJointExceedForceLimit);
+    Zero.Connect(this.JointPath.Cog, Events.JointExceedImpulseLimit, this.OnJointExceedImpulseLimit);
   }
 
-  function OnJointExceedForceLimit(event : JointEvent)
+  function OnJointExceedImpulseLimit(event : JointEvent)
   {
     Console.WriteLine("Exceeded");
   }
