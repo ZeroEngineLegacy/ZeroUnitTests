@@ -34,19 +34,19 @@ FrameRecord (120)
 
 ----RootForceExceeded.StickJoint----
 FrameRecord (15)
-JointExceedForceLimit (27)
-  JointExceedForceLimit
+JointExceedImpulseLimit (27)
+  JointExceedImpulseLimit
 JointUpperLimitReached (27)
   JointUpperLimitReached
 FrameRecord (30)
-JointExceedForceLimit (33)
-  JointExceedForceLimit
-JointExceedForceLimit (34)
-  JointExceedForceLimit
-JointExceedForceLimit (35)
-  JointExceedForceLimit
-JointExceedForceLimit (36)
-  JointExceedForceLimit
+JointExceedImpulseLimit (33)
+  JointExceedImpulseLimit
+JointExceedImpulseLimit (34)
+  JointExceedImpulseLimit
+JointExceedImpulseLimit (35)
+  JointExceedImpulseLimit
+JointExceedImpulseLimit (36)
+  JointExceedImpulseLimit
 FrameRecord (45)
 FrameRecord (60)
 FrameRecord (75)
@@ -82,8 +82,8 @@ FrameRecord (120)
 
 ----RootForceExceededWithSnapping.StickJoint----
 FrameRecord (15)
-JointExceedForceLimit (27)
-  JointExceedForceLimit
+JointExceedImpulseLimit (27)
+  JointExceedImpulseLimit
 JointUpperLimitReached (27)
   JointUpperLimitReached
 

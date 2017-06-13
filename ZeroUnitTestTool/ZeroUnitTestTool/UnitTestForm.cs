@@ -80,7 +80,7 @@ namespace ZeroUnitTestTool
 
     private void UpdateProjectList()
     {
-      var projectsPath = this.UnitTestProjectsPathTextBox.Text;
+      var projectsPath = Path.GetFullPath(this.UnitTestProjectsPathTextBox.Text);
       if (!Directory.Exists(projectsPath))
         return;
 
