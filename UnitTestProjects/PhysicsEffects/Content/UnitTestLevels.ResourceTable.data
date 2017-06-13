@@ -36,6 +36,12 @@ ResourceTable
 		}
 		Object
 		{
+			var Name = "Name7"
+			var Value = "5916dd5970878268:FlowEffects"
+			var Weight = 1
+		}
+		Object
+		{
 			var Name = "Name6"
 			var Value = "588772079991a3eb:CustomEffects"
 			var Weight = 1
