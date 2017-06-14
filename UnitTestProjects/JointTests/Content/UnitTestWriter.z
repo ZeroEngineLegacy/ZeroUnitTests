@@ -32,7 +32,7 @@ class DifferUtility
     startInfo.ShowWindow = true;
     
     var process = ProcessClass();
-    process.Open(startInfo);
+    process.Start(startInfo);
   }
   
   function GetGeneratedFileName(testName : String) : String
