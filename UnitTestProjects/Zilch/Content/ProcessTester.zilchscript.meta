@@ -1,0 +1,9 @@
+[Version:1]
+TextContent 
+{
+	ZilchScriptBuilder 
+	{
+		var Name = "ProcessTester"
+		var ResourceId = 0x59179910622b538c
+	}
+}

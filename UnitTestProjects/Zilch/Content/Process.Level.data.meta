@@ -3,8 +3,8 @@ DataContent
 {
 	DataBuilder 
 	{
-		var Name = "Strings"
-		var ResourceId = 0x591799007f4b5566
+		var Name = "Process"
+		var ResourceId = 0x59734e6908826c48
 		var LoaderType = "Level"
 		var Version = 0
 		var ShowInEditor = true

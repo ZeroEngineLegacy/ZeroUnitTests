@@ -19,6 +19,12 @@ ResourceTable
 		Object
 		{
 			var Name = "Name1"
+			var Value = "591799007f4b5566:Process"
+			var Weight = 1
+		}
+		Object
+		{
+			var Name = "Name4"
 			var Value = "59734e6908826c48:Strings"
 			var Weight = 1
 		}

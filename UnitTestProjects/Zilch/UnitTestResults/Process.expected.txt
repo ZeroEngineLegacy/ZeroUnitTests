@@ -1,0 +1,11 @@
+----Process----
+Process tests:
+StandardOutput: Printing 3 arguments
+Arg 0: Skipping since this contains an absolute path
+Arg 1: 'Argument1'
+Arg 2: 'Arg2'
+Read line from stdin 'This is a line'
+
+StandardError: Warning, got 3 arguments
+
+

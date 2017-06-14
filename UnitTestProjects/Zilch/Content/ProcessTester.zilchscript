@@ -1,0 +1,30 @@
+class ProcessTester : ZilchComponent
+{
+  function Initialize(init : CogInitializer)
+  {
+    Zero.Connect(this.Owner, Events.RecordInitialization, this.OnRecordInitialization);
+  }
+
+  function OnRecordInitialization(event : CogFrameRecordEvent)
+  {
+    var stream = event.Stream;
+    stream.WriteLine("Process tests:");
+    
+    var projectDir = Zero.Editor.ProjectCog.ProjectSettings.ProjectFolder;
+    
+    
+    var startInfo = ProcessStartInfo();
+    startInfo.ApplicationName = FilePath.CombineDirectoriesAndFile(projectDir, "Content", "ProcessTestApplication.exe");
+    startInfo.Arguments = "Argument1 Arg2";
+    startInfo.RedirectStandardError = true;
+    startInfo.RedirectStandardInput = true;
+    startInfo.RedirectStandardOutput = true;
+    
+    var process = ProcessClass();
+    process.Start(startInfo);
+    
+    process.StandardInput.WriteText("This is a line\n");    
+    stream.WriteLine("StandardOutput: `process.StandardOutput.ReadAllText()`");
+    stream.WriteLine("StandardError: `process.StandardError.ReadAllText()`");
+  }
+}
