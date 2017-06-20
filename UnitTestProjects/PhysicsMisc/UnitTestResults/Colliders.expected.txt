@@ -27,41 +27,41 @@ FrameRecord (121)
         IsGhost: false
         ContactPoints (4):
         ContactPoint:
-          BodyPoint: (-0.5, -0.5, -0.5)
+          LocalPoint: (-0.5, -0.5, -0.5)
           ComplexImpulse: (0.0517325, -0.00150488, 0.000867433)
           FrictionImpulse: 0.00173698
           NormalImpulse: 0.0517325
-          OtherBodyPoint: (-0.0249929, 0.5, -0.236901)
+          OtherLocalPoint: (-0.0249929, 0.5, -0.236901)
           Penetration: 0.02
           RelativeVelocity: -1.33917e-09
           WorldNormalTowardsOther: (-0, -1, -0)
           WorldPoint: (54.1432, -0.687833, -4.61167)
         ContactPoint:
-          BodyPoint: (-0.5, -0.5, 0.5)
+          LocalPoint: (-0.5, -0.5, 0.5)
           ComplexImpulse: (0.0316008, 0.00108934, 0.00362196)
           FrictionImpulse: 0.00378223
           NormalImpulse: 0.0316008
-          OtherBodyPoint: (-0.0250071, 0.5, -0.186901)
+          OtherLocalPoint: (-0.0250071, 0.5, -0.186901)
           Penetration: 0.0199873
           RelativeVelocity: 1.45483e-09
           WorldNormalTowardsOther: (-0, -1, -0)
           WorldPoint: (54.143, -0.68782, -3.61167)
         ContactPoint:
-          BodyPoint: (0.5, -0.5, 0.5)
+          LocalPoint: (0.5, -0.5, 0.5)
           ComplexImpulse: (0.0517314, 0.00434084, -0.00403471)
           FrictionImpulse: 0.00592636
           NormalImpulse: 0.0517314
-          OtherBodyPoint: (0.0249929, 0.5, -0.186887)
+          OtherLocalPoint: (0.0249929, 0.5, -0.186887)
           Penetration: 0.0199872
           RelativeVelocity: 1.3392e-09
           WorldNormalTowardsOther: (-0, -1, -0)
           WorldPoint: (55.143, -0.68782, -3.61139)
         ContactPoint:
-          BodyPoint: (0.5, -0.5, -0.5)
+          LocalPoint: (0.5, -0.5, -0.5)
           ComplexImpulse: (0.0316019, -0.0039253, -0.000454689)
           FrictionImpulse: 0.00395155
           NormalImpulse: 0.0316019
-          OtherBodyPoint: (0.0250071, 0.5, -0.236887)
+          OtherLocalPoint: (0.0250071, 0.5, -0.236887)
           Penetration: 0.0199998
           RelativeVelocity: -1.4548e-09
           WorldNormalTowardsOther: (-0, -1, -0)
@@ -100,11 +100,11 @@ FrameRecord (121)
         IsGhost: false
         ContactPoints (1):
         ContactPoint:
-          BodyPoint: (0, -0.5, 0)
+          LocalPoint: (0, -0.5, 0)
           ComplexImpulse: (0.0872665, 0, 0)
           FrictionImpulse: 0
           NormalImpulse: 0.0872665
-          OtherBodyPoint: (0, 0.5, -0.0920099)
+          OtherLocalPoint: (0, 0.5, -0.0920099)
           Penetration: 0.02
           RelativeVelocity: -0
           WorldNormalTowardsOther: (-0, -1, -0)
@@ -126,19 +126,10 @@ FrameRecord (61)
     Joints (1):
       JointHolder:
         Owner: StickJoint
-        OtherBody: null
-        OtherCollider: Anchor
-        AutoSnaps: false
-        IsGhost: false
-        MaxImpulse: 0
+        Object: JointCollider
+        OtherObject: Anchor
         Valid: true
-        SendsEvents: true
         Joint: StickJoint
-        JointLimit:
-          Active: true
-          AtomIds: 1
-          LowerLimit: 0
-          UpperLimit: 4.73886
 FrameRecord (121)
   Collider:
     Ghost: false
@@ -150,17 +141,8 @@ FrameRecord (121)
     Joints (1):
       JointHolder:
         Owner: StickJoint
-        OtherBody: null
-        OtherCollider: Anchor
-        AutoSnaps: false
-        IsGhost: false
-        MaxImpulse: 0
+        Object: JointCollider
+        OtherObject: Anchor
         Valid: true
-        SendsEvents: true
         Joint: StickJoint
-        JointLimit:
-          Active: true
-          AtomIds: 1
-          LowerLimit: 0
-          UpperLimit: 4.73886
 

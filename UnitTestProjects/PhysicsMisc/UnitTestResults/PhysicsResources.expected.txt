@@ -101,9 +101,6 @@ PhysicsSolverConfig: TestSolver
   SolverIterationCount: 10
   PositionIterationCount: 2
   VelocityRestitutionThreshold: 3
-  WarmStart: true
-  CacheContacts: true
-  SubSolverType: BlockSolving
   SolverType: Basic
   PositionCorrectionType: PostStabilization
   ConstraintConfigBlock: StickJointBlock

@@ -54,9 +54,9 @@ class PhysicsSolverConfigExtensions
     stream.WriteLine(@this.SolverIterationCount);
     stream.WriteLine(@this.PositionIterationCount);
     stream.WriteLine(@this.VelocityRestitutionThreshold);
-    stream.WriteLine(@this.WarmStart);
-    stream.WriteLine(@this.CacheContacts);
-    stream.WriteLine("SubSolverType: `this.SubCorrectionType`");
+    //stream.WriteLine(@this.WarmStart);
+    //stream.WriteLine(@this.CacheContacts);
+    //stream.WriteLine("SubSolverType: `this.SubCorrectionType`");
     stream.WriteLine("SolverType: `this.SolverType`");
     stream.WriteLine("PositionCorrectionType: `this.PositionCorrectionType`");
     

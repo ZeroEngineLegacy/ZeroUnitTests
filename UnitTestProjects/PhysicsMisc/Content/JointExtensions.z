@@ -38,7 +38,7 @@ class JointExtensions
     stream.WriteLine(@this.Active);
     stream.WriteLine(@this.AtomIds);
     stream.WriteLine(@this.FrequencyHz);
-    stream.WriteLine(@this.DampRatio);
+    stream.WriteLine(@this.DampingRatio);
     
     stream.EndScope();
   }

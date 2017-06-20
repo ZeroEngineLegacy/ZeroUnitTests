@@ -32,9 +32,9 @@ class PhysicsSpaceTester : ZilchComponent
     stream.WriteLine(@physicsSpace.AllowSleep);
     stream.WriteLine(@physicsSpace.Mode2D);
     stream.WriteLine(@physicsSpace.Deterministic);
-    stream.WriteLine(@physicsSpace.PostProcessIslands);
-    stream.WriteLine(@physicsSpace.IsSolverShared);
-    stream.WriteLine(@physicsSpace.IslandCount);
+    //stream.WriteLine(@physicsSpace.PostProcessIslands);
+    //stream.WriteLine(@physicsSpace.IsSolverShared);
+    //stream.WriteLine(@physicsSpace.IslandCount);
     
     //// Ray Cast
     this.CastRayFirst(stream);

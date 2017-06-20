@@ -136,11 +136,11 @@ class ColliderExtensions
     stream.WriteLine("ContactPoint:");
     stream.BeginScope();
     
-    stream.WriteLine(@this.BodyPoint);
+    stream.WriteLine(@this.LocalPoint);
     stream.WriteLine(@this.ComplexImpulse);
     stream.WriteLine(@this.FrictionImpulse);
     stream.WriteLine(@this.NormalImpulse);
-    stream.WriteLine(@this.OtherBodyPoint);
+    stream.WriteLine(@this.OtherLocalPoint);
     stream.WriteLine(@this.Penetration);
     stream.WriteLine(@this.RelativeVelocity);
     stream.WriteLine(@this.WorldNormalTowardsOther);
@@ -149,7 +149,7 @@ class ColliderExtensions
     stream.EndScope();
   }
   
-  [Extension(typeid(ContactHolder))]
+  [Extension(typeid(ContactGraphEdge))]
   function WriteToStream(stream : UnitTestStreamWriter)
   {
     stream.WriteLine("ContactHolder:");
@@ -175,24 +175,18 @@ class ColliderExtensions
       contactHolder.WriteToStream(stream);
   }
   
-  [Extension(typeid(JointHolder))]
+  [Extension(typeid(JointGraphEdge))]
   function WriteToStream(stream : UnitTestStreamWriter)
   {
     stream.WriteLine("JointHolder:");
     stream.BeginScope();
     
     stream.WriteLine(@this.Owner);//"Owner: `stream.GetCogName(this.Owner)`");
-    stream.WriteLine("OtherBody: `stream.GetComponentOwnerName(this.OtherBody)`");
-    stream.WriteLine("OtherCollider: `stream.GetComponentOwnerName(this.OtherCollider)`");
-    stream.WriteLine(@this.AutoSnaps);
-    stream.WriteLine(@this.IsGhost);
-    stream.WriteLine(@this.MaxImpulse);
+    stream.WriteLine(@this.Object);
+    stream.WriteLine(@this.OtherObject);
+    
     stream.WriteLine(@this.Valid);
-    stream.WriteLine(@this.SendsEvents);
     stream.WriteLine("Joint: `stream.GetComponentOwnerName(this.Joint)`");
-    CheckedWriter[JointLimit].WriteToStream(this.Limit, stream);
-    CheckedWriter[JointMotor].WriteToStream(this.Motor, stream);
-    CheckedWriter[JointSpring].WriteToStream(this.Spring, stream);
     
     stream.EndScope();
   }

@@ -3,9 +3,6 @@ SubStepCount: 1
 AllowSleep: true
 Mode2D: false
 Deterministic: true
-PostProcessIslands: false
-IsSolverShared: false
-IslandCount: 0
 PhysicsSpace.CastRayFirst:
   Collider: Ground
   ObjectHit: Ground
