@@ -112,6 +112,10 @@ Level
 			var Visible = true
 			var ViewCulling = false
 			var VisibilityEvents = true
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
 			var Material = ""
 			var Mesh = ""
 		}
@@ -340,6 +344,10 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
 			var Material = "583afb5e7bf75e18:ZeroMaterial"
 			var Mesh = "4de0354322b345ae:Cube"
 		}
@@ -349,7 +357,7 @@ Level
 			var SendsEvents = true
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
-			var Offset = Real3{0, 0, 0}
+			var TranslationOffset = Real3{0, 0, 0}
 			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 	}
@@ -380,14 +388,18 @@ Level
 					var Visible = true
 					var ViewCulling = true
 					var VisibilityEvents = true
+					var OverrideBoundingBox = false
+					var LocalAabbCenter = Real3{0, 0, 0}
+					var LocalAabbHalfExtents = Real3{1, 1, 1}
+					var GroupSortValue = 0
 					var Material = "56dcc7b15f51207d:DefaultSpriteMaterial"
 					var VertexColor = Real4{1, 1, 1, 1}
 					var GeometryMode = SpriteGeometryMode.ZPlane
+					var Text = "Motor"
 					var Font = "57343753bb4eaaec:NotoSans-Regular"
 					var FontSize = 32
-					var Text = "Motor"
-					var Align = TextAlign.Center
 					var PixelsPerUnit = 128
+					var TextAlign = TextAlign.Center
 				}
 			}
 			Cog 
@@ -405,6 +417,10 @@ Level
 					var Visible = true
 					var ViewCulling = true
 					var VisibilityEvents = true
+					var OverrideBoundingBox = false
+					var LocalAabbCenter = Real3{0, 0, 0}
+					var LocalAabbHalfExtents = Real3{1, 1, 1}
+					var GroupSortValue = 0
 					var Material = "5828b036bd65b5d8:OpaqueFlat"
 					var Mesh = "4de0354322b345ae:Cube"
 				}
@@ -424,7 +440,7 @@ Level
 					var SendsEvents = true
 					var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 					var CollisionGroup = "4e740859314e5515:DefaultGroup"
-					var Offset = Real3{0, 0, 0}
+					var TranslationOffset = Real3{0, 0, 0}
 					var HalfSize = Real3{0.5, 0.5, 0.5}
 				}
 				ColorOverride 
@@ -447,6 +463,10 @@ Level
 					var Visible = true
 					var ViewCulling = true
 					var VisibilityEvents = true
+					var OverrideBoundingBox = false
+					var LocalAabbCenter = Real3{0, 0, 0}
+					var LocalAabbHalfExtents = Real3{1, 1, 1}
+					var GroupSortValue = 0
 					var Material = "583afb5e7bf75e18:ZeroMaterial"
 					var Mesh = "4de0354322b345ae:Cube"
 				}
@@ -466,7 +486,7 @@ Level
 					var SendsEvents = true
 					var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 					var CollisionGroup = "4e740859314e5515:DefaultGroup"
-					var Offset = Real3{0, 0, 0}
+					var TranslationOffset = Real3{0, 0, 0}
 					var HalfSize = Real3{0.5, 0.5, 0.5}
 				}
 				BaseCogResultRecorder 
@@ -574,14 +594,18 @@ Level
 					var Visible = true
 					var ViewCulling = true
 					var VisibilityEvents = true
+					var OverrideBoundingBox = false
+					var LocalAabbCenter = Real3{0, 0, 0}
+					var LocalAabbHalfExtents = Real3{1, 1, 1}
+					var GroupSortValue = 0
 					var Material = "56dcc7b15f51207d:DefaultSpriteMaterial"
 					var VertexColor = Real4{1, 1, 1, 1}
 					var GeometryMode = SpriteGeometryMode.ZPlane
+					var Text = "Spring"
 					var Font = "57343753bb4eaaec:NotoSans-Regular"
 					var FontSize = 32
-					var Text = "Spring"
-					var Align = TextAlign.Center
 					var PixelsPerUnit = 128
+					var TextAlign = TextAlign.Center
 				}
 			}
 			Cog 
@@ -599,6 +623,10 @@ Level
 					var Visible = true
 					var ViewCulling = true
 					var VisibilityEvents = true
+					var OverrideBoundingBox = false
+					var LocalAabbCenter = Real3{0, 0, 0}
+					var LocalAabbHalfExtents = Real3{1, 1, 1}
+					var GroupSortValue = 0
 					var Material = "5828b036bd65b5d8:OpaqueFlat"
 					var Mesh = "4de0354322b345ae:Cube"
 				}
@@ -618,7 +646,7 @@ Level
 					var SendsEvents = true
 					var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 					var CollisionGroup = "4e740859314e5515:DefaultGroup"
-					var Offset = Real3{0, 0, 0}
+					var TranslationOffset = Real3{0, 0, 0}
 					var HalfSize = Real3{0.5, 0.5, 0.5}
 				}
 				ColorOverride 
@@ -641,6 +669,10 @@ Level
 					var Visible = true
 					var ViewCulling = true
 					var VisibilityEvents = true
+					var OverrideBoundingBox = false
+					var LocalAabbCenter = Real3{0, 0, 0}
+					var LocalAabbHalfExtents = Real3{1, 1, 1}
+					var GroupSortValue = 0
 					var Material = "583afb5e7bf75e18:ZeroMaterial"
 					var Mesh = "4de0354322b345ae:Cube"
 				}
@@ -660,7 +692,7 @@ Level
 					var SendsEvents = true
 					var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 					var CollisionGroup = "4e740859314e5515:DefaultGroup"
-					var Offset = Real3{0, 0, 0}
+					var TranslationOffset = Real3{0, 0, 0}
 					var HalfSize = Real3{0.5, 0.5, 0.5}
 				}
 				BaseCogResultRecorder 
@@ -741,7 +773,7 @@ Level
 				{
 					var Active = true
 					var FrequencyHz = 2
-					var DampRatio = 0.100000001
+					var DampingRatio = 0.100000001
 					var AtomIds = 32
 				}
 			}
@@ -774,14 +806,18 @@ Level
 					var Visible = true
 					var ViewCulling = true
 					var VisibilityEvents = true
+					var OverrideBoundingBox = false
+					var LocalAabbCenter = Real3{0, 0, 0}
+					var LocalAabbHalfExtents = Real3{1, 1, 1}
+					var GroupSortValue = 0
 					var Material = "56dcc7b15f51207d:DefaultSpriteMaterial"
 					var VertexColor = Real4{1, 1, 1, 1}
 					var GeometryMode = SpriteGeometryMode.ZPlane
+					var Text = "Regular"
 					var Font = "57343753bb4eaaec:NotoSans-Regular"
 					var FontSize = 32
-					var Text = "Regular"
-					var Align = TextAlign.Center
 					var PixelsPerUnit = 128
+					var TextAlign = TextAlign.Center
 				}
 			}
 			Cog 
@@ -799,6 +835,10 @@ Level
 					var Visible = true
 					var ViewCulling = true
 					var VisibilityEvents = true
+					var OverrideBoundingBox = false
+					var LocalAabbCenter = Real3{0, 0, 0}
+					var LocalAabbHalfExtents = Real3{1, 1, 1}
+					var GroupSortValue = 0
 					var Material = "5828b036bd65b5d8:OpaqueFlat"
 					var Mesh = "4de0354322b345ae:Cube"
 				}
@@ -818,7 +858,7 @@ Level
 					var SendsEvents = true
 					var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 					var CollisionGroup = "4e740859314e5515:DefaultGroup"
-					var Offset = Real3{0, 0, 0}
+					var TranslationOffset = Real3{0, 0, 0}
 					var HalfSize = Real3{0.5, 0.5, 0.5}
 				}
 				ColorOverride 
@@ -841,6 +881,10 @@ Level
 					var Visible = true
 					var ViewCulling = true
 					var VisibilityEvents = true
+					var OverrideBoundingBox = false
+					var LocalAabbCenter = Real3{0, 0, 0}
+					var LocalAabbHalfExtents = Real3{1, 1, 1}
+					var GroupSortValue = 0
 					var Material = "583afb5e7bf75e18:ZeroMaterial"
 					var Mesh = "4de0354322b345ae:Cube"
 				}
@@ -860,7 +904,7 @@ Level
 					var SendsEvents = true
 					var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 					var CollisionGroup = "4e740859314e5515:DefaultGroup"
-					var Offset = Real3{0, 0, 0}
+					var TranslationOffset = Real3{0, 0, 0}
 					var HalfSize = Real3{0.5, 0.5, 0.5}
 				}
 				BaseCogResultRecorder 
@@ -960,14 +1004,18 @@ Level
 					var Visible = true
 					var ViewCulling = true
 					var VisibilityEvents = true
+					var OverrideBoundingBox = false
+					var LocalAabbCenter = Real3{0, 0, 0}
+					var LocalAabbHalfExtents = Real3{1, 1, 1}
+					var GroupSortValue = 0
 					var Material = "56dcc7b15f51207d:DefaultSpriteMaterial"
 					var VertexColor = Real4{1, 1, 1, 1}
 					var GeometryMode = SpriteGeometryMode.ZPlane
+					var Text = "Limit"
 					var Font = "57343753bb4eaaec:NotoSans-Regular"
 					var FontSize = 32
-					var Text = "Limit"
-					var Align = TextAlign.Center
 					var PixelsPerUnit = 128
+					var TextAlign = TextAlign.Center
 				}
 			}
 			Cog 
@@ -985,6 +1033,10 @@ Level
 					var Visible = true
 					var ViewCulling = true
 					var VisibilityEvents = true
+					var OverrideBoundingBox = false
+					var LocalAabbCenter = Real3{0, 0, 0}
+					var LocalAabbHalfExtents = Real3{1, 1, 1}
+					var GroupSortValue = 0
 					var Material = "5828b036bd65b5d8:OpaqueFlat"
 					var Mesh = "4de0354322b345ae:Cube"
 				}
@@ -1004,7 +1056,7 @@ Level
 					var SendsEvents = true
 					var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 					var CollisionGroup = "4e740859314e5515:DefaultGroup"
-					var Offset = Real3{0, 0, 0}
+					var TranslationOffset = Real3{0, 0, 0}
 					var HalfSize = Real3{0.5, 0.5, 0.5}
 				}
 				ColorOverride 
@@ -1027,6 +1079,10 @@ Level
 					var Visible = true
 					var ViewCulling = true
 					var VisibilityEvents = true
+					var OverrideBoundingBox = false
+					var LocalAabbCenter = Real3{0, 0, 0}
+					var LocalAabbHalfExtents = Real3{1, 1, 1}
+					var GroupSortValue = 0
 					var Material = "583afb5e7bf75e18:ZeroMaterial"
 					var Mesh = "4de0354322b345ae:Cube"
 				}
@@ -1046,7 +1102,7 @@ Level
 					var SendsEvents = true
 					var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 					var CollisionGroup = "4e740859314e5515:DefaultGroup"
-					var Offset = Real3{0, 0, 0}
+					var TranslationOffset = Real3{0, 0, 0}
 					var HalfSize = Real3{0.5, 0.5, 0.5}
 				}
 				BaseCogResultRecorder 
@@ -1141,14 +1197,18 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
 			var Material = "56dcc7b15f51207d:DefaultSpriteMaterial"
 			var VertexColor = Real4{1, 1, 1, 1}
 			var GeometryMode = SpriteGeometryMode.ZPlane
+			var Text = "Revolute Joint"
 			var Font = "57343753bb4eaaec:NotoSans-Regular"
 			var FontSize = 32
-			var Text = "Revolute Joint"
-			var Align = TextAlign.Center
 			var PixelsPerUnit = 128
+			var TextAlign = TextAlign.Center
 		}
 	}
 }
