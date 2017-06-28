@@ -57,7 +57,7 @@ class PhysicsSolverConfigExtensions
     //stream.WriteLine(@this.WarmStart);
     //stream.WriteLine(@this.CacheContacts);
     //stream.WriteLine("SubSolverType: `this.SubCorrectionType`");
-    stream.WriteLine("SolverType: `this.SolverType`");
+    //stream.WriteLine("SolverType: `this.SolverType`");
     stream.WriteLine("PositionCorrectionType: `this.PositionCorrectionType`");
     
     this.WriteBlockToStream("StickJointBlock", this.StickJointBlock, stream);

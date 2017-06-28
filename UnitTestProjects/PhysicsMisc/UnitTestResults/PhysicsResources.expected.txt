@@ -101,7 +101,6 @@ PhysicsSolverConfig: TestSolver
   SolverIterationCount: 10
   PositionIterationCount: 2
   VelocityRestitutionThreshold: 3
-  SolverType: Basic
   PositionCorrectionType: PostStabilization
   ConstraintConfigBlock: StickJointBlock
     AngularBaumgarte: 4.5

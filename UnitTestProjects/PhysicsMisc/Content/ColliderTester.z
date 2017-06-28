@@ -152,12 +152,11 @@ class ColliderExtensions
   [Extension(typeid(ContactGraphEdge))]
   function WriteToStream(stream : UnitTestStreamWriter)
   {
-    stream.WriteLine("ContactHolder:");
+    stream.WriteLine("ContactGraphEdge:");
     stream.BeginScope();
     
     stream.WriteLine(@this.Object);
     stream.WriteLine(@this.OtherObject);
-    stream.WriteLine(@this.IsNew);
     stream.WriteLine(@this.IsGhost);
     
     stream.WriteLine("ContactPoints (`this.ContactPointCount`):");
@@ -178,7 +177,7 @@ class ColliderExtensions
   [Extension(typeid(JointGraphEdge))]
   function WriteToStream(stream : UnitTestStreamWriter)
   {
-    stream.WriteLine("JointHolder:");
+    stream.WriteLine("JointGraphEdge:");
     stream.BeginScope();
     
     stream.WriteLine(@this.Owner);//"Owner: `stream.GetCogName(this.Owner)`");
