@@ -1,0 +1,63 @@
+class MathFunctionsTester : ZilchComponent
+{
+  [Dependency] var BaseRecorder : BaseCogResultRecorder;
+  
+  function Initialize(init : CogInitializer)
+  {
+    Zero.Connect(this.Owner, Events.RecordInitialization, this.OnRecordInitialization);
+  }
+  
+  function TestMatrix2x2Generation(stream : UnitTestStreamWriter)
+  {
+    stream.WriteLine("Matrix2x2Generation");
+    stream.BeginScope();
+    
+    stream.WriteLine("GenerateScaleMatrix2x2: `Math.GenerateScaleMatrix2x2(Real2(3, 6))`");
+    stream.WriteLine("GenerateRotationMatrix2x2: `Math.GenerateRotationMatrix2x2(Math.Pi)`");
+    stream.WriteLine("GenerateTransformMatrix2x2: `Math.GenerateTransformMatrix2x2(Math.Pi, Real2(3, 6))`");
+    
+    stream.EndScope();
+  }
+  
+  function TestMatrix3x3Generation(stream : UnitTestStreamWriter)
+  {
+    stream.WriteLine("Matrix3x3Generation");
+    stream.BeginScope();
+    
+    stream.WriteLine("GenerateScaleMatrix3x3: `Math.GenerateScaleMatrix3x3(Real2(3, 6))`");
+    stream.WriteLine("GenerateScaleMatrix3x3: `Math.GenerateScaleMatrix3x3(Real3(3, 6, -9))`");
+    stream.WriteLine("GenerateRotationMatrix3x3: `Math.GenerateRotationMatrix3x3(Math.Pi / 4.0)`");
+    stream.WriteLine("GenerateRotationMatrix3x3: `Math.GenerateRotationMatrix3x3(Real3(1, 1, 0), Math.Pi / 4)`");
+    stream.WriteLine("GenerateTranslationMatrix3x3: `Math.GenerateTranslationMatrix3x3(Real2(3, 4))`");
+    stream.WriteLine("GenerateTransformMatrix3x3: `Math.GenerateTransformMatrix3x3(Real2(1, 10), Math.Pi / 2.0, Real2(8, -7))`");
+    stream.WriteLine("GenerateTransformMatrix3x3: `Math.GenerateTransformMatrix3x3(Math.ToQuaternion(Real3(1, 1, 1), Math.Pi / 4.0), Real3(2, 3, 4))`");
+    stream.WriteLine("GenerateTransformMatrix3x3: `Math.GenerateTransformMatrix3x3(Math.GenerateRotationMatrix3x3(Real3(1, 1, 1), Math.Pi / 4.0), Real3(2, 3, 4))`");
+    
+    stream.EndScope();
+  }
+  
+  function TestMatrix4x4Generation(stream : UnitTestStreamWriter)
+  {
+    stream.WriteLine("Matrix4x4Generation");
+    stream.BeginScope();
+    
+    stream.WriteLine("GenerateScaleMatrix4x4: `Math.GenerateScaleMatrix4x4(Real3(3, 6, -4))`");
+    stream.WriteLine("GenerateRotationMatrix4x4: `Math.GenerateRotationMatrix4x4(Real3(1, 1, 1), Math.Pi / 4.0)`");
+    stream.WriteLine("GenerateTranslationMatrix4x4: `Math.GenerateTranslationMatrix4x4(Real3(3, 4, 5))`");
+    stream.WriteLine("GenerateTransformMatrix4x4: `Math.GenerateTransformMatrix4x4(Real3(3, 4, 5), Math.ToQuaternion(Real3(1, 1, 1), Math.Pi / 4.0), Real3(2, 3, 4))`");
+    stream.WriteLine("GenerateTransformMatrix4x4: `Math.GenerateTransformMatrix4x4(Real3(3, 4, 5), Math.GenerateRotationMatrix3x3(Real3(1, 1, 1), Math.Pi / 4.0), Real3(2, 3, 4))`");
+    
+    stream.EndScope();
+  }
+  
+  function OnRecordInitialization(event : CogFrameRecordEvent)
+  {
+    var stream = event.Stream;
+    stream.WriteLine("Math tests:");
+    stream.BeginScope();
+    
+    this.TestMatrix2x2Generation(stream);
+    this.TestMatrix3x3Generation(stream);
+    this.TestMatrix4x4Generation(stream);
+  }
+}

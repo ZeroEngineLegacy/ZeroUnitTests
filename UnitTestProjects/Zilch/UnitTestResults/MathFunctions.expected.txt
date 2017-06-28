@@ -1,0 +1,22 @@
+----Math----
+Math tests:
+  Matrix2x2Generation
+    GenerateScaleMatrix2x2: [(3, 0), (0, 6)]
+    GenerateRotationMatrix2x2: [(-1, 8.74228e-08), (-8.74228e-08, -1)]
+    GenerateTransformMatrix2x2: [(-3, 5.24537e-07), (-2.62268e-07, -6)]
+  Matrix3x3Generation
+    GenerateScaleMatrix3x3: [(3, 0, 0), (0, 6, 0), (0, 0, 1)]
+    GenerateScaleMatrix3x3: [(3, 0, 0), (0, 6, 0), (0, 0, -9)]
+    GenerateRotationMatrix3x3: [(0.707107, -0.707107, 0), (0.707107, 0.707107, 0), (0, 0, 1)]
+    GenerateRotationMatrix3x3: [(0.853553, 0.146447, 0.5), (0.146447, 0.853553, -0.5), (-0.5, 0.5, 0.707107)]
+    GenerateTranslationMatrix3x3: [(1, 0, 3), (0, 1, 4), (0, 0, 1)]
+    GenerateTransformMatrix3x3: [(-3.49691e-07, 7, 1), (8, 3.0598e-07, 10), (0, 0, 1)]
+    GenerateTransformMatrix3x3: [(1.60948, -0.931852, 2.02352), (1.01176, 2.41421, -1.24247), (-0.621234, 1.51764, 3.21895)]
+    GenerateTransformMatrix3x3: [(1.60948, -0.931852, 2.02352), (1.01176, 2.41421, -1.24247), (-0.621234, 1.51764, 3.21895)]
+  Matrix4x4Generation
+    GenerateScaleMatrix4x4: [(3, 0, 0, 0), (0, 6, 0, 0), (0, 0, -4, 0), (0, 0, 0, 1)]
+    GenerateRotationMatrix4x4: [(0.804738, -0.310617, 0.505879, 0), (0.505879, 0.804738, -0.310617, 0), (-0.310617, 0.505879, 0.804738, 0), (0, 0, 0, 1)]
+    GenerateTranslationMatrix4x4: [(1, 0, 0, 3), (0, 1, 0, 4), (0, 0, 1, 5), (0, 0, 0, 1)]
+    GenerateTransformMatrix4x4: [(1.60948, -0.931852, 2.02352, 3), (1.01176, 2.41421, -1.24247, 4), (-0.621234, 1.51764, 3.21895, 5), (0, 0, 0, 1)]
+    GenerateTransformMatrix4x4: [(1.60948, -0.931852, 2.02352, 3), (1.01176, 2.41421, -1.24247, 4), (-0.621234, 1.51764, 3.21895, 5), (0, 0, 0, 1)]
+

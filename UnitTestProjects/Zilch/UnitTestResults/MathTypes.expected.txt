@@ -309,6 +309,6 @@ Quaternion tests:
     Constructor: (1, 2, 3, 4), Euler: (1.99365, 0.260359, 2.29965), Axis: (0.267261, 0.534522, 0.801784), Angle: 1.50408
     ToDo: Constructor Quaternion(Real4))
     Count: 4
-    operator[].Get: -0.0751511 -0.150302 -0.225453
+    operator[].Get: -0.020085 -0.04017 -0.0602549
     operator[].Set: (1.58, -75, 4.21, -0.0001), Euler: (-3.08554, -0.00117734, -3.12059), Axis: (0.0210289, -0.998208, 0.0560327), Angle: 3.1416
 
