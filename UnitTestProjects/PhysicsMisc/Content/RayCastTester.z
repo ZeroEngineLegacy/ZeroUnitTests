@@ -48,7 +48,7 @@ class RayCastTester : ZilchComponent
     if(this.DebugDrawRay)
     {
       var debugRay = DebugLine(ray.Start, ray.Start + ray.Direction * minT, 0.1);
-      DebugDraw.Add(this.Space.RuntimeId, debugRay);
+      DebugDraw.Add(this.Space, debugRay);
     }
   }
 }
