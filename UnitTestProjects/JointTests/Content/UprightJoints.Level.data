@@ -116,8 +116,6 @@ Level
 			var LocalAabbCenter = Real3{0, 0, 0}
 			var LocalAabbHalfExtents = Real3{1, 1, 1}
 			var GroupSortValue = 0
-			var Material = ""
-			var Mesh = ""
 		}
 		DirectionalLight 
 		{

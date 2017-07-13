@@ -216,7 +216,6 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "589c68a742f4fd21:BlackZero"
 			var Mesh = "4de0354322b345ae:Cube"
 		}
 		BoxCollider 
@@ -244,7 +243,6 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "589c68a742f4fd21:BlackZero"
 			var Mesh = "4de0354322b345ae:Cube"
 		}
 		RigidBody 
@@ -295,7 +293,6 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "589c68a742f4fd21:BlackZero"
 			var Mesh = "4de0354322b345ae:Cube"
 		}
 		RigidBody 

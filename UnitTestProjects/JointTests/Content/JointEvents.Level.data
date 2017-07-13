@@ -112,8 +112,6 @@ Level
 			var Visible = true
 			var ViewCulling = false
 			var VisibilityEvents = true
-			var Material = ""
-			var Mesh = ""
 		}
 		DirectionalLight 
 		{
