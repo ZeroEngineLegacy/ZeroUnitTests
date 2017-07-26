@@ -35,4 +35,7 @@ Space
 	ReactiveSpace 
 	{
 	}
+  NetSpace
+  {
+  }
 }

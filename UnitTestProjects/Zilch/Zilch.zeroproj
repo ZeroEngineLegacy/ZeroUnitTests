@@ -8,7 +8,7 @@ Cog
 		var ProjectOwner = ""
 		var DefaultLevel = ""
 		var ProjectSpace = "Space"
-		var ProjectEngineRevision = 17184
+		var ProjectEngineRevision = 5
 		var AutoTakeProjectScreenshot = true
 		var Guid = 0x5813312a0649d59f
 	}

@@ -73,7 +73,7 @@
       this.ZeroExePathTextBox.Name = "ZeroExePathTextBox";
       this.ZeroExePathTextBox.Size = new System.Drawing.Size(618, 20);
       this.ZeroExePathTextBox.TabIndex = 2;
-      this.ZeroExePathTextBox.Text = "..\\..\\..\\..\\..\\BuildOutput\\Out\\Win32\\Debug\\Win32Editor\\ZeroEditor.exe";
+      this.ZeroExePathTextBox.Text = "..\\..\\..\\..\\..\\BuildOutput\\Out\\Win32\\Release\\Win32Editor\\ZeroEditor.exe";
       this.ZeroExePathTextBox.DragDrop += new System.Windows.Forms.DragEventHandler(this.ZeroExePathTextBox_DragDrop);
       this.ZeroExePathTextBox.DragEnter += new System.Windows.Forms.DragEventHandler(this.ZeroExePathTextBox_DragEnter);
       // 

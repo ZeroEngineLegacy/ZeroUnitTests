@@ -8,12 +8,14 @@ Space
 		var MaxDt = 0.300000012
 		var MinDt = 9.99999997e-07
 		var TimeScale = 1
-		var TimeMode = 0
+		var TimeMode = TimeMode.FixedFrametime
 		var StepCount = 1
 	}
 	GraphicsSpace 
 	{
 		var Active = true
+		var RandomSeed = false
+		var Seed = 0
 	}
 	ActionSpace 
 	{
@@ -31,8 +33,20 @@ Space
 	}
 	SoundSpace 
 	{
+		var PauseWithTimeSpace = true
+		var PitchWithTimeSpace = true
 	}
 	ReactiveSpace 
 	{
+	}
+	NetSpace 
+	{
+		var DetectOutgoingChanges = true
+		var AcceptIncomingChanges = true
+		var AllowNapping = true
+		var AutomaticChannel = "56f22bdc94800e65:Default"
+		var NetPropertyInfos = Array
+		{
+		}
 	}
 }

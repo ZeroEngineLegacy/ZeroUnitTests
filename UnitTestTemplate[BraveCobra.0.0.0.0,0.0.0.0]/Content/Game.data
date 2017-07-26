@@ -16,4 +16,7 @@ GameSession
 	{
 		var VisualDiffs = true
 	}
+  NetPeer 
+	{
+  }
 }
