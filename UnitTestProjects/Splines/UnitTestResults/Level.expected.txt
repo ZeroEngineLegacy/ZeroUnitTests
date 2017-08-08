@@ -3,7 +3,7 @@ HierarchySpline:
   Closed: false
   Error: 0.01
   SplineColor: (0, 0, 0, 1)
-  SplineType: CatmulRom
+  SplineType: CatmullRom
   DebugDrawSpline: true
   SplineSampleData:
     SplineSampleData
@@ -145,7 +145,7 @@ FrameRecord (30)
         WorldPosition: (52.8119, 5.97753, 2.08159)
         WorldPosition: (52.8119, 5.63749, 1.44939)
       TotalDistance: 42.3436
-      SplineType: CatmulRom
+      SplineType: CatmullRom
       SplineSampleData
         WorldPoint: (54.6431, 4.60967, 0.126342)
         WorldTangent: (-0.122278, -0.846604, 0.517987)
@@ -301,7 +301,7 @@ FrameRecord (60)
         WorldPosition: (52.8118, 2.83111, 2.11052)
         WorldPosition: (52.8119, 2.19474, 1.44939)
       TotalDistance: 68.493
-      SplineType: CatmulRom
+      SplineType: CatmullRom
       SplineSampleData
         WorldPoint: (54.6431, 1.16692, 0.126342)
         WorldTangent: (-0.245512, -0.773716, 0.584027)

@@ -1,10 +1,9 @@
 [Version:1]
 Level 
 {
-	Cog 
+	Cog [ContextId:1]
 	{
 		var Name = "LevelSettings"
-		var LinkId = 1
 		GravityEffect 
 		{
 			var Active = true
@@ -48,10 +47,9 @@ Level
 			var LogicUpdateRecordingFrequency = 0.5
 		}
 	}
-	Cog 
+	Cog [ContextId:2]
 	{
 		var Name = "Renderer"
-		var LinkId = 2
 		DeferredRenderer 
 		{
 			var GeometryDebug = GeometryValue.None
@@ -68,10 +66,9 @@ Level
 			var ToneMap = true
 		}
 	}
-	Cog 
+	Cog [ContextId:3]
 	{
 		var Name = "EditorCamera"
-		var LinkId = 3
 		Transform 
 		{
 			var Translation = Real3{44.636219, 9.51574421, -5.51220655}
@@ -82,11 +79,7 @@ Level
 		{
 			var RenderInEditor = true
 			var RenderInGame = false
-			var RenderToViewport = true
-			var ForwardViewportEvents = false
 			var RenderOrder = 0
-			var NormalizedSize = Real2{1, 1}
-			var NormalizedOffset = Real2{0, 0}
 			var CameraPath = CogPath
 			{
 				var Path = "."
@@ -97,7 +90,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 3
+				var Cog = 3
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -112,14 +105,18 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 2
+				var Cog = 2
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
 			}
-			var Resolution = Real2{1920, 1080}
+			var ResolutionOrAspect = Integer2{1920, 1080}
+			var RenderToViewport = true
+			var ForwardViewportEvents = false
 			var ViewportScaling = ViewportScaling.Fill
 			var MarginColor = Real4{0, 0, 0, 1}
+			var NormalizedSize = Real2{1, 1}
+			var NormalizedOffset = Real2{0, 0}
 		}
 		Camera 
 		{
@@ -140,10 +137,9 @@ Level
 			var MoveSensitivity = 1
 		}
 	}
-	Cog 
+	Cog [ContextId:4]
 	{
 		var Name = "GameCamera"
-		var LinkId = 4
 		Transform 
 		{
 			var Translation = Real3{54.5583839, 8.20240784, 20.2588577}
@@ -154,11 +150,7 @@ Level
 		{
 			var RenderInEditor = false
 			var RenderInGame = true
-			var RenderToViewport = true
-			var ForwardViewportEvents = false
 			var RenderOrder = 0
-			var NormalizedSize = Real2{1, 1}
-			var NormalizedOffset = Real2{0, 0}
 			var CameraPath = CogPath
 			{
 				var Path = "."
@@ -169,7 +161,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 4
+				var Cog = 4
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -184,14 +176,18 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 2
+				var Cog = 2
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
 			}
-			var Resolution = Real2{1920, 1080}
+			var ResolutionOrAspect = Integer2{1920, 1080}
+			var RenderToViewport = true
+			var ForwardViewportEvents = false
 			var ViewportScaling = ViewportScaling.Letterbox
 			var MarginColor = Real4{0, 0, 0, 1}
+			var NormalizedSize = Real2{1, 1}
+			var NormalizedOffset = Real2{0, 0}
 		}
 		Camera 
 		{
@@ -206,10 +202,9 @@ Level
 			var Active = true
 		}
 	}
-	Cog 
+	Cog [ContextId:5]
 	{
 		var Name = "Ground"
-		var LinkId = 5
 		Transform 
 		{
 			var Translation = Real3{54.6431046, -1.16783309, 0.126342356}
@@ -238,10 +233,9 @@ Level
 			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 	}
-	Cog 
+	Cog [ContextId:6]
 	{
 		var Name = "HierarchySpline"
-		var LinkId = 6
 		Transform 
 		{
 			var Translation = Real3{54.6431046, 5.16329002, 2.95616412}
@@ -282,7 +276,7 @@ Level
 		HierarchySpline 
 		{
 			var Closed = false
-			var SplineType = SplineType.CatmulRom
+			var SplineType = SplineType.CatmullRom
 			var Error = 0.00999999978
 			var DebugDrawSpline = true
 			var SplineColor = Real4{0, 0, 0, 1}
@@ -295,10 +289,9 @@ Level
 		}
 		Hierarchy 
 		{
-			Cog 
+			Cog [ContextId:7]
 			{
 				var Name = "Point"
-				var LinkId = 7
 				Transform 
 				{
 					var Translation = Real3{0, 0.617947578, -2.82982183}
@@ -337,10 +330,9 @@ Level
 					var Radius = 0.5
 				}
 			}
-			Cog 
+			Cog [ContextId:8]
 			{
 				var Name = "Point"
-				var LinkId = 8
 				Transform 
 				{
 					var Translation = Real3{0, -1.44959998, -1.5648073}
@@ -379,10 +371,9 @@ Level
 					var Radius = 0.5
 				}
 			}
-			Cog 
+			Cog [ContextId:9]
 			{
 				var Name = "Point"
-				var LinkId = 9
 				Transform 
 				{
 					var Translation = Real3{1.75412369, -1.44959998, -1.5648073}
@@ -421,10 +412,9 @@ Level
 					var Radius = 0.5
 				}
 			}
-			Cog 
+			Cog [ContextId:10]
 			{
 				var Name = "Point"
-				var LinkId = 10
 				Transform 
 				{
 					var Translation = Real3{1.75412369, -1.44959998, 3.05009413}
@@ -463,10 +453,9 @@ Level
 					var Radius = 0.5
 				}
 			}
-			Cog 
+			Cog [ContextId:11]
 			{
 				var Name = "Point"
-				var LinkId = 11
 				Transform 
 				{
 					var Translation = Real3{-1.83126068, -1.44959998, 3.05009413}
@@ -505,10 +494,9 @@ Level
 					var Radius = 0.5
 				}
 			}
-			Cog 
+			Cog [ContextId:12]
 			{
 				var Name = "Point"
-				var LinkId = 12
 				Transform 
 				{
 					var Translation = Real3{-1.83126068, 1.64576912, 3.05009413}
@@ -547,10 +535,9 @@ Level
 					var Radius = 0.5
 				}
 			}
-			Cog 
+			Cog [ContextId:13]
 			{
 				var Name = "Point"
-				var LinkId = 13
 				Transform 
 				{
 					var Translation = Real3{-1.83126068, 1.64576912, -1.50677538}
