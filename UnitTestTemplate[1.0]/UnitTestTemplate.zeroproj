@@ -8,7 +8,6 @@ Cog
 		var ProjectOwner = ""
 		var DefaultLevel = ""
 		var ProjectSpace = "Space"
-		var ProjectEngineRevision = 15822
 		var AutoTakeProjectScreenshot = true
 		var Guid = 0x5813312a0649d59f
 	}
@@ -16,8 +15,6 @@ Cog
 	{
 		var ViewCube = true
 		var ViewCubeSize = 0.150000006
-		var ScriptReloadEditor = ScriptReloadMethod.ReInitializeObjects
-		var ScriptReloadGame = ScriptReloadMethod.PatchObjects
 		var AutoUpdateContentChanges = true
 	}
 	ProjectConfig 
