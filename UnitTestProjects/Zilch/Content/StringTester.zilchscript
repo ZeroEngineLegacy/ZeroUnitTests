@@ -611,7 +611,6 @@ class StringTester : ZilchComponent
     ExpressionTester[String].Test(stream, text.All.SubString(text.All.Begin, range.End).ToString(), "This was");
     ExpressionTester[String].Test(stream, text.All.SubString(range.End, text.All.End).ToString(), " a test");
     ExpressionTester[String].Test(stream, text.All.SubString(range.Begin, text.All.End).ToString(), "was a test");
-    ExpressionTester[String].Test(stream, text.All.SubString(range.End, range.Begin).ToString(), "");
     
     stream.EndScope();
   }

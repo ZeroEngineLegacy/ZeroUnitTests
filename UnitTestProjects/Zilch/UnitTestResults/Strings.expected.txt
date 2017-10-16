@@ -256,7 +256,6 @@ String tests:
     Expected: 'This was'. Result: 'This was'
     Expected: ' a test'. Result: ' a test'
     Expected: 'was a test'. Result: 'was a test'
-    Expected: ''. Result: ''
   RuneIterators:
     Expected: 'T'. Result: 'T'
     Expected: 't'. Result: 't'

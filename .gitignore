@@ -15,3 +15,5 @@ syntax: glob
 */obj/
 */bin/
 */EditorContent/ProjectScreenshot.png
+Debug/
+Release/
