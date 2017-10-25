@@ -12,7 +12,7 @@ FrameRecord (18)
   RayCast: (52, 5, 0), (0.825366735, 0.564597011, 0)
   Collider: Cylinder2
   ObjectHit: Cylinder2
-  Normal: (-0.377694, -0.92414, 0.0575533)
+  Normal: (-0.377694, -0.92414, 0.0575535)
   Distance: 4.63293
   WorldPosition: (55.8239, 7.61574, 0)
 FrameRecord (24)
@@ -145,7 +145,7 @@ FrameRecord (90)
   ObjectHit: Cylinder2
   Normal: (-0.371557, -0.8616, 0.345819)
   Distance: 2.6441
-  WorldPosition: (55.8541, 7.63603, 0.145936)
+  WorldPosition: (55.8541, 7.63604, 0.145936)
 FrameRecord (96)
   RayCast: (56, 5, 0), (-0.340383768, 0.876514554, 0.340383768)
 FrameRecord (102)

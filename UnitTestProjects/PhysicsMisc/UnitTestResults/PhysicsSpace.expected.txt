@@ -31,8 +31,18 @@ PhysicsSpace.CastRay With Filter:
     WorldPosition: (54.6431, -0.667833, 0.126342)
 PhysicsSpace.CastSegment:
   CastResultRange:
+    Collider: PhysicsSpaceTester
+    ObjectHit: PhysicsSpaceTester
+    Normal: (-0, -1, -0)
+    Distance: 0.25
+    WorldPosition: (54.6431, 3.21369, 0.126342)
 PhysicsSpace.CastSegment With Filter:
   CastResultRange:
+    Collider: PhysicsSpaceTester
+    ObjectHit: PhysicsSpaceTester
+    Normal: (-0, -1, -0)
+    Distance: 0.25
+    WorldPosition: (54.6431, 3.21369, 0.126342)
 PhysicsSpace.CastSphere:
   CastResultRange:
     Collider: PhysicsSpaceTester

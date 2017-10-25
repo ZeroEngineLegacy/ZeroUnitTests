@@ -2,7 +2,6 @@
 GameSession 
 {
 	var Name = ""
-	var LinkId = 1
 	UnitTestRunner 
 	{
 	}
@@ -21,6 +20,9 @@ GameSession
 		var DetectOutgoingChanges = true
 		var AcceptIncomingChanges = true
 		var AllowNapping = true
+		var AccurateTimestampOnOnline = true
+		var AccurateTimestampOnChange = true
+		var AccurateTimestampOnOffline = true
 		var AutomaticChannel = "56f22bdc94800e65:Default"
 		var NetPropertyInfos = Array
 		{
