@@ -2,55 +2,55 @@
 RandomContext:
   Seed: -894103133
   RandomSeed: false
-  MaxInt: 32767
-  Bool: true
-  Int: 18237
-  Float: 0.0834681
-  Real: 0.937742
-  UnitVector2: (0.878731, 0.477318)
-  Vector2: (0.0797101, 0.348771)
-  UnitVector3: (-0.716788, 0.0236495, 0.69689)
-  Vector3: (1.81055, -0.0529602, -1.87246)
-  Quaternion: (0.920405, -0.365837, 0.112975, -0.0790784), Euler: (-2.90865, -0.150675, -0.774316), Axis: (0.923297, -0.366987, 0.113329), Angle: 3.29991
-  RangeInclusiveMax: 3
-  RangeExclusiveMax: 1
-  IntVariance: 1
-  Range: 1.54326
-  FloatVariance: 0.547258
-  RealVariance: -3.66259
-  DieRoll: 5
-  Probability: true
+  MaxInt: 2147483647
+  Bool: false
+  Int: -103889945
+  Float: 0.793905
+  Real: 0.85847
+  UnitVector2: (0.588452, -0.808532)
+  Vector2: (-2.51672, -1.35921)
+  UnitVector3: (-0.148307, -0.825693, 0.544275)
+  Vector3: (0.0130558, -2.46878, -1.04231)
+  Quaternion: (-0.0503475, 0.135784, -0.283072, 0.948102), Euler: (-0.177984, 0.231019, -0.600987), Axis: (-0.158343, 0.42704, -0.890261), Angle: 0.647165
+  RangeInclusiveMax: 1
+  RangeExclusiveMax: 0
+  IntVariance: 2
+  Range: 1.99599
+  FloatVariance: -1.72418
+  RealVariance: 0.693292
+  DieRoll: 11
+  Probability: false
   CoinFlip: false
-  Rotation: (-0.480806, 0.683852, -0.245319, 0.490907), Euler: (-2.02835, 0.450608, -1.63268), Axis: (-0.551882, 0.784944, -0.281584), Angle: 2.11533
-  BellCurve: 0.284427
-  BellCurveRange: -2.13434
-  BellCurveDistribution: -0.149501
+  Rotation: (-0.321704, 0.617421, -0.71773, 0.0127039), Euler: (-1.5366, -0.46241, -2.65881), Axis: (-0.32173, 0.617471, -0.717788), Angle: 3.11618
+  BellCurve: 0.426288
+  BellCurveRange: -1.78479
+  BellCurveDistribution: 0.206887
 
 ----RandomContext2----
 RandomContext:
   Seed: 16
   RandomSeed: false
-  MaxInt: 32767
-  Bool: false
-  Int: 12153
-  Float: 0.824061
-  Real: 0.30665
-  UnitVector2: (-0.171203, 0.985236)
-  Vector2: (-2.47955, -0.909548)
-  UnitVector3: (-0.884675, 0.401127, -0.237587)
-  Vector3: (-0.520444, 0.767111, 1.07786)
-  Quaternion: (-0.867192, -0.0783044, 0.471952, -0.13823), Euler: (2.83081, 0.997642, 0.00983643), Axis: (-0.875598, -0.0790634, 0.476527), Angle: 3.41894
+  MaxInt: 2147483647
+  Bool: true
+  Int: 234369423
+  Float: 0.379458
+  Real: 0.0386924
+  UnitVector2: (0.960763, 0.277372)
+  Vector2: (-1.92783, 1.81023)
+  UnitVector3: (0.690434, 0.389652, -0.609486)
+  Vector3: (-0.902651, -0.94676, 0.375294)
+  Quaternion: (-0.380566, 0.284695, 0.829866, 0.292304), Euler: (0.427893, 0.924088, 2.67983), Axis: (-0.397946, 0.297697, 0.867765), Angle: 2.54832
   RangeInclusiveMax: 0
-  RangeExclusiveMax: 2
-  IntVariance: -1
-  Range: 2.97702
-  FloatVariance: -2.27436
-  RealVariance: 1.54924
-  DieRoll: 8
-  Probability: true
+  RangeExclusiveMax: 1
+  IntVariance: 2
+  Range: 1.83299
+  FloatVariance: -2.98391
+  RealVariance: 0.984287
+  DieRoll: 12
+  Probability: false
   CoinFlip: false
-  Rotation: (0.534188, 0.0486604, -0.372505, 0.757308), Euler: (1.06846, 0.491192, -0.619825), Axis: (0.81798, 0.0745117, -0.570401), Angle: 1.42323
-  BellCurve: 0.48084
-  BellCurveRange: -0.628106
-  BellCurveDistribution: -2.8428
+  Rotation: (0.604627, -0.507415, 0.49691, 0.360605), Euler: (-2.87118, -1.31257, -1.60518), Axis: (0.648242, -0.544017, 0.532755), Angle: 2.40376
+  BellCurve: 0.721317
+  BellCurveRange: 0.441081
+  BellCurveDistribution: 0.576386
 
