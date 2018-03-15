@@ -25,9 +25,10 @@ Cog
 	{
 		var Tags = ""
 		var ExperimentalBranchName = ""
-		var MajorVersion = 0
-		var MinorVersion = 0
-		var PatchVersion = 0
-		var RevisionId = 15385
+		var MajorVersion = 1
+		var MinorVersion = 2
+		var PatchVersion = 4
+		var RevisionId = 768
+		var ShortChangeSet = "923df5fff14a"
 	}
 }

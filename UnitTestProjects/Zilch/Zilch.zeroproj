@@ -24,10 +24,11 @@ Cog
 	LauncherProjectInfo 
 	{
 		var Tags = ""
-		var ExperimentalBranchName = "BraveCobra"
-		var MajorVersion = 0
-		var MinorVersion = 0
-		var PatchVersion = 0
-		var RevisionId = 16877
+		var ExperimentalBranchName = ""
+		var MajorVersion = 1
+		var MinorVersion = 2
+		var PatchVersion = 2
+		var RevisionId = 697
+		var ShortChangeSet = "7cb6ac1d2c56"
 	}
 }
